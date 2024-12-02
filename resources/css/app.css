@@ -41,3 +41,25 @@ h6 {
 .bg-primary {
     background-color: var(--brand-color) !important;
 }
+
+/* Navbar CSS */
+.navbar .navbar-collapse .navbar-nav .nav-item:first-child .nav-link {
+    padding-left: 0;
+}
+
+.navbar .navbar-collapse .nav-link {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 15px 25px;
+}
+
+.navbar .navbar-collapse .active {
+    border-bottom: 4px solid #fff;
+}
+
+.navbar .navbar-collapse .nav-link:hover {
+    color: #e2e2e2;
+}

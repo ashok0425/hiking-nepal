@@ -11,19 +11,20 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark py-0">
         <div class="d-block w-100">
-            <div class="container d-flex align-items-center">
+            <div class="container d-flex align-items-center py-2">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="{{ asset('logo.png') }}" alt="hiking nepal logo" width="208" height="auto">
                 </a>
 
-                <div class="ms-auto">
-                    <span class="me-3 d-inline-flex align-items-center gap-1">Join Groups: <img
+                <div class="ms-auto d-flex align-items-center gap-4">
+                    <a href="#" class="text-uppercase">Join Groups</a>
+                    <a href="#" class="d-inline-flex align-items-center gap-1"><img
                             src="{{ asset('ic_outline-whatsapp.png') }}" alt="whatsapp" width="24" height="24">
-                        +977-9802342080</span>
+                        +977-9802342080</a>
 
-                    <a href="{{ route('deals') }}" class="btn btn-primary me-3">Deals</a>
+                    <a href="{{ route('deals') }}" class="btn btn-primary">Deals</a>
                     <a href="{{ route('book-trip') }}" class="btn btn-primary">Pay Online</a>
 
                     <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
@@ -38,7 +39,8 @@
                 <div class="container">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link {{ Route::is('home') ? 'active' : '' }}"
+                                href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -74,29 +76,38 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('information') }}">Information</a>
+                            <a class="nav-link {{ Route::is('information') ? 'active' : '' }}"
+                                href="{{ route('information') }}">Information</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle {{ Route::is('who-we-are', 'what-we-offer', 'booking-terms', 'legal-document', 'our-team') ? 'active' : '' }}"
+                                href="#" role="button" data-bs-toggle="dropdown">
                                 About
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('who-we-are') }}">Who We Are</a></li>
-                                <li><a class="dropdown-item" href="{{ route('what-we-offer') }}">What We Offer</a></li>
-                                <li><a class="dropdown-item" href="{{ route('booking-terms') }}">Booking Terms</a></li>
-                                <li><a class="dropdown-item" href="{{ route('legal-document') }}">Legal Document</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('our-team') }}">Our Team</a></li>
+                                <li><a class="dropdown-item {{ Route::is('who-we-are') ? 'active' : '' }}"
+                                        href="{{ route('who-we-are') }}">Who We Are</a></li>
+                                <li><a class="dropdown-item {{ Route::is('what-we-offer') ? 'active' : '' }}"
+                                        href="{{ route('what-we-offer') }}">What We Offer</a></li>
+                                <li><a class="dropdown-item {{ Route::is('booking-terms') ? 'active' : '' }}"
+                                        href="{{ route('booking-terms') }}">Booking Terms</a></li>
+                                <li><a class="dropdown-item {{ Route::is('legal-document') ? 'active' : '' }}"
+                                        href="{{ route('legal-document') }}">Legal Document</a></li>
+                                <li><a class="dropdown-item {{ Route::is('our-team') ? 'active' : '' }}"
+                                        href="{{ route('our-team') }}">Our Team</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+                            <a class="nav-link {{ Route::is('blog') ? 'active' : '' }}"
+                                href="{{ route('blog') }}">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                            <a class="nav-link {{ Route::is('contact') ? 'active' : '' }}"
+                                href="{{ route('contact') }}">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('deals') }}">Deals</a>
+                            <a class="nav-link {{ Route::is('deals') ? 'active' : '' }}"
+                                href="{{ route('deals') }}">Deals</a>
                         </li>
                     </ul>
                 </div>
