@@ -238,6 +238,22 @@
         </div>
     </section>
 
+    <section class="container py-5 my-5">
+        <h2 class="text-success">Testimonial</h2>
+
+        <div id="testimonials" class="splide" aria-label="Testimonial">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    @for ($i = 0; $i < 10; $i++)
+                        <li class="splide__slide">
+                            <x-testimonial-card />
+                        </li>
+                    @endfor
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var popularDestination = new Splide('#popularDestination', {
@@ -267,6 +283,23 @@
             popularPackages.mount();
 
             var popularPackages = new Splide('#discountedPackages', {
+                type: 'loop',
+                perPage: 3,
+                perMove: 1,
+                gap: '2rem',
+                pagination: false,
+                breakpoints: {
+                    992: {
+                        perPage: 2,
+                    },
+                    768: {
+                        perPage: 1,
+                    }
+                }
+            });
+            popularPackages.mount();
+
+            var popularPackages = new Splide('#testimonials', {
                 type: 'loop',
                 perPage: 3,
                 perMove: 1,
