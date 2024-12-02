@@ -163,14 +163,14 @@ h6 {
 }
 .hero-cloud-center {
     background-image: url("/images/cloud-img-center.png");
-    top: 40%;
-    left: 40%;
+    top: 20%;
+    left: 30%;
     position: absolute;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 300px;
-    width: 300px;
+    height: 450px;
+    width: 450px;
 }
 
 .hero-mount-l1 {
