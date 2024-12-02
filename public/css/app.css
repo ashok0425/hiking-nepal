@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+    --brand-color: #164479;
+}
+
+html body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+}
+
+h1,
+h2 {
+    font-family: "Poppins", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Poppins", serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.btn {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 0;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--brand-color);
+}
+
+.bg-primary {
+    background-color: var(--brand-color) !important;
+}
+
+/* Navbar CSS */
+.navbar .navbar-collapse .navbar-nav .nav-item:first-child .nav-link {
+    padding-left: 0;
+}
+
+.navbar .navbar-collapse .nav-link {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 15px 25px;
+}
+
+/* .navbar .navbar-collapse .active {
+    border-bottom: 4px solid #fff;
+} */
+
+.navbar .navbar-collapse .nav-link:hover {
+    color: #e2e2e2;
+}
+
+/* Home */
+
+.hero {
+    color: #fff;
+    height: 700px;
+    background: linear-gradient(
+            330.24deg,
+            rgba(11, 29, 38, 0) 31.06%,
+            #0b1d26 108.93%
+        ),
+        url("/images/hero-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero form {
+    z-index: 99;
+    width: 100%;
+    max-width: 900px;
+}
+
+.hero h1 {
+    position: absolute;
+    top: 5%;
+    margin: 0;
+}
+
+.hero .container {
+    position: relative;
+    overflow: hidden;
+    height: 700px;
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    text-align: center;
+    font-size: 150px;
+    text-transform: uppercase;
+}
+
+.hero-cloud-l1 {
+    background-image: url("/images/cloud-img-l1.png");
+    top: 10%;
+    left: 0;
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 200px;
+}
+.hero-cloud-l2 {
+    background-image: url("/images/cloud-img-l2.png");
+    left: -2%;
+    top: 35%;
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 250px;
+}
+.hero-cloud-r1 {
+    background-image: url("/images/cloud-img-r1.png");
+    top: 0;
+    right: 0;
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 350px;
+    width: 350px;
+}
+.hero-cloud-center {
+    background-image: url("/images/cloud-img-center.png");
+    top: 40%;
+    left: 40%;
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 300px;
+}
+
+.hero-mount-l1 {
+    left: 0;
+    width: 50%;
+    bottom: 20%;
+    position: absolute;
+}
+
+.hero-mount-center-top {
+    width: 80%;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    top: -20%;
+}
+
+.hero-mount-center {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.hero-mount-r1 {
+    width: 70%;
+    position: absolute;
+    right: 0;
+    bottom: 15%;
+}

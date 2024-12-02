@@ -3,9 +3,23 @@
 @section('title', 'Hiking Nepal')
 
 @section('content')
-    <div class="container">
-        <h1>Hiking Nepal</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure aut, possimus eaque vero labore officiis provident
-            omnis veniam earum harum? Ipsa porro fugiat enim beatae quaerat placeat ut velit sint.</p>
-    </div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-cloud-r1"></div>
+            <h1 class="">Hiking Nepal</h1>
+            <form action="" method="GET">
+                <input class="form-control" type="text" placeholder="Find your trip..." required>
+            </form>
+
+            <img src="/images/mount-img-center-top.png" class="hero-mount-center-top" alt="">
+            <img src="/images/mount-img-l1.png" class="hero-mount-l1" alt="">
+            <img src="/images/mount-img-r1.png" class="hero-mount-r1" alt="">
+            <img src="/images/mount-img-center.png" class="hero-mount-center" alt="">
+
+            <div class="hero-cloud-l1"></div>
+            <div class="hero-cloud-l2"></div>
+
+            <div class="hero-cloud-center"></div>
+        </div>
+    </section>
 @endsection
