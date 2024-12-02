@@ -28,4 +28,42 @@
             <div class="hero-cloud-center animate__animated animate__slideInRight"></div>
         </div>
     </section>
+
+    <section class="container py-5 my-5">
+        <h2 class="text-success">The best place you must visit</h2>
+        <p class="mb-5">A wonderful serenity to have in ur bucket list</p>
+
+        <div class="splide" aria-label="Popular destination">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide p-4">
+                        <div class="shadow text-primary">
+                            <h3>Popular destination</h3>
+                            <p>A wonderful serenity has</p>
+                        </div>
+                        {{-- <x-slide-one-card /> --}}
+                    </li>
+                    @for ($i = 0; $i < 10; $i++)
+                        <li class="splide__slide">
+                            <x-slide-one-card />
+                        </li>
+                    @endfor
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var splide = new Splide('.splide', {
+                type: 'loop',
+                // perPage: 5,
+                perMove: 1,
+                autoWidth: true,
+                gap: '1rem',
+                pagination: false,
+            });
+            splide.mount();
+        });
+    </script>
 @endsection
