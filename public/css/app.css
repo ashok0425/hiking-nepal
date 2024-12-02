@@ -67,6 +67,11 @@ h6 {
     border-radius: 0;
 }
 
+a {
+    color: var(--brand-color);
+    text-decoration: none;
+}
+
 /* Navbar CSS */
 .navbar .navbar-collapse .navbar-nav .nav-item:first-child .nav-link {
     padding-left: 0;
