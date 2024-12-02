@@ -270,6 +270,19 @@
         </div>
     </section>
 
+    <section class="container py-5 my-5">
+        <h2 class="text-success">FOLLOW US ON INSTAGRAM</h2>
+
+        <div class="row mb-4">
+            @for ($i = 0; $i < 3; $i++)
+                <div class="col-md-4">
+                    <img src="{{ asset('images/insta.png') }}" class="w-100" />
+                </div>
+            @endfor
+
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var popularDestination = new Splide('#popularDestination', {
