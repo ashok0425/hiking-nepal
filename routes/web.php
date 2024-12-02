@@ -3,30 +3,30 @@
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
-Route::view('/deals', 'home')->name('deals');
+Route::view('/deals', 'deals')->name('deals');
 
 /**
  * The following url structure is taken from existing website urls.
  */
 // slug example: nepal,india
-Route::view('/product-category/{slug}', 'home')->name('product-category');
+Route::view('/product-category/{slug}', 'product-category')->name('product-category');
 // Slug Example: 04-nights-05-days-central-bhutan-tour
-Route::view('/tours/{slug}', 'home')->name('tours');
+Route::view('/tours/{slug}', 'tours')->name('tours');
 
 // About
-Route::view('/information', 'home')->name('information');
-Route::view('/who-we-are', 'home')->name('who-we-are');
-Route::view('/what-we-offer', 'home')->name('what-we-offer');
-Route::view('/booking-terms-conditions', 'home')->name('booking-terms');
-Route::view('/legal-document', 'home')->name('legal-document');
-Route::view('/our-team', 'home')->name('our-team');
+Route::view('/information', 'information')->name('information');
+Route::view('/who-we-are', 'who-we-are')->name('who-we-are');
+Route::view('/what-we-offer', 'what-we-offer')->name('what-we-offer');
+Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('booking-terms');
+Route::view('/legal-document', 'legal-document')->name('legal-document');
+Route::view('/our-team', 'our-team')->name('our-team');
 
 // Contact
-Route::view('/contact-us', 'home')->name('contact');
-
-// Blog
-Route::view('/blog', 'home')->name('blog');
-Route::view('/{slug}', 'home')->name('blog-page');
+Route::view('/contact-us', 'contact-us')->name('contact');
 
 // Direct Booking
-Route::view('/book-your-trip', 'home')->name('book-trip');
+Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
+
+// Blog
+Route::view('/blog', 'blog')->name('blog');
+Route::view('/{slug}', 'blog-page')->name('blog-page');
