@@ -197,6 +197,47 @@
 
     </section>
 
+    <section class="bg-light py-5">
+        <div class="container py-5 my-5">
+            <div>DEPARTURE DATES</div>
+            <h2 class="text-success">Join Fixed Departure Trips</h2>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">TRIP NAME</th>
+                            <th scope="col">DEPATURE DATE</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">PRICES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for ($i = 0; $i < 5; $i++)
+                            <tr>
+                                <th scope="row">Everest Base Camp Trek</th>
+                                <td>
+                                    <div class="fw-bold">16 Days</div>
+                                    <div class="small text-muted">From 9th - 24th Nov</div>
+                                </td>
+                                <td>
+                                    <div class="fw-bold">Guranteed</div>
+                                    <div class="small text-muted">12 seats left</div>
+                                </td>
+                                <td>
+                                    <div class="fw-bold">$ 4500</div>
+                                    <div class="small text-muted">
+                                        <a href="#" class="btn btn-primary">Join us</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endfor
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var popularDestination = new Splide('#popularDestination', {
