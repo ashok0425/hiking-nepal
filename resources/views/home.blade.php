@@ -60,20 +60,17 @@
                 <p>We believe that traveling and touring is much more than just a vacation but rather an opportunity to get
                     one
                 <p>We believe that traveling and touring is much more than just a vacation but rather an opportunity to get
-                    one
                     with
                     nature and enjoy the deeper aspect of its beauty. And, we work accordingly to provide our customers with
                     similar
                     experiences while on their treks and tours. On our treks and expeditions, we incorporate different types
                     of
                     experiences while on their treks and tours. On our treks and expeditions, we incorporate different types
-                    of
                     experiences to enjoy nature, get to know the locals, and understand the culture while having fun. We
                     prioritize
                     blending in with the locals during the trek for cultural and linguistic experience, traditional
                     exposure,
                     blending in with the locals during the trek for cultural and linguistic experience, traditional
-                    exposure,
                     and
                     understanding of the place.</p>
 
@@ -131,6 +128,24 @@
         </div>
     </section>
 
+    <section class="bg-light py-5">
+        <div class="container py-5 my-5">
+            <h2 class="text-success">Discounted Packages</h2>
+
+            <div id="discountedPackages" class="splide" aria-label="Discounted Packages">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        @for ($i = 0; $i < 5; $i++)
+                            <li class="splide__slide">
+                                <x-package-card :discount="true" />
+                            </li>
+                        @endfor
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var popularDestination = new Splide('#popularDestination', {
@@ -143,6 +158,23 @@
             popularDestination.mount();
 
             var popularPackages = new Splide('#popularPackages', {
+                type: 'loop',
+                perPage: 3,
+                perMove: 1,
+                gap: '2rem',
+                pagination: false,
+                breakpoints: {
+                    992: {
+                        perPage: 2,
+                    },
+                    768: {
+                        perPage: 1,
+                    }
+                }
+            });
+            popularPackages.mount();
+
+            var popularPackages = new Splide('#discountedPackages', {
                 type: 'loop',
                 perPage: 3,
                 perMove: 1,
