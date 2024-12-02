@@ -43,6 +43,12 @@ h6 {
     background-color: var(--brand-color) !important;
 }
 
+.form-control,
+.input-group-text {
+    border-radius: 0;
+    border: 0;
+}
+
 /* Navbar CSS */
 .navbar .navbar-collapse .navbar-nav .nav-item:first-child .nav-link {
     padding-left: 0;
@@ -85,6 +91,19 @@ h6 {
     z-index: 99;
     width: 100%;
     max-width: 900px;
+}
+
+.hero form .form-control,
+.hero form .input-group-text {
+    padding: 15px;
+    background-color: #fff;
+}
+
+.hero form .form-control:focus,
+.hero form .form-control:active {
+    outline: none;
+    border: 0;
+    box-shadow: none;
 }
 
 .hero h1 {

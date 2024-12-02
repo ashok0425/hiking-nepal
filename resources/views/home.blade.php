@@ -8,7 +8,12 @@
             <div class="hero-cloud-r1"></div>
             <h1 class="">Hiking Nepal</h1>
             <form action="" method="GET">
-                <input class="form-control" type="text" placeholder="Find your trip..." required>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <img src="{{ asset('images/search.png') }}" alt="search" width="18" height="18">
+                    </span>
+                    <input class="form-control ps-0" type="text" placeholder="Find your trip..." required>
+                </div>
             </form>
 
             <img src="/images/mount-img-center-top.png" class="hero-mount-center-top" alt="">
