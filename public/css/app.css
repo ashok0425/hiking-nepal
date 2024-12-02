@@ -94,6 +94,27 @@ a {
     color: #e2e2e2;
 }
 
+/* Footer */
+footer .footer-container {
+    color: #000;
+    min-height: 600px;
+    padding: 150px 0;
+    background-image: linear-gradient(
+            to top,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.9) 30%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        url("/images/footer-cover.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat-x;
+}
+
+footer a {
+    color: #000 !important;
+}
+
 /* Home */
 
 .hero {
