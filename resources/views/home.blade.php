@@ -283,6 +283,26 @@
         </div>
     </section>
 
+    <section class="container">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h3 class="text-success">Discover destinations beyond your reach</h3>
+                <p>Our journeys are guided by certified experts, offering you unique experiences in locations that remain
+                    hidden to most.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3 class="text-success">Discover destinations beyond your reach</h3>
+                <p>Our journeys are guided by certified experts, offering you unique experiences in locations that remain
+                    hidden to most.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3 class="text-success">Discover destinations beyond your reach</h3>
+                <p>Our journeys are guided by certified experts, offering you unique experiences in locations that remain
+                    hidden to most.</p>
+            </div>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var popularDestination = new Splide('#popularDestination', {
