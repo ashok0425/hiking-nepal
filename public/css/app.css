@@ -58,6 +58,15 @@ h6 {
     color: var(--brand-accent);
 }
 
+.card {
+    border: 0;
+    border-radius: 0;
+}
+
+.card-img-top {
+    border-radius: 0;
+}
+
 /* Navbar CSS */
 .navbar .navbar-collapse .navbar-nav .nav-item:first-child .nav-link {
     padding-left: 0;
