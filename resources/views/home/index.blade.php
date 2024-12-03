@@ -4,29 +4,7 @@
 
 @section('content')
     @include('home.inc.hero')
-
-    <section class="container py-5 my-5">
-        <h2 class="text-success">The best place you must visit</h2>
-        <p class="mb-5">A wonderful serenity to have in ur bucket list</p>
-
-        <div id="popularDestination" class="splide" aria-label="Popular destination">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide p-4">
-                        <div class="shadow text-primary">
-                            <h3>Popular destination</h3>
-                            <p>A wonderful serenity has</p>
-                        </div>
-                    </li>
-                    @for ($i = 0; $i < 10; $i++)
-                        <li class="splide__slide">
-                            <x-slide-one-card />
-                        </li>
-                    @endfor
-                </ul>
-            </div>
-        </div>
-    </section>
+    @include('home.inc.popular-destinations')
 
     <section class="bg-light py-5">
         <div class="container py-5 my-5">
@@ -278,68 +256,8 @@
             </div>
         </div>
     </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var popularDestination = new Splide('#popularDestination', {
-                type: 'loop',
-                perMove: 1,
-                autoWidth: true,
-                gap: '1rem',
-                pagination: false,
-            });
-            popularDestination.mount();
-
-            var popularPackages = new Splide('#popularPackages', {
-                type: 'loop',
-                perPage: 3,
-                perMove: 1,
-                gap: '2rem',
-                pagination: false,
-                breakpoints: {
-                    992: {
-                        perPage: 2,
-                    },
-                    768: {
-                        perPage: 1,
-                    }
-                }
-            });
-            popularPackages.mount();
-
-            var popularPackages = new Splide('#discountedPackages', {
-                type: 'loop',
-                perPage: 3,
-                perMove: 1,
-                gap: '2rem',
-                pagination: false,
-                breakpoints: {
-                    992: {
-                        perPage: 2,
-                    },
-                    768: {
-                        perPage: 1,
-                    }
-                }
-            });
-            popularPackages.mount();
-
-            var popularPackages = new Splide('#testimonials', {
-                type: 'loop',
-                perPage: 3,
-                perMove: 1,
-                gap: '2rem',
-                pagination: false,
-                breakpoints: {
-                    992: {
-                        perPage: 2,
-                    },
-                    768: {
-                        perPage: 1,
-                    }
-                }
-            });
-            popularPackages.mount();
-        });
-    </script>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/home.js') }}"></script>
+@endpush
