@@ -101,6 +101,36 @@ a {
     }
 }
 
+.btn i {
+    margin-left: 2px;
+    transition: margin 0.3s ease;
+}
+
+.btn:hover i {
+    margin-left: 8px;
+}
+
+.head-lines {
+    position: relative;
+}
+
+.head-line-bg {
+    content: " ";
+    background-color: var(--brand-color);
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 18px;
+}
+
+.head-line-head {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0 20px;
+}
+
 /* Navbar CSS */
 .navbar .navbar-collapse .navbar-nav .nav-item:first-child .nav-link {
     padding-left: 0;

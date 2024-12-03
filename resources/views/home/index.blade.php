@@ -5,34 +5,7 @@
 @section('content')
     @include('home.inc.hero')
     @include('home.inc.popular-destinations')
-
-    <section class="bg-light py-5">
-        <div class="container py-5 my-5">
-
-            <div class="shadow p-3">
-                <h2 class="text-success">WHY CHOOSE US ?</h2>
-                <p>We believe that traveling and touring is much more than just a vacation but rather an opportunity to get
-                    one
-                <p>We believe that traveling and touring is much more than just a vacation but rather an opportunity to get
-                    with
-                    nature and enjoy the deeper aspect of its beauty. And, we work accordingly to provide our customers with
-                    similar
-                    experiences while on their treks and tours. On our treks and expeditions, we incorporate different types
-                    of
-                    experiences while on their treks and tours. On our treks and expeditions, we incorporate different types
-                    experiences to enjoy nature, get to know the locals, and understand the culture while having fun. We
-                    prioritize
-                    blending in with the locals during the trek for cultural and linguistic experience, traditional
-                    exposure,
-                    blending in with the locals during the trek for cultural and linguistic experience, traditional
-                    and
-                    understanding of the place.</p>
-
-                <a href="#" class="btn btn-primary">Explore</a>
-            </div>
-
-        </div>
-    </section>
+    @include('home.inc.why-us')
 
     <section class="py-5 my-5">
         <div class="container py-5">
