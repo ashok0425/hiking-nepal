@@ -131,7 +131,6 @@ footer a {
 }
 
 /* Home */
-
 .hero {
     color: #fff;
     height: 700px;
@@ -144,6 +143,11 @@ footer a {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero form {
@@ -167,24 +171,45 @@ footer a {
 
 .hero h1 {
     position: absolute;
-    top: 5%;
+    top: 15%;
     margin: 0;
-}
-
-.hero .container {
-    position: relative;
-    overflow: hidden;
-    height: 700px;
-    max-width: 1440px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero h1 {
     text-align: center;
     font-size: 150px;
     text-transform: uppercase;
+}
+
+.mount-1 {
+    background: url("/images/img-1-2.png");
+    background-size: contain;
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    background-repeat: no-repeat;
+    bottom: 10%;
+    left: 25%;
+}
+
+.mount-2 {
+    background: url("/images/img-1.png");
+    background-size: cover;
+    width: 60%;
+    height: 55%;
+    position: absolute;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 0;
+    /* filter: brightness(150%) contrast(80%); */
+}
+
+.mount-3 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url("/images/img-2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 50%;
 }
 
 .hero-cloud-l1 {
@@ -198,6 +223,7 @@ footer a {
     height: 200px;
     width: 200px;
 }
+
 .hero-cloud-l2 {
     background-image: url("/images/cloud-img-l2.png");
     left: -2%;
@@ -209,6 +235,7 @@ footer a {
     height: 250px;
     width: 250px;
 }
+
 .hero-cloud-r1 {
     background-image: url("/images/cloud-img-r1.png");
     top: 0;
@@ -220,10 +247,11 @@ footer a {
     height: 350px;
     width: 350px;
 }
+
 .hero-cloud-center {
     background-image: url("/images/cloud-img-center.png");
     top: 20%;
-    left: 30%;
+    left: 35%;
     position: absolute;
     background-size: contain;
     background-position: center;
@@ -232,30 +260,146 @@ footer a {
     width: 450px;
 }
 
-.hero-mount-l1 {
-    left: 0;
-    width: 50%;
-    bottom: 20%;
-    position: absolute;
+/* Responsive styles for hero section */
+@media screen and (max-width: 1200px) {
+    .hero h1 {
+        font-size: 120px;
+    }
+
+    .hero-cloud-center {
+        height: 350px;
+        width: 350px;
+        left: 30%;
+    }
 }
 
-.hero-mount-center-top {
-    width: 80%;
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    top: -20%;
+@media screen and (max-width: 991px) {
+    .hero {
+        height: 600px;
+    }
+
+    .hero h1 {
+        font-size: 120px;
+        top: 12%;
+    }
+
+    .hero form {
+        max-width: 700px;
+        padding: 0 20px;
+    }
+
+    .hero-cloud-center {
+        height: 300px;
+        width: 300px;
+        left: 25%;
+    }
+
+    .hero-cloud-r1 {
+        height: 250px;
+        width: 250px;
+    }
+
+    .hero-cloud-l1,
+    .hero-cloud-l2 {
+        height: 150px;
+        width: 150px;
+    }
 }
 
-.hero-mount-center {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 90px;
+        top: 10%;
+    }
+
+    .mount-1 {
+        left: 15%;
+        height: 50%;
+    }
+
+    .mount-2 {
+        width: 70%;
+        height: 45%;
+    }
+
+    .mount-3 {
+        width: 65%;
+        height: 40%;
+    }
+
+    .hero-cloud-center {
+        height: 200px;
+        width: 200px;
+        top: 25%;
+    }
 }
-.hero-mount-r1 {
-    width: 70%;
-    position: absolute;
-    right: 0;
-    bottom: 15%;
+
+@media screen and (max-width: 576px) {
+    .hero {
+        height: 400px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+        top: 20%;
+    }
+
+    .hero form {
+        padding: 0 15px;
+    }
+
+    .hero form .form-control,
+    .hero form .input-group-text {
+        padding: 10px;
+    }
+
+    .mount-1 {
+        left: 5%;
+        height: 40%;
+        bottom: 5%;
+    }
+
+    .mount-2 {
+        width: 80%;
+        height: 35%;
+    }
+
+    .mount-3 {
+        width: 75%;
+        height: 30%;
+    }
+
+    .hero-cloud-r1 {
+        height: 150px;
+        width: 150px;
+    }
+
+    .hero-cloud-l1,
+    .hero-cloud-l2 {
+        height: 100px;
+        width: 100px;
+    }
+
+    .hero-cloud-center {
+        height: 150px;
+        width: 150px;
+        left: 20%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .hero h1 {
+        font-size: 35px;
+        top: 25%;
+    }
+
+    .mount-1,
+    .mount-2,
+    .mount-3 {
+        bottom: 0;
+    }
 }
