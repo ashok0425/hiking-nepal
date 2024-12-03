@@ -8,7 +8,7 @@
                     +977-9802342080</a>
 
                 <div class="d-inline-flex gap-2 gap-md-4">
-                    <a href="{{ route('deals') }}" class="btn btn-primary">DEALS</a>
+                    <a href="{{ route('deals') }}" class="btn btn-primary blink-button">DEALS</a>
                     <a href="{{ route('book-trip') }}" class="btn btn-primary">Pay Online</a>
                 </div>
             </div>
