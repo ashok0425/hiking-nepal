@@ -30,10 +30,11 @@ h6 {
 
 .btn {
     font-family: "Poppins", serif;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     border-radius: 0;
     border: none;
+    padding: 10px 20px;
 }
 
 .btn-primary {
@@ -70,6 +71,14 @@ h6 {
 a {
     color: var(--brand-color);
     text-decoration: none;
+}
+
+.dropdown-menu {
+    border-radius: 0;
+}
+
+.dropdown-item {
+    font-weight: 500;
 }
 
 /* Navbar CSS */
