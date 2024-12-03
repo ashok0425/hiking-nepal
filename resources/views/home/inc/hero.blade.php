@@ -5,8 +5,8 @@
     <h1 class="animate__animated animate__slideInUp">Hiking Nepal</h1>
     <form action="" method="GET" class="animate__animated animate__zoomIn">
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">
-                <img src="{{ asset('images/search.png') }}" alt="search" width="18" height="18">
+            <span class="input-group-text text-primary" id="basic-addon1">
+                <i class="fas fa-search"></i>
             </span>
             <input class="form-control ps-0" type="text" placeholder="Find your trip..." required>
         </div>
