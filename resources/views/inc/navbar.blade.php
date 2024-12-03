@@ -1,21 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark py-0">
     <div class="d-block w-100">
-        <div class="container d-flex align-items-center py-2">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ asset('logo.png') }}" alt="hiking nepal logo" width="208" height="auto">
-            </a>
-
-            <div class="ms-auto d-flex align-items-center gap-4">
+        <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2">
+            <div class="ms-auto d-flex flex-wrap align-items-center gap-2 gap-md-4">
                 <a href="#" class="text-uppercase">Join Groups</a>
                 <a href="#" class="d-inline-flex align-items-center gap-1 text-dark"><img
-                        src="{{ asset('images/ic_outline-whatsapp.png') }}" alt="whatsapp" width="24"
-                        height="24">
+                        src="{{ asset('images/ic_outline-whatsapp.png') }}" alt="whatsapp" width="24" height="24">
                     +977-9802342080</a>
 
-                <a href="{{ route('deals') }}" class="btn btn-primary">DEALS</a>
-                <a href="{{ route('book-trip') }}" class="btn btn-primary">Pay Online</a>
+                <div class="d-inline-flex gap-2 gap-md-4">
+                    <a href="{{ route('deals') }}" class="btn btn-primary">DEALS</a>
+                    <a href="{{ route('book-trip') }}" class="btn btn-primary">Pay Online</a>
+                </div>
+            </div>
 
-                <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
+            <div class="border-bottom w-100 my-2 my-lg-0 d-lg-none"></div>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="{{ asset('logo.png') }}" alt="hiking nepal logo" width="208" height="auto">
+                </a>
+
+                <button class="navbar-toggler text-white bg-primary" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
