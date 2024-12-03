@@ -92,7 +92,13 @@ a {
     font-family: "Poppins", serif;
     font-weight: 500;
     font-size: 16px;
-    padding: 15px 25px;
+    padding: 15px 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar .navbar-collapse .nav-link {
+        padding-left: 0;
+    }
 }
 
 /* .navbar .navbar-collapse .active {
