@@ -11,10 +11,10 @@
     @include('home.inc.discounted-packages')
     @include('home.inc.faq')
     @include('home.inc.departure')
-    @include('home.inc.testimonial')
+    @include('inc.testimonial')
     @include('home.inc.blog')
-    @include('home.inc.insta')
-    @include('home.inc.discover')
+    @include('inc.insta')
+    @include('inc.discover')
 @endsection
 
 @push('scripts')

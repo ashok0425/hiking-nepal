@@ -3,7 +3,140 @@
 @section('title', 'Hiking Nepal')
 
 @section('content')
-    <div class="container">
-        <h1>Who we are</h1>
+    <div class="position-relative overflow-hidden d-flex justify-content-center align-items-center" style="height: 330px;">
+        <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
+            style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
+        <div class="container">
+            <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">Who we are</h1>
+        </div>
     </div>
+
+    <section class="bg-light py-0 py-md-5">
+        <div class="container py-5 my-5 section-bg-container">
+            <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+
+            <div class="row z-1">
+                <div class="col-md-8">
+                    <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white">
+                        <div class="head-lines">
+                            <div class="head-line-bg"></div>
+                            <h2 class="text-success mb-5 bg-white head-line-head">TAILORED HIMALAYAN ADVENTURES</h2>
+                        </div>
+
+                        <p>Embarking on the journey of exploration amidst the myriad tour and trek operators
+                            in Nepal, Hiking Nepal entered the vibrant landscape of the Nepalese Tourism Industry with a
+                            singular mission – to deliver world-class adventure holidays encompassing the diverse facets of
+                            Nepal, all while maintaining a highly competitive pricing strategy. Over the years, our team,
+                            forged through a crucible of experience, recognized the imperative need for a tour operator
+                            capable of tailoring experiences to the preferences and financial considerations of every type
+                            of traveler. Our aim is to ensure that no one misses the breathtaking highlights of adventure
+                            tourism in the majestic Himalayas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-0 py-md-5 my-5">
+        <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
+
+            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img start-0">
+
+            <div class="row z-1 w-100">
+                <div class="col-md-8 offset-md-4">
+                    <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
+                        <div class="head-lines mb-5">
+                            <div class="head-line-bg"></div>
+                            <h2 class="text-success mb-3 bg-white head-line-head">Expertly Crafted Journeys</h2>
+                        </div>
+
+                        <p>The architects of our meticulously crafted products are seasoned guides, individuals who have
+                            intimately known the regions for decades. Our operational philosophy centers around creating
+                            a win-win scenario for all stakeholders, encompassing local communities, the environment,
+                            guides, the nation, and our company. Despite being relatively new players in the industry,
+                            we have harnessed a profound understanding of the intricacies involved in orchestrating
+                            tours and treks across Nepal, India, Bhutan, and Tibet. While we may be new to company
+                            ownership, our wealth of knowledge encompasses both sides of the coin, distinguishing us in
+                            our ability to navigate the complexities of the adventure tourism realm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-0 py-md-5 my-5">
+        <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
+
+            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img end-0">
+
+            <div class="row z-1 w-100">
+                <div class="col-md-8">
+                    <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
+                        <div class="head-lines mb-5">
+                            <div class="head-line-bg"></div>
+                            <h2 class="text-success mb-3 bg-white head-line-head">Our Achievement In Number</h2>
+                            <p>Join countless happy trekkers on breathtaking eco-friendly adventures!</p>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-3 col-6 text-center">
+                                <img src="{{ asset('images/temple.png') }}" class="mb-3" alt="temple" width="60"
+                                    height="60">
+                                <div class="fs-3 fw-bold text-success">354</div>
+                                <div>Destination</div>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <img src="{{ asset('images/plane.png') }}" class="mb-3" alt="plane" width="60"
+                                    height="60">
+                                <div class="fs-3 fw-bold text-success">1250</div>
+                                <div>Tour</div>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <img src="{{ asset('images/globe.png') }}" class="mb-3" alt="globe" width="60"
+                                    height="60">
+                                <div class="fs-3 fw-bold text-success">25</div>
+                                <div>Country</div>
+                            </div>
+                            <div class="col-md-3 col-6 text-center">
+                                <img src="{{ asset('images/tourist.png') }}" class="mb-3" alt="tourist" width="60"
+                                    height="60">
+                                <div class="fs-3 fw-bold text-success">4600</div>
+                                <div>Tourists</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @include('inc.testimonial')
+    @include('inc.discover')
+
+    @include('inc.book-a-call-cta')
+    @include('inc.insta')
 @endsection
+
+@push('scripts')
+    <script>
+        var testimonials = new Splide('#testimonials', {
+            type: 'loop',
+            perPage: 3,
+            perMove: 1,
+            gap: '2rem',
+            pagination: false,
+            breakpoints: {
+                1024: {
+                    perPage: 2,
+                },
+                768: {
+                    perPage: 2,
+                },
+                767: {
+                    perPage: 1,
+                }
+            }
+        });
+        testimonials.mount();
+    </script>
+@endpush
