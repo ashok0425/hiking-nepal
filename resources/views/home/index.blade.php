@@ -12,23 +12,8 @@
     @include('home.inc.faq')
     @include('home.inc.departure')
     @include('home.inc.testimonial')
+    @include('home.inc.blog')
 
-
-    <section class="bg-light py-5">
-        <div class="container py-5 my-5">
-            <h2 class="text-success">LATEST BLOG</h2>
-            <div class="row mb-4">
-                @for ($i = 0; $i < 3; $i++)
-                    <div class="col-md-4">
-                        <x-blog-card />
-                    </div>
-                @endfor
-
-            </div>
-
-            <a href="#" class="btn btn-primary">More Details</a>
-        </div>
-    </section>
 
     <section class="container py-5 my-5">
         <h2 class="text-success">FOLLOW US ON INSTAGRAM</h2>
