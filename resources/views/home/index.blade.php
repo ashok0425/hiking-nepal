@@ -6,36 +6,9 @@
     @include('home.inc.hero')
     @include('home.inc.popular-destinations')
     @include('home.inc.why-us')
+    @include('home.inc.achievement')
 
-    <section class="py-5 my-5">
-        <div class="container py-5">
 
-            <div class="shadow p-3">
-                <h2 class="text-success">Our Achievement In Number</h2>
-                <p>Join countless happy trekkers on breathtaking eco-friendly adventures!</p>
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <div>354</div>
-                        <div>Destination</div>
-                    </div>
-                    <div class="col-md-3">
-                        <div>354</div>
-                        <div>Destination</div>
-                    </div>
-                    <div class="col-md-3">
-                        <div>354</div>
-                        <div>Destination</div>
-                    </div>
-                    <div class="col-md-3">
-                        <div>354</div>
-                        <div>Destination</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
 
     <section class="bg-light py-5">
         <div class="container py-5 my-5">
