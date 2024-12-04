@@ -11,22 +11,8 @@
     @include('home.inc.discounted-packages')
     @include('home.inc.faq')
     @include('home.inc.departure')
+    @include('home.inc.testimonial')
 
-    <section class="container py-5 my-5">
-        <h2 class="text-success">Testimonial</h2>
-
-        <div id="testimonials" class="splide" aria-label="Testimonial">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    @for ($i = 0; $i < 10; $i++)
-                        <li class="splide__slide">
-                            <x-testimonial-card />
-                        </li>
-                    @endfor
-                </ul>
-            </div>
-        </div>
-    </section>
 
     <section class="bg-light py-5">
         <div class="container py-5 my-5">
