@@ -76,10 +76,13 @@ document.addEventListener('DOMContentLoaded', function () {
         gap: '2rem',
         pagination: false,
         breakpoints: {
-            992: {
+            1024: {
                 perPage: 2,
             },
             768: {
+                perPage: 2,
+            },
+            767: {
                 perPage: 1,
             }
         }
