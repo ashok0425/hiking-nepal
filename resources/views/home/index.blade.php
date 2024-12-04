@@ -7,52 +7,16 @@
     @include('home.inc.popular-destinations')
     @include('home.inc.why-us')
     @include('home.inc.achievement')
-
-
-
-    <section class="bg-light py-5">
-        <div class="container py-5 my-5">
-            <h2 class="text-success">Most Popular Packages</h2>
-
-            <div id="popularPackages" class="splide" aria-label="Most Popular Packages">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        @for ($i = 0; $i < 5; $i++)
-                            <li class="splide__slide">
-                                <x-package-card />
-                            </li>
-                        @endfor
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-light py-5">
-        <div class="container py-5 my-5">
-            <h2 class="text-success">Discounted Packages</h2>
-
-            <div id="discountedPackages" class="splide" aria-label="Discounted Packages">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        @for ($i = 0; $i < 5; $i++)
-                            <li class="splide__slide">
-                                <x-package-card :discount="true" />
-                            </li>
-                        @endfor
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('home.inc.popular-packages')
+    @include('home.inc.discounted-packages')
 
     <section class="container py-5 my-5">
         <h2 class="text-success">FREQUENTLY ASKED QUESTIONS</h2>
         <div class="accordion accordion-flush" id="faqAccordion">
             <div class="accordion-item">
                 <h3 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+                        aria-expanded="false" aria-controls="faq1">
                         What is the best time to trek in Nepal?
                     </button>
                 </h3>

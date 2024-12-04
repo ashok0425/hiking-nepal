@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         perMove: 1,
         gap: '2rem',
         pagination: false,
+        arrows: false,
         breakpoints: {
             992: {
                 perPage: 2,
@@ -34,9 +35,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+    document.querySelector('#popularPackagesPrevSlide').addEventListener('click', () => {
+        popularPackages.go('<');
+    });
+
+    document.querySelector('#popularPackagesNextSlide').addEventListener('click', () => {
+        popularPackages.go('>');
+    });
     popularPackages.mount();
 
-    var popularPackages = new Splide('#discountedPackages', {
+    var discountedPackages = new Splide('#discountedPackages', {
         type: 'loop',
         perPage: 3,
         perMove: 1,
@@ -51,9 +59,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-    popularPackages.mount();
+    document.querySelector('#discountedPackagesPrevSlide').addEventListener('click', () => {
+        discountedPackages.go('<');
+    });
 
-    var popularPackages = new Splide('#testimonials', {
+    document.querySelector('#discountedPackagesNextSlide').addEventListener('click', () => {
+        discountedPackages.go('>');
+    });
+
+    discountedPackages.mount();
+
+    var testimonials = new Splide('#testimonials', {
         type: 'loop',
         perPage: 3,
         perMove: 1,
@@ -68,5 +84,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-    popularPackages.mount();
+    testimonials.mount();
 });
