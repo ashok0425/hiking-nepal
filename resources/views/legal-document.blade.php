@@ -3,7 +3,30 @@
 @section('title', 'Hiking Nepal')
 
 @section('content')
-    <div class="container">
-        <h1>Legal Documents</h1>
+    <div class="container py-5 my-5">
+        <h1 class="text-center text-success mb-5">LEGAL DOCUMENTS</h1>
+
+        <p class="mb-5">Hiking Nepal is established by the professional who have been working in the field of tourism for
+            more than 15
+            years and contributing their innovative ideas to groom up the tourism business in Nepal. The company sincerely
+            follow the government rules and regulations as well as has cleared all the legal formalities for its
+            establishment. The authorized documents of Hiking Nepal includes:</p>
+
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <img src="{{ asset('images/docs-image-1.jpg') }}" class="img-fluid" alt="doc image" />
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <img src="{{ asset('images/docs-image-2.jpg') }}" class="img-fluid" alt="doc image" />
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <img src="{{ asset('images/docs-image-3.jpg') }}" class="img-fluid" alt="doc image" />
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <img src="{{ asset('images/docs-image-4.jpg') }}" class="img-fluid" alt="doc image" />
+            </div>
+        </div>
     </div>
+
+    @include('inc.book-a-call-cta')
 @endsection
