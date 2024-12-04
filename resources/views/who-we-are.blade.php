@@ -3,13 +3,14 @@
 @section('title', 'Hiking Nepal')
 
 @section('content')
-    <div class="position-relative overflow-hidden d-flex justify-content-center align-items-center" style="height: 330px;">
+    <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
+        style="height: 330px;">
         <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
             style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
-            <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">Who we are</h1>
+            <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">WHO WE ARE</h1>
         </div>
-    </div>
+    </section>
 
     <section class="bg-light py-0 py-md-5">
         <div class="container py-5 my-5 section-bg-container">

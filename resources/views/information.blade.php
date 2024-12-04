@@ -3,13 +3,14 @@
 @section('title', 'Hiking Nepal')
 
 @section('content')
-    <div class="position-relative overflow-hidden d-flex justify-content-center align-items-center" style="height: 330px;">
+    <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
+        style="height: 330px;">
         <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
             style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">Information</h1>
         </div>
-    </div>
+    </section>
 
     <section class="container py-md-5 my-5">
         <h2 class="text-center text-success mb-4">Useful Information for the package</h2>
