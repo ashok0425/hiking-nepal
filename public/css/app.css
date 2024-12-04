@@ -117,7 +117,7 @@ a {
 .head-line-bg {
     content: " ";
     background-color: var(--brand-color);
-    height: 2px;
+    height: 1px;
     width: 100%;
     position: absolute;
     left: 0;
@@ -128,7 +128,7 @@ a {
     position: relative;
     z-index: 1;
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 25px;
 }
 
 /* Navbar CSS */
@@ -516,4 +516,15 @@ footer a {
 
 .popularDestinationSliderContainer {
     position: relative;
+}
+
+/*  */
+.section-bg-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.section-bg-img {
+    position: absolute;
 }

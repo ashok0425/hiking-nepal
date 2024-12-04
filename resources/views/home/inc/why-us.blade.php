@@ -1,8 +1,11 @@
-<section class="bg-light py-5">
-    <div class="container py-5 my-5">
-        <div class="row">
+<section class="bg-light py-0 py-md-5">
+    <div class="container py-5 my-5 section-bg-container">
+
+        <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+
+        <div class="row z-1">
             <div class="col-md-8">
-                <div class="brand-shadow text-center p-5 bg-white">
+                <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white">
                     <div class="head-lines">
                         <div class="head-line-bg"></div>
                         <h2 class="text-success mb-5 bg-white head-line-head">WHY CHOOSE US ?</h2>
