@@ -46,7 +46,7 @@
                         about the recent Events and Offers.
                     </p>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control border" placeholder="Email Address">
+                        <input type="email" class="form-control" placeholder="Email Address">
                         <button class="btn btn-primary" type="button">SUBSCRIBE</button>
                     </div>
                     <!-- Payment Icons -->

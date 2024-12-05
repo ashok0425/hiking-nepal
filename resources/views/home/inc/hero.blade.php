@@ -8,7 +8,7 @@
             <span class="input-group-text text-primary" id="basic-addon1">
                 <i class="fas fa-search"></i>
             </span>
-            <input class="form-control ps-0" type="text" placeholder="Find your trip..." required>
+            <input class="form-control ps-0 border-start-0" type="text" placeholder="Find your trip..." required>
         </div>
     </form>
 

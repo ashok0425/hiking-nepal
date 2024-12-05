@@ -131,11 +131,11 @@
 
             <div class="col-md-3">
                 <form action="" method="GET" class="mb-5">
-                    <div class="input-group mb-3 border">
+                    <div class="input-group mb-3">
                         <span class="input-group-text text-primary" id="basic-addon1">
                             <i class="fas fa-search"></i>
                         </span>
-                        <input class="form-control ps-0" type="text" placeholder="Search Blog" required>
+                        <input class="form-control ps-0 border-start-0" type="text" placeholder="Search Blog" required>
                     </div>
                 </form>
 
