@@ -8,7 +8,7 @@
                 <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
                     <div class="head-lines mb-5">
                         <div class="head-line-bg"></div>
-                        <h2 class="text-success mb-3 bg-white head-line-head">Our Achievement In Number</h2>
+                        <h2 class="mb-3 bg-white head-line-head">Our Achievement In Number</h2>
                         <p>Join countless happy trekkers on breathtaking eco-friendly adventures!</p>
                     </div>
 

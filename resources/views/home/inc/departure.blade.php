@@ -6,7 +6,7 @@
             DATES</div>
 
         <div class="mb-5 d-flex gap-3 justify-content-md-between flex-column flex-md-row align-items-center">
-            <h2 class="text-success mb-0">Join Fixed Departure Trips</h2>
+            <h2 class="mb-0">Join Fixed Departure Trips</h2>
             <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">

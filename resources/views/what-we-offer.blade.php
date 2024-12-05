@@ -50,7 +50,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white">
                         <div class="head-lines">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-5 bg-white head-line-head">SAFTEY AND SECURITY</h2>
+                            <h2 class="mb-5 bg-white head-line-head">SAFTEY AND SECURITY</h2>
                         </div>
 
                         <p>Our first priority is your safety meantime, never let to compromise in regards to health. Hence,
@@ -79,7 +79,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
                         <div class="head-lines mb-5">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-3 bg-white head-line-head">Intimate, Flexible Groups</h2>
+                            <h2 class="mb-3 bg-white head-line-head">Intimate, Flexible Groups</h2>
                         </div>
 
                         <p>TFor us, delivering the best quality service starts with keeping our group sizes small and
@@ -105,7 +105,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white">
                         <div class="head-lines">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-5 bg-white head-line-head">STRESS-FREE ADVENTURE </h2>
+                            <h2 class="mb-5 bg-white head-line-head">STRESS-FREE ADVENTURE </h2>
                         </div>
 
                         <p>Once you arrive in Kathmandu, you’ll instantly become a part of our Hiking Nepal family. From
@@ -133,7 +133,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
                         <div class="head-lines mb-5">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-3 bg-white head-line-head">SCHEDULED & CUSTOM DATES</h2>
+                            <h2 class="mb-3 bg-white head-line-head">SCHEDULED & CUSTOM DATES</h2>
                         </div>
 
                         <p>We offer two types of trip options: Published Fixed Departures and Private Tours, designed to
@@ -161,7 +161,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white">
                         <div class="head-lines">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-5 bg-white head-line-head">Customizable itinerary options</h2>
+                            <h2 class="mb-5 bg-white head-line-head">Customizable itinerary options</h2>
                         </div>
 
                         <p>Our website itineraries provide a standard outline that serves as a general guideline for your
@@ -188,7 +188,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
                         <div class="head-lines mb-5">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-3 bg-white head-line-head">FLEXIBLE PAYMENT SECURITY</h2>
+                            <h2 class="mb-3 bg-white head-line-head">FLEXIBLE PAYMENT SECURITY</h2>
                         </div>
 
                         <p>Once you finalize your trip and the price, we offer flexible payment options to suit your

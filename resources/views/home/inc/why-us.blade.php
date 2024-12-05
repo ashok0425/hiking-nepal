@@ -8,7 +8,7 @@
                 <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white">
                     <div class="head-lines">
                         <div class="head-line-bg"></div>
-                        <h2 class="text-success mb-5 bg-white head-line-head">WHY CHOOSE US ?</h2>
+                        <h2 class="mb-5 bg-white head-line-head">WHY CHOOSE US ?</h2>
                     </div>
 
                     <p class="mb-5">We believe that traveling and touring is much more than just a vacation but rather

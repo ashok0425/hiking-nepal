@@ -13,7 +13,7 @@
     </section>
 
     <section class="container py-5 my-5 text-center">
-        <h2 class="text-success mb-5">HIKING NEPAL TEAM</h2>
+        <h2 class="mb-5">HIKING NEPAL TEAM</h2>
         <p>At Hiking Nepal, our team is made up of passionate, experienced, and dedicated professionals who are committed to
             providing unforgettable trekking experiences in the Himalayas. From seasoned guides with extensive knowledge of
             Nepal's trekking routes to support staff who ensure your journey is smooth and comfortable, we work together to
@@ -30,7 +30,7 @@
                 <div class="col-md-8">
                     <div class="brand-shadow px-3 py-5 px-md-5 bg-white">
                         <div class="text-muted">FOUNDER AND CEO</div>
-                        <h2 class="text-success mb-5">SAM SMITH</h2>
+                        <h2 class="mb-5">SAM SMITH</h2>
 
                         <p>Our first priority is your safety meantime, never let to compromise in regards to health. Hence,
                             we use our professional guides that are trained in terms of technical proficiency, proven safety
@@ -57,7 +57,7 @@
                 <div class="col-md-8 offset-md-4">
                     <div class="brand-shadow px-3 py-5 px-md-5 bg-white w-100">
                         <div class="text-muted">FOUNDER AND CEO</div>
-                        <h2 class="text-success mb-5">SAM SMITH</h2>
+                        <h2 class="mb-5">SAM SMITH</h2>
 
                         <p>Our first priority is your safety meantime, never let to compromise in regards to health. Hence,
                             we use our professional guides that are trained in terms of technical proficiency, proven safety
@@ -83,7 +83,7 @@
                 <div class="col-md-8">
                     <div class="brand-shadow px-3 py-5 px-md-5 bg-white">
                         <div class="text-muted">FOUNDER AND CEO</div>
-                        <h2 class="text-success mb-5">SAM SMITH</h2>
+                        <h2 class="mb-5">SAM SMITH</h2>
 
                         <p>Our first priority is your safety meantime, never let to compromise in regards to health. Hence,
                             we use our professional guides that are trained in terms of technical proficiency, proven safety
@@ -110,7 +110,7 @@
                 <div class="col-md-8 offset-md-4">
                     <div class="brand-shadow px-3 py-5 px-md-5 bg-white w-100">
                         <div class="text-muted">FOUNDER AND CEO</div>
-                        <h2 class="text-success mb-5">SAM SMITH</h2>
+                        <h2 class="mb-5">SAM SMITH</h2>
 
                         <p>Our first priority is your safety meantime, never let to compromise in regards to health. Hence,
                             we use our professional guides that are trained in terms of technical proficiency, proven safety

@@ -13,7 +13,7 @@
     </section>
 
     <section class="container py-5 my-5">
-        <h2 class="text-success text-center mb-4">
+        <h2 class="text-center mb-4">
             Search Blog
         </h2>
 

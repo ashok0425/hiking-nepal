@@ -21,7 +21,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white">
                         <div class="head-lines">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-5 bg-white head-line-head">TAILORED HIMALAYAN ADVENTURES</h2>
+                            <h2 class="mb-5 bg-white head-line-head">TAILORED HIMALAYAN ADVENTURES</h2>
                         </div>
 
                         <p>Embarking on the journey of exploration amidst the myriad tour and trek operators
@@ -48,7 +48,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
                         <div class="head-lines mb-5">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-3 bg-white head-line-head">Expertly Crafted Journeys</h2>
+                            <h2 class="mb-3 bg-white head-line-head">Expertly Crafted Journeys</h2>
                         </div>
 
                         <p>The architects of our meticulously crafted products are seasoned guides, individuals who have
@@ -75,7 +75,7 @@
                     <div class="brand-shadow text-center px-3 py-5 px-md-5 bg-white w-100">
                         <div class="head-lines mb-5">
                             <div class="head-line-bg"></div>
-                            <h2 class="text-success mb-3 bg-white head-line-head">Our Achievement In Number</h2>
+                            <h2 class="mb-3 bg-white head-line-head">Our Achievement In Number</h2>
                             <p>Join countless happy trekkers on breathtaking eco-friendly adventures!</p>
                         </div>
 

@@ -3,7 +3,7 @@
         <div class="mx-auto" style="max-width: 800px;">
             <div class="head-lines text-center mb-5">
                 <div class="head-line-bg"></div>
-                <h2 class="text-success mb-0 bg-white head-line-head">FOLLOW US ON INSTAGRAM
+                <h2 class="mb-0 bg-white head-line-head">FOLLOW US ON INSTAGRAM
                 </h2>
             </div>
         </div>

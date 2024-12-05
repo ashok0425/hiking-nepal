@@ -110,7 +110,7 @@
                 </section>
 
                 <section class="py-md-5">
-                    <h2 class="text-success mb-5">You may also be interested in
+                    <h2 class="mb-5">You may also be interested in
                     </h2>
 
                     <div class="row mb-4">
