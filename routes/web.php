@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home.index')->name('home');
 Route::view('/deals', 'deals')->name('deals');
 
-/**
- * The following url structure is taken from existing website urls.
- */
 // slug example: nepal,india
 Route::view('/product-category/{slug}', 'product-category')->name('product-category');
 // Slug Example: 04-nights-05-days-central-bhutan-tour

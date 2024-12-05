@@ -6,6 +6,6 @@
         <p class="card-text">Explore how artificial intelligence is transforming sectors through task automation and
             improved decision-making. Discover applications and trends that drive efficiency and growth for your
             business.</p>
-        <a href="#" class="stretched-link">Read More</a>
+        <a href="{{ route('blog-page', 'blog-slug') }}" class="stretched-link">Read More</a>
     </div>
 </div>
