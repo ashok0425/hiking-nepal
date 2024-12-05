@@ -2,7 +2,7 @@
     <div class="hero-cloud-r1 animate__animated animate__slideInRight"></div>
     <div class="hero-cloud-l1 animate__animated animate__slideInLeft"></div>
 
-    <h1 class="animate__animated animate__slideInUp">Hiking Nepal</h1>
+    <h1 class="animate__animated animate__slideInUp text-white">Hiking Nepal</h1>
     <form action="" method="GET" class="animate__animated animate__zoomIn">
         <div class="input-group mb-3">
             <span class="input-group-text text-primary" id="basic-addon1">

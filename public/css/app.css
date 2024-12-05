@@ -28,6 +28,12 @@ h6 {
     font-style: normal;
 }
 
+h1,
+h2,
+h3 {
+    color: var(--brand-accent);
+}
+
 .btn {
     font-family: "Poppins", serif;
     font-weight: 500;
