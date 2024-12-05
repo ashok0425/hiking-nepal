@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home.index')->name('home');
 Route::view('/deals', 'deals')->name('deals');
 
-// slug example: nepal,india
-Route::view('/product-category/{slug}', 'product-category')->name('product-category');
-// Slug Example: 04-nights-05-days-central-bhutan-tour
+Route::get('/product-category/{slug}', function ($slug) {
+    return view('product-category', compact('slug'));
+})->name('product-category');
+
 Route::view('/tours/{slug}', 'tours')->name('tours');
 
 // About

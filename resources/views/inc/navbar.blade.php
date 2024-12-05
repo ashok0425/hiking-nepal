@@ -39,6 +39,8 @@
                             Nepal
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('product-category', 'nepal') }}">Overview</a>
+                            </li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
@@ -50,6 +52,8 @@
                             India
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('product-category', 'india') }}">Overview</a>
+                            </li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
@@ -61,6 +65,8 @@
                             Bhutan
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('product-category', 'bhutan') }}">Overview</a>
+                            </li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
                             <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
