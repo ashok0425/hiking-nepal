@@ -19,12 +19,10 @@ Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('book
 Route::view('/legal-document', 'legal-document')->name('legal-document');
 Route::view('/our-team', 'our-team')->name('our-team');
 
-// Contact
-Route::view('/contact-us', 'contact-us')->name('contact');
-
-// Direct Booking
+// Booking
+Route::view('/book-a-call', 'book-a-call')->name('book-a-call');
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 
 // Blog
 Route::view('/blog', 'blog')->name('blog');
-Route::view('/{slug}', 'blog-page')->name('blog-page');
+Route::view('/blog/{slug}', 'blog-page')->name('blog-page');

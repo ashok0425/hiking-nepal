@@ -99,9 +99,15 @@
                         <a class="nav-link {{ Route::is('blog') ? 'active' : '' }}"
                             href="{{ route('blog') }}">Blog</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::is('contact') ? 'active' : '' }}"
-                            href="{{ route('contact') }}">Contact</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Contact
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('book-a-call') }}">BOOK A
+                                    CALL</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is('deals') ? 'active' : '' }}"
