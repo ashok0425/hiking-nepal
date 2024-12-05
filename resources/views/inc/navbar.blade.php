@@ -39,12 +39,12 @@
                             Nepal
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('product-category', 'nepal') }}">Overview</a>
+                            <li><a class="dropdown-item" href="{{ route('product-category', 'nepal') }}">OVERVIEW</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('tours', 'everest') }}">
+                                    CULTURAL AND HISTORICAL TOURS</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -52,12 +52,12 @@
                             India
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('product-category', 'india') }}">Overview</a>
+                            <li><a class="dropdown-item" href="{{ route('product-category', 'india') }}">OVERVIEW</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('tours', 'everest') }}">
+                                    CULTURAL AND HISTORICAL TOURS</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -65,12 +65,12 @@
                             Bhutan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('product-category', 'bhutan') }}">Overview</a>
+                            <li><a class="dropdown-item" href="{{ route('product-category', 'bhutan') }}">OVERVIEW</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
-                            <li><a class="dropdown-item" href="#">CULTURAL AND HISTORICAL TOURS</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('tours', 'everest') }}">
+                                    CULTURAL AND HISTORICAL TOURS</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">

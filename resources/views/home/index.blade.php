@@ -9,7 +9,7 @@
     @include('home.inc.achievement')
     @include('home.inc.popular-packages')
     @include('home.inc.discounted-packages')
-    @include('home.inc.faq')
+    @include('inc.faq')
     @include('home.inc.departure')
     @include('inc.testimonial')
     @include('home.inc.blog')
