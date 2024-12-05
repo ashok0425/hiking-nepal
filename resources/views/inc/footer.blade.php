@@ -66,6 +66,8 @@
                         <a href="#" class="text-primary me-2"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
                         <a href="#" class="text-primary me-2"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-primary me-2"><i class="fab fa-google"></i></a>
+                        <a href="#" class="text-primary me-2"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
