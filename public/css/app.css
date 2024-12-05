@@ -143,6 +143,40 @@ a {
     padding: 0 25px;
 }
 
+.form-control,
+.input-group-text {
+    padding: 15px;
+    background-color: #fff;
+}
+
+.form-control:focus,
+.form-control:active {
+    /* outline: none;
+    border: 0; */
+    box-shadow: none;
+}
+
+.pagination {
+    justify-content: center;
+}
+
+/* .pagination .page-item {
+    border-radius: 0;
+} */
+
+.pagination .page-link {
+    border-radius: 0 !important;
+    color: var(--brand-color);
+    padding: 8px 18px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.pagination .active {
+    color: #fff;
+    background-color: #0d2947;
+}
+
 /* Navbar CSS */
 .navbar .navbar-collapse .navbar-nav .nav-item:first-child .nav-link {
     padding-left: 0;
@@ -255,19 +289,6 @@ footer li {
     z-index: 99;
     width: 100%;
     max-width: 900px;
-}
-
-.hero form .form-control,
-.hero form .input-group-text {
-    padding: 15px;
-    background-color: #fff;
-}
-
-.hero form .form-control:focus,
-.hero form .form-control:active {
-    outline: none;
-    border: 0;
-    box-shadow: none;
 }
 
 .hero h1 {

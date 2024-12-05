@@ -1,4 +1,4 @@
-<div class="card bg-light">
+<div class="card" style="background-color: transparent">
     <img src="{{ asset('images/blog-cover.png') }}" class="card-img-top" alt="...">
     <div class="card-body px-0">
         <h3 class="card-title text-success fs-4">Best Time to Visit Ladakh: Discover the Finest Travel Season</h3>
