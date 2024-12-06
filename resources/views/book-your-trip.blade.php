@@ -130,6 +130,11 @@
             background-color: var(--brand-color) !important;
             color: white !important;
         }
+
+        .step-3 .form-check {
+            border: 1px solid rgba(168, 166, 166, 1);
+            padding: 10px 30px;
+        }
     </style>
 @endpush
 
