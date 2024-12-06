@@ -115,7 +115,14 @@
             background-color: rgba(242, 242, 242, 1);
         }
 
-        .traveller-type:hover {
+        .dates-option {
+            color: var(--brand-color);
+            background-color: rgba(242, 242, 242, 1);
+            padding: 20px;
+        }
+
+        .traveller-type:hover,
+        .dates-option:hover {
             background-color: #e9ecef;
         }
 
