@@ -182,5 +182,6 @@
         @include('booking.inc.step-2')
         @include('booking.inc.step-3')
         @include('booking.inc.step-4')
+        @include('booking.inc.step-6')
     </div>
 @endsection
