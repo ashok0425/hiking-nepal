@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark py-0">
+<nav class="navbar navbar-expand-lg navbar-dark py-0 border-bottom">
     <div class="d-block w-100">
         <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2">
             <div class="ms-auto d-flex flex-wrap align-items-center gap-2 gap-md-4">

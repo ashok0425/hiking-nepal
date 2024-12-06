@@ -190,11 +190,30 @@
             </div>
         </div>
 
-        @include('booking.inc.step-1')
-        @include('booking.inc.step-2')
-        @include('booking.inc.step-3')
-        @include('booking.inc.step-4')
-        @include('booking.inc.step-5')
-        @include('booking.inc.step-6')
+        @switch(request()->query('step', 1))
+            @case(1)
+                @include('booking.inc.step-1')
+            @break
+
+            @case(2)
+                @include('booking.inc.step-2')
+            @break
+
+            @case(3)
+                @include('booking.inc.step-3')
+            @break
+
+            @case(4)
+                @include('booking.inc.step-4')
+            @break
+
+            @case(5)
+                @include('booking.inc.step-5')
+            @break
+
+            @case(6)
+                @include('booking.inc.step-6')
+            @break
+        @endswitch
     </div>
 @endsection
