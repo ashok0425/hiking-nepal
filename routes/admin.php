@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BackEnd\Blog\BlogController;
+use App\Http\Controllers\Admin\Blog\BlogController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -118,25 +118,25 @@ Route::get('deactive/{id}/{table}', 'BannerController@deactive')->name('deactive
 
 
 Route::get('blog/active/{id}/{table}', 'BlogController@active')->name('blog.active');
-Route::get('blog/deactive/{id}/{table}', 'BlogrController@deactive')->name('blog.deactive');
+Route::get('blog/deactive/{id}/{table}', 'BlogController@deactive')->name('blog.deactive');
 
 
-Route::resource('contact-details', 'Main\ContactDetailsController');
+// Route::resource('contact-details', 'Main\ContactDetailsController');
 Route::resource('important-links', 'ImportantLinks\ImportantLinksController');
 
-Route::resource('/main-slider', 'Main\MainSliderController');
+// Route::resource('/main-slider', 'Main\MainSliderController');
 Route::resource('/blog', 'Blog\BlogController');
 Route::resource('videos', 'Main\VideosController', array('only' => array('update')));
 
-Route::get('booking', 'Main\MainController@getBooking');
-Route::get('booking/{id}', 'Main\MainController@BookingDetail')->name('bookingdetail');
+// Route::get('booking', 'Main\MainController@getBooking');
+// Route::get('booking/{id}', 'Main\MainController@BookingDetail')->name('bookingdetail');
 
 Route::resource('/country', 'CountryController');
 
-Route::post('/blog-posts/upload','Blog\BlogController@uploadimage');
+Route::post('/blog-posts/upload', 'Blog\BlogController@uploadimage');
 
 Route::get('/cache', function () {
-	Artisan::call('cache:synblog');
-	// Artisan::call('cache:clear');
-	// Artisan::call('config:clear');
+    Artisan::call('cache:synblog');
+    // Artisan::call('cache:clear');
+    // Artisan::call('config:clear');
 });

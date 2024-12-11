@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Travel;
+namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -11,6 +11,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use File;
+
 class DestinationsController extends Controller
 {
 
@@ -21,7 +22,7 @@ class DestinationsController extends Controller
      */
     public function index()
     {
-        $data['destinations']= Destination::orderBy('id', 'desc')->get();
+        $data['destinations'] = Destination::orderBy('id', 'desc')->get();
         return view('admin.destinations.index', $data);
     }
 
@@ -58,28 +59,27 @@ class DestinationsController extends Controller
             $destination->meta_title = $request->meta_title;
             $destination->meta_keyword = $request->meta_keyword;
             $destination->meta_description = $request->meta_description;
-                $file=$request->file('file');
-            
-                if($file){
-                    $destination->image=$this->uploadFile('upload/destination',$file);
+            $file = $request->file('file');
 
-                }
-             $destination->save();
+            if ($file) {
+                $destination->image = $this->uploadFile('upload/destination', $file);
+            }
+            $destination->save();
             DB::commit();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully created destination.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully created destination.',
+
+            );
         } catch (QueryException $e) {
             DB::rollback();
             return $e->getMessage();
-        
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to create destination, Try again.',
-               
-             );
+
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to create destination, Try again.',
+
+            );
         }
 
         return redirect()->route('admin.destinations.index')->with($notification);
@@ -117,7 +117,7 @@ class DestinationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-   
+
         $url = $this->toAscii($request->name);
         $request['url'] = $url;
         $this->validate($request, [
@@ -133,28 +133,28 @@ class DestinationsController extends Controller
             $destination->meta_title = $request->meta_title;
             $destination->meta_keyword = $request->meta_keyword;
             $destination->meta_description = $request->meta_description;
-                $file=$request->file('file');
-                if($file){
-                  
-                    $this->deleteFile($destination->image);
-                    $destination->image=$this->uploadFile('upload/destination',$file);
-                }
-             $destination->save();
+            $file = $request->file('file');
+            if ($file) {
+
+                $this->deleteFile($destination->image);
+                $destination->image = $this->uploadFile('upload/destination', $file);
+            }
+            $destination->save();
             DB::commit();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully created destination.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully created destination.',
+
+            );
         } catch (QueryException $e) {
             DB::rollback();
             return $e->getMessage();
-      
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to create destination, Try again.',
-               
-             );
+
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to create destination, Try again.',
+
+            );
         }
 
         return redirect()->route('admin.destinations.index')->with($notification);
@@ -173,33 +173,28 @@ class DestinationsController extends Controller
             $this->deleteFile($destination->image);
 
             $destination->delete();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully deleted destinations.',
-               
-             );
-          
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully deleted destinations.',
+
+            );
         } catch (QueryException $e) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to delete destination, Try again.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to delete destination, Try again.',
+
+            );
         }
 
         return redirect()->back()->with($notification);
     }
-  
 
-    private function toAscii($str) {
+
+    private function toAscii($str)
+    {
         $clean = preg_replace('~[^\\pL\d]+~u', '-', $str);
         $clean = strtolower(trim($clean, '-'));
 
         return $clean;
     }
-
-
-
-        
-    
 }

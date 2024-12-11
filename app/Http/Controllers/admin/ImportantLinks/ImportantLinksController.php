@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\ImportantLinks;
+namespace App\Http\Controllers\Admin\ImportantLinks;
 
 use App\Models\ImportantLink;
 
@@ -97,7 +97,7 @@ class ImportantLinksController extends Controller
             $this->status_message = "Failed to update important link, Try again.";
             $this->alert_type = "danger";
         }
-        
+
         return redirect()->route('admin.important-links.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
     }
 

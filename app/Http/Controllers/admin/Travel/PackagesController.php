@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Travel;
+namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -57,10 +57,9 @@ class PackagesController extends Controller
                         '" class="btn btn-success btn-sm " id="" ><i class="fa fa-plus"></i>
                     </a>
                     <a href="' .
-                    route('admin.package.gallery', ['package_id' => $row->id]) .
-                    '" class="btn btn-info btn-sm " id="" ><i class="fa fa-images"></i>
-                </a>'
-                    ;
+                        route('admin.package.gallery', ['package_id' => $row->id]) .
+                        '" class="btn btn-info btn-sm " id="" ><i class="fa fa-images"></i>
+                </a>';
 
                     if ($row->status == 1) {
                         $html .= '<a href="' . route('admin.deactive', ['id' => $row->id, 'table' => 'packages']) . '" class="btn btn-primary btn-sm"><i class="fas fa-thumbs-down"></i></a>';
@@ -433,7 +432,7 @@ class PackagesController extends Controller
             ->join('countries', 'country_package.country_id', 'countries.id')
             ->join('packages', 'packages.id', 'country_package.package_id')
             ->select('country_package.*', 'packages.name as pname', 'countries.name as cname')
-            ->where('package_id',$package_id)
+            ->where('package_id', $package_id)
             ->get();
         return view('admin.packages.country_package.index', compact('package_id', 'packages'));
     }
@@ -483,15 +482,15 @@ class PackagesController extends Controller
 
     public function countryPackageEdit($id)
     {
-      $package=  DB::table('country_package')->where('id',$id)->first();
-      $countries = Country::all();
+        $package =  DB::table('country_package')->where('id', $id)->first();
+        $countries = Country::all();
         return view('admin.packages.country_package.edit', compact('package', 'countries'));
     }
 
 
     public function countryPackagupdate(Request $request)
     {
-        $id=$request->id;
+        $id = $request->id;
         $insert = [
             'name' => $request->name,
             'country_id' => $request->country,
@@ -510,14 +509,11 @@ class PackagesController extends Controller
             'price' => $request->price,
             'offer_price' => $request->offer_price,
         ];
-        DB::table('country_package')->where('id',$id)->update($insert);
+        DB::table('country_package')->where('id', $id)->update($insert);
         $notification = [
             'alert-type' => 'success',
             'messege' => 'updated succesfully',
         ];
         return redirect()->back()->with($notification);
-
     }
-
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Travel;
+namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -21,15 +21,15 @@ class DeparturesController extends Controller
     {
         // dd($request->all());
         // $data['departures'] = Departure::orderBy('created_at','desc')->get();
-$packages= Package::where('status',1)->pluck('name','id');
-        if($request->search_input || $request->package_id){
-            $departures=Departure::where('package_id',$request->package_id)->where('start_date', '>=', Carbon::today())->orderBy('start_date')->paginate(500);
-        // dd($departures);
-        }else{
+        $packages = Package::where('status', 1)->pluck('name', 'id');
+        if ($request->search_input || $request->package_id) {
+            $departures = Departure::where('package_id', $request->package_id)->where('start_date', '>=', Carbon::today())->orderBy('start_date')->paginate(500);
+            // dd($departures);
+        } else {
             $departures = Departure::where('start_date', '>=', Carbon::today())->orderBy('start_date')->paginate(500);
             // $departures=Departure::paginate(500);
         }
-        return view('admin.travel.departures.index', compact('departures','packages'));
+        return view('admin.travel.departures.index', compact('departures', 'packages'));
     }
 
     /**
@@ -40,7 +40,7 @@ $packages= Package::where('status',1)->pluck('name','id');
     public function create()
     {
         $data['departure'] = false;
-        $data['packages'] = Package::where('status',1)->pluck('name','id');
+        $data['packages'] = Package::where('status', 1)->pluck('name', 'id');
 
         return view('admin.travel.departures.create', $data);
     }
@@ -90,10 +90,10 @@ $packages= Package::where('status',1)->pluck('name','id');
     {
         $data['departure'] = Departure::findOrFail($id);
         // $data['packages'] = Package::where('status',1)->where('id',$data['departure']->package_id)->pluck('name','id');
-        $data['packages'] = Package::where('status',1)->pluck('name','id');
+        $data['packages'] = Package::where('status', 1)->pluck('name', 'id');
         // $data['packages'] = $data['departure']->package->pluck('name','id');
         // $data['packages'] = $data['departure']->package->select('id')->get()->toArray();
-        
+
         // dd($data['packages']);
 
         return view('admin.travel.departures.edit', $data);
@@ -146,7 +146,4 @@ $packages= Package::where('status',1)->pluck('name','id');
 
         return redirect()->back()->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
     }
-
-   
-   
 }

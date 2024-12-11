@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Main;
+namespace App\Http\Controllers\Admin\Main;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -17,8 +17,8 @@ class VideosController extends Controller
         // dd($request->all());
         try {
             $url = urldecode(rawurldecode($request->youtubeurl));
-             preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $url, $matches);
-            $request['video_id']=$matches[1];
+            preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $url, $matches);
+            $request['video_id'] = $matches[1];
             Video::findOrFail($id)->update($request->all());
 
             $this->status_message = "Successfully updated video.";

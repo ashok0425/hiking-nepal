@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\AssociatedWith;
+namespace App\Http\Controllers\Admin\AssociatedWith;
 
 use App\Models\AssociatedWith;
 
@@ -117,7 +117,7 @@ class AssociatedWithController extends Controller
             $this->status_message = "Failed to delete associated with, Try again.";
             $this->alert_type = "danger";
         }
-        
+
         return redirect()->route('admin.associated-with.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
     }
 }

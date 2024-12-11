@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Testimonials;
+namespace App\Http\Controllers\Admin\Testimonials;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -61,8 +61,7 @@ class TestimonialsController extends Controller
 
             $banner = $request->file('file');
             if ($banner) {
-                $testimonials->image =$this->uploadFile('upload/testimonial',$banner);
-
+                $testimonials->image = $this->uploadFile('upload/testimonial', $banner);
             }
             if ($testimonials->save()) {
                 $length = count($request->package);
@@ -74,7 +73,7 @@ class TestimonialsController extends Controller
                 }
             }
 
-DB::commit();
+            DB::commit();
 
             $notification = array(
                 'alert-type' => 'success',
@@ -82,7 +81,7 @@ DB::commit();
 
             );
         } catch (QueryException $qE) {
-DB::rollBack();
+            DB::rollBack();
             $notification = array(
                 'alert-type' => 'error',
                 'messege' => 'Failed to Added Testimonial.',
@@ -115,9 +114,9 @@ DB::rollBack();
         $testimonial = Testimonial::findOrFail($id);
         // dd($testimonials->packages->pluck('id'));
         $packages = Package::where('status', 1)->get();
-        $edit_packages = DB::table('package_testimonial')->join('packages','packages.id','package_testimonial.package_id')->select('packages.name','packages.id')->where('testimonial_id',$id)->get();
+        $edit_packages = DB::table('package_testimonial')->join('packages', 'packages.id', 'package_testimonial.package_id')->select('packages.name', 'packages.id')->where('testimonial_id', $id)->get();
 
-        return view('admin.testimonials.edit', compact('testimonial', 'packages','edit_packages'));
+        return view('admin.testimonials.edit', compact('testimonial', 'packages', 'edit_packages'));
     }
 
     /**
@@ -143,13 +142,12 @@ DB::rollBack();
 
             $banner = $request->file('file');
             if ($banner) {
-               $this->deleteFile($testimonials->image);
-                $testimonials->image =$this->uploadFile('upload/testimonial',$banner);
-
+                $this->deleteFile($testimonials->image);
+                $testimonials->image = $this->uploadFile('upload/testimonial', $banner);
             }
             if ($testimonials->save()) {
                 $length = count($request->package);
-                DB::table('package_testimonial')->where('testimonial_id',$id)->delete();
+                DB::table('package_testimonial')->where('testimonial_id', $id)->delete();
                 for ($i = 0; $i < $length; $i++) {
                     $package_testmonial = [];
                     $package_testmonial['package_id'] = $request->package[$i];
@@ -158,7 +156,7 @@ DB::rollBack();
                 }
             }
 
-DB::commit();
+            DB::commit();
             $notification = array(
                 'alert-type' => 'success',
                 'messege' => 'Successfully Updated Testimonial.',

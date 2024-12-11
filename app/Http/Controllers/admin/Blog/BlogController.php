@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Blog;
+namespace App\Http\Controllers\Admin\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -19,7 +19,7 @@ class BlogController extends Controller
 
     public function index(Request $request)
     {
-        $blogs = Blog::orderBy('created_at', 'desc')->where('status',1)->paginate(10);
+        $blogs = Blog::orderBy('created_at', 'desc')->where('status', 1)->paginate(10);
 
         return view('admin.blog.index', compact('blogs'));
     }
@@ -32,9 +32,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-       $blog=null;
+        $blog = null;
 
-        return view('admin.blog.create',compact('blog'));
+        return view('admin.blog.create', compact('blog'));
     }
 
     /**
@@ -47,15 +47,15 @@ class BlogController extends Controller
     {
 
         try {
-            if($request->hasFile('image')) {
+            if ($request->hasFile('image')) {
                 // Uplaod Image
                 $file = $request->file('image');
-                $fileName = time()."-".$file->getClientOriginalName();
-                $image = $this->blogs_image_path. '/' .$fileName;
-                $upload_success= $file->move($this->blogs_image_path, $fileName);
+                $fileName = time() . "-" . $file->getClientOriginalName();
+                $image = $this->blogs_image_path . '/' . $fileName;
+                $upload_success = $file->move($this->blogs_image_path, $fileName);
                 $upload = Image::make($image);
-                $upload->fit(1100,500)->save($this->blogs_image_path .'/'. $fileName);
-                $upload->fit(555,250)->save($this->blogs_image_thumb_path .'/'. $fileName);
+                $upload->fit(1100, 500)->save($this->blogs_image_path . '/' . $fileName);
+                $upload->fit(555, 250)->save($this->blogs_image_thumb_path . '/' . $fileName);
                 $request['blog_image'] = $fileName;
             }
             $blog = Blog::create($request->all());
@@ -66,8 +66,7 @@ class BlogController extends Controller
             $this->alertType = "danger";
         }
 
-            return redirect()->route('admin.blog.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
-
+        return redirect()->route('admin.blog.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
     }
 
     /**
@@ -105,15 +104,15 @@ class BlogController extends Controller
     {
         try {
             $blog = Blog::findOrFail($id);
-            if($request->hasFile('image')) {
+            if ($request->hasFile('image')) {
                 // Uplaod Image
                 $file = $request->file('image');
-                $fileName = time()."-".$file->getClientOriginalName();
-                $image = $this->blogs_image_path. '/' .$fileName;
-                $upload_success= $file->move($this->blogs_image_path, $fileName);
+                $fileName = time() . "-" . $file->getClientOriginalName();
+                $image = $this->blogs_image_path . '/' . $fileName;
+                $upload_success = $file->move($this->blogs_image_path, $fileName);
                 $upload = Image::make($image);
-                $upload->fit(800, 400)->save($this->blogs_image_path .'/'. $fileName);
-                $upload->fit(555, 250)->save($this->blogs_image_thumb_path .'/'. $fileName);
+                $upload->fit(800, 400)->save($this->blogs_image_path . '/' . $fileName);
+                $upload->fit(555, 250)->save($this->blogs_image_thumb_path . '/' . $fileName);
                 $request['blog_image'] = $fileName;
             }
             $blog->update($request->all());
@@ -124,7 +123,6 @@ class BlogController extends Controller
         }
 
         return redirect()->route('admin.blog.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
-
     }
 
     /**
@@ -152,7 +150,8 @@ class BlogController extends Controller
     }
 
 
-    public function uploadimage(Request $request){
+    public function uploadimage(Request $request)
+    {
         $request->validate([
             'upload' => 'required|image'
         ]);
@@ -160,7 +159,5 @@ class BlogController extends Controller
         $path = $request->file('upload')->store('uploads', ['disk' => 's3']);
 
         return ["url" => getFilePath($path)];
-
     }
-
 }

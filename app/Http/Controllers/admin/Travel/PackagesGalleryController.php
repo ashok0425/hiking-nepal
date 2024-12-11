@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Travel;
+namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -21,8 +21,8 @@ class PackagesGalleryController extends Controller
      */
     public function index()
     {
-        $galleries = PackageImage::orderBy('created_at', 'desc')->where('package_id',request()->query('package_id'))->get();
-        return view('admin.gallery.index',compact('galleries'));
+        $galleries = PackageImage::orderBy('created_at', 'desc')->where('package_id', request()->query('package_id'))->get();
+        return view('admin.gallery.index', compact('galleries'));
     }
 
     /**
@@ -43,7 +43,7 @@ class PackagesGalleryController extends Controller
      */
     public function store(Request $request)
     {
-            //code...
+        //code...
 
         try {
             $banner = $request->file('thumbnail');
@@ -51,23 +51,23 @@ class PackagesGalleryController extends Controller
                 $path = $this->uploadFile('upload/package/gallery', $banner);
             }
             $gallery = new PackageImage;
-            $gallery->package_id=$request->package_id;
-            $gallery->image=$path;
+            $gallery->package_id = $request->package_id;
+            $gallery->image = $path;
             $gallery->save();
 
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Image Added Successfully',
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Image Added Successfully',
 
-             );
-            } catch (\Throwable $th) {
-                //throw $th;
+            );
+        } catch (\Throwable $th) {
+            //throw $th;
 
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to Add Image, Try again.',
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to Add Image, Try again.',
 
-             );
+            );
         }
 
         return redirect()->back()->with($notification);
@@ -92,7 +92,7 @@ class PackagesGalleryController extends Controller
      */
     public function edit($id)
     {
-        $gallery=PackageImage::findorFail($id);
+        $gallery = PackageImage::findorFail($id);
         return view('admin.gallery.edit', compact('gallery'));
     }
 
@@ -112,19 +112,19 @@ class PackagesGalleryController extends Controller
                 $path = $this->uploadFile('upload/package/gallery', $banner);
             }
             $gallery = PackageImage::findorFail($request->id);
-            $gallery->image=$path??$gallery->image;
+            $gallery->image = $path ?? $gallery->image;
             $gallery->save();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Image updated',
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Image updated',
 
-             );
-        } catch(\Throwable $e) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to update Image, Try again.',
+            );
+        } catch (\Throwable $e) {
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to update Image, Try again.',
 
-             );
+            );
         }
 
         return redirect()->back()->with($notification);
@@ -143,20 +143,18 @@ class PackagesGalleryController extends Controller
             $faq = PackageImage::findOrFail($id);
             // $faq->packages()->detach();
             $faq->delete();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>' Image Deleted',
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => ' Image Deleted',
 
-             );
+            );
         } catch (\Throwable $e) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to delete FAQ, Try again.',
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to delete FAQ, Try again.',
 
-             );
-
+            );
+        }
+        return redirect()->back()->with($notification);
     }
-    return redirect()->back()->with($notification);
-
-}
 }

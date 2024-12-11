@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Travel;
+namespace App\Http\Controllers\Admin\Travel;
 
 use App\Models\Category;
 use App\Models\CategoryDestination;
@@ -12,9 +12,10 @@ use App\Models\Destination;
 use Intervention\Image\Facades\Image;
 use Illuminate\Database\QueryException;
 use File;
+
 class CategoriesDestinationsController extends Controller
 {
- 
+
     /**
      * Display a listing of the resource.
      *
@@ -34,9 +35,9 @@ class CategoriesDestinationsController extends Controller
      */
     public function create()
     {
-        $destinations= Destination::all();
+        $destinations = Destination::all();
 
-        return view('admin.categories.create',compact('destinations'));
+        return view('admin.categories.create', compact('destinations'));
     }
 
     /**
@@ -60,35 +61,34 @@ class CategoriesDestinationsController extends Controller
             $category->status = 1;
             $category->details = $request->details;
             $category->url = $request->url;
-            $category->order=$request->order;
+            $category->order = $request->order;
             $category->destination_id = $request->destination;
             $category->quick_trips = $request->quickk_trip;
             $category->meta_title = $request->meta_title;
             $category->meta_keyword = $request->meta_keyword;
             $category->meta_description = $request->meta_description;
 
-            $file=$request->file('file');
-            
-            if($file){
-                $category->image=$this->uploadFile('upload/category',$file);
+            $file = $request->file('file');
+
+            if ($file) {
+                $category->image = $this->uploadFile('upload/category', $file);
             }
             $category->save();
 
             DB::commit();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully created category.',
-               
-             );
-       
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully created category.',
+
+            );
         } catch (QueryException $e) {
             return $e->getMessage();
             DB::rollback();
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to create category, Try again.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to create category, Try again.',
+
+            );
         }
 
         return redirect()->route('admin.categories-destinations.index')->with($notification);
@@ -143,34 +143,33 @@ class CategoriesDestinationsController extends Controller
             $category->status = 1;
             $category->details = $request->details;
             $category->url = $request->url;
-            $category->order=$request->order;
+            $category->order = $request->order;
             $category->meta_title = $request->meta_title;
             $category->meta_keyword = $request->meta_keyword;
             $category->meta_description = $request->meta_description;
 
-            $file=$request->file('file');
-            
-            if($file){
-                 $this->deleteFile($category->image);
-                 $category->image=$this->uploadFile('upload/category',$file);
+            $file = $request->file('file');
 
+            if ($file) {
+                $this->deleteFile($category->image);
+                $category->image = $this->uploadFile('upload/category', $file);
             }
             $category->save();
 
             // DB::commit();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully updated category.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully updated category.',
+
+            );
         } catch (QueryException $e) {
             return $e->getMessage();
             DB::rollback();
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to updated category, Try again.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to updated category, Try again.',
+
+            );
         }
         return redirect()->route('admin.categories-destinations.index')->with($notification);
     }
@@ -187,26 +186,26 @@ class CategoriesDestinationsController extends Controller
             $destination = CategoryDestination::findOrFail($id);
             $this->deleteFile($destination->image);
             $destination->delete();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully deleted destinations.',
-               
-             );
-        
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully deleted destinations.',
+
+            );
         } catch (QueryException $e) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to delete destination, Try again.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to delete destination, Try again.',
+
+            );
         }
 
         return redirect()->back()->with($notification);
     }
-  
 
 
-    private function toAscii($str) {
+
+    private function toAscii($str)
+    {
         $clean = preg_replace('~[^\\pL\d]+~u', '-', $str);
         $clean = strtolower(trim($clean, '-'));
 

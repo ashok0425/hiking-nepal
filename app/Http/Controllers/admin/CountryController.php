@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\backEnd;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 class CountryController extends Controller
 {
     /**
@@ -14,8 +15,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-     $countries=Country::all();
-     return view('admin.country.index',compact('countries'));
+        $countries = Country::all();
+        return view('admin.country.index', compact('countries'));
     }
 
     /**
@@ -25,8 +26,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-     return view('admin.country.create');
-        
+        return view('admin.country.create');
     }
 
     /**
@@ -37,18 +37,16 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country=new Country;
-        $country->name=$request->name;
-        $country->slug=$request->slug;
+        $country = new Country;
+        $country->name = $request->name;
+        $country->slug = $request->slug;
         $country->save();
-        $notification=array(
-            'alert-type'=>'success',
-            'messege'=>'Successfully created.',
-           
-         );
-    return redirect()->back()->with($notification);
+        $notification = array(
+            'alert-type' => 'success',
+            'messege' => 'Successfully created.',
 
-
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -70,7 +68,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-      return view('admin.country.edit',compact('country'));
+        return view('admin.country.edit', compact('country'));
     }
 
     /**
@@ -82,16 +80,15 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        $country->name=$request->name;
-        $country->slug=$request->slug;
+        $country->name = $request->name;
+        $country->slug = $request->slug;
         $country->save();
-        $notification=array(
-            'alert-type'=>'success',
-            'messege'=>'Successfully update .',
-           
-         );
-    return redirect()->back()->with($notification);
+        $notification = array(
+            'alert-type' => 'success',
+            'messege' => 'Successfully update .',
 
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**

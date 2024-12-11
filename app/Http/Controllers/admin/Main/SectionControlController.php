@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Main;
+namespace App\Http\Controllers\Admin\Main;
 
 use App\Models\SectionControl;
 
@@ -81,23 +81,23 @@ class SectionControlController extends Controller
     public function update(Request $request, $id)
     {
         try {
-           $section= SectionControl::findOrFail($id);
-           $section->display_name=$request->display_name;
-           $section->status=1;
-           $section->details=$request->details;
-             $section->save();
+            $section = SectionControl::findOrFail($id);
+            $section->display_name = $request->display_name;
+            $section->status = 1;
+            $section->details = $request->details;
+            $section->save();
 
-             $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully updated Section Control.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully updated Section Control.',
+
+            );
         } catch (QueryException $e) {
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Failed to update Section Control',
-               
-             );
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Failed to update Section Control',
+
+            );
         }
 
         return redirect()->route('admin.section-control.index')->with($notification);

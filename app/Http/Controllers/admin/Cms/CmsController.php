@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd\Cms;
+namespace App\Http\Controllers\Admin\Cms;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -23,8 +23,8 @@ class CmsController extends Controller
      */
     public function index()
     {
-        $cms_pages = Cms::orderBy('id','desc')->get();
-        return view('admin.cms.index',compact('cms_pages'));
+        $cms_pages = Cms::orderBy('id', 'desc')->get();
+        return view('admin.cms.index', compact('cms_pages'));
     }
 
     /**
@@ -35,7 +35,7 @@ class CmsController extends Controller
     public function create()
     {
         $maincms = Cms::where('main_or_sub', 1)->get();
-        return view('admin.cms.create',compact('maincms'));
+        return view('admin.cms.create', compact('maincms'));
     }
 
     /**
@@ -63,26 +63,25 @@ class CmsController extends Controller
             $cms->parent_id = $request->main_or_sub ? 0 : $request->parent_id;
             $cms->url = $url;
             $cms->content = $request->content;
-           $cms->hide_header = $request->hide_header??0;
+            $cms->hide_header = $request->hide_header ?? 0;
             $cms->position = $request->position;
-            $file=$request->file('file');
-            if($file){
-                $cms->image =$this->uploadFile('upload/cms',$file);
-
+            $file = $request->file('file');
+            if ($file) {
+                $cms->image = $this->uploadFile('upload/cms', $file);
             }
             $cms->save();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully  CMS page created.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully  CMS page created.',
+
+            );
         } catch (QueryException $e) {
-          
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to create cms page, Try again.',
-               
-             );
+
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to create cms page, Try again.',
+
+            );
         }
 
         return redirect()->route('admin.cms.index')->with($notification);
@@ -108,9 +107,9 @@ class CmsController extends Controller
     public function edit($id)
     {
         $menu = Cms::findOrFail($id);
-        $maincms= Cms::where('main_or_sub', 1)->get();
+        $maincms = Cms::where('main_or_sub', 1)->get();
 
-        return view('admin.cms.edit', compact('menu','maincms'));
+        return view('admin.cms.edit', compact('menu', 'maincms'));
     }
 
     /**
@@ -125,7 +124,7 @@ class CmsController extends Controller
         $url = $this->toAscii($request->title);
 
         $this->validate($request, [
-            'title' => 'required|min:3|max:255|unique:cms,title,'. $id
+            'title' => 'required|min:3|max:255|unique:cms,title,' . $id
         ]);
 
         try {
@@ -140,27 +139,26 @@ class CmsController extends Controller
             $cms->parent_id = $request->main_or_sub ? 0 : $request->parent_id;
             $cms->url = $url;
             $cms->content = $request->content;
-           $cms->hide_header = $request->hide_header??0;
+            $cms->hide_header = $request->hide_header ?? 0;
             $cms->position = $request->position;
-            $file=$request->file('file');
-            if($file){
-                $cms->image =$this->uploadFile('upload/cms',$file);
-
+            $file = $request->file('file');
+            if ($file) {
+                $cms->image = $this->uploadFile('upload/cms', $file);
             }
             $cms->save();
-            
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully updated CMS page .',
-               
-             );
+
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully updated CMS page .',
+
+            );
         } catch (QueryException $e) {
-            
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to update CMS page ',
-               
-             );
+
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to update CMS page ',
+
+            );
         }
 
         return redirect()->route('admin.cms.index')->with($notification);
@@ -175,24 +173,25 @@ class CmsController extends Controller
     public function destroy($id)
     {
         try {
-            $cms = Cms::findOrFail($id);  
+            $cms = Cms::findOrFail($id);
             $cms->delete();
-            $notification=array(
-                'alert-type'=>'success',
-                'messege'=>'Successfully deleted cms page.',
-             );
+            $notification = array(
+                'alert-type' => 'success',
+                'messege' => 'Successfully deleted cms page.',
+            );
         } catch (QueryException $e) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Failed to create cms page, Try again.',
-               
-             );
+            $notification = array(
+                'alert-type' => 'error',
+                'messege' => 'Failed to create cms page, Try again.',
+
+            );
         }
 
         return redirect()->route('admin.cms.index')->with($notification);
     }
 
-    private function toAscii($str) {
+    private function toAscii($str)
+    {
         $clean = preg_replace('~[^\\pL\d]+~u', '-', $str);
         $clean = strtolower(trim($clean, '-'));
 
