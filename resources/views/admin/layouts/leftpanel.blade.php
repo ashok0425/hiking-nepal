@@ -2,9 +2,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
       <!-- Brand Logo -->
-      <a href="{{ route('/') }}" class="brand-link">
-          {{-- <img src="{{getImageurl($logo)}}" alt="Baratodeal Logo" class="" width="200"> --}}
-          NepalVision
+      <a href="#" class="brand-link">
+          <img src="{{ asset('logo-white.png') }}" alt="Hiking Nepal Logo" class="" width="200">
       </a>
 
       <!-- Sidebar -->
@@ -34,7 +33,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'destinations' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-mountain"></i>
                           <p>
-                              Manage Destinations
+                              Destinations
                               <i class="fas fa-angle-left right"></i>
 
                           </p>
@@ -124,7 +123,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-packages' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-box"></i>
                           <p>
-                              Manage Packages
+                              Packages
                               <i class="fas fa-angle-left right"></i>
 
                           </p>
@@ -154,7 +153,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'testimonials' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-star"></i>
                           <p>
-                              Testimonial Data
+                              Testimonials
                               <i class="fas fa-angle-left right"></i>
 
                           </p>
@@ -183,7 +182,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'faqs' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-tag"></i>
                           <p>
-                              FAQ Data
+                              FAQs
                               <i class="fas fa-angle-left right"></i>
 
                           </p>
@@ -246,7 +245,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'blogs' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-copy"></i>
                           <p>
-                              Blog Data <i class="fas fa-angle-left right"></i>
+                              Blogs <i class="fas fa-angle-left right"></i>
 
                           </p>
                       </a>
@@ -372,7 +371,7 @@
     </p>
   </a>
   <ul class="nav nav-treeview">
-    
+
     <li class="nav-item ">
       <a href="{{route('admin.role')}}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
         <i class="far fa-circle nav-icon"></i>
@@ -437,15 +436,15 @@
 
                   {{-- dashboard section --}}
                   <li class="nav-item ">
-                    <a href="{{ route('admin.country.index') }}" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Country
+                      <a href="{{ route('admin.country.index') }}" class="nav-link ">
+                          <i class="nav-icon fas fa-tachometer-alt"></i>
+                          <p>
+                              Country
 
-                        </p>
-                    </a>
+                          </p>
+                      </a>
 
-                </li>
+                  </li>
               </ul>
           </nav>
           <!-- /.sidebar-menu -->

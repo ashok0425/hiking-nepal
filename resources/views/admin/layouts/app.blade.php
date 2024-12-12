@@ -28,12 +28,13 @@
 
 
     {{-- bootstrap --}}
-    <link rel="preload stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" as="style">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css"
-        integrity="sha512-FoiDc40LwNkhzC9yHQU/yOEHV2+SvUvN4/XZEkcGvlPr14tfocjIM63TD9kmoLkPG3YGrwZL/NglmdKM5+hCnA=="
+    <link rel="preload stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Theme style -->
-    <link rel="preload stylesheet" href="{{ getFilePath('admin/dist/css/adminlte.min.css') }}" as="style">
+    <link rel="preload stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}" as="style">
 
     @stack('style')
     <style>
@@ -105,117 +106,119 @@
     <script defer src="{{ getFilePath('admin/dist/js/adminlte.js') }}"></script>
 
 
-    @if(!str_contains(url()->current(),'edit')&&!str_contains(url()->current(),'create'))
-  {{-- datatables  --}}
-  <link rel="preload stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" as="style">
-  <link rel="preload stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" as="style"/>
-  <link rel="preload stylesheet" href='https//cdn.datatables.net/responsive/2.2.9/css/dataTables.responsive.css' as="style" />
-    <script defer src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-    <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
-    <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
-    <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-    <script defer src="//cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.js"></script>
-     {{-- datatables iniziing --}}
-    <script>
-     setTimeout(() => {
-        if (window.innerWidth <= 700) {
-            var table = $('#example2').DataTable({
-                "scrollX": true,
+    @if (!str_contains(url()->current(), 'edit') && !str_contains(url()->current(), 'create'))
+        {{-- datatables  --}}
+        <link rel="preload stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"
+            as="style">
+        <link rel="preload stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"
+            as="style" />
+        <link rel="preload stylesheet" href='https//cdn.datatables.net/responsive/2.2.9/css/dataTables.responsive.css'
+            as="style" />
+        <script defer src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+        <script defer src="//cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.js"></script>
+        {{-- datatables iniziing --}}
+        <script>
+            setTimeout(() => {
+                if (window.innerWidth <= 700) {
+                    var table = $('#example2').DataTable({
+                        "scrollX": true,
 
-                select: true,
-                dom: 'Blfrtip',
-                lengthMenu: [
-                    [10, 25, 50, -1],
-                    ['10 row', '25 row', '50 row', 'All Rows']
-                ],
-                dom: 'Bfrtip',
-                buttons: [{
-                        extend: 'print',
-                        exportOptions: {
-                            stripHtml: false,
-                            columns: ':visible:not(:last-child,:nth-last-child(2))'
-                        }
-                    },
-                    {
-                        extend: 'excel',
-                        exportOptions: {
-                            stripHtml: false,
-                            columns: ':visible:not(:last-child,:nth-last-child(2))'
-                        }
-                    },
-                    {
-                        extend: 'csv',
-                        exportOptions: {
-                            stripHtml: false,
-                            columns: ':visible:not(:last-child,:nth-last-child(2))'
-                        }
-                    },
+                        select: true,
+                        dom: 'Blfrtip',
+                        lengthMenu: [
+                            [10, 25, 50, -1],
+                            ['10 row', '25 row', '50 row', 'All Rows']
+                        ],
+                        dom: 'Bfrtip',
+                        buttons: [{
+                                extend: 'print',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
+                                }
+                            },
+                            {
+                                extend: 'excel',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
+                                }
+                            },
 
-                    {
-                        extend: 'colvis',
+                            {
+                                extend: 'colvis',
 
-                    },
-                    'pageLength',
-                ]
-            });
+                            },
+                            'pageLength',
+                        ]
+                    });
 
-        } else {
+                } else {
 
-            var table = $('#example2').DataTable({
-                // "scrollX": true,
-                select: true,
-                dom: 'Blfrtip',
-                lengthMenu: [
-                    [10, 25, 50, -1],
-                    ['10 row', '25 row', '50 row', 'All Rows']
-                ],
-                dom: 'Bfrtip',
-                buttons: [{
-                        extend: 'print',
-                        exportOptions: {
-                            stripHtml: false,
-                            columns: ':visible:not(:last-child,:nth-last-child(2))'
-                        }
-                    },
-                    {
-                        extend: 'excel',
-                        exportOptions: {
-                            stripHtml: false,
-                            columns: ':visible:not(:last-child,:nth-last-child(2))'
-                        }
-                    },
-                    {
-                        extend: 'csv',
-                        exportOptions: {
-                            stripHtml: false,
-                            columns: ':visible:not(:last-child,:nth-last-child(2))'
-                        }
-                    },
+                    var table = $('#example2').DataTable({
+                        // "scrollX": true,
+                        select: true,
+                        dom: 'Blfrtip',
+                        lengthMenu: [
+                            [10, 25, 50, -1],
+                            ['10 row', '25 row', '50 row', 'All Rows']
+                        ],
+                        dom: 'Bfrtip',
+                        buttons: [{
+                                extend: 'print',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
+                                }
+                            },
+                            {
+                                extend: 'excel',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
+                                }
+                            },
 
-                    {
-                        extend: 'colvis',
+                            {
+                                extend: 'colvis',
 
-                    },
-                    'pageLength',
+                            },
+                            'pageLength',
 
-                ]
-            });
+                        ]
+                    });
 
-        }
-     }, 2000);
-    </script>
-
+                }
+            }, 2000);
+        </script>
     @endif
 
     @if (Session::has('messege'))
- {{-- toastr --}}
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-<script  src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        {{-- toastr --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @endif
     {{-- toastr  --}}
     <script>
@@ -239,8 +242,8 @@
     </script>
 
 
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor.js') }}"></script>
 
     <script>
         $('#delete_row').click(function(e) {
