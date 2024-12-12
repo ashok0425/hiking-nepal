@@ -113,7 +113,7 @@
             as="style">
         <link rel="preload stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"
             as="style" />
-        <link rel="preload stylesheet" href='https//cdn.datatables.net/responsive/2.2.9/css/dataTables.responsive.css'
+        <link rel="preload stylesheet" href='https://cdn.datatables.net/responsive/2.2.9/css/dataTables.responsive.css'
             as="style" />
         <script defer src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
