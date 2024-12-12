@@ -34,7 +34,7 @@
                           <i class="nav-icon fas fa-mountain"></i>
                           <p>
                               Destinations
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -60,7 +60,7 @@
                           <i class="nav-icon fas fa-road"></i>
                           <p>
                               Category Places
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -91,7 +91,7 @@
                           <i class="nav-icon fas fa-bus"></i>
                           <p>
                               Travel Category
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -124,7 +124,7 @@
                           <i class="nav-icon fas fa-box"></i>
                           <p>
                               Packages
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -154,7 +154,7 @@
                           <i class="nav-icon fas fa-star"></i>
                           <p>
                               Testimonials
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -183,7 +183,7 @@
                           <i class="nav-icon fas fa-tag"></i>
                           <p>
                               FAQs
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -213,7 +213,7 @@
                           <i class="nav-icon fas fa-clock"></i>
                           <p>
                               Departure Date
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -245,7 +245,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'blogs' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-copy"></i>
                           <p>
-                              Blogs <i class="fas fa-angle-left right"></i>
+                              Blogs <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -273,7 +273,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'events' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-clock"></i>
                           <p>
-                              Event List <i class="fas fa-angle-left right"></i>
+                              Event List <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -303,7 +303,7 @@
                           <i class="nav-icon fas fa-user"></i>
                           <p>
                               Newsletter
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -336,7 +336,7 @@
                           <i class="nav-icon fas fa-users"></i>
                           <p>
                               User Contact List
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
@@ -366,7 +366,7 @@
     <i class="nav-icon fas fa-tag"></i>
     <p>
      Roles & Permission
-      <i class="fas fa-angle-left right"></i>
+      <i class="fas fa-angle-down right"></i>
 
     </p>
   </a>
@@ -396,7 +396,7 @@
                           <i class="nav-icon fas fa-wrench"></i>
                           <p>
                               Setting
-                              <i class="fas fa-angle-left right"></i>
+                              <i class="fas fa-angle-down right"></i>
 
                           </p>
                       </a>
