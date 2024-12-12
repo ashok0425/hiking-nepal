@@ -86,8 +86,9 @@
         <div class="content-wrapper">
             @include('admin.layouts.breadcrum')
 
-            @yield('content')
-
+            <div class="container-fluid">
+                @yield('content')
+            </div>
         </div>
         <!-- /.content-wrapper -->
 

@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
       <!-- Brand Logo -->
-      <a href="#" class="brand-link">
+      <a href="{{ route('admin.dashboard') }}" class="brand-link">
           <img src="{{ asset('logo-white.png') }}" alt="Hiking Nepal Logo" class="" width="200">
       </a>
 
