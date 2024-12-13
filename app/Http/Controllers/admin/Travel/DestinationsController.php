@@ -167,7 +167,7 @@ class DestinationsController extends Controller
     {
         try {
             $destination = Destination::findOrFail($id);
-            $this->deleteFile($destination->image);
+            Storage::disk('public')->delete($destination->image);
 
             $destination->delete();
             $notification = [
