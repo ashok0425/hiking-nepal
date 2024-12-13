@@ -72,7 +72,7 @@
         .bg {
             width: 400px;
             height: 550px;
-            background: rgb(42, 135, 183);
+            background: #164479;
             position: absolute;
             top: -5em;
             left: 0;
@@ -181,7 +181,7 @@
             <x-errormsg />
             @csrf
             <header>
-                <img src="{{ getImageurl($logo->image) }}">
+                <img src="{{ asset('logo.png') }}">
             </header>
 
             <div class="inputs">
