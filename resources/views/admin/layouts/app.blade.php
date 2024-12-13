@@ -104,7 +104,7 @@
     <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!-- AdminLTE App -->
-    <script defer src="{{ getFilePath('admin/dist/js/adminlte.js') }}"></script>
+    <script defer src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
 
 
     @if (!str_contains(url()->current(), 'edit') && !str_contains(url()->current(), 'create'))

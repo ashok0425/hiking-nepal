@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 function __getAdmin()
 {
@@ -27,22 +28,10 @@ function ___getPriceafterVat($total, $vat, $shipping)
 
 function getImageurl($path)
 {
-
-    if (env('APP_ENV') == 'local') {
-        return "https://d2i9o55ouvfvau.cloudfront.net/public/$path";
-    } else {
-        return "https://d2i9o55ouvfvau.cloudfront.net/public/$path";
-
-    }
+    return Storage::disk('public')->url($path);
 }
 
 function getFilePath($path)
 {
-
-    if (env('APP_ENV') == 'local') {
-        return "https://d2i9o55ouvfvau.cloudfront.net/$path";
-    } else {
-        return "https://d2i9o55ouvfvau.cloudfront.net/$path";
-
-    }
+    return Storage::disk('public')->url($path);
 }
