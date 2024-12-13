@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Models\Category;
 use App\Models\CategoryDestination;
 use App\Models\CategoryPlace;
 use App\Models\Country;
 use App\Models\Destination;
 use App\Models\Package;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use File;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables as FacadesDataTables;
 
 class PackagesController extends Controller
@@ -33,7 +31,7 @@ class PackagesController extends Controller
 
             return FacadesDataTables::of($packages)
                 ->editColumn('thumbnail', function ($row) {
-                    return '<img src="' . getImageurl($row->banner) . '" width="80">';
+                    return '<img src="'.getImageurl($row->banner).'" width="80">';
                 })
 
                 ->editColumn('status', function ($row) {
@@ -41,36 +39,38 @@ class PackagesController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $html =
-                        '<a href="' .
-                        route('admin.categories-packages.edit', $row->id) .
+                        '<a href="'.
+                        route('admin.categories-packages.edit', $row->id).
                         '" class="btn btn-primary btn-sm pull-left m-r-10"><i class="fa fa-edit"></i>
                     </a>
 
-                    <a href="' .
-                        route('admin.categories-packages.delete', $row->id) .
+                    <a href="'.
+                        route('admin.categories-packages.delete', $row->id).
                         '" class="btn btn-danger btn-sm delete_row" id="" ><i class="fa fa-trash"></i>
                     </a>
 
 
-                    <a href="' .
-                        route('admin.package.country', ['package_id' => $row->id]) .
+                    <a href="'.
+                        route('admin.package.country', ['package_id' => $row->id]).
                         '" class="btn btn-success btn-sm " id="" ><i class="fa fa-plus"></i>
                     </a>
-                    <a href="' .
-                        route('admin.package.gallery', ['package_id' => $row->id]) .
+                    <a href="'.
+                        route('admin.package.gallery', ['package_id' => $row->id]).
                         '" class="btn btn-info btn-sm " id="" ><i class="fa fa-images"></i>
                 </a>';
 
                     if ($row->status == 1) {
-                        $html .= '<a href="' . route('admin.deactive', ['id' => $row->id, 'table' => 'packages']) . '" class="btn btn-primary btn-sm"><i class="fas fa-thumbs-down"></i></a>';
+                        $html .= '<a href="'.route('admin.deactive', ['id' => $row->id, 'table' => 'packages']).'" class="btn btn-primary btn-sm"><i class="fas fa-thumbs-down"></i></a>';
                     } else {
-                        $html .= ' <a href="' . route('admin.active', ['id' => $row->id, 'table' => 'packages']) . '" class="btn btn-primary btn-sm"><i class="fas fa-thumbs-up"></i></a>';
+                        $html .= ' <a href="'.route('admin.active', ['id' => $row->id, 'table' => 'packages']).'" class="btn btn-primary btn-sm"><i class="fas fa-thumbs-up"></i></a>';
                     }
+
                     return $html;
                 })
                 ->rawColumns(['action', 'status', 'thumbnail'])
                 ->make(true);
         }
+
         return view('admin.packages.index');
     }
 
@@ -87,13 +87,13 @@ class PackagesController extends Controller
         $destinations = Destination::orderBy('name')->get();
         $categories_destinations = CategoryDestination::all();
         $places = CategoryPlace::orderBy('name')->get();
+
         return view('admin.packages.create', compact('destinations', 'categories_destinations', 'featured_package', 'places'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -108,7 +108,7 @@ class PackagesController extends Controller
         try {
             DB::beginTransaction();
 
-            $package = new Package();
+            $package = new Package;
             $package->name = $request->name;
             $package->trip_id = $request->trip_id;
 
@@ -248,13 +248,13 @@ class PackagesController extends Controller
         $places = CategoryPlace::orderBy('name')->get();
 
         $categories_destinations = CategoryDestination::orderBy('name')->get();
+
         return view('admin.packages.edit', compact('featured_package', 'package', 'destinations', 'categories_destinations', 'places'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -265,7 +265,7 @@ class PackagesController extends Controller
         // dd($request->all());
 
         $this->validate($request, [
-            'name' => 'required|min:3|max:255|unique:packages,name,' . $id,
+            'name' => 'required|min:3|max:255|unique:packages,name,'.$id,
             'destination_id' => 'required',
             'category_destination_id' => 'required',
         ]);
@@ -328,7 +328,6 @@ class PackagesController extends Controller
             $package->mobile_meta_description = $request->mobile_meta_description;
             $package->map_title = $request->map_title;
             $package->circuit_title = $request->circuit_title;
-
 
             $banner = $request->file('thumbnail');
             if ($banner) {
@@ -434,6 +433,7 @@ class PackagesController extends Controller
             ->select('country_package.*', 'packages.name as pname', 'countries.name as cname')
             ->where('package_id', $package_id)
             ->get();
+
         return view('admin.packages.country_package.index', compact('package_id', 'packages'));
     }
 
@@ -441,9 +441,9 @@ class PackagesController extends Controller
     {
         $package_id = $request->package_id;
         $countries = Country::all();
+
         return view('admin.packages.country_package.create', compact('package_id', 'countries'));
     }
-
 
     public function countryPackageStore(Request $request)
     {
@@ -476,17 +476,17 @@ class PackagesController extends Controller
             'alert-type' => 'success',
             'messege' => 'updated succesfully',
         ];
+
         return redirect()->back()->with($notification);
     }
 
-
     public function countryPackageEdit($id)
     {
-        $package =  DB::table('country_package')->where('id', $id)->first();
+        $package = DB::table('country_package')->where('id', $id)->first();
         $countries = Country::all();
+
         return view('admin.packages.country_package.edit', compact('package', 'countries'));
     }
-
 
     public function countryPackagupdate(Request $request)
     {
@@ -514,6 +514,7 @@ class PackagesController extends Controller
             'alert-type' => 'success',
             'messege' => 'updated succesfully',
         ];
+
         return redirect()->back()->with($notification);
     }
 }

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\MainSlider;
-use File;
 use App\Http\Traits\status;
+use App\Models\MainSlider;
+use Illuminate\Http\Request;
 
 class BannerController extends Controller
 {
@@ -15,9 +14,9 @@ class BannerController extends Controller
     public function index()
     {
         $banners = MainSlider::all();
+
         return view('admin.banner.index', compact('banners'));
     }
-
 
     public function create()
     {
@@ -31,7 +30,6 @@ class BannerController extends Controller
             'image' => 'required',
             'title' => 'required',
             'type' => 'required',
-
 
         ]);
         $file = $request->file('image');
@@ -47,29 +45,27 @@ class BannerController extends Controller
         $main_sliders->link = $request->link;
 
         $main_sliders->save();
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Banner Added',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
-
-
 
     public function edit($id)
     {
         $banner = MainSlider::find($id);
+
         return view('admin.banner.edit', compact('banner'));
     }
-
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
             'type' => 'required',
-
 
         ]);
         $main_sliders = MainSlider::find($id);
@@ -90,17 +86,18 @@ class BannerController extends Controller
         $main_sliders->link = $request->link;
 
         $main_sliders->save();
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Main Banner updated',
 
-        );
+        ];
+
         return redirect()->route('admin.banners.index')->with($notification);
     }
 
     public function show()
     {
-        # code...
+        // code...
     }
 
     public function destroy($id)
@@ -109,17 +106,17 @@ class BannerController extends Controller
             $main_sliders = MainSlider::findOrFail($id);
             $this->deleteFile($main_sliders->image);
             $main_sliders->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully Deleted Banner.',
 
-            );
+            ];
         } catch (\Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete  Banner.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.banners.index')->with($notification);

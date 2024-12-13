@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin\ImportantLinks;
 
-use App\Models\ImportantLink;
-
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ImportantLink;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 
 class ImportantLinksController extends Controller
 {
-    private $status_message = NULL;
-    private $alert_type = "success";
+    private $status_message = null;
+
+    private $alert_type = 'success';
 
     /**
      * Display a listing of the resource.
@@ -39,7 +38,6 @@ class ImportantLinksController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,10 +45,10 @@ class ImportantLinksController extends Controller
         try {
             ImportantLink::create($request->all());
 
-            $this->status_message = "Successfully created important link.";
+            $this->status_message = 'Successfully created important link.';
         } catch (QueryException $e) {
-            $this->status_message = "Failed to create important link, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to create important link, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->route('admin.important-links.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
@@ -83,7 +81,6 @@ class ImportantLinksController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -92,10 +89,10 @@ class ImportantLinksController extends Controller
         try {
             ImportantLink::findOrFail($id)->update($request->all());
 
-            $this->status_message = "Successfully updated important link.";
+            $this->status_message = 'Successfully updated important link.';
         } catch (QueryException $e) {
-            $this->status_message = "Failed to update important link, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to update important link, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->route('admin.important-links.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
@@ -112,11 +109,12 @@ class ImportantLinksController extends Controller
         try {
             ImportantLink::destroy($id);
 
-            $this->status_message = "Successfully deleted important link.";
+            $this->status_message = 'Successfully deleted important link.';
         } catch (QueryException $e) {
-            $this->status_message = "Failed to delete important link, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to delete important link, Try again.';
+            $this->alert_type = 'danger';
         }
+
         return redirect()->route('admin.important-links.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
     }
 }

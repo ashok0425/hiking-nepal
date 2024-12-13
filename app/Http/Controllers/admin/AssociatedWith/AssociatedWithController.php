@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin\AssociatedWith;
 
-use App\Models\AssociatedWith;
-
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\AssociatedWith;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 
 class AssociatedWithController extends Controller
 {
-    private $status_message = NULL;
-    private $alert_type = "success";
+    private $status_message = null;
+
+    private $alert_type = 'success';
 
     /**
      * Display a listing of the resource.
@@ -39,7 +38,6 @@ class AssociatedWithController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,10 +45,10 @@ class AssociatedWithController extends Controller
         try {
             AssociatedWith::create($request->all());
 
-            $this->status_message = "Successfully created associated with link.";
+            $this->status_message = 'Successfully created associated with link.';
         } catch (QueryException $e) {
-            $this->status_message = "Failed to create associated with link, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to create associated with link, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->route('admin.associated-with.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
@@ -83,7 +81,6 @@ class AssociatedWithController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -92,10 +89,10 @@ class AssociatedWithController extends Controller
         try {
             AssociatedWith::findOrFail($id)->update($request->all());
 
-            $this->status_message = "Sucessfully updated associated with.";
+            $this->status_message = 'Sucessfully updated associated with.';
         } catch (QueryException $e) {
-            $this->status_message = "Failed to update associated with, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to update associated with, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->route('admin.associated-with.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
@@ -112,10 +109,10 @@ class AssociatedWithController extends Controller
         try {
             AssociatedWith::destroy($id);
 
-            $this->status_message = "Successfully deleted associated with.";
+            $this->status_message = 'Successfully deleted associated with.';
         } catch (QueryException $e) {
-            $this->status_message = "Failed to delete associated with, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to delete associated with, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->route('admin.associated-with.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);

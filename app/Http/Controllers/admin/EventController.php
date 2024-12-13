@@ -3,20 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Event;
-use Illuminate\Http\Request;
 use App\Http\Traits\status;
+use App\Models\Event;
 use File;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class EventController extends Controller
 {
-
     // Note :: active,deactive,destroy,method are place in Traits/status file
 
-
     use status;
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +24,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::orderBy('id', 'desc')->get();
+
         return view('admin.event.index', compact('events'));
     }
 
@@ -42,11 +42,8 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
     public function store(Request $request)
     {
         $request->validate([
@@ -54,9 +51,6 @@ class EventController extends Controller
             'date' => 'required',
             'end_date' => 'required',
             'content' => 'required',
-
-
-
 
         ]);
         try {
@@ -67,8 +61,6 @@ class EventController extends Controller
             if ($file) {
                 $blog['image'] = $this->uploadFile('upload/event/', $file);
             }
-
-
 
             $cover = $request->file('cover');
             if ($cover) {
@@ -82,18 +74,20 @@ class EventController extends Controller
             $blog['content'] = $request->content;
             DB::table('events')->insert($blog);
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Event  Added',
 
-            );
+            ];
+
             return redirect()->route('admin.events.index')->with($notification);
         } catch (\Throwable $th) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Something went wrong. Please try again later.',
 
-            );
+            ];
+
             return redirect()->back()->with($notification);
         }
     }
@@ -101,9 +95,9 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         $event = Event::find($event->id);
+
         return view('admin.event.edit', compact('event'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -139,24 +133,23 @@ class EventController extends Controller
             $blog['content'] = $request->content;
             DB::table('events')->where('id', $id)->update($blog);
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Event  updated',
 
-            );
+            ];
+
             return redirect()->route('admin.events.index')->with($notification);
         } catch (\Throwable $th) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Something went wrong. Please try again later.',
 
-            );
+            ];
+
             return redirect()->back()->with($notification);
         }
     }
-
-
-
 
     public function destroy($id)
     {
@@ -165,17 +158,17 @@ class EventController extends Controller
             $this->deleteFile($destination->image);
             $this->deleteFile($destination->cover);
             $destination->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully deleted .',
 
-            );
+            ];
         } catch (Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete , Try again.',
 
-            );
+            ];
         }
 
         return redirect()->back()->with($notification);

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-     protected $fillable = ['content'];
+    protected $fillable = ['content'];
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Country;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class CountryController extends Controller
 {
@@ -16,6 +16,7 @@ class CountryController extends Controller
     public function index()
     {
         $countries = Country::all();
+
         return view('admin.country.index', compact('countries'));
     }
 
@@ -32,7 +33,6 @@ class CountryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,18 +41,18 @@ class CountryController extends Controller
         $country->name = $request->name;
         $country->slug = $request->slug;
         $country->save();
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Successfully created.',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function show(Country $country)
@@ -63,7 +63,6 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function edit(Country $country)
@@ -74,8 +73,6 @@ class CountryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Country $country)
@@ -83,18 +80,18 @@ class CountryController extends Controller
         $country->name = $request->name;
         $country->slug = $request->slug;
         $country->save();
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Successfully update .',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
     public function destroy(Country $country)

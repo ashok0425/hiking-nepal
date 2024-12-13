@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PackageFeatrured extends Model
 {
-    protected $table="package_featured";
+    protected $table = 'package_featured';
 }

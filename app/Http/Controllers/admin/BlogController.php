@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use Str;
-use File;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Throwable;
@@ -26,33 +24,33 @@ class BlogController extends Controller
 
             return FacadesDataTables::of($blogs)
                 ->editColumn('guid', function ($row) {
-                    return '<img src="' . getImageurl($row->guid) . '" width="80">';
+                    return '<img src="'.getImageurl($row->guid).'" width="80">';
                 })
 
                 ->editColumn('status', function ($row) {
-                    return  $row->post_status == "publish" ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Deactive</span>';
+                    return $row->post_status == 'publish' ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Deactive</span>';
                 })
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="' . route('admin.blogs.edit', $row->ID) . '" class="btn btn-primary btn-sm pull-left m-r-10"><i class="fa fa-edit"></i>
+                    $html = '<a href="'.route('admin.blogs.edit', $row->ID).'" class="btn btn-primary btn-sm pull-left m-r-10"><i class="fa fa-edit"></i>
                 </a>
 
-                <a href="' . route('admin.blogs.delete', $row->ID) . '" class="btn btn-danger btn-sm delete_row" id="" ><i class="fa fa-trash"></i>
+                <a href="'.route('admin.blogs.delete', $row->ID).'" class="btn btn-danger btn-sm delete_row" id="" ><i class="fa fa-trash"></i>
                 </a>';
 
                     if ($row->status == 1) {
-                        $html .= '<a href="' . route('admin.blog.deactive', ['id' => $row->ID, 'table' => 'blogs']) . '" class="btn btn-primary"><i class="fas fa-thumbs-down"></i></a>';
+                        $html .= '<a href="'.route('admin.blog.deactive', ['id' => $row->ID, 'table' => 'blogs']).'" class="btn btn-primary"><i class="fas fa-thumbs-down"></i></a>';
                     } else {
 
-                        $html .= ' <a href="' . route('admin.blog.active', ['id' => $row->ID, 'table' => 'blogs']) . '" class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a>';
+                        $html .= ' <a href="'.route('admin.blog.active', ['id' => $row->ID, 'table' => 'blogs']).'" class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a>';
                     }
+
                     return $html;
                 })->rawColumns(['action', 'status', 'guid'])
-                ->make(true);;
+                ->make(true);
         }
+
         return view('admin.blog.index');
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -68,10 +66,8 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
         $url = $this->toAscii($request->url);
@@ -107,14 +103,13 @@ class BlogController extends Controller
         $blog['post_content'] = $request->content;
         DB::table('blogs')->insert($blog);
         Cache::forget('blogs');
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Blog  updated',
 
-        );
+        ];
+
         return redirect()->route('admin.blogs.index')->with($notification);
-
-
 
         // } catch (\Throwable $th) {
         //     $notification=array(
@@ -131,9 +126,9 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         $blog = Blog::find($blog->ID);
+
         return view('admin.blog.edit', compact('blog'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -169,14 +164,13 @@ class BlogController extends Controller
         DB::table('blogs')->where('ID', $id)->update($blog);
         Cache::forget('blogs');
 
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Blog  updated',
 
-        );
+        ];
+
         return redirect()->route('admin.blogs.index')->with($notification);
-
-
 
         // } catch (\Throwable $th) {
         //     $notification=array(
@@ -194,42 +188,33 @@ class BlogController extends Controller
     {
         try {
             DB::table('blogs')->where('ID', $id)->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully deleted .',
 
-            );
+            ];
         } catch (Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete , Try again.',
 
-            );
+            ];
         }
 
         return redirect()->back()->with($notification);
     }
-
-
-
-
-
-
-
-
-
-
 
     protected function active($id, $table)
     {
         DB::table($table)->where('ID', $id)->update([
             'post_status' => 'publish',
         ]);
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Status: Activated.',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
 
@@ -238,15 +223,14 @@ class BlogController extends Controller
         DB::table($table)->where('ID', $id)->update([
             'post_status' => 'disable',
         ]);
-        $notification = array(
+        $notification = [
             'alert-type' => 'info',
             'messege' => 'Status: Deactivated',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
-
-
 
     private function toAscii($str)
     {
@@ -259,11 +243,11 @@ class BlogController extends Controller
     public function uploadimage(Request $request)
     {
         $request->validate([
-            'upload' => 'required|image'
+            'upload' => 'required|image',
         ]);
 
         $path = $request->file('upload')->store('uploads', ['disk' => 's3']);
 
-        return ["url" => getFilePath($path)];
+        return ['url' => getFilePath($path)];
     }
 }

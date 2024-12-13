@@ -3,20 +3,14 @@
 namespace App\Http\Controllers\Admin\Testimonials;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Models\Package;
 use App\Models\Testimonial;
-use App\Models\PackageTestimonial;
-
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use File;
 
 class TestimonialsController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +19,7 @@ class TestimonialsController extends Controller
     public function index()
     {
         $testimonials = Testimonial::orderBy('created_at', 'desc')->get();
+
         return view('admin.testimonials.index', compact('testimonials'));
     }
 
@@ -36,20 +31,20 @@ class TestimonialsController extends Controller
     public function create()
     {
         $packages = Package::where('status', 1)->get();
+
         return view('admin.testimonials.create', compact('packages'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         try {
             DB::beginTransaction();
-            $testimonials = new  Testimonial;
+            $testimonials = new Testimonial;
             $testimonials->name = $request->name;
             $testimonials->title = $request->title;
             $testimonials->content = $request->content;
@@ -75,18 +70,18 @@ class TestimonialsController extends Controller
 
             DB::commit();
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully Added Testimonial.',
 
-            );
+            ];
         } catch (QueryException $qE) {
             DB::rollBack();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to Added Testimonial.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.testimonials.index')->with($notification);
@@ -122,7 +117,6 @@ class TestimonialsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -157,18 +151,18 @@ class TestimonialsController extends Controller
             }
 
             DB::commit();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully Updated Testimonial.',
 
-            );
+            ];
         } catch (QueryException $qE) {
             DB::rollBack();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to updated Testimonial.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.testimonials.index')->with($notification);
@@ -188,17 +182,17 @@ class TestimonialsController extends Controller
             $this->deleteFile($testimonial->image);
 
             $testimonial->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully Deleted Testimonial.',
 
-            );
+            ];
         } catch (QueryException $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Failed to delete  Testimonial.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.testimonials.index')->with($notification);

@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateAdminsTable extends Migration
@@ -25,7 +24,6 @@ class CreateAdminsTable extends Migration
             $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
-
 
     }
 

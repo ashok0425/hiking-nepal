@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Models\Faq;
 use App\Models\Package;
 use Illuminate\Http\Request;
@@ -11,7 +10,8 @@ use Illuminate\Http\Request;
 class FaqsController extends Controller
 {
     public $status_message = null;
-    public $alert_type = "success";
+
+    public $alert_type = 'success';
 
     /**
      * Display a listing of the resource.
@@ -21,6 +21,7 @@ class FaqsController extends Controller
     public function index()
     {
         $faqs = Faq::orderBy('created_at', 'desc')->get();
+
         return view('admin.faq.index', compact('faqs'));
     }
 
@@ -39,7 +40,6 @@ class FaqsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -56,19 +56,19 @@ class FaqsController extends Controller
 
             $faq->save();
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'FAQ Added Successfully',
 
-            );
+            ];
         } catch (\Throwable $th) {
             //throw $th;
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to Add FAQ, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.faqs.index')->with($notification);
@@ -95,13 +95,13 @@ class FaqsController extends Controller
     {
         $faq = Faq::findOrFail($id);
         $packages = Package::where('status', 1)->orderBy('name')->get();
+
         return view('admin.faq.edit', compact('faq', 'packages'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -116,17 +116,17 @@ class FaqsController extends Controller
             $faq->status = 1;
             $faq->show_on_home_page = $request->show_on_home_page ?? 0;
             $faq->save();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Faq updated',
 
-            );
+            ];
         } catch (\Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to pdate FAQ, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.faqs.index')->with($notification);
@@ -145,18 +145,19 @@ class FaqsController extends Controller
             $faq = Faq::findOrFail($id);
             // $faq->packages()->detach();
             $faq->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => ' FAQ Deleted',
 
-            );
+            ];
         } catch (\Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete FAQ, Try again.',
 
-            );
+            ];
         }
+
         return redirect()->route('admin.faqs.index')->with($notification);
     }
 }

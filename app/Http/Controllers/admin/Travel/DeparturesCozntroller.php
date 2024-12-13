@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Models\Departure;
 use App\Models\Package;
 use Carbon\Carbon;
@@ -13,9 +12,9 @@ use Illuminate\Support\Facades\DB;
 
 class DeparturesController extends Controller
 {
-    private $status_message = NULL;
-    private $alert_type = "success";
+    private $status_message = null;
 
+    private $alert_type = 'success';
 
     public function index(Request $request)
     {
@@ -29,6 +28,7 @@ class DeparturesController extends Controller
             $departures = Departure::where('start_date', '>=', Carbon::today())->orderBy('start_date')->paginate(500);
             // $departures=Departure::paginate(500);
         }
+
         return view('admin.travel.departures.index', compact('departures', 'packages'));
     }
 
@@ -48,7 +48,6 @@ class DeparturesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -58,12 +57,13 @@ class DeparturesController extends Controller
             DB::beginTransaction();
             $departure = Departure::create($request->all());
             DB::commit();
-            $this->status_message = "Successfully created departure.";
+            $this->status_message = 'Successfully created departure.';
         } catch (QueryException $e) {
             DB::rollback();
+
             return $e->getMessage();
-            $this->status_message = "Failed to create departure, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to create departure, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->route('admin.departures.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
@@ -102,7 +102,6 @@ class DeparturesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -113,12 +112,13 @@ class DeparturesController extends Controller
             $departure = Departure::findOrFail($id);
             $departure->update($request->all());
             DB::commit();
-            $this->status_message = "Successfully created departure.";
+            $this->status_message = 'Successfully created departure.';
         } catch (QueryException $e) {
             DB::rollback();
+
             return $e->getMessage();
-            $this->status_message = "Failed to update departure, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to update departure, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->route('admin.departures.index')->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);
@@ -138,10 +138,10 @@ class DeparturesController extends Controller
             $departure = Departure::findOrFail($id);
             $departure->delete();
 
-            $this->status_message = "Successfully deleted departures.";
+            $this->status_message = 'Successfully deleted departures.';
         } catch (QueryException $e) {
-            $this->status_message = "Failed to delete departures, Try again.";
-            $this->alert_type = "danger";
+            $this->status_message = 'Failed to delete departures, Try again.';
+            $this->alert_type = 'danger';
         }
 
         return redirect()->back()->with(['status_message' => $this->status_message, 'alert_type' => $this->alert_type]);

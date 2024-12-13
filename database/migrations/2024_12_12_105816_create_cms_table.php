@@ -4,27 +4,28 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create("cms", function (Blueprint $table) {
+        Schema::create('cms', function (Blueprint $table) {
             $table->id();
-            $table->string("title", 255);
-            $table->unsignedInteger("parent_id");
-            $table->longText("content");
-            $table->string("url", 255);
-            $table->tinyInteger("status");
-            $table->tinyInteger("main_or_sub");
-            $table->tinyInteger("position");
-            $table->tinyInteger("default")->default(0)->nullable();
-            $table->string("image", 255)->nullable();
-            $table->tinyInteger("hide_header")->default(0);
-            $table->string("meta_title", 255)->nullable();
-            $table->text("meta_description")->nullable();
-            $table->string("keyword", 255)->nullable();
+            $table->string('title', 255);
+            $table->unsignedInteger('parent_id');
+            $table->longText('content');
+            $table->string('url', 255);
+            $table->tinyInteger('status');
+            $table->tinyInteger('main_or_sub');
+            $table->tinyInteger('position');
+            $table->tinyInteger('default')->default(0)->nullable();
+            $table->string('image', 255)->nullable();
+            $table->tinyInteger('hide_header')->default(0);
+            $table->string('meta_title', 255)->nullable();
+            $table->text('meta_description')->nullable();
+            $table->string('keyword', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists("cms");
+        Schema::dropIfExists('cms');
     }
 };

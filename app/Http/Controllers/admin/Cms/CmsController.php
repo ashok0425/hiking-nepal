@@ -3,19 +3,12 @@
 namespace App\Http\Controllers\Admin\Cms;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Models\Cms;
-use App\Models\ImageUpload;
-use DB;
-use File;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 
 class CmsController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +17,7 @@ class CmsController extends Controller
     public function index()
     {
         $cms_pages = Cms::orderBy('id', 'desc')->get();
+
         return view('admin.cms.index', compact('cms_pages'));
     }
 
@@ -35,13 +29,13 @@ class CmsController extends Controller
     public function create()
     {
         $maincms = Cms::where('main_or_sub', 1)->get();
+
         return view('admin.cms.create', compact('maincms'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,7 +43,7 @@ class CmsController extends Controller
         $url = $this->toAscii($request->title);
 
         $this->validate($request, [
-            'title' => 'required|min:3|max:255|unique:cms'
+            'title' => 'required|min:3|max:255|unique:cms',
         ]);
 
         try {
@@ -70,18 +64,18 @@ class CmsController extends Controller
                 $cms->image = $this->uploadFile('upload/cms', $file);
             }
             $cms->save();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully  CMS page created.',
 
-            );
+            ];
         } catch (QueryException $e) {
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to create cms page, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.cms.index')->with($notification);
@@ -115,7 +109,6 @@ class CmsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -124,7 +117,7 @@ class CmsController extends Controller
         $url = $this->toAscii($request->title);
 
         $this->validate($request, [
-            'title' => 'required|min:3|max:255|unique:cms,title,' . $id
+            'title' => 'required|min:3|max:255|unique:cms,title,'.$id,
         ]);
 
         try {
@@ -147,18 +140,18 @@ class CmsController extends Controller
             }
             $cms->save();
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully updated CMS page .',
 
-            );
+            ];
         } catch (QueryException $e) {
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to update CMS page ',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.cms.index')->with($notification);
@@ -175,16 +168,16 @@ class CmsController extends Controller
         try {
             $cms = Cms::findOrFail($id);
             $cms->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully deleted cms page.',
-            );
+            ];
         } catch (QueryException $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to create cms page, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.cms.index')->with($notification);

@@ -3,24 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-// use App\Http\Traits\status;
 use App\Models\Permission;
+// use App\Http\Traits\status;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 
 class RoleController extends Controller
 {
-
     // Note :: active,deactive,destroy,method are place in Traits/status file
 
-
     // use status;
-
 
     public function index()
     {
         $role = DB::table('permissions')->orderBy('id', 'desc')->get();
+
         return view('admin.role.index', compact('role'));
     }
 
@@ -29,11 +26,10 @@ class RoleController extends Controller
         return view('admin.role.create');
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
-            'role' => 'required'
+            'role' => 'required',
         ]);
 
         $role = new Permission;
@@ -59,25 +55,26 @@ class RoleController extends Controller
 
         $role->save();
 
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Role permission Created',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
-
 
     public function edit($id)
     {
         $role = Permission::find($id);
+
         return view('admin.role.edit', compact('role'));
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'role' => 'required'
+            'role' => 'required',
         ]);
 
         $role = Permission::find($request->id);
@@ -103,11 +100,12 @@ class RoleController extends Controller
         $role->addvertisment = $request->add;
         $role->save();
 
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'Role permission Updated',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
 }

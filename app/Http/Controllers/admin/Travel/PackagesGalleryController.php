@@ -3,16 +3,14 @@
 namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Models\Faq;
-use App\Models\Package;
 use App\Models\PackageImage;
 use Illuminate\Http\Request;
 
 class PackagesGalleryController extends Controller
 {
     public $status_message = null;
-    public $alert_type = "success";
+
+    public $alert_type = 'success';
 
     /**
      * Display a listing of the resource.
@@ -22,6 +20,7 @@ class PackagesGalleryController extends Controller
     public function index()
     {
         $galleries = PackageImage::orderBy('created_at', 'desc')->where('package_id', request()->query('package_id'))->get();
+
         return view('admin.gallery.index', compact('galleries'));
     }
 
@@ -38,7 +37,6 @@ class PackagesGalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -55,19 +53,19 @@ class PackagesGalleryController extends Controller
             $gallery->image = $path;
             $gallery->save();
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Image Added Successfully',
 
-            );
+            ];
         } catch (\Throwable $th) {
             //throw $th;
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to Add Image, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->back()->with($notification);
@@ -93,13 +91,13 @@ class PackagesGalleryController extends Controller
     public function edit($id)
     {
         $gallery = PackageImage::findorFail($id);
+
         return view('admin.gallery.edit', compact('gallery'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -114,17 +112,17 @@ class PackagesGalleryController extends Controller
             $gallery = PackageImage::findorFail($request->id);
             $gallery->image = $path ?? $gallery->image;
             $gallery->save();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Image updated',
 
-            );
+            ];
         } catch (\Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to update Image, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->back()->with($notification);
@@ -143,18 +141,19 @@ class PackagesGalleryController extends Controller
             $faq = PackageImage::findOrFail($id);
             // $faq->packages()->detach();
             $faq->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => ' Image Deleted',
 
-            );
+            ];
         } catch (\Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete FAQ, Try again.',
 
-            );
+            ];
         }
+
         return redirect()->back()->with($notification);
     }
 }

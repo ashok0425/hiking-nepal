@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Travel;
 
-use App\Models\Category;
-use App\Models\CategoryDestination;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryPlace;
 use App\Models\Destination;
-use Intervention\Image\Facades\Image;
 use Illuminate\Database\QueryException;
-use File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriesPlacesController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -37,13 +31,13 @@ class CategoriesPlacesController extends Controller
     public function create()
     {
         $destinations = Destination::all();
+
         return view('admin.place.create', compact('destinations'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,7 +45,7 @@ class CategoriesPlacesController extends Controller
         $url = $this->toAscii($request->name);
         $request['url'] = $url;
         $this->validate($request, [
-            'name' => 'required|min:3|max:255|unique:categories_destinations'
+            'name' => 'required|min:3|max:255|unique:categories_destinations',
         ]);
 
         try {
@@ -74,19 +68,19 @@ class CategoriesPlacesController extends Controller
             $category->save();
 
             DB::commit();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully created category.',
 
-            );
+            ];
         } catch (QueryException $e) {
             return $e->getMessage();
             DB::rollback();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to create category, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.categories-places.index')->with($notification);
@@ -120,7 +114,6 @@ class CategoriesPlacesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -134,7 +127,7 @@ class CategoriesPlacesController extends Controller
         ]);
         try {
             // DB::beginTransaction();
-            $category =  CategoryPlace::find($id);
+            $category = CategoryPlace::find($id);
             $category->name = $request->name;
             $category->status = 1;
             $category->details = $request->details;
@@ -152,20 +145,21 @@ class CategoriesPlacesController extends Controller
             $category->save();
 
             // DB::commit();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully updated category.',
 
-            );
+            ];
         } catch (QueryException $e) {
             return $e->getMessage();
             DB::rollback();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to updated category, Try again.',
 
-            );
+            ];
         }
+
         return redirect()->route('admin.categories-places.index')->with($notification);
     }
 
@@ -181,23 +175,21 @@ class CategoriesPlacesController extends Controller
             $destination = CategoryPlace::findOrFail($id);
             $this->deleteFile($destination->image);
             $destination->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully deleted destinations.',
 
-            );
+            ];
         } catch (QueryException $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete destination, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->back()->with($notification);
     }
-
-
 
     private function toAscii($str)
     {

@@ -3,18 +3,13 @@
 namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Models\AllImage;
 use App\Models\Destination;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
-use File;
+use Illuminate\Support\Facades\DB;
 
 class DestinationsController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -23,6 +18,7 @@ class DestinationsController extends Controller
     public function index()
     {
         $data['destinations'] = Destination::orderBy('id', 'desc')->get();
+
         return view('admin.destinations.index', $data);
     }
 
@@ -39,7 +35,6 @@ class DestinationsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +42,7 @@ class DestinationsController extends Controller
         $url = $this->toAscii($request->name);
         $request['url'] = $url;
         $this->validate($request, [
-            'name' => 'required|min:3|max:255|unique:destinations'
+            'name' => 'required|min:3|max:255|unique:destinations',
         ]);
         try {
             DB::beginTransaction();
@@ -66,20 +61,21 @@ class DestinationsController extends Controller
             }
             $destination->save();
             DB::commit();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully created destination.',
 
-            );
+            ];
         } catch (QueryException $e) {
             DB::rollback();
+
             return $e->getMessage();
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to create destination, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.destinations.index')->with($notification);
@@ -105,13 +101,13 @@ class DestinationsController extends Controller
     public function edit($id)
     {
         $data['destination'] = Destination::findOrFail($id);
+
         return view('admin.destinations.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -121,7 +117,7 @@ class DestinationsController extends Controller
         $url = $this->toAscii($request->name);
         $request['url'] = $url;
         $this->validate($request, [
-            'name' => 'required|min:3|max:255|'
+            'name' => 'required|min:3|max:255|',
         ]);
         try {
             DB::beginTransaction();
@@ -141,20 +137,21 @@ class DestinationsController extends Controller
             }
             $destination->save();
             DB::commit();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully created destination.',
 
-            );
+            ];
         } catch (QueryException $e) {
             DB::rollback();
+
             return $e->getMessage();
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to create destination, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.destinations.index')->with($notification);
@@ -173,22 +170,21 @@ class DestinationsController extends Controller
             $this->deleteFile($destination->image);
 
             $destination->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully deleted destinations.',
 
-            );
+            ];
         } catch (QueryException $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete destination, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->back()->with($notification);
     }
-
 
     private function toAscii($str)
     {

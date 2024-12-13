@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Main;
 
-use App\Models\SectionControl;
-
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\SectionControl;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 
 class SectionControlController extends Controller
 {
-    private $status_message = NULL;
-    private $alert_type = "success";
+    private $status_message = null;
+
+    private $alert_type = 'success';
 
     /**
      * Display a listing of the resource.
@@ -39,7 +38,6 @@ class SectionControlController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -74,7 +72,6 @@ class SectionControlController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -87,17 +84,17 @@ class SectionControlController extends Controller
             $section->details = $request->details;
             $section->save();
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Successfully updated Section Control.',
 
-            );
+            ];
         } catch (QueryException $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Failed to update Section Control',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.section-control.index')->with($notification);

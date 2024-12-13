@@ -9,5 +9,5 @@ class PackageImage extends Model
 {
     use HasFactory;
 
-    protected $table='packages_images';
+    protected $table = 'packages_images';
 }

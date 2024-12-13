@@ -3,30 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Traits\status;
 use App\Models\Contact;
 use App\Models\Contactmail;
 use App\Models\Email;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-
     // Note :: active,deactive,destroy,method are place in Traits/status file
-
 
     use status;
 
     public function index()
     {
         $contact = DB::table('contacts')->orderBy('id', 'desc')->get();
+
         return view('admin.contact.index', compact('contact'));
     }
+
     public function create($id) {}
-
-
 
     public function store(Request $request)
     {
@@ -40,10 +38,10 @@ class ContactController extends Controller
             $file = $request->file('file');
 
             if ($file) {
-                $fname = rand() . 'email.' . $file->getClientOriginalExtension();
-                $mail->image = 'upload/email/vendor/' . $fname;
+                $fname = rand().'email.'.$file->getClientOriginalExtension();
+                $mail->image = 'upload/email/vendor/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move(public_path() . '/upload/email/vendor/', $fname);
+                $file->move(public_path().'/upload/email/vendor/', $fname);
             }
             $mail->save();
             $emailId = $mail->id;
@@ -59,7 +57,6 @@ class ContactController extends Controller
                 'title' => $request->title,
                 'emailId' => $emailId,
 
-
             ];
 
             // $detail=$request->detail;
@@ -69,18 +66,20 @@ class ContactController extends Controller
                     ->subject($set['title']);
             });
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Email Sent successfully',
 
-            );
+            ];
+
             return redirect()->route('admin.contacts.index')->with($notification);
         } catch (\Throwable $th) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Something went wrong.Try again later.',
 
-            );
+            ];
+
             return redirect()->route('admin.contact.index')->with($notification);
         }
     }
@@ -88,6 +87,7 @@ class ContactController extends Controller
     public function edit($id)
     {
         $con = DB::table('contacts')->where('id', $id)->first();
+
         return view('admin.contact.create', compact('con'));
     }
 }

@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Models\Departure;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
 class DeparturesController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +17,7 @@ class DeparturesController extends Controller
     public function index()
     {
         $departures = Departure::orderBy('created_at', 'desc')->paginate(500);
+
         return view('admin.departure.index', compact('departures'));
     }
 
@@ -37,7 +36,6 @@ class DeparturesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -57,20 +55,19 @@ class DeparturesController extends Controller
                 $Departure->save();
             }
 
-
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Departure Added Successfully',
 
-            );
+            ];
         } catch (\Throwable $th) {
             //throw $th;
 
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to Add Departure, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.departures.index')->with($notification);
@@ -97,13 +94,13 @@ class DeparturesController extends Controller
     {
         $departure = Departure::findOrFail($id);
         $packages = Package::where('status', 1)->orderBy('name')->get();
+
         return view('admin.departure.edit', compact('departure', 'packages'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -115,16 +112,16 @@ class DeparturesController extends Controller
             $Departure->start_date = $request->start_date;
             $Departure->package_id = $request->package_id;
             $Departure->save();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => 'Departure updated',
-            );
+            ];
         } catch (\Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to update Departure, Try again.',
 
-            );
+            ];
         }
 
         return redirect()->route('admin.departures.index')->with($notification);
@@ -143,17 +140,18 @@ class DeparturesController extends Controller
             $Departure = Departure::findOrFail($id);
             // $Departure->packages()->detach();
             $Departure->delete();
-            $notification = array(
+            $notification = [
                 'alert-type' => 'success',
                 'messege' => ' Departure Deleted',
 
-            );
+            ];
         } catch (\Throwable $e) {
-            $notification = array(
+            $notification = [
                 'alert-type' => 'error',
                 'messege' => 'Failed to delete Departure, Try again.',
-            );
+            ];
         }
+
         return redirect()->route('admin.departures.index')->with($notification);
     }
 }

@@ -3,25 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Banner;
-use App\Models\Page;
-use App\Models\Website;
-use File;
 use App\Http\Traits\status;
-use App\Models\Payment_type;
+use App\Models\Website;
+use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
     use status;
 
-
-
-
-
     public function index()
     {
         $website = Website::find(1);
+
         return view('admin.setting.website', compact('website'));
     }
 
@@ -72,11 +65,12 @@ class SettingController extends Controller
         $web->copy_right = $request->copy_right;
 
         $web->save();
-        $notification = array(
+        $notification = [
             'alert-type' => 'success',
             'messege' => 'website setting updated',
 
-        );
+        ];
+
         return redirect()->back()->with($notification);
     }
 }

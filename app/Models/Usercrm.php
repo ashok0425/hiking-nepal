@@ -3,13 +3,15 @@
 namespace App\Models;
 
 // use App\Traits\CustomUserTrait;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Usercrm extends Authenticatable
 {
     protected $connection = 'mysql2';
+
     protected $table = 'users';
+
     use Notifiable;
     // use CustomUserTrait;
 
