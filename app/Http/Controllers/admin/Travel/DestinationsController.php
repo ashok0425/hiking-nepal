@@ -7,6 +7,7 @@ use App\Models\Destination;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DestinationsController extends Controller
 {
@@ -57,7 +58,7 @@ class DestinationsController extends Controller
             $file = $request->file('file');
 
             if ($file) {
-                $destination->image = $this->uploadFile('upload/destination', $file);
+                $destination->image = $request->file('file')->store('upload/destination', ['disk' => 'public']);
             }
             $destination->save();
             DB::commit();
@@ -131,9 +132,8 @@ class DestinationsController extends Controller
             $destination->meta_description = $request->meta_description;
             $file = $request->file('file');
             if ($file) {
-
-                $this->deleteFile($destination->image);
-                $destination->image = $this->uploadFile('upload/destination', $file);
+                Storage::disk('public')->delete($destination->image);
+                $destination->image = $request->file('file')->store('upload/destination', ['disk' => 'public']);
             }
             $destination->save();
             DB::commit();
