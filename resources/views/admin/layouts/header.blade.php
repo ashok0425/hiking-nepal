@@ -54,9 +54,12 @@
               <i class="fas fa-lock mr-2"></i> Change password
             </a>
             <div class="dropdown-divider"></div>
-            <a href="{{ route('logout') }}" class="dropdown-item">
-              <i class="fas fa-sign-out-alt mr-2"></i> Logout
-            </a>
+            <form action="{{ route('logout') }}" method="POST" class="dropdown-item">
+              @csrf
+              <button type="submit" class="btn btn-link p-0" style="color: inherit; text-decoration: inherit;">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+              </button>
+            </form>
           
           </div>
         </li>
