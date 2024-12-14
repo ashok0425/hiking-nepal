@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,12 +12,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function uploadFile($path, $file)
+    public function uploadFile($path, UploadedFile $file)
     {
-        $extension = $file->getClientOriginalExtension();
-        $filename = uniqid() . time() . '.' . $extension;
-        $dd = $file->storeAs('public/upload/', $filename, 'public');
-        return 'upload/' . $filename;
+        return $file->store($path, ['disk' => 'public']);
     }
 
     public function deleteFile($file)
