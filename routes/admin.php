@@ -168,10 +168,10 @@ Route::get('contacts-history', 'ContactController@emailHistory')->name(
 );
 
 // Banner
-Route::resource('/banners', 'BannerController');
-Route::get('banners/delete/{id}', 'BannerController@destroy')->name(
-    'banners.delete'
-);
+// Route::resource('/banners', 'BannerController');
+// Route::get('banners/delete/{id}', 'BannerController@destroy')->name(
+//     'banners.delete'
+// );
 
 // Setting
 Route::resource('/websites', 'SettingController');
