@@ -20,36 +20,59 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $blogs = Blog::orderBy('ID', 'desc')->select('guid', 'ID', 'post_title', 'post_status')->get();
+            $blogs = Blog::orderBy("ID", "desc")
+                ->select("guid", "ID", "post_title", "post_status")
+                ->get();
 
             return FacadesDataTables::of($blogs)
-                ->editColumn('guid', function ($row) {
-                    return '<img src="'.getImageurl($row->guid).'" width="80">';
+                ->editColumn("guid", function ($row) {
+                    return '<img src="' .
+                        getImageurl($row->guid) .
+                        '" width="80">';
                 })
 
-                ->editColumn('status', function ($row) {
-                    return $row->post_status == 'publish' ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Deactive</span>';
+                ->editColumn("status", function ($row) {
+                    return $row->post_status == "publish"
+                        ? '<span class="badge bg-success">Active</span>'
+                        : '<span class="badge bg-danger">Deactive</span>';
                 })
-                ->addColumn('action', function ($row) {
-                    $html = '<a href="'.route('admin.blogs.edit', $row->ID).'" class="btn btn-primary btn-sm pull-left m-r-10"><i class="fa fa-edit"></i>
+                ->addColumn("action", function ($row) {
+                    $html =
+                        '<a href="' .
+                        route("admin.blogs.edit", $row->ID) .
+                        '" class="btn btn-primary btn-sm pull-left m-r-10"><i class="fa fa-edit"></i>
                 </a>
 
-                <a href="'.route('admin.blogs.delete', $row->ID).'" class="btn btn-danger btn-sm delete_row" id="" ><i class="fa fa-trash"></i>
+                <a href="' .
+                        route("admin.blogs.delete", $row->ID) .
+                        '" class="btn btn-danger btn-sm delete_row" id="" ><i class="fa fa-trash"></i>
                 </a>';
 
                     if ($row->status == 1) {
-                        $html .= '<a href="'.route('admin.blog.deactive', ['id' => $row->ID, 'table' => 'blogs']).'" class="btn btn-primary"><i class="fas fa-thumbs-down"></i></a>';
+                        $html .=
+                            '<a href="' .
+                            route("admin.blog.deactive", [
+                                "id" => $row->ID,
+                                "table" => "blogs",
+                            ]) .
+                            '" class="btn btn-primary"><i class="fas fa-thumbs-down"></i></a>';
                     } else {
-
-                        $html .= ' <a href="'.route('admin.blog.active', ['id' => $row->ID, 'table' => 'blogs']).'" class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a>';
+                        $html .=
+                            ' <a href="' .
+                            route("admin.blog.active", [
+                                "id" => $row->ID,
+                                "table" => "blogs",
+                            ]) .
+                            '" class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a>';
                     }
 
                     return $html;
-                })->rawColumns(['action', 'status', 'guid'])
+                })
+                ->rawColumns(["action", "status", "guid"])
                 ->make(true);
         }
 
-        return view('admin.blog.index');
+        return view("admin.blog.index");
     }
 
     /**
@@ -59,8 +82,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-
-        return view('admin.blog.create');
+        return view("admin.blog.create");
     }
 
     /**
@@ -73,43 +95,44 @@ class BlogController extends Controller
         $url = $this->toAscii($request->url);
 
         $request->validate([
-            'title' => 'required|max:255',
-
+            "title" => "required|max:255",
         ]);
         // try {
         $blog = [];
-        $file = $request->file('image');
+        $file = $request->file("image");
 
         if ($file) {
-            $blog['guid'] = $this->uploadFile('upload/blog', $file);
+            $blog["guid"] = $this->uploadFile("upload/blog", $file);
         }
 
-        $cover_image = $request->file('cover_image');
+        $cover_image = $request->file("cover_image");
         if ($cover_image) {
-            $blog['cover_image'] = $this->uploadFile('upload/blog', $cover_image);
+            $blog["cover_image"] = $this->uploadFile(
+                "upload/blog",
+                $cover_image
+            );
         }
 
-        $blog['post_title'] = $request->title;
-        $blog['url'] = $url;
-        $blog['display_homepage'] = $request->display_homepage;
-        $blog['meta_title'] = $request->meta_title;
-        $blog['meta_description'] = $request->meta_description;
-        $blog['keyword'] = $request->keyword;
-        $blog['mobile_title'] = $request->mobile_title;
-        $blog['mobile_description'] = $request->mobile_description;
-        $blog['mobile_keyword'] = $request->mobile_keyword;
-        $blog['post_date'] = today();
-        $blog['post_status'] = 'publish';
-        $blog['post_content'] = $request->content;
-        DB::table('blogs')->insert($blog);
-        Cache::forget('blogs');
+        $blog["post_title"] = $request->title;
+        $blog["url"] = $url;
+        $blog["display_homepage"] = $request->display_homepage;
+        $blog["meta_title"] = $request->meta_title;
+        $blog["meta_description"] = $request->meta_description;
+        $blog["keyword"] = $request->keyword;
+        $blog["mobile_title"] = $request->mobile_title;
+        $blog["mobile_description"] = $request->mobile_description;
+        $blog["mobile_keyword"] = $request->mobile_keyword;
+        $blog["post_date"] = today();
+        $blog["post_status"] = "publish";
+        $blog["post_content"] = $request->content;
+        DB::table("blogs")->insert($blog);
+        Cache::forget("blogs");
         $notification = [
-            'alert-type' => 'success',
-            'messege' => 'Blog  updated',
-
+            "alert-type" => "success",
+            "messege" => "Blog  updated",
         ];
 
-        return redirect()->route('admin.blogs.index')->with($notification);
+        return redirect()->route("admin.blogs.index")->with($notification);
 
         // } catch (\Throwable $th) {
         //     $notification=array(
@@ -120,14 +143,11 @@ class BlogController extends Controller
         //      return redirect()->back()->with($notification);
 
         // }
-
     }
 
     public function edit(Blog $blog)
     {
-        $blog = Blog::find($blog->ID);
-
-        return view('admin.blog.edit', compact('blog'));
+        return view("admin.blog.edit", compact("blog"));
     }
 
     public function update(Request $request, $id)
@@ -135,42 +155,43 @@ class BlogController extends Controller
         $url = $this->toAscii($request->url);
 
         $request->validate([
-            'title' => 'required|max:255',
-
+            "title" => "required|max:255",
         ]);
         // try {
         $blog = [];
 
-        $file = $request->file('image');
+        $file = $request->file("image");
 
         if ($file) {
-            $blog['guid'] = $this->uploadFile('upload/blog', $file);
+            $blog["guid"] = $this->uploadFile("upload/blog", $file);
         }
 
-        $cover_image = $request->file('cover_image');
+        $cover_image = $request->file("cover_image");
         if ($cover_image) {
-            $blog['cover_image'] = $this->uploadFile('upload/blog', $cover_image);
+            $blog["cover_image"] = $this->uploadFile(
+                "upload/blog",
+                $cover_image
+            );
         }
-        $blog['post_title'] = $request->title;
-        $blog['display_homepage'] = $request->display_homepage;
-        $blog['url'] = $url;
-        $blog['meta_title'] = $request->meta_title;
-        $blog['meta_description'] = $request->meta_description;
-        $blog['keyword'] = $request->keyword;
-        $blog['mobile_title'] = $request->mobile_title;
-        $blog['mobile_description'] = $request->mobile_description;
-        $blog['mobile_keyword'] = $request->mobile_keyword;
-        $blog['post_content'] = $request->content;
-        DB::table('blogs')->where('ID', $id)->update($blog);
-        Cache::forget('blogs');
+        $blog["post_title"] = $request->title;
+        $blog["display_homepage"] = $request->display_homepage;
+        $blog["url"] = $url;
+        $blog["meta_title"] = $request->meta_title;
+        $blog["meta_description"] = $request->meta_description;
+        $blog["keyword"] = $request->keyword;
+        $blog["mobile_title"] = $request->mobile_title;
+        $blog["mobile_description"] = $request->mobile_description;
+        $blog["mobile_keyword"] = $request->mobile_keyword;
+        $blog["post_content"] = $request->content;
+        DB::table("blogs")->where("ID", $id)->update($blog);
+        Cache::forget("blogs");
 
         $notification = [
-            'alert-type' => 'success',
-            'messege' => 'Blog  updated',
-
+            "alert-type" => "success",
+            "messege" => "Blog  updated",
         ];
 
-        return redirect()->route('admin.blogs.index')->with($notification);
+        return redirect()->route("admin.blogs.index")->with($notification);
 
         // } catch (\Throwable $th) {
         //     $notification=array(
@@ -181,23 +202,20 @@ class BlogController extends Controller
         //      return redirect()->back()->with($notification);
 
         // }
-
     }
 
     public function destroy($id)
     {
         try {
-            DB::table('blogs')->where('ID', $id)->delete();
+            DB::table("blogs")->where("ID", $id)->delete();
             $notification = [
-                'alert-type' => 'success',
-                'messege' => 'Successfully deleted .',
-
+                "alert-type" => "success",
+                "messege" => "Successfully deleted .",
             ];
         } catch (Throwable $e) {
             $notification = [
-                'alert-type' => 'error',
-                'messege' => 'Failed to delete , Try again.',
-
+                "alert-type" => "error",
+                "messege" => "Failed to delete , Try again.",
             ];
         }
 
@@ -206,13 +224,14 @@ class BlogController extends Controller
 
     protected function active($id, $table)
     {
-        DB::table($table)->where('ID', $id)->update([
-            'post_status' => 'publish',
-        ]);
+        DB::table($table)
+            ->where("ID", $id)
+            ->update([
+                "post_status" => "publish",
+            ]);
         $notification = [
-            'alert-type' => 'success',
-            'messege' => 'Status: Activated.',
-
+            "alert-type" => "success",
+            "messege" => "Status: Activated.",
         ];
 
         return redirect()->back()->with($notification);
@@ -220,13 +239,14 @@ class BlogController extends Controller
 
     protected function deactive($id, $table)
     {
-        DB::table($table)->where('ID', $id)->update([
-            'post_status' => 'disable',
-        ]);
+        DB::table($table)
+            ->where("ID", $id)
+            ->update([
+                "post_status" => "disable",
+            ]);
         $notification = [
-            'alert-type' => 'info',
-            'messege' => 'Status: Deactivated',
-
+            "alert-type" => "info",
+            "messege" => "Status: Deactivated",
         ];
 
         return redirect()->back()->with($notification);
@@ -234,8 +254,8 @@ class BlogController extends Controller
 
     private function toAscii($str)
     {
-        $clean = preg_replace('~[^\\pL\d]+~u', '-', $str);
-        $clean = strtolower(trim($clean, '-'));
+        $clean = preg_replace("~[^\\pL\d]+~u", "-", $str);
+        $clean = strtolower(trim($clean, "-"));
 
         return $clean;
     }
@@ -243,11 +263,13 @@ class BlogController extends Controller
     public function uploadimage(Request $request)
     {
         $request->validate([
-            'upload' => 'required|image',
+            "upload" => "required|image",
         ]);
 
-        $path = $request->file('upload')->store('uploads', ['disk' => 'public']);
+        $path = $request
+            ->file("upload")
+            ->store("uploads", ["disk" => "public"]);
 
-        return ['url' => getFilePath($path)];
+        return ["url" => getFilePath($path)];
     }
 }

@@ -91,7 +91,7 @@
 
         <div class="card-body">
             <x-errormsg />
-            <form action="{{ route('admin.blogs.update', $blog->ID) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <div class="row">
