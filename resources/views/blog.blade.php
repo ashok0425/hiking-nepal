@@ -22,7 +22,8 @@
                 <span class="input-group-text text-primary" id="basic-addon1">
                     <i class="fas fa-search"></i>
                 </span>
-                <input class="form-control ps-0 border-start-0" type="text" placeholder="Search Blog" required>
+                <input class="form-control ps-0 border-start-0" name="q" type="text" placeholder="Search Blog"
+                    value="{{ request()->query('q') }}" required>
             </div>
         </form>
 
