@@ -130,8 +130,8 @@ Route::get('/events/delete/{id}', 'EventController@destroy')->name(
 );
 
 // cms
-Route::resource('/cms', "Cms\CmsController");
-Route::get('/cms/delete/{id}', "Cms\CmsController@destroy")->name('cms.delete');
+// Route::resource('/cms', "Cms\CmsController");
+// Route::get('/cms/delete/{id}', "Cms\CmsController@destroy")->name('cms.delete');
 
 //Newletter
 Route::get('newsletters', "Newsletter\NewsletterController@index")->name(
@@ -174,8 +174,8 @@ Route::get('contacts-history', 'ContactController@emailHistory')->name(
 // );
 
 // Setting
-Route::resource('/websites', 'SettingController');
-Route::resource('section-control', "Main\SectionControlController");
+// Route::resource('/websites', 'SettingController');
+// Route::resource('section-control', "Main\SectionControlController");
 
 // Role and permission
 Route::get('/role_permission', 'RoleController@index')->name('role');

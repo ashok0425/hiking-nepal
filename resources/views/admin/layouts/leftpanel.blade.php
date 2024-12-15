@@ -320,81 +320,9 @@
                               </a>
                           </li>
 
-                          {{-- <li class="nav-item ">
-      <a href="{{route('admin.contacts.history')}}" class="nav-link <?php echo Request::segment(3) == 'emailhistory' ? 'active' : ''; ?>">
-        <i class="far fa-circle nav-icon"></i>
-        <p>Email History </p>
-      </a>
-    </li> --}}
-
-                      </ul>
-                  </li>
-                  {{-- Role permission  --}}
-                  {{-- <li class="nav-item <?php echo Request::segment(2) == 'role_permission' ? 'menu-open' : ''; ?>">
-  <a href="#" class="nav-link <?php echo Request::segment(2) == 'role_permission' ? 'active' : ''; ?> ">
-    <i class="nav-icon fas fa-tag"></i>
-    <p>
-     Roles & Permission
-      <i class="fas fa-angle-down right"></i>
-
-    </p>
-  </a>
-  <ul class="nav nav-treeview">
-
-    <li class="nav-item ">
-      <a href="{{route('admin.role')}}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
-        <i class="far fa-circle nav-icon"></i>
-        <p>View All </p>
-      </a>
-    </li>
-
-    <li class="nav-item ">
-      <a href="{{route('admin.role.create')}}" class="nav-link <?php echo Request::segment(3) == 'emailhistory' ? 'active' : ''; ?>">
-        <i class="far fa-circle nav-icon"></i>
-        <p>Add New </p>
-      </a>
-    </li>
-  </ul>
-</li> --}}
-
-                  {{-- Newsletter  --}}
-                  <li class="nav-item <?php echo Request::segment(2) == 'websites' ? 'menu-open' : ''; ?>">
-                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'websites' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-wrench"></i>
-                          <p>
-                              Setting
-                              <i class="fas fa-angle-down right"></i>
-
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-
-                          <li class="nav-item ">
-                              <a href="{{ route('admin.websites.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Website Setting </p>
-                              </a>
-                          </li>
-
-                          <li class="nav-item ">
-                              <a href="{{ route('admin.section-control.index') }}"
-                                  class="nav-link <?php echo Request::segment(3) == 'emailhistory' ? 'active' : ''; ?>">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Section Controls </p>
-                              </a>
-                          </li>
-
-                          <li class="nav-item ">
-                              <a href="{{ route('admin.cms.index') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>CMS </p>
-                              </a>
-                          </li>
-
                       </ul>
                   </li>
 
-                  {{-- dashboard section --}}
                   <li class="nav-item ">
                       <a href="{{ route('admin.country.index') }}" class="nav-link ">
                           <i class="nav-icon fas fa-tachometer-alt"></i>

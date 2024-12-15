@@ -16,15 +16,11 @@
                 <div class="panel panel-default">
                     <div class="card-header">
 
-                        <!-- <a href="#" class="btn btn-warning"><i class="fa fa-arrow-circle-down m-r-10"></i>Import</a>
-                                        <a href="#" class="btn btn-success"><i class="fa fa-arrow-circle-up m-r-10"></i>Export</a> -->
                     </div>
                     <div class="panel panel-default">
                         <div class="card-header">
                             <a href="{{ route('video.create') }}" class="btn btn-primary"><i
                                     class="fa fa-plus m-r-10"></i>Add video detail</a>
-                            <!-- <a href="#" class="btn btn-warning"><i class="fa fa-arrow-circle-down m-r-10"></i>Import</a>
-                                        <a href="#" class="btn btn-success"><i class="fa fa-arrow-circle-up m-r-10"></i>Export</a> -->
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
