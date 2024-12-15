@@ -73,7 +73,7 @@
                               <a href="{{ route('admin.categories-places.create') }}"
                                   class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Add Region </p>
+                                  <p>Add Category Place</p>
                               </a>
                           </li>
 
