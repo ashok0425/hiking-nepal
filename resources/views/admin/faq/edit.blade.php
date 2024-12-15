@@ -39,8 +39,8 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label><input type="checkbox" {{ $faq->show_on_home_page == 1 ? 'checked' : '' }} name="show_on_home_page"
-                                value="1"> Show on Home page</label>
+                        <label><input type="checkbox" {{ $faq->show_on_home_page == 1 ? 'checked' : '' }}
+                                name="show_on_home_page" value="1"> Show on Home page</label>
                     </div>
                 </div>
 
