@@ -21,7 +21,6 @@
                             value="{{ $category->name }}">
                     </div>
 
-
                     <div class="form-group col-md-6">
                         <label>Select Destination</label>
                         <select name="destination" id="" required class="form-control">
@@ -47,7 +46,6 @@
                             @if ($category->quick_trips == 1) checked @endif>
 
                     </div>
-
 
                     <div class="form-group col-md-6">
                         <label>Select Image</label>

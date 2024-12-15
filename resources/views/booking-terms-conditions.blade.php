@@ -29,7 +29,6 @@
             your
             acceptance of all the terms and conditions.</p>
 
-
         <h2 class="text-success">1. The Contract</h2>
 
         <p>
@@ -60,7 +59,6 @@
             book through another party or third-party agent, their Terms and Conditions will apply, not ours.
         </p>
 
-
         <h2 class="text-success">2. Privacy is Our Ornament – Assurance Policy</h2>
         <p> When booking a trip with us, we may require some personal and travel-related information from you. Rest assured,
             we
@@ -70,7 +68,6 @@
             therefore, all personal and professional details you share with us will be kept strictly confidential. Your
             trust is
             of utmost importance, and we take every measure to ensure your information remains secure and private.</p>
-
 
         <h2 class="text-success">3. Trip Booking</h2>
         <p>The term "trip" refers to any type of product, itinerary, or activity purchased by clients through Hiking Nepal,
@@ -87,7 +84,6 @@
             finalized.
             Except as expressly stated herein, Hiking Nepal is not liable for any warranties, collateral agreements, prior
             agreements, descriptions of services, or conditions not directly specified in this document.</p>
-
 
         <h2 class="text-success">4. Deposit Requirements</h2>
         <p>Deposit requirements may vary depending on the country of origin, so Hiking Nepal has set a fixed deposit
@@ -107,7 +103,6 @@
             method
             is a bank transfer, but other options may be available as well.</p>
 
-
         <p class="fw-bold">Payment Approach:</p>
         <p> You can proceed with booking your deposit payment via two common methods: bank transfer or credit/debit cards
             (Visa
@@ -122,7 +117,6 @@
             Additionally, please provide a copy of your passport or any valid ID along with the filled form.Note: A 4%
             surcharge
             applies when making payment by credit card.</p>
-
 
         <p>(2) Payment via Wire/Bank Transfer</p>
 
@@ -151,7 +145,6 @@
             track the payment if it is forwarded with a different name. We can follow up with the bank upon receiving your
             reference number and remittance slip.</p>
 
-
         <h2 class="text-success">5. The Way of Booking Acceptance and Final Payment</h2>
         <p> You have the flexibility to make the final payment for trekking, tours, climbing, expeditions, or any other
             trips in
@@ -161,7 +154,6 @@
             surcharge applies to all payments, including deposits, final balances, trip extensions, and any additional
             purchases
             made during your trip.</p>
-
 
         <h2 class="text-success">6. The Cancellation Policy</h2>
 
@@ -209,7 +201,6 @@
             or
             train tickets, other fees, loss of earnings, or loss of enjoyment due to changes or cancellations beyond our
             control.</p>
-
 
         <h2 class="text-success">7. Special Health Requirements and Medical Conditions</h2>
         <p> Hiking Nepal has designed its tours and treks to suit the varying levels of interest and fitness of our clients.
@@ -367,7 +358,6 @@
             for
             your reference.</p>
     </section>
-
 
     @include('inc.book-a-call-cta')
 @endsection

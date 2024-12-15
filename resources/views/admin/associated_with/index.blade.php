@@ -55,7 +55,6 @@
     <!-- panel -->
 @endsection
 
-
 @section('styles')
     <link rel="stylesheet" type="text/css"
         href="{{ getImageurl('dist/back-end/lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}">

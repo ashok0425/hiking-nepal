@@ -83,7 +83,6 @@
         define('PAGE', 'add');
     @endphp
 
-
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Edit Banner Form</h3>
@@ -116,7 +115,6 @@
                         <textarea name="content" id="summernote" cols="30" rows="10">{{ $blog->post_content }}</textarea>
                     </div>
 
-
                     <div class=" col-md-12">
                         <label class="form-label">Blog Thumbnail </label>
                         <div class="image-input">
@@ -126,8 +124,6 @@
                         </div>
                         <img src="{{ getImageurl($blog->guid) }}" alt="" width="100">
                     </div>
-
-
 
                     <div class=" col-md-12">
                         <label class="form-label">Cover Image </label>
@@ -141,8 +137,6 @@
                         <img src="{{ getImageurl($blog->cover_image) }}" alt="" width="100">
 
                     </div>
-
-
 
                     <div class=" col-md-6">
                         <label class="form-label"> Meta Keyword</label>
@@ -188,10 +182,9 @@
     </div>
 @endsection
 
-
 @push('scripts')
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor.js') }}"></script>
     {{-- custom input fielsd file  --}}
     <script>
         // Add the following code if you want the name of the file appear on select

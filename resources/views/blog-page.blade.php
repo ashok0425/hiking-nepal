@@ -12,7 +12,6 @@
         </div>
     </section>
 
-
     <div class="container py-5 my-5">
 
         <div class="row gy-4">
@@ -39,9 +38,7 @@
                         atmospheric characteristics offering different travel experiences. To learn more about the seasons,
                         delve into the details below.</p>
 
-
                     <p class="fw-bold">1. Summer (June to September)</p>
-
 
                     <p> Summer is considered the best time to visit Ladakh and lasts from June to September. This season is
                         popular among the tourists. During these months, the weather is most favorable with average
@@ -49,18 +46,6 @@
                         ranging from 20°C to 25°C (68°F to 77°F). It is an ideal time for outdoor adventures such as
                         cycling,
                         biking, trekking, camping, and so on.</p>
-
-
-                    <p class="fw-bold">1. Summer (June to September)</p>
-
-
-                    <p> Summer is considered the best time to visit Ladakh and lasts from June to September. This season is
-                        popular among the tourists. During these months, the weather is most favorable with average
-                        temperatures
-                        ranging from 20°C to 25°C (68°F to 77°F). It is an ideal time for outdoor adventures such as
-                        cycling,
-                        biking, trekking, camping, and so on.</p>
-
 
                     <p class="fw-bold">1. Summer (June to September)</p>
 
@@ -71,8 +56,6 @@
                         cycling,
                         biking, trekking, camping, and so on.</p>
 
-
-
                     <p class="fw-bold">1. Summer (June to September)</p>
 
                     <p> Summer is considered the best time to visit Ladakh and lasts from June to September. This season is
@@ -82,9 +65,16 @@
                         cycling,
                         biking, trekking, camping, and so on.</p>
 
+                    <p class="fw-bold">1. Summer (June to September)</p>
+
+                    <p> Summer is considered the best time to visit Ladakh and lasts from June to September. This season is
+                        popular among the tourists. During these months, the weather is most favorable with average
+                        temperatures
+                        ranging from 20°C to 25°C (68°F to 77°F). It is an ideal time for outdoor adventures such as
+                        cycling,
+                        biking, trekking, camping, and so on.</p>
 
                     <h2>Another Topic</h2>
-
 
                     <p> Ladakh, a.k.a. ‘Little Tibet’ is a land of enchanting natural beauty and dramatic landscape. This
                         Himalayan region experiences five major seasons throughout the year. Each season comes with
@@ -148,7 +138,6 @@
                     <li class="list-group-item">Everest base camp trekking</li>
                     <li class="list-group-item">How is the weather in Nepal</li>
                 </ul>
-
 
                 <p class="fw-bold">POST BY CATEGORIES</p>
                 <ul class="list-group list-group-flush">

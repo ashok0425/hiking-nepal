@@ -8,14 +8,14 @@
             </div>
         </div>
     </div>
-    
+
     <div class="content">
         <div class="card">
             <div class="card-body">
-            {!! Form::open(['route'=>'video.store', 'enctype'=>'multipart/form-data']) !!}
+                {!! Form::open(['route' => 'video.store', 'enctype' => 'multipart/form-data']) !!}
                 @include('video.partials.fields')
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            {!! Form::close() !!}
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

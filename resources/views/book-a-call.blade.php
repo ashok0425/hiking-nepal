@@ -90,8 +90,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="col-md-6 p-3 p-md-5">
                         <form action="{{ route('book-a-call') }}" method="get" class="form-light">
 
@@ -143,7 +141,6 @@
                         <img src="{{ asset('logo.png') }}" alt="hiking nepal logo" width="208" height="auto">
                     </a>
                 </div>
-
 
                 <div class="brand-shadow-lg p-3 p-md-5">
 
@@ -199,7 +196,6 @@
                                     confirm that you have read and accept our Privacy Policy.</label>
                             </div>
                         </div>
-
 
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-secondary">

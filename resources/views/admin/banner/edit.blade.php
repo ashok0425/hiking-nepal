@@ -83,7 +83,6 @@
         define('PAGE', 'add');
     @endphp
 
-
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Edit Banner Form</h3>
@@ -134,7 +133,6 @@
         </div>
     </div>
 @endsection
-
 
 @push('scripts')
     {{-- custom input fielsd file  --}}

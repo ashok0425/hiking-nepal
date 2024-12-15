@@ -34,7 +34,6 @@
             <li>Multiple entries 90 days US$ 125 or equivalent convertible currency</li>
         </ol>
 
-
         <h2 class="text-success">Travel Insurance</h2>
         <p>Travel Insurance is mandatory for booking any of Himalayas Nepal Visionâs Adventure packages. Trekking in the
             Himalayas is full of fun and adventure but you have to be prepared for risk management. While you are in High

@@ -10,19 +10,18 @@
             <div class="card-body">
                 <form action="{{ route('admin.package.country.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="package_id" value="{{$package_id}}">
+                    <input type="hidden" name="package_id" value="{{ $package_id }}">
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="tab-content">
-                                <div role="tabcard" >
+                                <div role="tabcard">
                                     <div class="row">
                                         <div class="col-md-6 mb-2">
                                             <label for="">Select Country</label>
                                             <select name="country" id="" class="form-select form-control" required>
                                                 <option value="">select country</option>
                                                 @foreach ($countries as $country)
-                                                <option value="{{$country->id}}">{{$country->name}}</option>
-                                                    
+                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -32,7 +31,8 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label>Currency:</label>
-                                            <input type="text" name="currency" id="" class="form-control" placeholder="USD,EUR">
+                                            <input type="text" name="currency" id="" class="form-control"
+                                                placeholder="USD,EUR">
                                         </div>
 
                                         <div class="col-md-6 mb-3">
@@ -104,7 +104,6 @@
                                 </div>
                             </div>
 
-                        
                             <div role="tabcard" class="tab-pane" id="seo">
                                 <div class="row">
                                     <div class="form-group col-md-6">
@@ -125,7 +124,6 @@
                                         <input type="text" name="meta_description" class="form-control">
                                     </div>
                                 </div>
-
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
@@ -154,4 +152,3 @@
     <!-- row -->
     </div>
 @endsection
-

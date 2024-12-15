@@ -49,7 +49,6 @@
             </div>
         </div>
 
-
         <div class="table-responsive trips-table">
             <table class="table">
                 <thead>

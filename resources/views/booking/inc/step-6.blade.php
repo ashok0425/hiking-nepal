@@ -29,7 +29,6 @@
                 placeholder="Enter your phone number" required>
         </div>
 
-
         <div class="mb-5">
             <label for="email" class="form-label fw-bold">Email <span class="text-danger">*</span></label>
             <input type="email" placeholder="Enter your email address" class="form-control" id="email"
@@ -41,7 +40,6 @@
             <input type="text" placeholder="Enter your nationality" class="form-control" id="nationality"
                 name="nationality" required>
         </div>
-
 
         <div class="mb-5">
             <label for="message" class="form-label fw-bold">Message <span class="text-danger">*</span></label>
@@ -64,7 +62,6 @@
                     confirm that you have read and accept our Privacy Policy.</label>
             </div>
         </div>
-
 
         <div class="d-flex gap-4 justify-content-center w-100">
             <button class="btn btn-secondary"><i class="fas fa-arrow-left"></i> BACK</button>

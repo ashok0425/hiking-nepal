@@ -147,7 +147,6 @@
                                                             </div>
                                                         </div>
 
-
                                                         <div class="form-group ">
 
                                                             <label> Destination</label>
@@ -161,7 +160,6 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
-
 
                                                         <div class="form-group ">
 
@@ -266,14 +264,11 @@
 
                                                         </div>
 
-
                                                         <div class="form-group">
                                                             <label>Enter Menu Order</label>
                                                             <input type="number" name="order" class="form-control"
                                                                 min="1" value="{{ $package->order }}">
                                                         </div>
-
-
 
                                                     </div>
                                                     <div class="col-md-6">
@@ -385,15 +380,17 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label >Altitude Image</label>
+                                                <label>Altitude Image</label>
                                                 <div class="image-input">
-                                                    <input type="file" accept="image/*" id="imageInput4" name="circuit_image" >
-                                                    <label for="imageInput4" class="image-button"><i class="far fa-image"></i> Choose image</label>
+                                                    <input type="file" accept="image/*" id="imageInput4"
+                                                        name="circuit_image">
+                                                    <label for="imageInput4" class="image-button"><i
+                                                            class="far fa-image"></i> Choose image</label>
                                                     <img src="" class="image-preview4">
 
-                                                  </div>
-                                                  <img src="{{ getImageurl($package->circuit_image) }}" class="image-fluid"
-                                                  width="100">
+                                                </div>
+                                                <img src="{{ getImageurl($package->circuit_image) }}" class="image-fluid"
+                                                    width="100">
                                             </div>
 
                                             <div class="col-md-6">
@@ -449,7 +446,6 @@
 
                                  </textarea>
                                             </div>
-
 
                                         </div>
                                     </div>
@@ -567,7 +563,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="row">
                                         <div class="form-group col-md-6">
 
@@ -598,7 +593,6 @@
         <!-- row -->
     </div>
 @endsection
-
 
 @push('scripts')
     {{-- custom input fielsd file  --}}
@@ -664,21 +658,21 @@
 
         })
 
-// Add the following code if you want the name of the file appear on select
-$('#imageInput4').on('change', function() {
-$input = $(this);
+        // Add the following code if you want the name of the file appear on select
+        $('#imageInput4').on('change', function() {
+            $input = $(this);
 
-if($input.val().length > 0) {
-  fileReader = new FileReader();
-  fileReader.onload = function (data) {
-  $('.image-preview4').attr('src', data.target.result);
-  }
-  fileReader.readAsDataURL($input.prop('files')[0]);
-//   $('.image-button').css('display', 'none');
-  $('.image-preview4').css('display', 'block');
-  $('.change-image').css('display', 'block');
-}
-});
+            if ($input.val().length > 0) {
+                fileReader = new FileReader();
+                fileReader.onload = function(data) {
+                    $('.image-preview4').attr('src', data.target.result);
+                }
+                fileReader.readAsDataURL($input.prop('files')[0]);
+                //   $('.image-button').css('display', 'none');
+                $('.image-preview4').css('display', 'block');
+                $('.change-image').css('display', 'block');
+            }
+        });
 
         function ajaxCategory() {
             category_destination = $('#all_category_destination').val();

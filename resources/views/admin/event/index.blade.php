@@ -39,7 +39,6 @@
 
                                     <td>{{ $event->date }}</td>
 
-
                                     <td>{!! $event->status == 1
                                         ? '<span class="badge bg-success">Active</span>'
                                         : '<span class="badge bg-danger">Deactive</span>' !!}</td>

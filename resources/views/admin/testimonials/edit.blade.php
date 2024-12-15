@@ -10,7 +10,6 @@
         <div class="card-body">
             <x-errormsg />
 
-
             <form action="{{ route('admin.testimonials.update', $testimonial->id) }}" enctype="multipart/form-data"
                 method="POST">
                 @method('PATCH')
@@ -32,7 +31,6 @@
                         <input type="date" class="form-control" name="date" required value="{{ $testimonial->date }}">
                     </div>
 
-
                     <div class="form-group col-md-6">
                         <label>Select Package</label>
                         <select name="package[]" id="" class="form-control packages" multiple>
@@ -46,8 +44,6 @@
                             @endforeach
                         </select>
                     </div>
-
-
 
                     <div class="form-group col-md-6">
                         <label>Select Image</label>
@@ -75,8 +71,6 @@
 
                     </div>
 
-
-
                     <div class="form-group col-md-12">
                         <input type="submit" class="btn btn-info btn-block">
                     </div>
@@ -88,8 +82,6 @@
     </div>
     <!-- panel -->
 @endsection
-
-
 
 @push('scripts')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />

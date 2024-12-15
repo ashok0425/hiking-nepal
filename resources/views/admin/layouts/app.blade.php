@@ -26,7 +26,6 @@
 
     <title>@yield('title')</title>
 
-
     {{-- bootstrap --}}
     <link rel="preload stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         as="style">
@@ -45,7 +44,6 @@
 
         h1 {
             font-size: 20px !important;
-
         }
 
         h3 {
@@ -56,12 +54,10 @@
 
         .nav-link {
             font-size: 16px !important;
-
         }
 
         .nav-treeview .nav-link {
             font-size: 14px !important;
-
         }
 
         input::placeholder {
@@ -72,9 +68,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
-
-
 
         {{-- header  --}}
         @include('admin.layouts.header')
@@ -92,7 +85,6 @@
         </div>
         <!-- /.content-wrapper -->
 
-
     </div>
     <!-- ./wrapper -->
 
@@ -105,7 +97,6 @@
 
     <!-- AdminLTE App -->
     <script defer src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
-
 
     @if (!str_contains(url()->current(), 'edit') && !str_contains(url()->current(), 'create'))
         {{-- datatables  --}}
@@ -242,7 +233,6 @@
         @endif
     </script>
 
-
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('ckeditor.js') }}"></script>
 
@@ -268,7 +258,6 @@
                 });
         })
     </script>
-
 
     @stack('scripts')
 

@@ -40,7 +40,6 @@
                                         ? '<span class="badge bg-success">Main Banner</span>'
                                         : '<span class="badge bg-info">Pop up</span>' !!}</td>
 
-
                                     <td>{!! $banner->status
                                         ? '<span class="badge bg-success">Active</span>'
                                         : '<span class="badge bg-danger">Deactive</span>' !!}</td>

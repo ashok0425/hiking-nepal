@@ -7,7 +7,9 @@
                     <div>
                         <h3 class="-title">Package Country Data</h3>
                     </div>
-                    <div> <a class="btn btn-primary" href="{{ route('admin.package.country.create',['package_id'=>$package_id]) }}"><i class="fa fa-plus"></i> Add
+                    <div> <a class="btn btn-primary"
+                            href="{{ route('admin.package.country.create', ['package_id' => $package_id]) }}"><i
+                                class="fa fa-plus"></i> Add
                             Detail</a></div>
 
                 </div>
@@ -40,7 +42,6 @@
                                             class="btn btn-primary btn-sm pull-left m-r-10"><i class="fa fa-edit"></i>
                                         </a>
 
-                               
                                         @if ($package->status == 1)
                                             <a href="{{ route('admin.deactive', ['id' => $package->id, 'table' => 'country_package']) }}"
                                                 class="btn btn-primary"><i class="fas fa-thumbs-down"></i></a>

@@ -59,8 +59,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label font-weight-bold">Website url</label>
@@ -68,7 +66,6 @@
                                     value="{{ $website->url }}">
                             </div>
                         </div>
-
 
                         <div class="col-md-6">
 
@@ -81,7 +78,6 @@
                                 <img src="{{ getImageurl($website->image) }}" width="70" alt="">
                             </div>
                         </div>
-
 
                         <div class="col-md-6">
 
@@ -184,8 +180,6 @@
                             <br>
                         </div>
 
-
-
                         <div class="col-md-6">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -225,7 +219,6 @@
                                     name="address">
                             </div>
                         </div>
-
 
                         <div class="col-md-12">
                             <div class="card-header bg-gray">
@@ -268,7 +261,6 @@
                             </div>
                         </div>
 
-
                         <div class="col-md-12">
                             <div class="card-header bg-gray">
                                 <div class="card-title">
@@ -297,7 +289,6 @@
                                     name="expert_phone2">
                             </div>
                         </div>
-
 
                         <div class="col-md-12">
                             <div class="card-header bg-gray">

@@ -243,7 +243,6 @@
                     </tbody>
                 </table>
 
-
                 @for ($i = 1; $i <= 3; $i++)
                     <div class="mb-5">
                         <h2 class="mb-4">Day {{ $i }}: Arrival in Kathmandu (1,350m/4,429ft)</h2>
@@ -455,8 +454,6 @@
                         </tbody>
                     </table>
 
-
-
                     <button class="btn bg-white text-primary w-100">BOOK NOW</button>
                 </div>
 
@@ -492,7 +489,6 @@
 
                     <button type="submit" class="btn bg-white text-primary w-100">Enquire Now</button>
                 </form>
-
 
                 <div class="bg-primary text-white p-3 mb-3">
                     <div class="d-flex justify-content-between align-items-center">
@@ -548,10 +544,8 @@
         </div>
     </div>
 
-
     @include('inc.book-a-call-cta')
 @endsection
-
 
 @push('scripts')
     <script>

@@ -8,14 +8,18 @@
             </div>
         </div>
     </div>
-    
+
     <div class="content">
         <div class="card">
             <div class="card-body">
-            {!! Form::model($video, ['route' => ['video.update', $video->id], 'enctype'=>'multipart/form-data', 'method' => 'PATCH']) !!}
+                {!! Form::model($video, [
+                    'route' => ['video.update', $video->id],
+                    'enctype' => 'multipart/form-data',
+                    'method' => 'PATCH',
+                ]) !!}
                 @include('video.partials.fields')
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            {!! Form::close() !!}
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

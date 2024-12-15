@@ -80,7 +80,6 @@
 
 @extends('admin.layouts.app')
 
-
 @section('content')
     <div class="container">
         <div class="card">
@@ -146,7 +145,6 @@
                                                             </div>
                                                         </div>
 
-
                                                         <div class="form-group ">
 
                                                             <label> Destination</label>
@@ -159,7 +157,6 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
-
 
                                                         <div class="form-group ">
 
@@ -182,7 +179,6 @@
                                                             <select name="category_destination_id"
                                                                 id="category_destination_id" class="form-control">
 
-
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
@@ -198,7 +194,6 @@
                                                         </div>
 
                                                         <div class="row">
-
 
                                                             <div class="col-md-12" id="addSelect">
                                                                 <div class="form-group">
@@ -243,14 +238,11 @@
 
                                                         </div>
 
-
                                                         <div class="form-group">
                                                             <label>Enter Menu Order</label>
                                                             <input type="number" name="order" class="form-control"
                                                                 min="1" value="1">
                                                         </div>
-
-
 
                                                     </div>
                                                     <div class="col-md-6">
@@ -407,7 +399,6 @@
                                                 <textarea name="outline_itinerary" cols="30" rows="10" id="summernote7"></textarea>
                                             </div>
 
-
                                         </div>
                                     </div>
                                     <!-- ./ first tab ends -->
@@ -470,7 +461,6 @@
                                 </div>
                                 <div role="tabcard" class="tab-pane" id="package">
 
-
                                     <label class="font-weight-bold">Click to select featured Package</label>
                                     <div class="row">
                                         @foreach ($featured_package as $item)
@@ -501,7 +491,6 @@
                                             <input type="text" name="meta_description" class="form-control">
                                         </div>
                                     </div>
-
 
                                     <div class="row">
                                         <div class="form-group col-md-6">

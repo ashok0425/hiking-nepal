@@ -139,7 +139,6 @@
 
                             <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
 
-
                                 <label> Position:</label>
                                 <input type="number" name="position" id="" placeholder="Enter Postion value"
                                     required class="form-control" value="{{ $menu->position }}">
@@ -159,10 +158,8 @@
                                         class="form-control" @if ($menu->hide_header == 1) checked @endif>
                                 </label>
 
-
                             </div>
                         </div>
-
 
                         <div class="col-md-6">
                             <div class="image-input">

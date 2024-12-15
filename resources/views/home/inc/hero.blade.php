@@ -16,7 +16,6 @@
     <div class="mount-2 animate__animated animate__slideInUp"></div>
     <div class="mount-3 animate__animated animate__slideInUp"></div>
 
-
     <div class="hero-cloud-l2 animate__animated animate__slideInLeft"></div>
     <div class="hero-cloud-center animate__animated animate__slideInRight"></div>
 

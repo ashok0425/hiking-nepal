@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-{{-- <div class="row">
+    {{-- <div class="row">
 	<div class="col-md-9 col-lg-8 dash-left">
 		<div class="panel panel-announcement">
 			<ul class="panel-options">
@@ -111,7 +111,7 @@
 			<div class="card-head style-danger">
 				<header>Youtube</header>
 			</div>
-			@foreach($videos as $key=>$video)
+			@foreach ($videos as $key => $video)
 			<div class="card-body col-md-4">
 				<div class="row">
 					<div class="col-md-12">
@@ -154,7 +154,7 @@
 					</div>
 					<div class="card-body">
 						<ul class="list-unstyled mb20">
-							@foreach($latest_packages as $package)
+							@foreach ($latest_packages as $package)
 							<li>
 								<a href="#">{{ $package->name }}</a>
 								<small>{{ date('F d, Y', strtotime($package->created_at)) }} <a href="#">{{ $package->destination->name }}</a></small>
@@ -174,6 +174,5 @@
 	<!-- col-md-3 -->
 </div>
 <!-- row --> --}}
-Welcome
+    Welcome
 @endsection
-

@@ -13,13 +13,11 @@
             Account No. : 0102211820301 <br>
             Account Type : Current Account</p>
 
-
         <h5>Bank Address</h5>
         <p> Nabil House, Kamaladi, Kathmandu <br>
             P.O. Box: 3729, Kathmandu <br>
             SWIFT: NARBNPKA <br>
             Web Address: www.nabilbank.com</p>
-
 
         <p>Beneficiary Bank:- Himalayan Bank Ltd. <br>
             Beneficiary Company:- Nepal Vision Treks & Expedition (P). Ltd. <br>

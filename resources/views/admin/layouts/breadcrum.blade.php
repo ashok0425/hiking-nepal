@@ -15,7 +15,6 @@
                          <li class="breadcrumb-item active">{{ Str::ucfirst(Request::segment(3)) }}</li>
                      @endif ()
 
-
                  </ol>
              </div><!-- /.col -->
          </div><!-- /.row -->

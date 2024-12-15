@@ -83,7 +83,6 @@
         define('PAGE', 'add');
     @endphp
 
-
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Edit Event Form</h3>
@@ -138,15 +137,10 @@
 
                     </div>
 
-
                     <div class=" col-md-12 my-2">
                         <label class="form-label">Content</label>
                         <textarea name="content" id="summernote" cols="30" rows="10">{{ $event->content }}</textarea>
                     </div>
-
-
-
-
 
                     <button type="submit" class="btn btn-primary btn-block">Save</button>
                 </div>
@@ -154,7 +148,6 @@
         </div>
     </div>
 @endsection
-
 
 @push('scripts')
     {{-- custom input fielsd file  --}}
