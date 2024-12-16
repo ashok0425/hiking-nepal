@@ -322,17 +322,6 @@
 
                       </ul>
                   </li>
-
-                  <li class="nav-item ">
-                      <a href="{{ route('admin.country.index') }}" class="nav-link ">
-                          <i class="nav-icon fas fa-tachometer-alt"></i>
-                          <p>
-                              Country
-
-                          </p>
-                      </a>
-
-                  </li>
               </ul>
           </nav>
           <!-- /.sidebar-menu -->

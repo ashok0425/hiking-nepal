@@ -124,7 +124,7 @@ Route::resource('videos', "Main\VideosController", ['only' => ['update']]);
 // Route::get('booking', 'Main\MainController@getBooking');
 // Route::get('booking/{id}', 'Main\MainController@BookingDetail')->name('bookingdetail');
 
-Route::resource('/country', 'CountryController');
+// Route::resource('/country', 'CountryController');
 
 Route::post('/blog-posts/upload', "Blog\BlogController@uploadimage");
 
