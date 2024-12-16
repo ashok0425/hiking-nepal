@@ -10,16 +10,15 @@
         </div>
 
         <div class="row mb-4">
-            @for ($i = 0; $i < 3; $i++)
+            @foreach (\App\Models\Post::getRecentPosts()->take(3) as $post)
                 <div class="col-lg-4 col-md-6">
-                    <x-blog-card />
+                    <x-blog-card :post="$post" />
                 </div>
-            @endfor
-
+            @endforeach
         </div>
 
         <div class="text-center">
-            <a href="#" class="btn btn-primary">More Details</a>
+            <a href="{{ route('blog') }}" class="btn btn-primary">More Details</a>
         </div>
     </div>
 </section>

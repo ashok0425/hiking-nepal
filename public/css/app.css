@@ -190,9 +190,15 @@ a {
     margin: 0 10px;
 }
 
-.pagination .active {
-    color: #fff;
-    background-color: #0d2947;
+/* .pagination .active {
+    color: #fff !important;
+    background-color: #0d2947 !important;
+} */
+
+.active > .page-link,
+.page-link.active {
+    color: #fff !important;
+    background-color: #0d2947 !important;
 }
 
 .modal-content {
@@ -660,4 +666,11 @@ footer li {
     padding: 15px;
     align-content: center;
     text-wrap: nowrap;
+}
+
+/* CKEditor CSS */
+
+.blog-content img {
+    max-width: 100%;
+    margin: 20px 0;
 }

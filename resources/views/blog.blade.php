@@ -17,42 +17,38 @@
             Search Blog
         </h2>
 
-        <form action="" method="GET" class="mb-5">
+        <form action="{{ route('blog') }}" method="GET" class="mb-5">
             <div class="input-group mb-3">
                 <span class="input-group-text text-primary" id="basic-addon1">
                     <i class="fas fa-search"></i>
                 </span>
                 <input class="form-control ps-0 border-start-0" name="q" type="text" placeholder="Search Blog"
                     value="{{ request()->query('q') }}" required>
+                @if (request()->query('q'))
+                    <a href="{{ url()->current() }}" class="input-group-text text-danger" title="Clear search">
+                        <i class="fas fa-times"></i>
+                    </a>
+                @endif
             </div>
         </form>
 
         <div class="row mb-4 gy-3">
-            @for ($i = 0; $i < 12; $i++)
+            @forelse ($posts as $post)
                 <div class="col-lg-4 col-md-6">
-                    <x-blog-card />
+                    <x-blog-card :post="$post" />
                 </div>
-            @endfor
-
+            @empty
+                <div class="col-12">
+                    <p class="text-center">No posts found.</p>
+                </div>
+            @endforelse
         </div>
 
-        <nav aria-label="Pagination">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        @if ($posts->count() > 0)
+            <nav aria-label="Pagination">
+                {{ $posts->links() }}
+            </nav>
+        @endif
     </section>
 
     @include('inc.book-a-call-cta')

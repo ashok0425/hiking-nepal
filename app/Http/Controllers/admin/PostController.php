@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Post::latest();
+        $query = Post::latest('created_at');
 
         if ($request->has('q')) {
             $searchTerm = $request->q;
@@ -22,7 +22,7 @@ class PostController extends Controller
             });
         }
 
-        $posts = $query->latest('created_at')->paginate()->withQueryString();
+        $posts = $query->paginate()->withQueryString();
 
         return view('admin.posts.index', compact('posts'));
     }

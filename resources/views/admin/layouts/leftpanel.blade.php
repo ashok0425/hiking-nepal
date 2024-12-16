@@ -244,7 +244,6 @@
                       </ul>
                   </li>
 
-
                   {{-- Event Date  --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'events' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'events' ? 'active' : ''; ?> ">

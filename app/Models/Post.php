@@ -36,4 +36,14 @@ class Post extends Model
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
     }
+
+    public static function getRecentPosts()
+    {
+        return cache()->remember('recent_posts', 3600, function () {
+            return self::where('status', 'published')
+                ->orderBy('published_at', 'desc')
+                ->take(6)
+                ->get();
+        });
+    }
 }
