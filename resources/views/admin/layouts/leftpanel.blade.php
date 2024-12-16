@@ -244,32 +244,6 @@
                       </ul>
                   </li>
 
-                  {{-- Event Date  --}}
-                  <li class="nav-item <?php echo Request::segment(2) == 'events' ? 'menu-open' : ''; ?>">
-                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'events' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-clock"></i>
-                          <p>
-                              Event List <i class="fas fa-angle-down right"></i>
-
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="{{ route('admin.events.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>View All</p>
-                              </a>
-                          </li>
-                          <li class="nav-item ">
-                              <a href="{{ route('admin.events.create') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Add New </p>
-                              </a>
-                          </li>
-
-                      </ul>
-                  </li>
-
                   {{-- Newsletter  --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'newsletters' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'newsletters' ? 'active' : ''; ?> ">

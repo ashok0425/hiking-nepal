@@ -3,10 +3,10 @@
 // use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
-// Route::middleware('guest:admin')->group(function(){
-Route::get('login', 'AuthController@index')->name('login');
-Route::post('login', 'AuthController@store')->name('login');
-// });
+Route::middleware('guest:admin')->group(function () {
+    Route::get('login', 'AuthController@index')->name('login');
+    Route::post('login', 'AuthController@store')->name('login');
+});
 
 Route::get('/dashboard', 'AuthController@show')->name('dashboard');
 Route::get('/profile', 'AuthController@profile')->name('profile');
@@ -31,11 +31,6 @@ Route::get('/categories-places/delete/{id}', "Travel\CategoriesPlacesController@
 //   packages
 Route::resource('/categories-packages', "Travel\PackagesController");
 Route::get('categories-package/delete/{id}', "Travel\CategoriesPlacesController@destroy")->name('categories-packages.delete');
-Route::get('/country-packages', "Travel\PackagesController@countryPackage")->name('package.country');
-Route::get('/country-packages/create', "Travel\PackagesController@countryPackagecreate")->name('package.country.create');
-Route::post('/country-packages/store', "Travel\PackagesController@countryPackageStore")->name('package.country.store');
-Route::get('/country-packages/edit/{id}', "Travel\PackagesController@countryPackageEdit")->name('package.country.edit');
-Route::post('/country-packages/update', "Travel\PackagesController@countryPackagupdate")->name('package.country.update');
 
 Route::get('/package-gallery', "Travel\PackagesGalleryController@index")->name('package.gallery');
 Route::get('/package-gallery/create', "Travel\PackagesGalleryController@create")->name('package.gallery.create');
@@ -59,14 +54,6 @@ Route::get('/departures/delete/{id}', "Travel\DeparturesController@destroy")->na
 //blog
 Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);
 
-//Event
-Route::resource('/events', 'EventController');
-Route::get('/events/delete/{id}', 'EventController@destroy')->name('events.delete');
-
-// cms
-// Route::resource('/cms', "Cms\CmsController");
-// Route::get('/cms/delete/{id}', "Cms\CmsController@destroy")->name('cms.delete');
-
 //Newletter
 Route::get('newsletters', "Newsletter\NewsletterController@index")->name('newsletters.index');
 Route::get('newsletters/create', "Newsletter\NewsletterController@create")->name('newsletters.create');
@@ -81,45 +68,9 @@ Route::get('contacts', 'ContactController@index')->name('contact.index');
 Route::get('/contacts/delete/{id}', 'ContactController@destroy')->name('contacts.delete');
 Route::get('contacts-history', 'ContactController@emailHistory')->name('contact.history');
 
-// Banner
-// Route::resource('/banners', 'BannerController');
-// Route::get('banners/delete/{id}', 'BannerController@destroy')->name(
-//     'banners.delete'
-// );
-
-// Setting
-// Route::resource('/websites', 'SettingController');
-// Route::resource('section-control', "Main\SectionControlController");
-
-// Role and permission
-Route::get('/role_permission', 'RoleController@index')->name('role');
-Route::get('/role_permission/create', 'RoleController@create')->name('role.create');
-Route::post('/role_permission/store', 'RoleController@store')->name('role.store');
-Route::get('/role_permission/edit/{id}', 'RoleController@edit')->name('role.edit');
-Route::post('/role_permission/update', 'RoleController@update')->name('role.update');
-Route::get('/role_permission/delete/{id}/{table}', 'RoleController@destroy')->name('role.delete');
-
-// Assign
-Route::get('role_permission/assign_role', 'AssignroleController@index')->name('assignrole');
-Route::get('role_permission/assign_role/create', 'AssignroleController@create')->name('assignrole.create');
-Route::post('role_permission/assign_role/store', 'AssignroleController@store')->name('assignrole.store');
-Route::get('role_permission/assign_role/edit/{id}', 'AssignroleController@edit')->name('assignrole.edit');
-Route::post('role_permission/assign_role/update', 'AssignroleController@update')->name('assignrole.update');
-Route::get('role_permission/assign_role/delete/{id}/{table}', 'AssignroleController@destroy')->name('assignrole.delete');
-
-Route::get('active/{id}/{table}', 'BannerController@active')->name('active');
-Route::get('deactive/{id}/{table}', 'BannerController@deactive')->name('deactive');
-
 // Route::resource('contact-details', 'Main\ContactDetailsController');
-Route::resource('important-links', "ImportantLinks\ImportantLinksController");
-
-// Route::resource('/main-slider', 'Main\MainSliderController');
-
-Route::resource('videos', "Main\VideosController", ['only' => ['update']]);
 
 // Route::get('booking', 'Main\MainController@getBooking');
 // Route::get('booking/{id}', 'Main\MainController@BookingDetail')->name('bookingdetail');
-
-// Route::resource('/country', 'CountryController');
 
 Route::post('/ck-upload', \App\Http\Controllers\Admin\CKEditorUploadController::class)->name('ck-upload');

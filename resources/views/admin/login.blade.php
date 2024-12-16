@@ -1,6 +1,3 @@
-@php
-    $logo = DB::table('websites')->first();
-@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $logo->title }}</title>
+    <title>Hiking Nepal</title>
     {{-- toastr --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
