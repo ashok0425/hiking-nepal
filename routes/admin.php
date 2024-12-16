@@ -122,12 +122,4 @@ Route::resource('videos', "Main\VideosController", ['only' => ['update']]);
 
 // Route::resource('/country', 'CountryController');
 
-Route::post('/blog-posts/upload', "Blog\BlogController@uploadimage");
-
 Route::post('/ck-upload', \App\Http\Controllers\Admin\CKEditorUploadController::class)->name('ck-upload');
-
-// Route::get('/cache', function () {
-//     Artisan::call('cache:synblog');
-//     // Artisan::call('cache:clear');
-//     // Artisan::call('config:clear');
-// });
