@@ -73,7 +73,7 @@
         @include('admin.layouts.header')
 
         {{-- sidebar  --}}
-        @include('admin.layouts.leftpanel')
+        @include('admin.layouts.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper px-4">

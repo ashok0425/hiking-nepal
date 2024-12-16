@@ -28,7 +28,7 @@
                   {{-- Destination  --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'destinations' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'destinations' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-mountain"></i>
+                          <i class="nav-icon fas fa-map"></i>
                           <p>
                               Destinations
                               <i class="fas fa-angle-down right"></i>
@@ -54,9 +54,9 @@
 
                   <li class="nav-item <?php echo Request::segment(2) == 'categories-places' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-places' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-road"></i>
+                          <i class="nav-icon fas fa-mountain"></i>
                           <p>
-                              Category Places
+                              Places
                               <i class="fas fa-angle-down right"></i>
 
                           </p>
@@ -83,9 +83,10 @@
                   {{-- Category Destination  --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'categories-destinations' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-destinations' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-bus"></i>
+                          {{-- <i class="nav-icon fas fa-skiing"></i> --}}
+                          <i class="nav-icon fas fa-hiking"></i>
                           <p>
-                              Travel Category
+                              Activities
                               <i class="fas fa-angle-down right"></i>
 
                           </p>
@@ -109,7 +110,7 @@
                       </ul>
                   </li>
 
-                  {{-- Category Package  --}}
+
                   <li class="nav-item <?php echo Request::segment(2) == 'categories-packages' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-packages' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-box"></i>
@@ -135,6 +136,44 @@
                               </a>
                           </li>
 
+                          {{-- Category Package  --}}
+                          <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                  <i class="nav-icon fas fa-tag"></i>
+                                  <p>
+                                      Categories
+
+                                  </p>
+                              </a>
+                          </li>
+
+                      </ul>
+                  </li>
+
+                  {{-- Departure Date  --}}
+                  <li class="nav-item <?php echo Request::segment(2) == 'departures' ? 'menu-open' : ''; ?>">
+                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'departures' ? 'active' : ''; ?> ">
+                          <i class="nav-icon fas fa-plane-departure"></i>
+                          <p>
+                              Departure Dates
+                              <i class="fas fa-angle-down right"></i>
+
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ route('admin.departures.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>View All</p>
+                              </a>
+                          </li>
+                          <li class="nav-item ">
+                              <a href="{{ route('admin.departures.create') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Add New </p>
+                              </a>
+                          </li>
+
                       </ul>
                   </li>
 
@@ -156,7 +195,8 @@
                               </a>
                           </li>
                           <li class="nav-item ">
-                              <a href="{{ route('admin.testimonials.create') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
+                              <a href="{{ route('admin.testimonials.create') }}"
+                                  class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Add Testimonial </p>
                               </a>
@@ -168,7 +208,7 @@
                   {{-- Faq  --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'faqs' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'faqs' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-tag"></i>
+                          <i class="nav-icon fas fa-question-circle"></i>
                           <p>
                               FAQs
                               <i class="fas fa-angle-down right"></i>
@@ -192,37 +232,13 @@
                       </ul>
                   </li>
 
-                  {{-- Departure Date  --}}
-                  <li class="nav-item <?php echo Request::segment(2) == 'departures' ? 'menu-open' : ''; ?>">
-                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'departures' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-clock"></i>
-                          <p>
-                              Departure Date
-                              <i class="fas fa-angle-down right"></i>
 
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="{{ route('admin.departures.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>View All</p>
-                              </a>
-                          </li>
-                          <li class="nav-item ">
-                              <a href="{{ route('admin.departures.create') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Add New </p>
-                              </a>
-                          </li>
-
-                      </ul>
-                  </li>
 
                   {{-- Posts --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'posts' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'posts' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-newspaper"></i>
+                          {{-- <i class="nav-icon fas fa-newspaper"></i> --}}
+                          <i class="nav-icon fas fa-quote-left"></i>
                           <p>
                               Blog
                               <i class="fas fa-angle-down right"></i>
@@ -247,7 +263,7 @@
                   {{-- Newsletter  --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'newsletters' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'newsletters' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-user"></i>
+                          <i class="nav-icon fas fa-newspaper"></i>
                           <p>
                               Newsletter
                               <i class="fas fa-angle-down right"></i>
