@@ -22,13 +22,12 @@ class Post extends Model
         'cover',
         'meta_title',
         'meta_description',
-        'meta_keywords'
+        'meta_keywords',
     ];
 
     protected $casts = [
-        'published_at' => 'datetime'
+        'published_at' => 'datetime',
     ];
-
 
     public function getSlugOptions(): SlugOptions
     {

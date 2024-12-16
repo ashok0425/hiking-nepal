@@ -76,12 +76,10 @@
         @include('admin.layouts.leftpanel')
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper px-4">
             @include('admin.layouts.breadcrum')
 
-            <div class="container-fluid">
-                @yield('content')
-            </div>
+            @yield('content')
         </div>
         <!-- /.content-wrapper -->
 

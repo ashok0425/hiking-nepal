@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -18,14 +18,11 @@ class PostController extends Controller
             $searchTerm = $request->q;
             $query->where(function ($q) use ($searchTerm) {
                 $q->where('title', 'LIKE', "%{$searchTerm}%")
-                    ->orWhere('content', 'LIKE', "%{$searchTerm}%")
-                    ->orWhere('meta_title', 'LIKE', "%{$searchTerm}%")
-                    ->orWhere('meta_description', 'LIKE', "%{$searchTerm}%")
-                    ->orWhere('meta_keywords', 'LIKE', "%{$searchTerm}%");
+                    ->orWhere('meta_title', 'LIKE', "%{$searchTerm}%");
             });
         }
 
-        $posts = $query->paginate(10)->withQueryString();
+        $posts = $query->latest('created_at')->paginate()->withQueryString();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -119,6 +116,7 @@ class PostController extends Controller
         if ($status === 'published') {
             return $publishedAt ?? Carbon::now();
         }
+
         return null;
     }
 }
