@@ -109,7 +109,7 @@
                         <textarea name="content" cols="30" rows="10" id="summernote">{{ old('content') }}</textarea>
                     </div>
 
-                    <div class=" col-md-12">
+                    <div class="col-md-6">
                         <label class="form-label">Thumbnail </label>
                         <div class="image-input">
                             <input type="file" accept="image/*" id="imageInput1" name="image"
@@ -119,7 +119,7 @@
                         </div>
                     </div>
 
-                    <div class=" col-md-12">
+                    <div class="col-md-6">
                         <label class="form-label">Cover Image </label>
                         <div class="image-input">
                             <input type="file" accept="image/*" id="imageInput2" name="cover_image"
@@ -127,6 +127,10 @@
                             <label for="imageInput2" class="image-button"><i class="far fa-image"></i> Choose image</label>
                             <img src="" class="image-preview2">
                         </div>
+                    </div>
+
+                    <div class="col-12">
+                        <h4>SEO Section</h4>
                     </div>
 
                     <div class=" col-md-6">
@@ -146,25 +150,6 @@
 
                         <input type="text" name="meta_description" class="form-control"
                             value="{{ old('meta_description') }}">
-                    </div>
-
-                    <div class=" col-md-6">
-                        <label class="form-label">Mobile Meta Keyword</label>
-                        <input name="mobile_keyword" class='form-control' value=' {{ old('mobile_keyword') }}'
-                            type='text' placeholder="Mobile Keyword">
-                    </div>
-
-                    <div class=" col-md-6">
-                        <label class="form-label">Mobile Meta Title</label>
-                        <input name="mobile_title" class='form-control' value=' {{ old('meta_title') }}' type='text'
-                            placeholder="Mobile Meta  Title">
-                    </div>
-
-                    <div class=" col-md-12">
-                        <label class="form-label">Mobile Meta Description</label>
-
-                        <input type="text" name="mobile_description" class="form-control"
-                            value="{{ old('mobile_description') }}">
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block mt-2">Save</button>

@@ -104,18 +104,13 @@
                         <input name="url" class='form-control' value=' {{ $blog->url }}' type='text'
                             placeholder="Enter  Url">
                     </div>
-                    <div class=" col-md-6">
-                        <label class="form-label">
-                            <input type="checkbox" name="display_homepage" id="" value="1"
-                                @if ($blog->display_homepage == 1) checked @endif> Display in Homepage
-                        </label>
-                    </div>
+
                     <div class=" col-md-12 my-2">
                         <label class="form-label">Detail</label>
                         <textarea name="content" id="summernote" cols="30" rows="10">{{ $blog->post_content }}</textarea>
                     </div>
 
-                    <div class=" col-md-12">
+                    <div class=" col-md-6">
                         <label class="form-label">Blog Thumbnail </label>
                         <div class="image-input">
                             <input type="file" accept="image/*" id="imageInput1" name="image" value="">
@@ -125,7 +120,7 @@
                         <img src="{{ getImageurl($blog->guid) }}" alt="" width="100">
                     </div>
 
-                    <div class=" col-md-12">
+                    <div class=" col-md-6">
                         <label class="form-label">Cover Image </label>
 
                         <div class="image-input">
@@ -136,6 +131,10 @@
                         </div>
                         <img src="{{ getImageurl($blog->cover_image) }}" alt="" width="100">
 
+                    </div>
+
+                    <div class="col-12">
+                        <h4>SEO Section</h4>
                     </div>
 
                     <div class=" col-md-6">
@@ -157,24 +156,6 @@
                             value="{{ $blog->meta_description }}">
                     </div>
 
-                    <div class=" col-md-6">
-                        <label class="form-label">Mobile Meta Keyword</label>
-                        <input name="mobile_keyword" class='form-control' value=' {{ $blog->mobile_keyword }}'
-                            type='text' placeholder="Mobile Keyword">
-                    </div>
-
-                    <div class=" col-md-6">
-                        <label class="form-label">Mobile Meta Title</label>
-                        <input name="mobile_title" class='form-control' value=' {{ $blog->mobile_title }}' type='text'
-                            placeholder="Mobile Meta  Title">
-                    </div>
-
-                    <div class=" col-md-12">
-                        <label class="form-label">Mobile Meta Description</label>
-
-                        <input type="text" name="mobile_description" class="form-control"
-                            value="{{ $blog->mobile_description }}">
-                    </div>
                     <button type="submit" class="btn btn-primary btn-block mt-2">Save</button>
                 </div>
             </form>

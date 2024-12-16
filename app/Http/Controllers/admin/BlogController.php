@@ -119,9 +119,6 @@ class BlogController extends Controller
         $blog['meta_title'] = $request->meta_title;
         $blog['meta_description'] = $request->meta_description;
         $blog['keyword'] = $request->keyword;
-        $blog['mobile_title'] = $request->mobile_title;
-        $blog['mobile_description'] = $request->mobile_description;
-        $blog['mobile_keyword'] = $request->mobile_keyword;
         $blog['post_date'] = today();
         $blog['post_status'] = 'publish';
         $blog['post_content'] = $request->content;
@@ -179,9 +176,6 @@ class BlogController extends Controller
         $blog['meta_title'] = $request->meta_title;
         $blog['meta_description'] = $request->meta_description;
         $blog['keyword'] = $request->keyword;
-        $blog['mobile_title'] = $request->mobile_title;
-        $blog['mobile_description'] = $request->mobile_description;
-        $blog['mobile_keyword'] = $request->mobile_keyword;
         $blog['post_content'] = $request->content;
         DB::table('blogs')->where('ID', $id)->update($blog);
         Cache::forget('blogs');
