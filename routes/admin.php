@@ -57,8 +57,7 @@ Route::resource('/departures', "Travel\DeparturesController");
 Route::get('/departures/delete/{id}', "Travel\DeparturesController@destroy")->name('departures.delete');
 
 //blog
-Route::resource('/blogs', 'BlogController');
-Route::get('/blogs/delete/{id}', 'BlogController@destroy')->name('blogs.delete');
+Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);
 
 //Event
 Route::resource('/events', 'EventController');
@@ -111,14 +110,11 @@ Route::get('role_permission/assign_role/delete/{id}/{table}', 'AssignroleControl
 Route::get('active/{id}/{table}', 'BannerController@active')->name('active');
 Route::get('deactive/{id}/{table}', 'BannerController@deactive')->name('deactive');
 
-Route::get('blog/active/{id}/{table}', 'BlogController@active')->name('blog.active');
-Route::get('blog/deactive/{id}/{table}', 'BlogController@deactive')->name('blog.deactive');
-
 // Route::resource('contact-details', 'Main\ContactDetailsController');
 Route::resource('important-links', "ImportantLinks\ImportantLinksController");
 
 // Route::resource('/main-slider', 'Main\MainSliderController');
-Route::resource('/blog', "Blog\BlogController");
+
 Route::resource('videos', "Main\VideosController", ['only' => ['update']]);
 
 // Route::get('booking', 'Main\MainController@getBooking');
@@ -127,6 +123,8 @@ Route::resource('videos', "Main\VideosController", ['only' => ['update']]);
 // Route::resource('/country', 'CountryController');
 
 Route::post('/blog-posts/upload', "Blog\BlogController@uploadimage");
+
+Route::post('/ck-upload', \App\Http\Controllers\Admin\CKEditorUploadController::class)->name('ck-upload');
 
 // Route::get('/cache', function () {
 //     Artisan::call('cache:synblog');

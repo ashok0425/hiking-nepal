@@ -219,31 +219,31 @@
                       </ul>
                   </li>
 
-                  {{-- blog Date  --}}
-                  <li class="nav-item <?php echo Request::segment(2) == 'blogs' ? 'menu-open' : ''; ?>">
-                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'blogs' ? 'active' : ''; ?> ">
-                          <i class="nav-icon fas fa-copy"></i>
+                  {{-- Posts --}}
+                  <li class="nav-item <?php echo Request::segment(2) == 'posts' ? 'menu-open' : ''; ?>">
+                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'posts' ? 'active' : ''; ?> ">
+                          <i class="nav-icon fas fa-newspaper"></i>
                           <p>
-                              Blogs <i class="fas fa-angle-down right"></i>
-
+                              Blog
+                              <i class="fas fa-angle-down right"></i>
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="{{ route('admin.blogs.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
+                              <a href="{{ route('admin.posts.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>View All</p>
                               </a>
                           </li>
                           <li class="nav-item ">
-                              <a href="{{ route('admin.blogs.create') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
+                              <a href="{{ route('admin.posts.create') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Add New </p>
+                                  <p>Add New</p>
                               </a>
                           </li>
-
                       </ul>
                   </li>
+
 
                   {{-- Event Date  --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'events' ? 'menu-open' : ''; ?>">
