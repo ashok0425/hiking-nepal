@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -28,7 +26,7 @@ return new class extends Migration
             if ($destination) {
                 DB::table('places')->insert([
                     'name' => str_replace(' Region', '', $data['name']),
-                    'slug' => str_replace(' Region', '', $data['slug']),
+                    'slug' => str_replace('-region', '', $data['slug']),
                     'description' => $data['description'] ?: null,
                     'destination_id' => $destination->id,
                     'status' => 'active',
