@@ -52,7 +52,7 @@
                                         class="font-weight-bold text-dark">{{ $place->name }}</a>
                                     @if ($place->slug)
                                         <div class="small">
-                                            <a href="#" class="text-muted" target="_blank">
+                                            <a href="#" class="text-muted"">
                                                 {{ $place->slug }}
                                             </a>
                                         </div>

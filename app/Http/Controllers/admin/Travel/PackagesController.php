@@ -9,6 +9,7 @@ use App\Models\CategoryPlace;
 use App\Models\Country;
 use App\Models\Destination;
 use App\Models\Package;
+use App\Models\Place;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -86,7 +87,7 @@ class PackagesController extends Controller
             ->get();
         $destinations = Destination::orderBy('name')->get();
         $categories_destinations = CategoryDestination::all();
-        $places = CategoryPlace::orderBy('name')->get();
+        $places = Place::orderBy('name')->get();
 
         return view('admin.packages.create', compact('destinations', 'categories_destinations', 'featured_package', 'places'));
     }
