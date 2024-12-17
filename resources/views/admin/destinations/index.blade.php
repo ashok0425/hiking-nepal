@@ -64,7 +64,7 @@
                             </div>
                         </td>
                         <td>
-                            <span class="badge badge-{{ $destination->status === 'published' ? 'success' : 'warning' }}">
+                            <span class="badge badge-{{ $destination->status === 'active' ? 'success' : 'warning' }}">
                                 {{ ucfirst($destination->status) }}
                             </span>
                         </td>
