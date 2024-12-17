@@ -51,7 +51,7 @@
                               <a href="{{ route('admin.categories-packages.index') }}"
                                   class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
                                   {{-- <i class="fas fa-list nav-icon"></i> --}}
-                                  <p>All Tours</p>
+                                  <p>Packages</p>
                               </a>
                           </li>
 
