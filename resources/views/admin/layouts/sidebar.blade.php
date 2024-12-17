@@ -37,8 +37,8 @@
                       </a>
                   </li>
 
-                  <li class="nav-item <?php echo Request::segment(2) == 'categories-packages' ? 'menu-open' : ''; ?>">
-                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-packages' ? 'active' : ''; ?> ">
+                  <li class="nav-item {{ Route::is('admin.package-categories.*') ? 'menu-open' : '' }}">
+                      <a href="#" class="nav-link {{ Route::is('admin.package-categories.*') ? 'active' : '' }} ">
                           <i class="nav-icon fas fa-route"></i>
                           <p>
                               Tours
@@ -50,15 +50,14 @@
                           <li class="nav-item">
                               <a href="{{ route('admin.categories-packages.index') }}"
                                   class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
-                                  {{-- <i class="fas fa-list nav-icon"></i> --}}
                                   <p>Packages</p>
                               </a>
                           </li>
 
-                          {{-- Tour Category  --}}
+                          {{-- Package Category  --}}
                           <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                  {{-- <i class="nav-icon fas fa-hiking"></i> --}}
+                              <a href="{{ route('admin.package-categories.index') }}"
+                                  class="nav-link {{ Route::is('admin.package-categories.*') ? 'active' : '' }}">
                                   <p>Categories</p>
                               </a>
                           </li>

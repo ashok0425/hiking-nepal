@@ -21,6 +21,9 @@ Route::post('profile/logout/admin', 'AuthController@destory')->name('logout');
 Route::resource('/destinations', \App\Http\Controllers\Admin\DestinationController::class);
 Route::resource('/places', \App\Http\Controllers\Admin\PlaceController::class);
 
+// Packages
+Route::resource('package-categories', \App\Http\Controllers\Admin\PackageCategoryController::class);
+
 //   destination category
 Route::resource('/categories-destinations', "Travel\CategoriesDestinationsController");
 Route::get('/categoriesdestinations/delete/{id}', "Travel\CategoriesDestinationsController@destroy")->name('categories-destinations.delete');

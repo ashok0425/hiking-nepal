@@ -9,14 +9,14 @@
                  <li class="breadcrumb-item {{ Request::segment(3) ? '' : 'active' }}">
                      @if (Request::segment(3))
                          <a
-                             href="{{ route('admin.' . Request::segment(2) . '.index') }}">{{ Str::ucfirst(Request::segment(2)) }}</a>
+                             href="{{ route('admin.' . Request::segment(2) . '.index') }}">{{ Str::title(str_replace('-', ' ', Request::segment(2))) }}</a>
                      @else
-                         {{ Str::ucfirst(Request::segment(2)) }}
+                         {{ Str::title(str_replace('-', ' ', Request::segment(2))) }}
                      @endif
                  </li>
                  @if (Request::segment(3))
                      <li class="breadcrumb-item active" aria-current="page">
-                         {{ Str::ucfirst(Request::segment(3)) }}
+                         {{ Str::title(str_replace('-', ' ', Request::segment(3))) }}
                      </li>
                  @endif
              </ol>
