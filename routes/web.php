@@ -5,12 +5,6 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home.index')->name('home');
 Route::view('/deals', 'deals')->name('deals');
 
-Route::get('/product-category/{slug}', function ($slug) {
-    return view('product-category', compact('slug'));
-})->name('product-category');
-
-Route::view('/tours/{slug}', 'tours')->name('tours');
-
 // About
 Route::view('/information', 'information')->name('information');
 Route::view('/who-we-are', 'who-we-are')->name('who-we-are');
@@ -19,10 +13,34 @@ Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('book
 Route::view('/legal-document', 'legal-document')->name('legal-document');
 Route::view('/our-team', 'our-team')->name('our-team');
 
+Route::view('/tours/{slug}', 'tours')->name('tours');
+
 // Booking
 Route::view('/book-a-call', 'book-a-call')->name('book-a-call');
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 
-// Blog
+/**
+ * Blog routes
+ * Handles the main blog listing page
+ */
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
-Route::get('/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog-page');
+
+/**
+ * Legacy URL redirect for country-specific product categories
+ * Redirects old /product-category/{country} URLs to the new dynamic page format
+ * Only matches specific countries: tibet, bhutan, nepal
+ *
+ * @param  string  $country  The country slug from the URL
+ */
+Route::get('/product-category/{country}', function ($country) {
+    return redirect()->route('dynamic-page', ['slug' => $country]);
+})->where('country', 'tibet|bhutan|nepal');
+
+/**
+ * Dynamic page handler for destinations and blog posts
+ * This is a catch-all route that should be placed last
+ * Handles both destination pages and blog post detail pages
+ *
+ * @param  string  $slug  The URL slug that identifies the page
+ */
+Route::get('/{slug}', App\Http\Controllers\PageController::class)->name('dynamic-page');

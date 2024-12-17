@@ -57,7 +57,7 @@
                                         class="font-weight-bold text-dark">{{ $post->title }}</a>
                                     @if ($post->slug)
                                         <div class="small">
-                                            <a href="{{ route('blog-page', $post->slug) }}" class="text-muted"
+                                            <a href="{{ route('dynamic-page', $post->slug) }}" class="text-muted"
                                                 target="_blank">
                                                 {{ $post->slug }}
                                             </a>

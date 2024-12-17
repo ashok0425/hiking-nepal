@@ -50,8 +50,13 @@
                                 <div>
                                     <a href="{{ route('admin.destinations.edit', $destination) }}"
                                         class="font-weight-bold text-dark">{{ $destination->name }}</a>
-                                    @if ($destination->tagline)
-                                        <div class="small text-muted">{{ $destination->tagline }}</div>
+                                    @if ($destination->slug)
+                                        <div class="small">
+                                            <a href="{{ route('dynamic-page', $destination->slug) }}" class="text-muted"
+                                                target="_blank">
+                                                {{ $destination->slug }}
+                                            </a>
+                                        </div>
                                     @endif
                                 </div>
                             </div>

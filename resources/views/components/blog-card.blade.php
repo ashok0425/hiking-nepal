@@ -14,6 +14,6 @@
         <h3 class="card-title text-success fs-4">{{ $post->title }}</h3>
         <div class="mb-2 text-muted">{{ $post->published_at->format('F d, Y') }}</div>
         <p class="card-text">{{ Str::limit(strip_tags($post->content), 150) }}</p>
-        <a href="{{ route('blog-page', $post->slug) }}" class="stretched-link">Read More</a>
+        <a href="{{ route('dynamic-page', $post->slug) }}" class="stretched-link">Read More</a>
     </div>
 </div>

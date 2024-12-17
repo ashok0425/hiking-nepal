@@ -43,4 +43,20 @@ class Destination extends Model
 
         return Storage::disk('public')->url($value);
     }
+
+    public function scopeActiveAndOrdered($query)
+    {
+        return $query->where('status', 'active')->orderBy('order');
+    }
+
+    public static function getList()
+    {
+        if (app()->environment('local')) {
+            return cache()->remember('destinations', 300, function () {
+                return self::activeAndOrdered()->get();
+            });
+        }
+
+        return self::activeAndOrdered()->get();
+    }
 }

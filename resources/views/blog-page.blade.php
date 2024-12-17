@@ -69,7 +69,8 @@
                 <ul class="list-group list-group-flush mb-5">
                     @foreach (App\Models\Post::getRecentPosts(6) as $recentPost)
                         <li class="list-group-item">
-                            <a href="{{ route('blog-page', $recentPost->slug) }}" class="text-decoration-none text-dark">
+                            <a href="{{ route('dynamic-page', $recentPost->slug) }}"
+                                class="text-decoration-none text-dark">
                                 {{ $recentPost->title }}
                             </a>
                         </li>

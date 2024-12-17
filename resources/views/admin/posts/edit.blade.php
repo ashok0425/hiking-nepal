@@ -27,7 +27,7 @@
                                     value="{{ old('title', $post->title) }}" required>
                                 @if ($post->slug)
                                     <div class="small mt-1 text-muted">
-                                        URL: <a href="{{ route('blog-page', $post->slug) }}" class="text-muted"
+                                        URL: <a href="{{ route('dynamic-page', $post->slug) }}" class="text-muted"
                                             target="_blank">
                                             {{ $post->slug }}
                                         </a>

@@ -4,27 +4,20 @@
 
 @section('content')
     <div class="position-relative" style="height: 60vh;">
-        <img src="{{ asset('images/prod-cat.jpg') }}" alt="product category"
-            class="w-100 h-100 object-fit-cover position-absolute" style="object-position: center top;">
+        <img src="{{ $destination->cover }}" alt="product category" class="w-100 h-100 object-fit-cover position-absolute"
+            style="object-position: center center;">
     </div>
-
     <section class="py-5 my-5 container text-center">
         <div class="mx-auto" style="max-width: 800px;">
             <div class="head-lines text-center mb-5">
                 <div class="head-line-bg"></div>
-                <h1 class="mb-0 bg-white text-uppercase head-line-head">{{ $slug }}
+                <h1 class="mb-0 bg-white text-uppercase head-line-head">{{ $destination->slug }}
                 </h1>
-                <p>Wander in himalayan foothills</p>
+                <p>{{ $destination->tagline }}</p>
             </div>
         </div>
 
-        <p>We believe that traveling and touring is much more than just a vacation but rather an opportunity to get one with
-            nature and enjoy the deeper aspect of its beauty. And, we work accordingly to provide our customers with similar
-            experiences while on their treks and tours. On our treks and expeditions, we incorporate different types of
-            experiences to enjoy nature, get to know the locals, and understand the culture while having fun. We prioritize
-            blending in with the locals during the trek for cultural and linguistic experience, traditional exposure, and
-            understanding of the place.
-        </p>
+        <p>{{ $destination->desc }}</p>
     </section>
 
     <section class="container py-5 mt-5">

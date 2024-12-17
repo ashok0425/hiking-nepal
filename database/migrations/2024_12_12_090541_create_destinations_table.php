@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug', 255)->nullable()->unique();
             $table->text('cover', 255)->nullable();
             $table->longText('desc')->nullable();
-            $table->integer('order')->default(0);
+            $table->integer('order')->default(99);
             $table->string('meta_title', 255)->nullable();
             $table->string('meta_keyword', 255)->nullable();
             $table->text('meta_description')->nullable();
