@@ -110,7 +110,6 @@
                       </ul>
                   </li>
 
-
                   <li class="nav-item <?php echo Request::segment(2) == 'categories-packages' ? 'menu-open' : ''; ?>">
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-packages' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-box"></i>
@@ -231,8 +230,6 @@
 
                       </ul>
                   </li>
-
-
 
                   {{-- Posts --}}
                   <li class="nav-item <?php echo Request::segment(2) == 'posts' ? 'menu-open' : ''; ?>">

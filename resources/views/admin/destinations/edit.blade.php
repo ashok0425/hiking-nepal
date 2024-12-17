@@ -82,8 +82,7 @@
                                 <input type="file" name="cover" class="form-control-file" accept="image/*">
                                 <div id="cover-preview" class="mt-2">
                                     @if ($destination->cover)
-                                        <img src="{{ Storage::url($destination->cover) }}" alt="Cover"
-                                            style="max-width: 100%">
+                                        <img src="{{ $destination->cover }}" alt="Cover" style="max-width: 100%">
                                     @endif
                                 </div>
                             </div>

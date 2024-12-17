@@ -39,8 +39,8 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 @if ($destination->cover)
-                                    <img src="{{ str_starts_with($destination->cover, 'http') ? $destination->cover : Storage::url($destination->cover) }}"
-                                        alt="Cover" class="mr-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <img src="{{ $destination->cover }}" alt="Cover" class="mr-2"
+                                        style="width: 50px; height: 50px; object-fit: cover;">
                                 @else
                                     <div class="mr-2 bg-secondary d-flex align-items-center justify-content-center"
                                         style="width: 50px; height: 50px; border-radius: 4px;">
@@ -50,13 +50,6 @@
                                 <div>
                                     <a href="{{ route('admin.destinations.edit', $destination) }}"
                                         class="font-weight-bold text-dark">{{ $destination->name }}</a>
-                                    @if ($destination->slug)
-                                        <div class="small">
-                                            <a href="#" class="text-muted" target="_blank">
-                                                {{ $destination->slug }}
-                                            </a>
-                                        </div>
-                                    @endif
                                     @if ($destination->tagline)
                                         <div class="small text-muted">{{ $destination->tagline }}</div>
                                     @endif
