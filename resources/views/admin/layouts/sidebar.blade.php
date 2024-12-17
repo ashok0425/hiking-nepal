@@ -37,19 +37,20 @@
                       </a>
                   </li>
 
-                  <li class="nav-item {{ Route::is('admin.package-categories.*') ? 'menu-open' : '' }}">
-                      <a href="#" class="nav-link {{ Route::is('admin.package-categories.*') ? 'active' : '' }} ">
+                  <li
+                      class="nav-item {{ Route::is('admin.package-categories.*') || Route::is('admin.categories-packages.*') ? 'menu-open' : '' }}">
+                      <a href="#"
+                          class="nav-link {{ Route::is('admin.package-categories.*') || Route::is('admin.categories-packages.*') ? 'active' : '' }} ">
                           <i class="nav-icon fas fa-route"></i>
                           <p>
                               Tours
                               <i class="fas fa-angle-down right"></i>
-
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="{{ route('admin.categories-packages.index') }}"
-                                  class="nav-link <?php echo Request::segment(3) == 'categories-packages' ? 'active' : ''; ?>">
+                                  class="nav-link {{ Route::is('admin.categories-packages.*') ? 'active' : '' }}">
                                   <p>Packages</p>
                               </a>
                           </li>

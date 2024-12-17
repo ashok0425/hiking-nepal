@@ -83,6 +83,13 @@
         .nav-sidebar .nav-item .nav-treeview .nav-link {
             padding-left: 3.5em;
         }
+
+        [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active,
+        [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active:focus,
+        [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active:hover {
+            background-color: #425163;
+            color: #fff;
+        }
     </style>
 </head>
 
