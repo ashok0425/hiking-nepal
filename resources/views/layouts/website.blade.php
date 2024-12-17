@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         @hasSection('title')
-            @yield('title') | Hiking Nepal
+            @yield('title') - Hiking Nepal
         @else
             Hiking Nepal
         @endif
