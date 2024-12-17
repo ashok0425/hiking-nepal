@@ -35,7 +35,7 @@
 
                             <div class="form-group mt-3">
                                 <label>Description</label>
-                                <textarea name="desc" id="editor" class="form-control">{{ old('desc', $destination->desc) }}</textarea>
+                                <textarea name="desc" class="form-control" rows="10">{{ old('desc', $destination->desc) }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -122,16 +122,6 @@
 
 @push('scripts')
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'), {
-                simpleUpload: {
-                    uploadUrl: "{{ route('admin.ck-upload', ['_token' => csrf_token()]) }}"
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
         document.querySelector('input[name="cover"]').addEventListener('change', function(e) {
             const preview = document.getElementById('cover-preview');
             preview.innerHTML = '';
@@ -147,12 +137,4 @@
             }
         });
     </script>
-@endpush
-
-@push('style')
-    <style>
-        .ck-editor__editable_inline {
-            min-height: 300px;
-        }
-    </style>
 @endpush
