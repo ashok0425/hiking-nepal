@@ -25,4 +25,4 @@ Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 
 // Blog
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
-Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog-page');
+Route::get('/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog-page');
