@@ -63,6 +63,26 @@
         input::placeholder {
             font-size: 11px !important;
         }
+
+        .menu-open {
+            background-color: #123761;
+        }
+
+        .nav-sidebar .nav-item>.nav-link {
+            margin-bottom: 0;
+        }
+
+        .nav-pills .nav-link {
+            border-radius: 0;
+        }
+
+        [class*="sidebar-dark-"] .nav-sidebar>.nav-item>.nav-link.active {
+            box-shadow: none;
+        }
+
+        .nav-sidebar .nav-item .nav-treeview .nav-link {
+            padding-left: 3.5em;
+        }
     </style>
 </head>
 

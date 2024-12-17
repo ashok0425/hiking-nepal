@@ -33,7 +33,7 @@ return new class extends Migration
                 'name' => $data['name'],
                 'slug' => $data['slug'],
                 'description' => base64_decode($data['description']),
-                'tagline' => $data['tagline'] ?? ucfirst($data['name']) . ' Packages', // Generate tagline from name if not provided
+                'tagline' => $data['tagline'] ?? ucfirst($data['name']).' Packages', // Generate tagline from name if not provided
                 'status' => 'active', // Set default status as active
                 'created_at' => now(),
                 'updated_at' => now(),

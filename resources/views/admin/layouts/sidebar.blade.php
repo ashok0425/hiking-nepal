@@ -49,7 +49,7 @@
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="{{ route('admin.categories-packages.index') }}"
-                                  class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
+                                  class="nav-link <?php echo Request::segment(3) == 'categories-packages' ? 'active' : ''; ?>">
                                   <p>Packages</p>
                               </a>
                           </li>
