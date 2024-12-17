@@ -1,6 +1,25 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', $destination->meta_title ?? $destination->name)
+
+@section('meta')
+    <meta name="description" content="{{ $destination->meta_description }}">
+    <meta name="keywords" content="{{ $destination->meta_keyword }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $destination->meta_title ?? $destination->name }}">
+    <meta property="og:description" content="{{ $destination->meta_description }}">
+    <meta property="og:image" content="{{ $destination->cover }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ $destination->meta_title ?? $destination->name }}">
+    <meta property="twitter:description" content="{{ $destination->meta_description }}">
+    <meta property="twitter:image" content="{{ $destination->cover }}">
+@endsection
 
 @section('content')
     <div class="position-relative" style="height: 60vh;">

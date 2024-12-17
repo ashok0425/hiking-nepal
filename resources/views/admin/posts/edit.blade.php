@@ -76,8 +76,7 @@
                                 <input type="file" name="thumbnail" class="form-control-file" accept="image/*">
                                 <div id="thumbnail-preview" class="mt-2">
                                     @if ($post->thumbnail)
-                                        <img src="{{ Str::startsWith($post->thumbnail, 'http') ? $post->thumbnail : Storage::url($post->thumbnail) }}"
-                                            alt="Thumbnail" style="max-width: 100%">
+                                        <img src="{{ $post->thumbnail }}" alt="Thumbnail" style="max-width: 100%">
                                     @endif
                                 </div>
                             </div>
@@ -87,7 +86,7 @@
                                 <input type="file" name="cover" class="form-control-file" accept="image/*">
                                 <div id="cover-preview" class="mt-2">
                                     @if ($post->cover)
-                                        <img src="{{ Storage::url($post->cover) }}" alt="Cover" style="max-width: 100%">
+                                        <img src="{{ $post->cover }}" alt="Cover" style="max-width: 100%">
                                     @endif
                                 </div>
                             </div>

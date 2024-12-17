@@ -43,8 +43,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 @if ($post->thumbnail)
-                                    <img src="{{ str_starts_with($post->thumbnail, 'http') ? $post->thumbnail : Storage::url($post->thumbnail) }}"
-                                        alt="Thumbnail" class="mr-2"
+                                    <img src="{{ $post->thumbnail }}" alt="Thumbnail" class="mr-2"
                                         style="width: 50px; height: 50px; object-fit: cover;">
                                 @else
                                     <div class="mr-2 bg-secondary d-flex align-items-center justify-content-center"

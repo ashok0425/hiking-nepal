@@ -9,15 +9,20 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $post->meta_title ?? $post->title }}">
     <meta property="og:description" content="{{ $post->meta_description }}">
-    <meta property="og:image"
-        content="{{ Str::startsWith($post->thumbnail, 'http') ? $post->thumbnail : asset($post->thumbnail) }}">
+    <meta property="og:image" content="{{ $post->thumbnail ?? $post->cover }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="{{ $post->meta_title ?? $post->title }}">
+    <meta property="twitter:description" content="{{ $post->meta_description }}">
+    <meta property="twitter:image" content="{{ $post->thumbnail ?? $post->cover }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 330px;">
-        <img src="{{ Str::startsWith($post->cover ?? $post->thumbnail, 'http') ? $post->cover ?? $post->thumbnail : asset($post->cover ?? $post->thumbnail) }}"
-            alt="{{ $post->title }}" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ $post->thumbnail ?? $post->cover }}" alt="{{ $post->title }}"
+            class="w-100 position-absolute start-0 top-0"
             style="height: 330px; object-fit:cover; filter: brightness(30%) contrast(100%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">{{ $post->title }}</h1>

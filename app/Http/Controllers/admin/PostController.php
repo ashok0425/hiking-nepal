@@ -38,11 +38,11 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'status' => 'required|in:draft,published',
-            'thumbnail' => 'nullable|image|max:2048',
-            'cover' => 'nullable|image|max:2048',
-            'meta_title' => 'nullable|max:255',
-            'meta_description' => 'nullable',
-            'meta_keywords' => 'nullable|max:255',
+            'thumbnail' => 'nullable|image|max:2048|required_if:status,published',
+            'cover' => 'nullable|image|max:2048|required_if:status,published',
+            'meta_title' => 'nullable|max:255|required_if:status,published',
+            'meta_description' => 'nullable|required_if:status,published',
+            'meta_keywords' => 'nullable|max:255|required_if:status,published',
         ]);
 
         if ($request->hasFile('thumbnail')) {
@@ -70,23 +70,23 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'status' => 'required|in:draft,published',
-            'thumbnail' => 'nullable|image|max:2048',
-            'cover' => 'nullable|image|max:2048',
-            'meta_title' => 'nullable|max:255',
-            'meta_description' => 'nullable',
-            'meta_keywords' => 'nullable|max:255',
+            'thumbnail' => ['nullable', 'image', 'max:2048', $post->thumbnail ? '' : 'required_if:status,published'],
+            'cover' => ['nullable', 'image', 'max:2048', $post->cover ? '' : 'required_if:status,published'],
+            'meta_title' => 'nullable|max:255|required_if:status,published',
+            'meta_description' => 'nullable|required_if:status,published',
+            'meta_keywords' => 'nullable|max:255|required_if:status,published',
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            if ($post->thumbnail) {
-                Storage::disk('public')->delete($post->thumbnail);
+            if ($post->getRawOriginal('thumbnail')) {
+                Storage::disk('public')->delete($post->getRawOriginal('thumbnail'));
             }
             $validated['thumbnail'] = $request->file('thumbnail')->store('posts/thumbnails', 'public');
         }
 
         if ($request->hasFile('cover')) {
-            if ($post->cover) {
-                Storage::disk('public')->delete($post->cover);
+            if ($post->getRawOriginal('cover')) {
+                Storage::disk('public')->delete($post->getRawOriginal('cover'));
             }
             $validated['cover'] = $request->file('cover')->store('posts/covers', 'public');
         }
@@ -99,11 +99,11 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if ($post->thumbnail) {
-            Storage::disk('public')->delete($post->thumbnail);
+        if ($post->getRawOriginal('thumbnail')) {
+            Storage::disk('public')->delete($post->getRawOriginal('thumbnail'));
         }
-        if ($post->cover) {
-            Storage::disk('public')->delete($post->cover);
+        if ($post->getRawOriginal('cover')) {
+            Storage::disk('public')->delete($post->getRawOriginal('cover'));
         }
 
         $post->delete();

@@ -1,6 +1,6 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Welcome')
 
 @section('content')
     @include('home.inc.hero')

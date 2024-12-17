@@ -1,12 +1,7 @@
 <div class="card" style="background-color: transparent">
-    @if ($post->thumbnail)
-        @if (str_starts_with($post->thumbnail, 'http'))
-            <img src="{{ $post->thumbnail }}" class="card-img-top" alt="{{ $post->title }}"
-                style="height: 250px; object-fit: cover;">
-        @else
-            <img src="{{ asset('storage/' . $post->thumbnail) }}" class="card-img-top" alt="{{ $post->title }}"
-                style="-height: 250px; object-fit: cover;">
-        @endif
+    @if ($post->thumbnail || $post->cover)
+        <img src="{{ $post->thumbnail ?? $post->cover }}" class="card-img-top" alt="{{ $post->title }}"
+            style="height: 250px; object-fit: cover;">
     @else
         <div class="card-img-top bg-secondary" style="height: 250px;"></div>
     @endif

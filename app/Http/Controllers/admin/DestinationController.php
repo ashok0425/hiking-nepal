@@ -34,12 +34,12 @@ class DestinationController extends Controller
             'name' => 'required|max:255',
             'tagline' => 'required|max:255',
             'status' => 'required|in:active,inactive',
-            'cover' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'cover' => 'required_if:status,active|image|max:2048',
             'desc' => 'required',
             'order' => 'required|integer',
-            'meta_title' => 'nullable|max:255',
-            'meta_keyword' => 'nullable|max:255',
-            'meta_description' => 'nullable',
+            'meta_title' => 'required_if:status,active|max:255',
+            'meta_keyword' => 'required_if:status,active|max:255',
+            'meta_description' => 'required_if:status,active',
         ]);
 
         if ($request->hasFile('cover')) {
@@ -65,17 +65,23 @@ class DestinationController extends Controller
             'name' => 'required|max:255',
             'tagline' => 'required|max:255',
             'status' => 'required|in:active,inactive',
-            'cover' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'desc' => 'required',
             'order' => 'required|integer',
-            'meta_title' => 'nullable|max:255',
-            'meta_keyword' => 'nullable|max:255',
-            'meta_description' => 'nullable',
+            'meta_title' => 'required_if:status,active|max:255',
+            'meta_keyword' => 'required_if:status,active|max:255',
+            'meta_description' => 'required_if:status,active',
+            'cover' => [
+                'nullable',
+                'image',
+                'max:2048',
+                $request->status === 'active' && ! $destination->cover ? 'required' : '',
+            ],
         ]);
 
         if ($request->hasFile('cover')) {
-            if ($destination->cover) {
-                Storage::disk('public')->delete($destination->cover);
+            // Delete old cover if exists
+            if ($destination->getRawOriginal('cover')) {
+                Storage::disk('public')->delete($destination->getRawOriginal('cover'));
             }
 
             $cover = $request->file('cover');
@@ -91,8 +97,8 @@ class DestinationController extends Controller
 
     public function destroy(Destination $destination)
     {
-        if ($destination->cover) {
-            Storage::disk('public')->delete($destination->cover);
+        if ($destination->getRawOriginal('cover')) {
+            Storage::disk('public')->delete($destination->getRawOriginal('cover'));
         }
 
         $destination->delete();

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -35,6 +36,32 @@ class Post extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
+    }
+
+    public function getThumbnailAttribute($value)
+    {
+        if (! $value) {
+            return null;
+        }
+
+        if (str_starts_with($value, 'http')) {
+            return $value;
+        }
+
+        return Storage::disk('public')->url($value);
+    }
+
+    public function getCoverAttribute($value)
+    {
+        if (! $value) {
+            return null;
+        }
+
+        if (str_starts_with($value, 'http')) {
+            return $value;
+        }
+
+        return Storage::disk('public')->url($value);
     }
 
     public static function getRecentPosts()
