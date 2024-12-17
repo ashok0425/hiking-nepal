@@ -14,7 +14,7 @@
 
          <!-- Pending Order -->
          {{-- <li class="nav-item dropdown">
-   
+
       <a class="nav-link" data-toggle="dropdown" href="#" title="Pending order">
         <i class="far fa-bell"></i>
         <span class="badge badge-warning navbar-badge">3</span>
@@ -26,17 +26,17 @@
           22333
           <span class="float-right text-muted text-sm">ee/Qty</span>
         </a>
-        
-       
+
+
         <div class="dropdown-divider"></div>
         <a href="" class="dropdown-item dropdown-footer">See All Notifications</a>
       </div>
     </li> --}}
-         <li class="nav-item">
+         {{-- <li class="nav-item">
              <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                  <i class="fas fa-expand-arrows-alt"></i>
              </a>
-         </li>
+         </li> --}}
          <!-- Profile Dropdown Menu -->
          <li class="nav-item dropdown">
              <a class="nav-link" data-toggle="dropdown" href="#">
