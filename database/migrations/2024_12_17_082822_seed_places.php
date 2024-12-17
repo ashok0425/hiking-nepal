@@ -27,8 +27,8 @@ return new class extends Migration
 
             if ($destination) {
                 DB::table('places')->insert([
-                    'name' => $data['name'],
-                    'slug' => $data['slug'],
+                    'name' => str_replace(' Region', '', $data['name']),
+                    'slug' => str_replace(' Region', '', $data['slug']),
                     'description' => $data['description'] ?: null,
                     'destination_id' => $destination->id,
                     'status' => 'active',
