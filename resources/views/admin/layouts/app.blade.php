@@ -77,7 +77,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper px-4">
-            @include('admin.layouts.breadcrum')
+            @include('admin.layouts.breadcrumb')
 
             @yield('content')
         </div>
