@@ -3,31 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Destination extends Model
 {
-    protected $table = 'destinations';
+    use HasSlug;
 
     protected $fillable = [
-        'name', 'image', 'details', 'status', 'order',
+        'name',
+        'tagline',
+        'status',
+        'slug',
+        'cover',
+        'desc',
+        'order',
+        'meta_title',
+        'meta_keyword',
+        'meta_description',
     ];
 
-    public function newimages()
+    public function getSlugOptions(): SlugOptions
     {
-        return $this->belongsToMany('App\Models\ImageUpload', 'destination_image', 'destination_id', 'image_id')->withPivot('id');
-    }
-
-    // public function images() {
-    // 	return $this->hasMany('App\Models\DestinationImage', 'destination_id');
-    // }
-
-    public function categories_destinations()
-    {
-        return $this->hasMany('App\Models\CategoryDestination', 'destination_id');
-    }
-
-    public function packages()
-    {
-        return $this->hasMany('App\Models\Package', 'destination_id');
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 }

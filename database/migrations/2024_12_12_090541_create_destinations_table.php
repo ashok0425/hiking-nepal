@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('destinations', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->longText('details')->nullable();
-            $table->tinyInteger('status');
-            $table->string('image', 255)->nullable();
+            $table->string('tagline', 255);
+            $table->string('status')->default('inactive');
+            $table->string('slug', 255)->nullable()->unique();
+            $table->text('cover', 255)->nullable();
+            $table->longText('desc')->nullable();
+            $table->integer('order')->default(0);
             $table->string('meta_title', 255)->nullable();
             $table->string('meta_keyword', 255)->nullable();
             $table->text('meta_description')->nullable();
-            $table->string('url', 255);
-            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }

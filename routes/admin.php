@@ -1,6 +1,5 @@
 <?php
 
-// use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
@@ -9,6 +8,8 @@ Route::middleware('guest:admin')->group(function () {
 });
 
 Route::get('/dashboard', 'AuthController@show')->name('dashboard');
+
+// Account Profile
 Route::get('/profile', 'AuthController@profile')->name('profile');
 Route::post('profile/update-profile', 'AuthController@update')->name('profile.update');
 Route::post('profile/change-password', 'AuthController@changePassword')->name('password');
@@ -17,8 +18,7 @@ Route::post('profile/logout', 'AuthController@destory')->name('logout');
 Route::post('profile/logout/admin', 'AuthController@destory')->name('logout');
 
 //   destination
-Route::resource('/destinations', "Travel\DestinationsController");
-Route::get('/destinations/delete/{id}', "Travel\DestinationsController@destroy")->name('destination.delete');
+Route::resource('/destinations', \App\Http\Controllers\Admin\DestinationController::class);
 
 //   destination category
 Route::resource('/categories-destinations', "Travel\CategoriesDestinationsController");

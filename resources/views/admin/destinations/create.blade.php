@@ -1,60 +1,145 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app', ['title' => 'Add New Destination'])
+
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <h2 class="card-title">Destinations Form</h2>
-        </div>
-        <!-- Large modal -->
+    <div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <div class="clearfix"></div>
-        <div class="card-body">
-            <x-errormsg />
+        <form action="{{ route('admin.destinations.store') }}" method="POST" enctype="multipart/form-data"
+            id="destinationForm">
+            @csrf
 
-            <form action="{{ route('admin.destinations.store') }}" enctype="multipart/form-data" method="POST">
-                @csrf
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Destination Name">
-                    </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control" value="{{ old('name') }}"
+                                    required>
+                            </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Select Image</label>
-                        <input type="file" class="form-control" name="file" placeholder="Destination Name">
-                    </div>
+                            <div class="form-group mt-3">
+                                <label>Tagline</label>
+                                <input type="text" name="tagline" class="form-control" value="{{ old('tagline') }}"
+                                    required>
+                            </div>
 
-                    <div class="form-group col-md-12">
-                        <label>Detail</label>
-                        <textarea name="details" cols="30" rows="10" id="summernote"></textarea>
-                    </div>
-
-                    <hr>
-                    <div class="card-header col-12">
-                        <h2 class="card-title">SEO </h2>
-                    </div>
-                    <hr>
-                    <div class="form-group col-md-6">
-                        <label>Meta Title</label>
-                        <input type="text" class="form-control" name="meta_title">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Meta KeyWord</label>
-                        <input type="text" class="form-control" name="meta_keyword">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label>Meta Description</label>
-                        <textarea name="meta_description" rows="2" class="form-control"></textarea>
-
-                    </div>
-                    <div class="form-group col-md-12">
-                        <input type="submit" class="btn btn-info btn-block">
+                            <div class="form-group mt-3">
+                                <label>Description</label>
+                                <textarea name="desc" id="editor" class="form-control">{{ old('desc') }}</textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-            </form>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Destination Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <select name="status" class="form-control" required>
+                                    <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive
+                                    </option>
+                                    <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
+                                </select>
+                            </div>
 
-        </div>
+                            <div class="form-group mt-3">
+                                <label>Order</label>
+                                <input type="number" name="order" class="form-control" value="{{ old('order', 0) }}"
+                                    required>
+                            </div>
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-primary">Create Destination</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Cover Image</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="file" name="cover" class="form-control-file" accept="image/*" required>
+                                <div id="cover-preview" class="mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">SEO Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Meta Title</label>
+                                <input type="text" name="meta_title" class="form-control"
+                                    value="{{ old('meta_title') }}">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Meta Keywords</label>
+                                <input type="text" name="meta_keyword" class="form-control"
+                                    value="{{ old('meta_keyword') }}">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Meta Description</label>
+                                <textarea name="meta_description" class="form-control" rows="3">{{ old('meta_description') }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-    <!-- panel -->
 @endsection
+
+@push('scripts')
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                simpleUpload: {
+                    uploadUrl: "{{ route('admin.ck-upload', ['_token' => csrf_token()]) }}"
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        document.querySelector('input[name="cover"]').addEventListener('change', function(e) {
+            const preview = document.getElementById('cover-preview');
+            preview.innerHTML = '';
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '100%';
+                    preview.appendChild(img);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
+@endpush
+
+@push('style')
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 300px;
+        }
+    </style>
+@endpush

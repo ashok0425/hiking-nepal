@@ -1,82 +1,106 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app', ['title' => 'Destinations'])
+
 @section('content')
-    <section class="container">
-        <div class="card">
-            <div class="card-body">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-                <!-- /. -->
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h3 class="-title">Destination</h3>
-                    </div>
-                    <div> <a class="btn btn-primary" href="{{ route('admin.destinations.create') }}"><i class="fa fa-plus"></i>
-                            Add Destination</a></div>
-
+    <div class="d-flex flex-wrap align-items-center mb-3" style="gap: 10px;">
+        <form action="{{ route('admin.destinations.index') }}" method="GET" class="form-inline">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search destinations..."
+                    value="{{ request('q') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    @if (request('q'))
+                        <a href="{{ route('admin.destinations.index') }}" class="btn btn-outline-secondary">Clear</a>
+                    @endif
                 </div>
-                <!-- /.-header -->
-                <div class="-body">
-                    <table id="example2" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Details</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="sortable-posts">
-                            @foreach ($destinations as $destination)
-                                <tr id="{{ $destination->id }}">
-                                    <td>
-                                        <img src="{{ getImageurl($destination->image) }}" width="80">
-                                    </td>
-                                    <td>{{ $destination->name }}</td>
-                                    <td>{!! Str::limit(strip_tags($destination->details), 50, '...') !!}</td>
-
-                                    <td>{!! $destination->status
-                                        ? '<span class="badge bg-success">Active</span>'
-                                        : '<span class="badge bg-danger">Deactive</span>' !!}</td>
-
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.destinations.edit', $destination->id) }}"
-                                            class="btn btn-primary btn-sm pull-left m-r-10"><i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="{{ route('admin.destination.delete', ['id' => $destination->id]) }}"
-                                            class="btn btn-danger btn-sm delete_row" id="delete_row"><i
-                                                class="fa fa-trash"></i>
-                                        </a>
-
-                                        @if ($destination->status == 1)
-                                            <a href="{{ route('admin.deactive', ['id' => $destination->id, 'table' => 'destinations']) }}"
-                                                class="btn btn-primary"><i class="fas fa-thumbs-down"></i></a>
-                                        @else
-                                            <a href="{{ route('admin.active', ['id' => $destination->id, 'table' => 'destinations']) }}"
-                                                class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Details</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.-body -->
             </div>
-            <!-- /. -->
-        </div>
-        <!-- /.col -->
-        </div>
-        <!-- /.row -->
-    </section>
+        </form>
+        <a href="{{ route('admin.destinations.create') }}" class="btn btn-primary">Add New Destination</a>
+    </div>
+
+    <div class="table-responsive bg-white">
+        <table class="table table-bordered table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Order</th>
+                    <th width="200">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($destinations as $destination)
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                @if ($destination->cover)
+                                    <img src="{{ str_starts_with($destination->cover, 'http') ? $destination->cover : Storage::url($destination->cover) }}"
+                                        alt="Cover" class="mr-2" style="width: 50px; height: 50px; object-fit: cover;">
+                                @else
+                                    <div class="mr-2 bg-secondary d-flex align-items-center justify-content-center"
+                                        style="width: 50px; height: 50px; border-radius: 4px;">
+                                        <i class="fas fa-image text-white"></i>
+                                    </div>
+                                @endif
+                                <div>
+                                    <a href="{{ route('admin.destinations.edit', $destination) }}"
+                                        class="font-weight-bold text-dark">{{ $destination->name }}</a>
+                                    @if ($destination->slug)
+                                        <div class="small">
+                                            <a href="#" class="text-muted" target="_blank">
+                                                {{ $destination->slug }}
+                                            </a>
+                                        </div>
+                                    @endif
+                                    @if ($destination->tagline)
+                                        <div class="small text-muted">{{ $destination->tagline }}</div>
+                                    @endif
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge badge-{{ $destination->status === 'published' ? 'success' : 'warning' }}">
+                                {{ ucfirst($destination->status) }}
+                            </span>
+                        </td>
+                        <td>{{ $destination->order }}</td>
+                        <td>
+                            <a href="{{ route('admin.destinations.edit', $destination) }}"
+                                class="btn btn-sm btn-info me-1">
+                                Edit
+                            </a>
+                            <form action="{{ route('admin.destinations.destroy', $destination) }}" method="POST"
+                                class="d-inline"
+                                onsubmit="return confirm('Are you sure you want to delete this destination?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4" class="text-center">No destinations found.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 @endsection
+
+@push('styles')
+    <style>
+        .table img {
+            border-radius: 4px;
+        }
+
+        .badge {
+            padding: 0.5em 0.75em;
+        }
+    </style>
+@endpush
