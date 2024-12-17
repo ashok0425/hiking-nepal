@@ -1,5 +1,5 @@
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-2">
 
       <!-- Brand Logo -->
       <a href="{{ route('admin.dashboard') }}" class="brand-link">
@@ -52,8 +52,8 @@
                       </ul>
                   </li>
 
-                  <li class="nav-item <?php echo Request::segment(2) == 'categories-places' ? 'menu-open' : ''; ?>">
-                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-places' ? 'active' : ''; ?> ">
+                  <li class="nav-item <?php echo Request::segment(2) == 'places' ? 'menu-open' : ''; ?>">
+                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'places' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-mountain"></i>
                           <p>
                               Places
@@ -63,15 +63,13 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="{{ route('admin.categories-places.index') }}"
-                                  class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
+                              <a href="{{ route('admin.places.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>View All</p>
                               </a>
                           </li>
                           <li class="nav-item ">
-                              <a href="{{ route('admin.categories-places.create') }}"
-                                  class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
+                              <a href="{{ route('admin.places.create') }}" class="nav-link <?php echo Request::segment(3) == 'create' ? 'active' : ''; ?>">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Add Category Place</p>
                               </a>
@@ -86,7 +84,7 @@
                           {{-- <i class="nav-icon fas fa-skiing"></i> --}}
                           <i class="nav-icon fas fa-hiking"></i>
                           <p>
-                              Activities
+                              Tour Categories
                               <i class="fas fa-angle-down right"></i>
 
                           </p>
@@ -114,7 +112,7 @@
                       <a href="#" class="nav-link <?php echo Request::segment(2) == 'categories-packages' ? 'active' : ''; ?> ">
                           <i class="nav-icon fas fa-box"></i>
                           <p>
-                              Packages
+                              Tours
                               <i class="fas fa-angle-down right"></i>
 
                           </p>

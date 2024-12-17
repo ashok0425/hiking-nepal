@@ -2,33 +2,39 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Destination extends Model
+class Place extends Model
 {
-    use HasSlug;
+    use HasFactory, HasSlug;
 
     protected $fillable = [
         'name',
-        'tagline',
-        'status',
         'slug',
+        'description',
         'cover',
-        'desc',
-        'order',
+        'status',
+        'destination_id',
         'meta_title',
-        'meta_keyword',
         'meta_description',
+        'meta_keywords',
     ];
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
+    }
+
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
     }
 
     public function getCoverAttribute($value)
@@ -42,26 +48,5 @@ class Destination extends Model
         }
 
         return Storage::disk('public')->url($value);
-    }
-
-    public function scopeActiveAndOrdered($query)
-    {
-        return $query->where('status', 'active')->orderBy('order');
-    }
-
-    public static function getList()
-    {
-        if (app()->environment('local')) {
-            return cache()->remember('destinations', 300, function () {
-                return self::activeAndOrdered()->get();
-            });
-        }
-
-        return self::activeAndOrdered()->get();
-    }
-
-    public function places()
-    {
-        return $this->hasMany(Place::class);
     }
 }

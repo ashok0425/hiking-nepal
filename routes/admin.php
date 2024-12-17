@@ -19,14 +19,11 @@ Route::post('profile/logout/admin', 'AuthController@destory')->name('logout');
 
 //   destination
 Route::resource('/destinations', \App\Http\Controllers\Admin\DestinationController::class);
+Route::resource('/places', \App\Http\Controllers\Admin\PlaceController::class);
 
 //   destination category
 Route::resource('/categories-destinations', "Travel\CategoriesDestinationsController");
 Route::get('/categoriesdestinations/delete/{id}', "Travel\CategoriesDestinationsController@destroy")->name('categories-destinations.delete');
-
-//    category Region
-Route::resource('/categories-places', "Travel\CategoriesPlacesController");
-Route::get('/categories-places/delete/{id}', "Travel\CategoriesPlacesController@destroy")->name('categories-places.delete');
 
 //   packages
 Route::resource('/categories-packages', "Travel\PackagesController");
