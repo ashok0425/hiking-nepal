@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StorePackageRequest;
-use App\Http\Requests\Admin\UpdatePackageRequest;
+use App\Http\Requests\StorePackageRequest;
+use App\Http\Requests\UpdatePackageRequest;
 use App\Models\Destination;
 use App\Models\Package;
 use App\Models\PackageCategory;
