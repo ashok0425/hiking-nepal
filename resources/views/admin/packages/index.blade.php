@@ -65,7 +65,7 @@
                         </td>
                         <td>{{ $package->destination->name ?? 'N/A' }}, {{ $package->place->name ?? 'N/A' }}</td>
                         <td>
-                            <span class="badge badge-{{ $package->status === 'active' ? 'success' : 'warning' }}">
+                            <span class="badge badge-{{ $package->status === 'published' ? 'success' : 'warning' }}">
                                 {{ ucfirst($package->status) }}
                             </span>
                         </td>

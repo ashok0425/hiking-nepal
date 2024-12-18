@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->nullable()->unique();
-            $table->string('status')->default('inactive');
+            $table->string('status')->default('draft');
 
             $table->string('activities')->nullable();
             $table->string('fitness_level')->nullable();

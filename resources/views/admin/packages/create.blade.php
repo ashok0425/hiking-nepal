@@ -214,10 +214,9 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                         <div class="card-body">
                             <div class="form-group">
                                 <select name="status" class="form-control" required>
-                                    <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive
-                                    </option>
-                                    <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active
-                                    </option>
+                                    <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Draft</option>
+                                    <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Published</option>
+                                    <option value="private" {{ old('status') == 'private' ? 'selected' : '' }}>Private</option>
                                 </select>
                             </div>
 

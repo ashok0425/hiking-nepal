@@ -265,13 +265,17 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs', 
                         <div class="card-body">
                             <div class="form-group">
                                 <select name="status" class="form-control" required>
-                                    <option value="inactive"
-                                        {{ old('status', $package->status) == 'inactive' ? 'selected' : '' }}>
-                                        Inactive
+                                    <option value="draft"
+                                        {{ old('status', $package->status) == 'draft' ? 'selected' : '' }}>
+                                        Draft
                                     </option>
-                                    <option value="active"
-                                        {{ old('status', $package->status) == 'active' ? 'selected' : '' }}>
-                                        Active
+                                    <option value="published"
+                                        {{ old('status', $package->status) == 'published' ? 'selected' : '' }}>
+                                        Published
+                                    </option>
+                                    <option value="private"
+                                        {{ old('status', $package->status) == 'private' ? 'selected' : '' }}>
+                                        Private
                                     </option>
                                 </select>
                             </div>
@@ -351,15 +355,16 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs', 
                                 @if ($package->gallery)
                                     <div class="existing-gallery mb-3">
                                         <div class="row">
-                                            @foreach ($package->gallery as $index => $image)
+                                            @foreach ($package->galleryImages() as $index => $imageUrl)
                                                 <div class="col-md-4 mb-3">
                                                     <div class="position-relative">
-                                                        <img src="{{ Storage::url($image) }}" class="img-fluid"
+                                                        <img src="{{ $imageUrl }}" class="img-fluid"
                                                             style="max-height: 150px;">
                                                         <div class="mt-2">
                                                             <div class="form-check">
                                                                 <input type="checkbox" name="remove_gallery[]"
-                                                                    value="{{ $image }}" class="form-check-input">
+                                                                    value="{{ $package->gallery[$index] }}"
+                                                                    class="form-check-input">
                                                                 <label class="form-check-label">Remove</label>
                                                             </div>
                                                         </div>
