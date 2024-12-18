@@ -409,11 +409,11 @@
                 <h2 class="mb-4">RELATED TRIPS</h2>
 
                 <div class="row gy-4 mb-5">
-                    @for ($i = 0; $i < 2; $i++)
+                    @foreach ($packages as $package)
                         <div class="col-md-6">
-                            <x-package-card />
+                            <x-package-card :package="$package" />
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
 

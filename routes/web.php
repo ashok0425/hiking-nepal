@@ -13,7 +13,7 @@ Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('book
 Route::view('/legal-document', 'legal-document')->name('legal-document');
 Route::view('/our-team', 'our-team')->name('our-team');
 
-Route::view('/tours/{slug}', 'tours')->name('tours');
+Route::get('/tours/{slug}', \App\Http\Controllers\TourController::class)->name('tours');
 
 // Booking
 Route::view('/book-a-call', 'book-a-call')->name('book-a-call');
