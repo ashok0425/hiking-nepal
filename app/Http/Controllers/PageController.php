@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Destination;
+use App\Models\Package;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,45 @@ class PageController extends Controller
             ->first();
 
         if ($destination) {
-            return view('destination', compact('destination'));
+            $packages = Package::where('destination_id', $destination->id)
+                ->where('status', 'published')
+                ->with('categories')
+                ->get();
+
+            $packagesByCategories = collect();
+
+            $packages->each(function ($package) use ($packagesByCategories) {
+                $category = $package->categories->first();
+
+                if (!$category) {
+                    // Handle packages without categories
+                    if (!$packagesByCategories->has('general')) {
+                        $packagesByCategories['general'] = [
+                            'name' => 'General Tours',
+                            'tagline' => 'Explore amazing tours and experiences',
+                            'slug' => 'general',
+                            'packages' => collect(),
+                        ];
+                    }
+                    $packagesByCategories['general']['packages']->push($package);
+                    return;
+                }
+
+                $categoryKey = $category->slug;
+
+                if (!$packagesByCategories->has($categoryKey)) {
+                    $packagesByCategories[$categoryKey] = [
+                        'name' => $category->name,
+                        'tagline' => $category->tagline ?? '',
+                        'slug' => $category->slug,
+                        'packages' => collect(),
+                    ];
+                }
+
+                $packagesByCategories[$categoryKey]['packages']->push($package);
+            });
+
+            return view('destination', compact('destination', 'packagesByCategories'));
         }
 
         $post = Post::where('status', 'published')

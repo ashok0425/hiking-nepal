@@ -60,8 +60,8 @@
                     </div>
 
                     <div class="col-12">
-                        <label class="form-label">ACTIVITY</label>
-                        <select name="activity" class="form-select border">
+                        <label class="form-label">CATEGORY</label>
+                        <select name="activity" class="form-select border" style="min-width: 200px">
                             <option value="">Any</option>
                             <option value="trekking">Trekking</option>
                             <option value="hiking">Hiking</option>
@@ -69,7 +69,7 @@
                             <option value="expedition">Expedition</option>
                         </select>
                     </div>
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <label class="form-label">STYLES</label>
                         <select name="style" class="form-select border">
                             <option value="">Any</option>
@@ -77,107 +77,45 @@
                             <option value="comfort">Comfort</option>
                             <option value="luxury">Luxury</option>
                         </select>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>
     </section>
 
-    <section class="container py-5 mb-5 expandable-content">
-        <div class="mb-5" style="max-width: 600px;">
-            <h2>Nature And Wildlife</h2>
-            <p>Findout trips that fits based around your interests, tastes, and budget.</p>
-        </div>
+    @foreach ($packagesByCategories as $packagesByCategory)
+        <section class="container py-5 mb-5 expandable-content" id="category-{{ $packagesByCategory['slug'] }}">
+            <div class="mb-5" style="max-width: 600px;">
+                <h2>{{ $packagesByCategory['name'] }}</h2>
+                <p>{{ $packagesByCategory['tagline'] }}</p>
+            </div>
 
-        <div class="row gy-4 mb-4 initial-content">
-            @for ($i = 0; $i < 3; $i++)
-                <div class="col-md-4">
-                    <x-package-card />
-                </div>
-            @endfor
-        </div>
-
-        <div class="collapse expandable-section">
-            <div class="row gy-4">
-                @for ($i = 3; $i < 5; $i++)
+            <div class="row gy-4 mb-4 initial-content">
+                @for ($i = 0; $i < 3; $i++)
                     <div class="col-md-4">
                         <x-package-card />
                     </div>
                 @endfor
             </div>
-        </div>
 
-        <div class="text-center mt-5">
-            <button class="btn btn-primary expand-toggle" type="button">
-                <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
-                <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
-            </button>
-        </div>
-    </section>
-
-    <section class="container py-5 mb-5 expandable-content">
-        <div class="mb-5" style="max-width: 600px;">
-            <h2>Expedition</h2>
-            <p>Findout trips that fits based around your interests, tastes, and budget.</p>
-        </div>
-
-        <div class="row gy-4 mb-4 initial-content">
-            @for ($i = 0; $i < 3; $i++)
-                <div class="col-md-4">
-                    <x-package-card />
+            <div class="collapse expandable-section">
+                <div class="row gy-4">
+                    @for ($i = 3; $i < 5; $i++)
+                        <div class="col-md-4">
+                            <x-package-card />
+                        </div>
+                    @endfor
                 </div>
-            @endfor
-        </div>
-
-        <div class="collapse expandable-section">
-            <div class="row gy-4">
-                @for ($i = 3; $i < 5; $i++)
-                    <div class="col-md-4">
-                        <x-package-card />
-                    </div>
-                @endfor
             </div>
-        </div>
 
-        <div class="text-center mt-5">
-            <button class="btn btn-primary expand-toggle" type="button">
-                <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
-                <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
-            </button>
-        </div>
-    </section>
-
-    <section class="container py-5 mb-5 expandable-content">
-        <div class="mb-5" style="max-width: 600px;">
-            <h2>Expedition</h2>
-            <p>Findout trips that fits based around your interests, tastes, and budget.</p>
-        </div>
-
-        <div class="row gy-4 mb-4 initial-content">
-            @for ($i = 0; $i < 3; $i++)
-                <div class="col-md-4">
-                    <x-package-card />
-                </div>
-            @endfor
-        </div>
-
-        <div class="collapse expandable-section">
-            <div class="row gy-4">
-                @for ($i = 3; $i < 5; $i++)
-                    <div class="col-md-4">
-                        <x-package-card />
-                    </div>
-                @endfor
+            <div class="text-center mt-5">
+                <button class="btn btn-primary expand-toggle" type="button">
+                    <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
+                    <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
+                </button>
             </div>
-        </div>
-
-        <div class="text-center mt-5">
-            <button class="btn btn-primary expand-toggle" type="button">
-                <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
-                <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
-            </button>
-        </div>
-    </section>
+        </section>
+    @endforeach
 
     @include('inc.book-a-call-cta')
 @endsection
