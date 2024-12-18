@@ -295,6 +295,8 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                                         <div class="d-flex">
                                             <input type="file" name="gallery[]" class="form-control" accept="image/*"
                                                 onchange="previewImage(this)">
+                                            <button type="button" class="btn btn-danger btn-sm ms-2"
+                                                onclick="removeGalleryInput(this)" style="display: none;">Remove</button>
                                         </div>
                                         <img class="preview-image mt-2" style="max-width: 100px; display: none;">
                                     </div>
@@ -304,6 +306,7 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                             </div>
                         </div>
                     </div>
+
 
                     <div class="card mb-4">
                         <div class="card-header">
@@ -409,17 +412,27 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
             const div = document.createElement('div');
             div.className = 'mb-2';
             div.innerHTML = `
-        <div class="d-flex">
-            <input type="file" name="gallery[]" class="form-control" accept="image/*" onchange="previewImage(this)">
-            <button type="button" class="btn btn-danger btn-sm ms-2" onclick="removeGalleryInput(this)">Remove</button>
-        </div>
-        <img class="preview-image mt-2" style="max-width: 100px; display: none;">
-    `;
+                <div class="d-flex">
+                    <input type="file" name="gallery[]" class="form-control" accept="image/*" onchange="previewImage(this)">
+                    <button type="button" class="btn btn-danger btn-sm ms-2" onclick="removeGalleryInput(this)">Remove</button>
+                </div>
+                <img class="preview-image mt-2" style="max-width: 100px; display: none;">
+            `;
             container.appendChild(div);
+            updateGalleryRemoveButtons();
         }
 
         function removeGalleryInput(button) {
             button.closest('.mb-2').remove();
+            updateGalleryRemoveButtons();
+        }
+
+        function updateGalleryRemoveButtons() {
+            const galleryInputs = document.querySelectorAll('.gallery-inputs .mb-2');
+            const removeButtons = document.querySelectorAll('.gallery-inputs .btn-danger');
+            removeButtons.forEach(button => {
+                button.style.display = 'block';
+            });
         }
 
         // Initialize event listeners
@@ -427,6 +440,7 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
             document.querySelectorAll('input[name="gallery[]"]').forEach(input => {
                 input.addEventListener('change', function() {
                     previewImage(this);
+                    updateGalleryRemoveButtons();
                 });
             });
         });
@@ -464,13 +478,13 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                     <div class="d-flex flex-wrap">
                         ${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
                             .map(day => `
-                                                                                                                                                                                                            <div class="form-check me-3">
-                                                                                                                                                                                                                <input class="form-check-input" type="checkbox"
-                                                                                                                                                                                                                       name="departures[${departureCount - 1}][days][]"
-                                                                                                                                                                                                                       value="${day.toLowerCase()}">
-                                                                                                                                                                                                                <label class="form-check-label mr-2">${day}</label>
-                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                        `).join('')}
+                                                                                                                                                                                                                                <div class="form-check me-3">
+                                                                                                                                                                                                                                    <input class="form-check-input" type="checkbox"
+                                                                                                                                                                                                                                           name="departures[${departureCount - 1}][days][]"
+                                                                                                                                                                                                                                           value="${day.toLowerCase()}">
+                                                                                                                                                                                                                                    <label class="form-check-label mr-2">${day}</label>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                            `).join('')}
                     </div>
                 </div>
             </div>
