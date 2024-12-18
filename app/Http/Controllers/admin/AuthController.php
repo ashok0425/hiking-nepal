@@ -144,28 +144,15 @@ class AuthController extends Controller
         }
     }
 
-    public function destory()
+    public function destory(Request $request)
     {
-        try {
-            $notification = [
-                'alert-type' => 'success',
-                'messege' => 'successfully logout !',
+        Auth::logout();
 
-            ];
-            Auth::logout();
-            session()->flush();
+        $request->session()->invalidate();
 
-            return redirect()->route('admin.logins')->with($notification);
-        } catch (\Throwable $th) {
-            $notification = [
-                'alert-type' => 'info',
-                'messege' => 'something went wrong please try again later !',
+        $request->session()->regenerateToken();
 
-            ];
-            Auth::logout();
-
-            return redirect()->back()->with($notification);
-        }
+        return redirect()->route('admin.login');
     }
 
     public function userList()
