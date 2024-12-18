@@ -41,7 +41,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 @if ($package->gallery && count($package->gallery) > 0)
-                                    <img src="{{ $package->gallery[0] }}" alt="Cover" class="mr-2"
+                                    <img src="{{ $package->galleryImages()[0] }}" alt="Cover" class="mr-2"
                                         style="width: 50px; height: 50px; object-fit: cover;">
                                 @else
                                     <div class="mr-2 bg-secondary d-flex align-items-center justify-content-center"

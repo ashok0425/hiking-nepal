@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -74,5 +75,19 @@ class Package extends Model
     public function categories()
     {
         return $this->belongsToMany(PackageCategory::class, 'package_package_category');
+    }
+
+    public function galleryImages(): array
+    {
+        /** @var array $images */
+        $images = $this->gallery;
+
+        return array_map(function ($image) {
+            if (str_starts_with($image, 'http')) {
+                return $image;
+            }
+
+            return Storage::disk('public')->url($image);
+        }, $images);
     }
 }
