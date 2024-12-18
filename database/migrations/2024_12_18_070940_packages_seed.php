@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -19,6 +17,7 @@ return new class extends Migration
 
         $cleanValue = function ($value) {
             $value = trim($value, "'");
+
             return ($value === 'NULL' || $value === '') ? null : $value;
         };
 
@@ -71,19 +70,19 @@ return new class extends Migration
                         preg_split('/[\/,]+/', trim(trim($tour['meta_keywords']), "'"))
                     ))) : null,
                 'created_at' => $cleanValue($tour['created_at']),
-                'updated_at' => $cleanValue($tour['updated_at'])
+                'updated_at' => $cleanValue($tour['updated_at']),
             ];
 
             DB::table('packages')->insert($package);
 
             $categoryNames = array_filter(array_map('trim', explode(',', $cleanValue($tour['categories']) ?? '')));
             foreach ($categoryNames as $categoryName) {
-                if (!empty($categoryName) && isset($categories[$categoryName])) {
+                if (! empty($categoryName) && isset($categories[$categoryName])) {
                     DB::table('package_package_category')->insert([
                         'package_id' => $package['id'],
                         'package_category_id' => $categories[$categoryName],
                         'created_at' => now(),
-                        'updated_at' => now()
+                        'updated_at' => now(),
                     ]);
                 }
             }
