@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Destination;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +27,22 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('layouts.website', function ($view) {
             $destinations = Destination::getList();
+
+            // Get categories for all destinations in a single query
+            $destinationCategories = DB::table('package_package_category')
+                ->join('packages', 'packages.id', '=', 'package_package_category.package_id')
+                ->join('package_categories', 'package_categories.id', '=', 'package_package_category.package_category_id')
+                ->whereIn('packages.destination_id', $destinations->pluck('id'))
+                ->select('package_categories.id', 'package_categories.name', 'packages.destination_id')
+                ->distinct()
+                ->get()
+                ->groupBy('destination_id');
+
+            // Attach categories to each destination
+            $destinations->each(function ($destination) use ($destinationCategories) {
+                $destination->categories = $destinationCategories[$destination->id] ?? collect();
+            });
+
             $view->with('destinations', $destinations);
         });
     }

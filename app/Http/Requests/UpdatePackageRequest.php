@@ -14,7 +14,7 @@ class UpdatePackageRequest extends FormRequest
 
     public function rules(): array
     {
-        $galleryRules = $this->status === 'active' && !$this->hasAnyExistingGalleryImages()
+        $galleryRules = $this->status === 'active' && ! $this->hasAnyExistingGalleryImages()
             ? ['required', 'array']
             : ['nullable', 'array'];
 
@@ -56,6 +56,7 @@ class UpdatePackageRequest extends FormRequest
     private function hasAnyExistingGalleryImages(): bool
     {
         $package = $this->route('package');
+
         return $package && $package->gallery && count($package->gallery) > 0;
     }
 }

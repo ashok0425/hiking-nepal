@@ -64,4 +64,9 @@ class Destination extends Model
     {
         return $this->hasMany(Place::class);
     }
+
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
+    }
 }
