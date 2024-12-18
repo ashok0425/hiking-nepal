@@ -102,7 +102,13 @@ class PackageController extends Controller
     {
         $package->load(['destination', 'place', 'categories']);
 
-        return view('admin.packages.edit', compact('package'));
+
+        return view('admin.packages.edit', [
+            'package' => $package,
+            'destinations' => Destination::where('status', 'active')->get(),
+            'places' => Place::where('status', 'active')->get(),
+            'categories' => PackageCategory::where('status', 'active')->get(),
+        ]);
     }
 
     public function update(Request $request, Package $package)
@@ -141,28 +147,29 @@ class PackageController extends Controller
             'meta_keywords' => ['nullable', 'string'],
         ]);
 
-        // Handle gallery updates
+        // Start with current gallery or empty array
+        $gallery = $package->gallery ?? [];
+
+        // Remove gallery images if specified
+        if ($request->has('remove_gallery') && is_array($request->remove_gallery)) {
+            foreach ($request->remove_gallery as $imagePath) {
+                if (in_array($imagePath, $gallery)) {
+                    Storage::disk('public')->delete($imagePath);
+                    $gallery = array_values(array_diff($gallery, [$imagePath]));
+                }
+            }
+        }
+
+        // Add new gallery images
         if ($request->hasFile('new_gallery')) {
-            $gallery = $package->gallery ?? [];
             foreach ($request->file('new_gallery') as $image) {
                 $path = $image->store('packages/gallery', 'public');
                 $gallery[] = $path;
             }
-            $validated['gallery'] = $gallery;
         }
 
-        // Remove gallery images
-        if ($request->has('remove_gallery')) {
-            $currentGallery = $package->gallery ?? [];
-            $newGallery = array_diff($currentGallery, $request->remove_gallery);
-
-            // Delete removed files
-            foreach ($request->remove_gallery as $imagePath) {
-                Storage::disk('public')->delete($imagePath);
-            }
-
-            $validated['gallery'] = array_values($newGallery);
-        }
+        // Update gallery in validated data
+        $validated['gallery'] = $gallery;
 
         $package->update($validated);
 
