@@ -292,7 +292,10 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                             <div class="form-group">
                                 <div class="gallery-inputs">
                                     <div class="mb-2">
-                                        <input type="file" name="gallery[]" class="form-control" accept="image/*">
+                                        <div class="d-flex">
+                                            <input type="file" name="gallery[]" class="form-control" accept="image/*"
+                                                onchange="previewImage(this)">
+                                        </div>
                                         <img class="preview-image mt-2" style="max-width: 100px; display: none;">
                                     </div>
                                 </div>
@@ -301,6 +304,7 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                             </div>
                         </div>
                     </div>
+
                     <div class="card mb-4">
                         <div class="card-header">
                             <h5 class="mb-0">Categories</h5>
@@ -384,14 +388,19 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
         });
 
         function previewImage(input) {
-            const preview = input.nextElementSibling;
             if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
+                // Find the closest .mb-2 container and then find the preview image within it
+                const container = input.closest('.mb-2');
+                const preview = container.querySelector('.preview-image');
+
+                if (preview) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(input.files[0]);
                 }
-                reader.readAsDataURL(input.files[0]);
             }
         }
 
@@ -400,21 +409,25 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
             const div = document.createElement('div');
             div.className = 'mb-2';
             div.innerHTML = `
-                <div class="d-flex">
-                    <input type="file" name="gallery[]" class="form-control" accept="image/*" onchange="previewImage(this)">
-                    <button type="button" class="btn btn-danger btn-sm ms-2" onclick="removeGalleryInput(this)">Remove</button>
-                </div>
-                <img class="preview-image mt-2" style="max-width: 100px; display: none;">
-            `;
+        <div class="d-flex">
+            <input type="file" name="gallery[]" class="form-control" accept="image/*" onchange="previewImage(this)">
+            <button type="button" class="btn btn-danger btn-sm ms-2" onclick="removeGalleryInput(this)">Remove</button>
+        </div>
+        <img class="preview-image mt-2" style="max-width: 100px; display: none;">
+    `;
             container.appendChild(div);
         }
 
         function removeGalleryInput(button) {
             button.closest('.mb-2').remove();
         }
-        document.querySelectorAll('input[name="gallery[]"]').forEach(input => {
-            input.addEventListener('change', function() {
-                previewImage(this);
+
+        // Initialize event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input[name="gallery[]"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    previewImage(this);
+                });
             });
         });
 
@@ -451,13 +464,13 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                     <div class="d-flex flex-wrap">
                         ${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
                             .map(day => `
-                                                                                                                                                                                                <div class="form-check me-3">
-                                                                                                                                                                                                    <input class="form-check-input" type="checkbox"
-                                                                                                                                                                                                           name="departures[${departureCount - 1}][days][]"
-                                                                                                                                                                                                           value="${day.toLowerCase()}">
-                                                                                                                                                                                                    <label class="form-check-label mr-2">${day}</label>
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                            `).join('')}
+                                                                                                                                                                                                            <div class="form-check me-3">
+                                                                                                                                                                                                                <input class="form-check-input" type="checkbox"
+                                                                                                                                                                                                                       name="departures[${departureCount - 1}][days][]"
+                                                                                                                                                                                                                       value="${day.toLowerCase()}">
+                                                                                                                                                                                                                <label class="form-check-label mr-2">${day}</label>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                        `).join('')}
                     </div>
                 </div>
             </div>
