@@ -64,20 +64,20 @@
         </div>
 
         <div class="row gy-4 mb-4 initial-content">
-            @for ($i = 0; $i < 3; $i++)
+            @foreach ($packages as $package)
                 <div class="col-md-4">
-                    <x-package-card />
+                    <x-package-card :package="$package" />
                 </div>
-            @endfor
+            @endforeach
         </div>
 
         <div class="collapse expandable-section">
             <div class="row gy-4">
-                @for ($i = 3; $i < 5; $i++)
+                @foreach ($packages as $package)
                     <div class="col-md-4">
-                        <x-package-card />
+                        <x-package-card :package="$package" />
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
 
@@ -96,20 +96,20 @@
         </div>
 
         <div class="row gy-4 mb-4 initial-content">
-            @for ($i = 0; $i < 3; $i++)
+            @foreach ($packages as $package)
                 <div class="col-md-4">
-                    <x-package-card />
+                    <x-package-card :package="$package" />
                 </div>
-            @endfor
+            @endforeach
         </div>
 
         <div class="collapse expandable-section">
             <div class="row gy-4">
-                @for ($i = 3; $i < 5; $i++)
+                @foreach ($packages as $package)
                     <div class="col-md-4">
-                        <x-package-card />
+                        <x-package-card :package="$package" />
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
 

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Http\Controllers\HomeController::class)->name('home');
-Route::view('/deals', 'deals')->name('deals');
+Route::get('/deals', \App\Http\Controllers\DealController::class)->name('deals');
 
 // About
 Route::view('/information', 'information')->name('information');

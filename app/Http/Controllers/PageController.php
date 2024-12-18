@@ -29,9 +29,9 @@ class PageController extends Controller
             $packages->each(function ($package) use ($packagesByCategories) {
                 $category = $package->categories->first();
 
-                if (!$category) {
+                if (! $category) {
                     // Handle packages without categories
-                    if (!$packagesByCategories->has('general')) {
+                    if (! $packagesByCategories->has('general')) {
                         $packagesByCategories['general'] = [
                             'name' => 'General Tours',
                             'tagline' => 'Explore amazing tours and experiences',
@@ -40,12 +40,13 @@ class PageController extends Controller
                         ];
                     }
                     $packagesByCategories['general']['packages']->push($package);
+
                     return;
                 }
 
                 $categoryKey = $category->slug;
 
-                if (!$packagesByCategories->has($categoryKey)) {
+                if (! $packagesByCategories->has($categoryKey)) {
                     $packagesByCategories[$categoryKey] = [
                         'name' => $category->name,
                         'tagline' => $category->tagline ?? '',
