@@ -64,7 +64,7 @@
                                 <div class="col-md-4 mt-3">
                                     <div class="form-group">
                                         <label>Group Size</label>
-                                        <input type="number" name="group_size" class="form-control"
+                                        <input type="text" name="group_size" class="form-control"
                                             value="{{ old('group_size') }}">
                                     </div>
                                 </div>
@@ -451,13 +451,13 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                     <div class="d-flex flex-wrap">
                         ${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
                             .map(day => `
-                                                                                                                                                                                            <div class="form-check me-3">
-                                                                                                                                                                                                <input class="form-check-input" type="checkbox"
-                                                                                                                                                                                                       name="departures[${departureCount - 1}][days][]"
-                                                                                                                                                                                                       value="${day.toLowerCase()}">
-                                                                                                                                                                                                <label class="form-check-label mr-2">${day}</label>
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                        `).join('')}
+                                                                                                                                                                                                <div class="form-check me-3">
+                                                                                                                                                                                                    <input class="form-check-input" type="checkbox"
+                                                                                                                                                                                                           name="departures[${departureCount - 1}][days][]"
+                                                                                                                                                                                                           value="${day.toLowerCase()}">
+                                                                                                                                                                                                    <label class="form-check-label mr-2">${day}</label>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                            `).join('')}
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('max_elevation')->nullable();
             $table->string('commute')->nullable();
             $table->string('best_time')->nullable();
-            $table->integer('group_size')->nullable();
+            $table->string('group_size')->nullable();
             $table->string('arrival_at')->nullable();
             $table->string('departure_from')->nullable();
             $table->string('meal')->nullable();
