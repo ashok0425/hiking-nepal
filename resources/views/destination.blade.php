@@ -91,29 +91,31 @@
             </div>
 
             <div class="row gy-4 mb-4 initial-content">
-                @for ($i = 0; $i < 3; $i++)
+                @foreach ($packagesByCategory['packages']->take(3) as $package)
                     <div class="col-md-4">
-                        <x-package-card />
+                        <x-package-card :package="$package" :destination="$destination" />
                     </div>
-                @endfor
+                @endforeach
             </div>
 
             <div class="collapse expandable-section">
                 <div class="row gy-4">
-                    @for ($i = 3; $i < 5; $i++)
+                    @foreach ($packagesByCategory['packages']->skip(3) as $package)
                         <div class="col-md-4">
-                            <x-package-card />
+                            <x-package-card :package="$package" :destination="$destination" />
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
 
-            <div class="text-center mt-5">
-                <button class="btn btn-primary expand-toggle" type="button">
-                    <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
-                    <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
-                </button>
-            </div>
+            @if ($packagesByCategory['packages']->count() > 3)
+                <div class="text-center mt-5">
+                    <button class="btn btn-primary expand-toggle" type="button">
+                        <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
+                        <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
+                    </button>
+                </div>
+            @endif
         </section>
     @endforeach
 

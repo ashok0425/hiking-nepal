@@ -1,17 +1,30 @@
+@props(['package'])
+
 <div class="card brand-shadow">
-    <img src="{{ asset('images/card-img.png') }}" class="card-img-top" alt="...">
+    <img src="{{ !empty($package->galleryImages()) ? $package->galleryImages()[0] : asset('images/card-img.png') }}"
+        class="card-img-top"
+        style="height: 300px; background-color: #f8f9fa; object-fit: cover; object-position: center center;"
+        alt="{{ $package->title }}">
     <div class="card-body">
-        <h5 class="card-title text-success mb-0">Everest Trek</h5>
-        <div class="mb-2">Kathmandu - 4 Days Tour</div>
+        <h5 class="card-title text-success mb-1">{{ $package->title }}</h5>
+        <div class="mb-2">{{ $package->place->name }}, {{ $package->destination->name }}</div>
         <div class="d-flex justify-content-between mb-2">
-            <div><i class="fa-solid fa-clock text-primary me-1"></i> 14 Days</div>
+            <div><i class="fa-solid fa-clock text-primary me-1"></i> {{ strtoupper($package->tour_duration) }}</div>
             <div class="d-inline-flex align-items-center gap-2">
-                <del class="text-muted">$1450</del>
-                <span class="text-success fs-5 fw-bold">$1440</span>
+                @if ($package->sale_price_per_person)
+                    @if ($package->sale_price_per_person == $package->price)
+                        <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
+                    @else
+                        <del class="text-muted">${{ number_format($package->price) }}</del>
+                        <span
+                            class="text-success fs-5 fw-bold">${{ number_format($package->sale_price_per_person) }}</span>
+                    @endif
+                @else
+                    <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
+                @endif
             </div>
         </div>
-        <p class="card-text">Embracing the journey to Everest, where every step unveils breathtaking views and
-            unforgettable memories. Adventure awaits!</p>
-        <a href="#" class="btn btn-primary">More Details</a>
+        <p class="card-text">{!! Str::limit(strip_tags($package->overview), 100) !!}</p>
+        <a href="{{ route('tours', $package->slug) }}" class="btn btn-primary">More Details</a>
     </div>
 </div>

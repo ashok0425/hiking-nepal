@@ -84,7 +84,7 @@ class Package extends Model
 
         return array_map(function ($image) {
             if (str_starts_with($image, 'http')) {
-                return $image;
+                return str_replace('new.', '', $image);
             }
 
             return Storage::disk('public')->url($image);

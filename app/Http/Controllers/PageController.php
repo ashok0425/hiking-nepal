@@ -21,7 +21,7 @@ class PageController extends Controller
         if ($destination) {
             $packages = Package::where('destination_id', $destination->id)
                 ->where('status', 'published')
-                ->with('categories')
+                ->with('categories', 'place', 'destination')
                 ->get();
 
             $packagesByCategories = collect();
