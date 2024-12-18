@@ -1,72 +1,112 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app', ['title' => 'Packages'])
+
 @section('content')
-    <section class="container">
-        <div class="card">
-            <div class="card-body">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-                <!-- /. -->
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h3 class="-title">Packages</h3>
-                    </div>
-                    <div> <a class="btn btn-primary" href="{{ route('admin.categories-packages.create') }}"><i
-                                class="fa fa-plus"></i> Add Packages</a></div>
-
+    <div class="d-flex flex-wrap align-items-center mb-3" style="gap: 10px;">
+        <form action="{{ route('admin.packages.index') }}" method="GET" class="form-inline">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search packages..."
+                    value="{{ request('q') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    @if (request('q'))
+                        <a href="{{ route('admin.packages.index') }}" class="btn btn-outline-secondary">Clear</a>
+                    @endif
                 </div>
-                <!-- /.-header -->
-                <div class="-body">
-                    <table id="blog_table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-                    </table>
-                </div>
-                <!-- /.-body -->
             </div>
-            <!-- /. -->
-        </div>
-        <!-- /.col -->
-        </div>
-        <!-- /.row -->
-    </section>
+        </form>
+        <a href="{{ route('admin.packages.create') }}" class="btn btn-primary">Add New Package</a>
+    </div>
+
+    <div class="table-responsive bg-white">
+        <table class="table table-bordered table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Destination</th>
+                    <th>Status</th>
+                    <th>Price</th>
+                    <th>Duration</th>
+                    <th width="200">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($packages as $package)
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                @if ($package->gallery && count($package->gallery) > 0)
+                                    <img src="{{ $package->gallery[0] }}" alt="Cover" class="mr-2"
+                                        style="width: 50px; height: 50px; object-fit: cover;">
+                                @else
+                                    <div class="mr-2 bg-secondary d-flex align-items-center justify-content-center"
+                                        style="width: 50px; height: 50px; border-radius: 4px;">
+                                        <i class="fas fa-image text-white"></i>
+                                    </div>
+                                @endif
+                                <div>
+                                    <a href="{{ route('admin.packages.edit', $package) }}"
+                                        class="font-weight-bold text-dark">{{ $package->title }}</a>
+                                    @if ($package->slug)
+                                        <div class="small">
+                                            <a href="{{ route('admin.packages.show', $package->slug) }}" class="text-muted"
+                                                target="_blank">
+                                                {{ $package->slug }}
+                                            </a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ $package->destination->name ?? 'N/A' }}</td>
+                        <td>
+                            <span class="badge badge-{{ $package->status === 'active' ? 'success' : 'warning' }}">
+                                {{ ucfirst($package->status) }}
+                            </span>
+                        </td>
+                        <td>${{ number_format($package->price, 2) }}</td>
+                        <td>{{ $package->tour_duration }}</td>
+                        <td>
+                            <a href="{{ route('admin.packages.edit', $package) }}" class="btn btn-sm btn-info me-1">
+                                Edit
+                            </a>
+                            <form action="{{ route('admin.packages.destroy', $package) }}" method="POST" class="d-inline"
+                                onsubmit="return confirm('Are you sure you want to delete this package?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center">No packages found.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+
+        @if ($packages->hasPages())
+            <div class="p-3">
+                {{ $packages->links() }}
+            </div>
+        @endif
+    </div>
 @endsection
 
-@push('scripts')
-    <script>
-        $(document).ready(function() {
+@push('styles')
+    <style>
+        .table img {
+            border-radius: 4px;
+        }
 
-            var table = $('#blog_table').DataTable({
-                processing: true,
-                serverSide: true,
-                asorting: [],
-                ajax: "{{ url('admin/categories-packages') }}",
-                columns: [{
-                        data: 'thumbnail',
-                        name: 'thumbnail'
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-                ]
-            });
-        })
-    </script>
+        .badge {
+            padding: 0.5em 0.75em;
+        }
+    </style>
 @endpush

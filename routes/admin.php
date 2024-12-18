@@ -17,39 +17,17 @@ Route::get('profile/change-password', 'AuthController@getpassword')->name('passw
 Route::post('profile/logout', 'AuthController@destory')->name('logout');
 Route::post('profile/logout/admin', 'AuthController@destory')->name('logout');
 
-//   destination
+// Destinations
 Route::resource('/destinations', \App\Http\Controllers\Admin\DestinationController::class);
 Route::resource('/places', \App\Http\Controllers\Admin\PlaceController::class);
 
 // Packages
+Route::resource('packages', \App\Http\Controllers\Admin\PackageController::class);
 Route::resource('package-categories', \App\Http\Controllers\Admin\PackageCategoryController::class);
-
-//   destination category
-Route::resource('/categories-destinations', "Travel\CategoriesDestinationsController");
-Route::get('/categoriesdestinations/delete/{id}', "Travel\CategoriesDestinationsController@destroy")->name('categories-destinations.delete');
-
-//   packages
-Route::resource('/categories-packages', "Travel\PackagesController");
-Route::get('categories-package/delete/{id}', "Travel\CategoriesPlacesController@destroy")->name('categories-packages.delete');
-
-Route::get('/package-gallery', "Travel\PackagesGalleryController@index")->name('package.gallery');
-Route::get('/package-gallery/create', "Travel\PackagesGalleryController@create")->name('package.gallery.create');
-Route::post('/package-gallery/store', "Travel\PackagesGalleryController@store")->name('package.gallery.store');
-Route::get('/package-gallery/edit/{id}', "Travel\PackagesGalleryController@edit")->name('package.gallery.edit');
-Route::post('/package-gallery/update', "Travel\PackagesGalleryController@update")->name('package.gallery.update');
-Route::get('/package-gallery/{id}/destroy', "Travel\PackagesGalleryController@destroy")->name('package.gallery.delete');
 
 // testimonials
 Route::resource('/testimonials', "Testimonials\TestimonialsController");
 Route::get('/testimonials/delete/{id}', "Testimonials\TestimonialsController@destroy")->name('testimonials.delete');
-
-// Faq
-Route::resource('faqs', "Travel\FaqsController");
-Route::get('faq/delete/{id}', "Travel\FaqsController@destroy")->name('faqs.delete');
-
-//depatures
-Route::resource('/departures', "Travel\DeparturesController");
-Route::get('/departures/delete/{id}', "Travel\DeparturesController@destroy")->name('departures.delete');
 
 //blog
 Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);

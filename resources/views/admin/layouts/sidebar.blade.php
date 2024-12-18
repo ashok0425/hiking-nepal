@@ -38,9 +38,9 @@
                   </li>
 
                   <li
-                      class="nav-item {{ Route::is('admin.package-categories.*') || Route::is('admin.categories-packages.*') ? 'menu-open' : '' }}">
+                      class="nav-item {{ Route::is('admin.package-categories.*') || Route::is('admin.packages.*') ? 'menu-open' : '' }}">
                       <a href="#"
-                          class="nav-link {{ Route::is('admin.package-categories.*') || Route::is('admin.categories-packages.*') ? 'active' : '' }} ">
+                          class="nav-link {{ Route::is('admin.package-categories.*') || Route::is('admin.packages.*') ? 'active' : '' }} ">
                           <i class="nav-icon fas fa-route"></i>
                           <p>
                               Tours
@@ -49,8 +49,8 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="{{ route('admin.categories-packages.index') }}"
-                                  class="nav-link {{ Route::is('admin.categories-packages.*') ? 'active' : '' }}">
+                              <a href="{{ route('admin.packages.index') }}"
+                                  class="nav-link {{ Route::is('admin.packages.*') ? 'active' : '' }}">
                                   <p>Packages</p>
                               </a>
                           </li>

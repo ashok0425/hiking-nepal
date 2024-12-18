@@ -3,106 +3,76 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Package extends Model
 {
-    protected $table = 'packages';
+    use HasSlug;
 
-    protected $fillable = ['name',
-        'overview',
-        'outline_itinerary',
-        'detailed_itinerary',
-        'include_exclude',
-        'useful_info',
-        'route_map',
-        'departure',
-        'price',
-        'destination_id',
-        'category_id',
-        'category_destination_id',
+    protected $fillable = [
+        'title',
         'status',
-        'duration',
-        'max_altitude',
-        'difficulty',
-        'min_people_required',
+        'activities',
+        'fitness_level',
+        'max_elevation',
+        'commute',
+        'best_time',
+        'group_size',
+        'arrival_at',
+        'departure_from',
+        'meal',
+        'tour_duration',
+        'stay',
+        'price',
+        'sale_price_per_person',
+        'sale_price_two_plus_per_person',
+        'sale_price_eight_plus_per_person',
+        'destination_id',
+        'place_id',
+        'overview',
+        'itinerary',
+        'faqs',
+        'departures',
+        'gallery',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+    ];
 
-        'deal_package',
-        'special_package',
-        'order',
-        'activity',
-        'meals',
-        'room',
-        'transport',
-        'best_month'];
+    protected $casts = [
+        'departures' => 'array',
+        'gallery' => 'array',
+        'price' => 'decimal:2',
+        'sale_price_per_person' => 'decimal:2',
+        'sale_price_two_plus_per_person' => 'decimal:2',
+        'sale_price_eight_plus_per_person' => 'decimal:2',
+        'average_rating' => 'decimal:2',
+    ];
 
-    public function category()
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
     {
-        return $this->belongsTo('App\Models\Category', 'category_id');
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 
     public function destination()
     {
-        return $this->belongsTo('App\Models\Destination', 'destination_id');
+        return $this->belongsTo(Destination::class);
     }
 
-    public function category_destination()
-    {
-        return $this->belongsTo('App\Models\CategoryDestination', 'category_destination_id');
-    }
-
-    // public function place() {
-    // 	return $this->belongsTo('App\Models\Place', 'place_id');
-    // }
     public function place()
     {
-        return $this->belongsTo('App\Models\CategoryPlace', 'category_place_id');
+        return $this->belongsTo(Place::class);
     }
 
-    public function newimages()
+    public function categories()
     {
-        return $this->belongsToMany('App\Models\ImageUpload', 'destination_image', 'package_id', 'image_id')->withPivot('id', 'alt');
-    }
-
-    public function homeimages()
-    {
-        return $this->belongsToMany('App\Models\ImageUpload', 'destination_image', 'package_home_id', 'image_id')->withPivot('id', 'alt');
-    }
-
-    public function routemapimages()
-    {
-        return $this->belongsToMany('App\Models\ImageUpload', 'destination_image', 'package_routemap_id', 'image_id')->withPivot('id', 'alt');
-    }
-
-    // public function images() {
-    // 	return $this->hasMany('App\Models\PackageImage', 'package_id');
-    // }
-    public function faqs()
-    {
-        return $this->hasMany('App\Models\Faq', 'package_id');
-    }
-
-    public function itenaries()
-    {
-        return $this->hasMany('App\Models\OutlineItinerary', 'package_id');
-    }
-
-    public function departure_dates()
-    {
-        return $this->hasMany('App\Models\Departure', 'package_id');
-    }
-
-    public function testimonials()
-    {
-        return $this->belongsToMany('App\Models\Testimonial', 'package_testimonial', 'package_id', 'testimonial_id');
-    }
-
-    public function Country($country_id)
-    {
-        return $this->belongsToMany('App\Models\Country', 'country_package', 'package_id', 'country_id')->withPivot('overview', 'faq', 'outline_itinerary', 'detailed_itinerary', 'include_exclude', 'trip_excludes', 'useful_info', 'page_title', 'meta_keywords', 'meta_author', 'meta_description', 'mobile_meta_keyword', 'mobile_meta_title', 'mobile_meta_description', 'name', 'currency', 'price', 'offer_price')->where('country_id', $country_id)->first();
-    }
-
-    public function gallery()
-    {
-        return $this->hasMany(PackageImage::class);
+        return $this->belongsToMany(PackageCategory::class, 'package_package_category');
     }
 }
