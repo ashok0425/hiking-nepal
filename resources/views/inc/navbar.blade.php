@@ -45,10 +45,13 @@
                                     <a class="dropdown-item"
                                         href="{{ route('dynamic-page', strtolower($destination->slug)) }}">OVERVIEW</a>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tours', 'everest') }}">
-                                        CULTURAL AND HISTORICAL TOURS</a>
-                                </li>
+
+                                @foreach ($destination->categories as $category)
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('dynamic-page', $destination->slug) }}#{{ $category->slug }}">{{ strtoupper($category->name) }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                     @endforeach

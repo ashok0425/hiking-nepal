@@ -33,7 +33,8 @@ class AppServiceProvider extends ServiceProvider
                 ->join('packages', 'packages.id', '=', 'package_package_category.package_id')
                 ->join('package_categories', 'package_categories.id', '=', 'package_package_category.package_category_id')
                 ->whereIn('packages.destination_id', $destinations->pluck('id'))
-                ->select('package_categories.id', 'package_categories.name', 'packages.destination_id')
+                ->where('package_categories.status', 'active')
+                ->select('package_categories.id', 'package_categories.name', 'package_categories.slug', 'packages.destination_id')
                 ->distinct()
                 ->get()
                 ->groupBy('destination_id');
