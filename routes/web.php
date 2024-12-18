@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home.index')->name('home');
+Route::get('/', App\Http\Controllers\HomeController::class)->name('home');
 Route::view('/deals', 'deals')->name('deals');
 
 // About

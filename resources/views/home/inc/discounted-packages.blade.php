@@ -12,11 +12,11 @@
         <div id="discountedPackages" class="splide mb-3" aria-label="Discounted Packages">
             <div class="splide__track">
                 <ul class="splide__list">
-                    @for ($i = 0; $i < 5; $i++)
+                    @foreach ($packages as $package)
                         <li class="splide__slide py-2">
-                            <x-package-card />
+                            <x-package-card :package="$package" />
                         </li>
-                    @endfor
+                    @endforeach
                 </ul>
             </div>
         </div>
