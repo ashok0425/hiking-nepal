@@ -77,6 +77,11 @@ class Package extends Model
         return $this->belongsToMany(PackageCategory::class, 'package_package_category');
     }
 
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class);
+    }
+
     public function galleryImages(): array
     {
         /** @var array $images */
