@@ -91,29 +91,29 @@
                   </li>
 
                   {{-- Newsletter  --}}
-                  <li class="nav-item {{ Route::is('admin.newsletter-subscribers.index') ? 'menu-open' : '' }}">
+                  <li
+                      class="nav-item {{ Route::is('admin.newsletter-subscribers.*') || Route::is('admin.newsletter-posts.*') ? 'menu-open' : '' }}">
                       <a href="#"
-                          class="nav-link {{ Route::is('admin.newsletter-subscribers.index') ? 'active' : '' }}">
+                          class="nav-link {{ Route::is('admin.newsletter-subscribers.*') || Route::is('admin.newsletter-posts.*') ? 'active' : '' }}">
                           <i class="nav-icon fas fa-newspaper"></i>
                           <p>
                               Newsletter
                               <i class="fas fa-angle-down right"></i>
-
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
 
                           <li class="nav-item ">
                               <a href="{{ route('admin.newsletter-subscribers.index') }}"
-                                  class="nav-link {{ Route::is('admin.newsletter-subscribers.index') ? 'active' : '' }}">
+                                  class="nav-link {{ Route::is('admin.newsletter-subscribers.*') ? 'active' : '' }}">
                                   <p>Subscribers</p>
                               </a>
                           </li>
 
                           <li class="nav-item ">
-                              <a href="{{ route('admin.newsletter.history') }}" class="nav-link <?php echo Request::segment(3) == 'emailhistory' ? 'active' : ''; ?>">
-                                  {{-- <i class="far fa-circle nav-icon"></i> --}}
-                                  <p>Email History </p>
+                              <a href="{{ route('admin.newsletter-posts.index') }}"
+                                  class="nav-link {{ Route::is('admin.newsletter-posts.*') ? 'active' : '' }}">
+                                  <p>Posts</p>
                               </a>
                           </li>
 

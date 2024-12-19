@@ -33,6 +33,7 @@ Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);
 
 // Newsletter
 Route::resource('/newsletter-subscribers', \App\Http\Controllers\Admin\NewsletterSubscriberController::class);
+Route::resource('/newsletter-posts', \App\Http\Controllers\Admin\NewsletterPostController::class);
 
 //Newletter
 Route::get('newsletters', "Newsletter\NewsletterController@index")->name('newsletters.index');

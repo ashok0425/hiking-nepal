@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -21,7 +22,7 @@ class NewsletterPost extends Model
         'content',
         'image_url',
         'status',
-        'published_at'
+        'published_at',
     ];
 
     /**
@@ -42,5 +43,15 @@ class NewsletterPost extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
+    }
+
+    /**
+     * Get the image URL for the newsletter post.
+     *
+     * @return string
+     */
+    public function getImageUrlAttribute($value)
+    {
+        return $value ? Storage::disk('public')->url($value) : null;
     }
 }
