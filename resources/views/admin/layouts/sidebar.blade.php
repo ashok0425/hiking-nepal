@@ -125,7 +125,7 @@
                           <li class="nav-item ">
                               <a href="{{ route('admin.newsletter-posts.index') }}"
                                   class="nav-link {{ Route::is('admin.newsletter-posts.*') ? 'active' : '' }}">
-                                  <p>Posts</p>
+                                  <p>All Posts</p>
                               </a>
                           </li>
 
