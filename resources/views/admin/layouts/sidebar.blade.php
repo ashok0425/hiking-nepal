@@ -73,18 +73,9 @@
                       </ul>
                   </li>
 
-                  {{-- Departure Date  --}}
-                  {{-- <li class="nav-item">
-                      <a href="{{ route('admin.departures.index') }}"
-                          class="nav-link {{ Request::segment(2) == 'departures' ? 'active' : '' }} ">
-                          <i class="nav-icon fas fa-plane-departure"></i>
-                          <p>Departure Dates</p>
-                      </a>
-                  </li> --}}
-
                   <li class="nav-item">
-                      <a href="{{ route('admin.testimonials.index') }}"
-                          class="nav-link {{ Request::segment(2) == 'testimonials' ? 'active' : '' }} ">
+                      <a href="{{ route('admin.reviews.index') }}"
+                          class="nav-link {{ Route::is('admin.reviews.*') ? 'active' : '' }} ">
                           <i class="nav-icon fas fa-star"></i>
                           <p>Reviews</p>
                       </a>

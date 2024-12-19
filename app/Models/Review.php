@@ -20,7 +20,7 @@ class Review extends Model
         'user_photo',
         'rating',
         'comment',
-        'package_id'
+        'package_id',
     ];
 
     /**

@@ -19,7 +19,7 @@ class Activity extends Model
     protected $fillable = [
         'name',
         'slug',
-        'description'
+        'description',
     ];
 
     /**

@@ -19,7 +19,6 @@
                     <img src="{{ asset('logo.png') }}" alt="Logo" class="img-fluid mb-4" style="max-width: 200px;">
                 </div>
 
-
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <div class="mb-4">

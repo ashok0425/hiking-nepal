@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('status')->default('pending');
             $table->string('user_name');
-            $table->text('user_photo');
+            $table->text('user_photo')->nullable();
             $table->tinyInteger('rating');
             $table->text('comment');
             $table->foreignId('package_id')->constrained('packages')->cascadeOnDelete();
