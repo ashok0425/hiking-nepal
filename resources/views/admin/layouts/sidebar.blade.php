@@ -91,8 +91,9 @@
                   </li>
 
                   {{-- Newsletter  --}}
-                  <li class="nav-item <?php echo Request::segment(2) == 'newsletters' ? 'menu-open' : ''; ?>">
-                      <a href="#" class="nav-link <?php echo Request::segment(2) == 'newsletters' ? 'active' : ''; ?> ">
+                  <li class="nav-item {{ Route::is('admin.newsletter-subscribers.index') ? 'menu-open' : '' }}">
+                      <a href="#"
+                          class="nav-link {{ Route::is('admin.newsletter-subscribers.index') ? 'active' : '' }}">
                           <i class="nav-icon fas fa-newspaper"></i>
                           <p>
                               Newsletter
@@ -103,8 +104,8 @@
                       <ul class="nav nav-treeview">
 
                           <li class="nav-item ">
-                              <a href="{{ route('admin.newsletters.index') }}" class="nav-link <?php echo Request::segment(3) == '' ? 'active' : ''; ?>">
-                                  {{-- <i class="far fa-circle nav-icon"></i> --}}
+                              <a href="{{ route('admin.newsletter-subscribers.index') }}"
+                                  class="nav-link {{ Route::is('admin.newsletter-subscribers.index') ? 'active' : '' }}">
                                   <p>Subscribers</p>
                               </a>
                           </li>
