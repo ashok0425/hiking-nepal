@@ -82,13 +82,33 @@
                   </li>
 
                   {{-- Blog --}}
-                  <li class="nav-item">
-                      <a href="{{ route('admin.posts.index') }}"
-                          class="nav-link {{ Route::is('admin.posts.*') ? 'active' : '' }}">
+                  <li
+                      class="nav-item {{ Route::is('admin.posts.*') || Route::is('admin.post-categories.*') ? 'menu-open' : '' }}">
+                      <a href="#"
+                          class="nav-link {{ Route::is('admin.posts.*') || Route::is('admin.post-categories.*') ? 'active' : '' }}">
                           <i class="nav-icon fas fa-quote-left"></i>
-                          <p>Blog</p>
+                          <p>
+                              Blog
+                              <i class="fas fa-angle-down right"></i>
+                          </p>
                       </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ route('admin.posts.index') }}"
+                                  class="nav-link {{ Route::is('admin.posts.index') ? 'active' : '' }}">
+                                  <p>All Posts</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.post-categories.index') }}"
+                                  class="nav-link {{ Route::is('admin.post-categories.*') ? 'active' : '' }}">
+                                  <p>Categories</p>
+                              </a>
+                          </li>
+                      </ul>
                   </li>
+
+                  {{-- Newsletter (rest of the code remains the same) --}}
 
                   {{-- Newsletter  --}}
                   <li

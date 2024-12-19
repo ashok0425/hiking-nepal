@@ -30,19 +30,11 @@ Route::resource('/reviews', \App\Http\Controllers\Admin\ReviewController::class)
 
 //blog
 Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);
+Route::resource('/post-categories', \App\Http\Controllers\Admin\PostCategoryController::class);
 
 // Newsletter
 Route::resource('/newsletter-subscribers', \App\Http\Controllers\Admin\NewsletterSubscriberController::class);
 Route::resource('/newsletter-posts', \App\Http\Controllers\Admin\NewsletterPostController::class);
-
-//Newletter
-Route::get('newsletters', "Newsletter\NewsletterController@index")->name('newsletters.index');
-Route::get('newsletters/create', "Newsletter\NewsletterController@create")->name('newsletters.create');
-Route::post('newsletters/store', "Newsletter\NewsletterController@store")->name('newsletters.store');
-Route::get('newsletters/show/{id}', "Newsletter\NewsletterController@show")->name('newsletters.show');
-
-Route::get('/newsletters/delete/{id}', "Newsletter\NewsletterController@destroy")->name('newsletters.delete');
-Route::get('newsletters-history', "Newsletter\NewsletterController@emailHistory")->name('newsletter.history');
 
 //Contact
 Route::get('contacts', 'ContactController@index')->name('contact.index');
