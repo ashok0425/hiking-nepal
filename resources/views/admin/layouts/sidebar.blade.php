@@ -102,18 +102,17 @@
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
+                          <li class="nav-item ">
+                              <a href="{{ route('admin.newsletter-posts.index') }}"
+                                  class="nav-link {{ Route::is('admin.newsletter-posts.*') ? 'active' : '' }}">
+                                  <p>Posts</p>
+                              </a>
+                          </li>
 
                           <li class="nav-item ">
                               <a href="{{ route('admin.newsletter-subscribers.index') }}"
                                   class="nav-link {{ Route::is('admin.newsletter-subscribers.*') ? 'active' : '' }}">
                                   <p>Subscribers</p>
-                              </a>
-                          </li>
-
-                          <li class="nav-item ">
-                              <a href="{{ route('admin.newsletter-posts.index') }}"
-                                  class="nav-link {{ Route::is('admin.newsletter-posts.*') ? 'active' : '' }}">
-                                  <p>Posts</p>
                               </a>
                           </li>
 

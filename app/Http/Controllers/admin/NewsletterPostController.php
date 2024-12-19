@@ -36,7 +36,6 @@ class NewsletterPostController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'status' => 'required|in:draft,published',
             'image_url' => 'nullable|image|max:2048|required_if:status,published',
         ]);
 

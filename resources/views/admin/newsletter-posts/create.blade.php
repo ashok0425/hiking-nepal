@@ -40,7 +40,7 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <select name="status" class="form-control" required>
+                                <select name="status" class="form-control" disabled>
                                     <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Draft</option>
                                     <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Published
                                     </option>
