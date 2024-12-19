@@ -95,4 +95,9 @@ class Package extends Model
             return Storage::disk('public')->url($image);
         }, $images);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
