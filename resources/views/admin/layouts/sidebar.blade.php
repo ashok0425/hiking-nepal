@@ -37,6 +37,14 @@
                       </a>
                   </li>
 
+                  <li class="nav-item">
+                      <a href="{{ route('admin.activities.index') }}"
+                          class="nav-link {{ Route::is('admin.activities.*') ? 'active' : '' }}">
+                          <i class="nav-icon fas fa-hiking"></i>
+                          <p>Activities</p>
+                      </a>
+                  </li>
+
                   <li
                       class="nav-item {{ Route::is('admin.package-categories.*') || Route::is('admin.packages.*') ? 'menu-open' : '' }}">
                       <a href="#"

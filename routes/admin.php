@@ -20,6 +20,7 @@ Route::post('profile/logout/admin', 'AuthController@destory')->name('logout');
 // Destinations
 Route::resource('/destinations', \App\Http\Controllers\Admin\DestinationController::class);
 Route::resource('/places', \App\Http\Controllers\Admin\PlaceController::class);
+Route::resource('/activities', \App\Http\Controllers\Admin\ActivityController::class);
 
 // Packages
 Route::resource('packages', \App\Http\Controllers\Admin\PackageController::class);
