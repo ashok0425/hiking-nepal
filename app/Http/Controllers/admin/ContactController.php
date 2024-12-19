@@ -68,7 +68,7 @@ class ContactController extends Controller
 
             $notification = [
                 'alert-type' => 'success',
-                'messege' => 'Email Sent successfully',
+                'message' => 'Email Sent successfully',
 
             ];
 
@@ -76,7 +76,7 @@ class ContactController extends Controller
         } catch (\Throwable $th) {
             $notification = [
                 'alert-type' => 'error',
-                'messege' => 'Something went wrong.Try again later.',
+                'message' => 'Something went wrong.Try again later.',
 
             ];
 

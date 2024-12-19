@@ -3,35 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
-use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
         return view('admin.login');
     }
 
-    public function getpassword()
-    {
-        return view('admin.password');
-    }
-
-    public function show()
-    {
-        return view('admin.dashboard');
-    }
-
-    public function profile()
-    {
-        return view('admin.profile');
-    }
-
-    public function store(Request $request)
+    public function handleLogin(Request $request)
     {
 
         $request->validate([
@@ -41,7 +24,7 @@ class AuthController extends Controller
         if (! Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
 
             $notification = [
-                'messege' => 'Invalid username or password',
+                'message' => 'Invalid username or password',
                 'alert-type' => 'error',
             ];
 
@@ -51,100 +34,42 @@ class AuthController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
-    public function update(Request $request)
+    public function changePassword()
     {
-        $request->validate([
-            'email' => 'email|required',
-            'name' => 'required',
+        return view('admin.password');
+    }
+
+    public function storePassword(Request $request)
+    {
+        /** @var \App\Models\Admin $user */
+        $user = Auth::guard('admin')->user();
+
+        $validated = $request->validate([
+            'currentpassword' => 'required|string',
+            'newpassword' => 'required|string|min:8|max:16|different:currentpassword',
+            'confirmpassword' => 'required|string|same:newpassword',
         ]);
-        try {
 
-            $admin = Admin::find(__getAdmin()->id);
-
-            $file = $request->file('file');
-
-            if ($file) {
-                $this->deleteFile($admin->profile_photo_path);
-                $admin->profile_photo_path = $this->uploadFile('upload/admin', $file);
-            }
-            $admin->email = $request->email;
-            $admin->name = $request->name;
-            if ($admin->save()) {
-                $notification = [
-                    'alert-type' => 'success',
-                    'messege' => 'Profile  updated',
-
-                ];
-
-                return redirect()->back()->with($notification);
-            } else {
-                $notification = [
-                    'alert-type' => 'info',
-                    'messege' => 'Profile  not updated',
-
-                ];
-
-                return redirect()->back()->with($notification);
-            }
-        } catch (\Throwable $th) {
-            $notification = [
+        if (! Hash::check($request->currentpassword, $user->password)) {
+            return redirect()->back()->with([
                 'alert-type' => 'error',
-                'messege' => 'Something went wrong.Please try again later',
-
-            ];
-
-            return redirect()->back()->with($notification);
+                'message' => 'Current password is incorrect',
+            ]);
         }
-    }
 
-    public function changePassword(Request $request)
-    {
-        $request->validate([
-            'newpassword' => 'required|min:8|max:16',
-            'confirmpassword' => 'required|min:8|max:16',
+        $user->password = Hash::make($validated['newpassword']);
+        $user->save();
 
+        Auth::guard('admin')->logout();
+        session()->flush();
+
+        return redirect()->route('admin.login')->with([
+            'alert-type' => 'success',
+            'message' => 'Password updated successfully. Please login again.',
         ]);
-        try {
-
-            if (Hash::check($request->currentpassword, __getAdmin()->password)) {
-                if ($request->newpassword === $request->confirmpassword) {
-                    $admin = Admin::find(__getAdmin()->id);
-                    $admin->password = Hash::make($request->newpassword);
-
-                    $admin->save();
-                    Auth::logout();
-                    session()->flush();
-                    $notification = [
-                        'alert-type' => 'error',
-                        'messege' => 'Password updated please login again !',
-
-                    ];
-
-                    return redirect()->route('admin.logins')->with($notification);
-                } else {
-                    $notification = [
-                        'alert-type' => 'error',
-                        'messege' => 'Password not match',
-
-                    ];
-
-                    return redirect()->back()->with($notification);
-                }
-            } else {
-                $notification = [
-                    'alert-type' => 'error',
-                    'messege' => 'Inccorect Password',
-
-                ];
-
-                return redirect()->back()->with($notification);
-            }
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
     }
 
-    public function destory(Request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
 
@@ -153,60 +78,5 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('admin.login');
-    }
-
-    public function userList()
-    {
-        $user = User::orderBy('id', 'desc')->get();
-
-        return view('admin.user.list', compact('user'));
-    }
-
-    public function updateuser(Request $request)
-    {
-
-        try {
-
-            $category = User::find($request->id);
-
-            if (isset($request->status)) {
-                $category->status = $request->status;
-            }
-
-            if ($category->save()) {
-                if ($category->status == 1) {
-
-                    $notification = [
-                        'alert-type' => 'success',
-                        'messege' => 'User Unblocked',
-
-                    ];
-                } else {
-                    $notification = [
-                        'alert-type' => 'success',
-                        'messege' => 'User Blocked',
-
-                    ];
-                }
-
-                return redirect()->route('admin.user.list')->with($notification);
-            } else {
-                $notification = [
-                    'alert-type' => 'info',
-                    'messege' => 'User  Not  Blocked ',
-
-                ];
-
-                return redirect()->back()->with($notification);
-            }
-        } catch (\Throwable $th) {
-            $notification = [
-                'alert-type' => 'error',
-                'messege' => 'Something went wrong. Please try again later.',
-
-            ];
-
-            return redirect()->back()->with($notification);
-        }
     }
 }

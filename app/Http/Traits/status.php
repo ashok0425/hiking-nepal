@@ -21,7 +21,7 @@ trait status
         ]);
         $notification = [
             'alert-type' => 'success',
-            'messege' => 'Status: Activated.',
+            'message' => 'Status: Activated.',
 
         ];
 
@@ -35,7 +35,7 @@ trait status
         ]);
         $notification = [
             'alert-type' => 'info',
-            'messege' => 'Status: Deactivated',
+            'message' => 'Status: Deactivated',
 
         ];
 

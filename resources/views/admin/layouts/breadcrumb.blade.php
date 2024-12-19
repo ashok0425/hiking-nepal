@@ -1,7 +1,7 @@
  <div class="content-header px-0">
      <h1 class="m-0">{{ isset($title) ? $title : Str::upper(Request::segment(2)) }}</h1>
      <nav aria-label="breadcrumb">
-         @if (Request::segment(2) != 'dashboard')
+         @if (Request::segment(2) != 'dashboard' && Request::segment(2) != 'profile')
              <ol class="breadcrumb">
                  <li class="breadcrumb-item">
                      <a href="{{ route('admin.dashboard') }}">Dashboard</a>
