@@ -3,24 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="cache-control" content="max-age=604800" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta property="fb:app_id" content="160443599540603" />
-    <meta property="og:url" content="@yield('url')" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="@yield('title')" />
-    <meta property="og:description" content="@yield('descr')" />
-    <meta property="og:image" content="@yield('img')" />
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- <meta name="author" content="{{$seo->meta_author}}"> --}}
-    <meta name="keyword" content="@yield('keyword')">
-    <meta name="description" content="@yield('descr')">
 
     <link rel="icon" href="@yield('fev')" type="image/icon type">
 
@@ -32,65 +17,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Theme style -->
-    <link rel="preload stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}" as="style">
+    <link rel="stylesheet" href="{{ asset('admin/css/theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
 
     @stack('style')
-    <style>
-        label {
-            font-size: 14px;
-            font-weight: 400 !important;
-        }
-
-        h1 {
-            font-size: 20px !important;
-        }
-
-        h3 {
-            font-size: 18px !important;
-            padding: 1rem;
-            font-weight: bold;
-        }
-
-        .nav-link {
-            font-size: 16px !important;
-        }
-
-        .nav-treeview .nav-link {
-            font-size: 14px !important;
-        }
-
-        input::placeholder {
-            font-size: 11px !important;
-        }
-
-        .menu-open {
-            background-color: #123761;
-        }
-
-        .nav-sidebar .nav-item>.nav-link {
-            margin-bottom: 0;
-        }
-
-        .nav-pills .nav-link {
-            border-radius: 0;
-        }
-
-        [class*="sidebar-dark-"] .nav-sidebar>.nav-item>.nav-link.active {
-            box-shadow: none;
-        }
-
-        .nav-sidebar .nav-item .nav-treeview .nav-link {
-            padding-left: 3.5em;
-        }
-
-        [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active,
-        [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active:focus,
-        [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active:hover {
-            background-color: #425163;
-            color: #fff;
-        }
-    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -104,7 +36,31 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper px-4">
-            @include('admin.layouts.breadcrumb')
+            <div class="content-header px-0">
+                <h1 class="m-0">{{ isset($title) ? $title : Str::upper(Request::segment(2)) }}</h1>
+                <nav aria-label="breadcrumb">
+                    @if (Request::segment(2) != 'dashboard' && Request::segment(2) != 'profile')
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item {{ Request::segment(3) ? '' : 'active' }}">
+                                @if (Request::segment(3))
+                                    <a
+                                        href="{{ route('admin.' . Request::segment(2) . '.index') }}">{{ Str::title(str_replace('-', ' ', Request::segment(2))) }}</a>
+                                @else
+                                    {{ Str::title(str_replace('-', ' ', Request::segment(2))) }}
+                                @endif
+                            </li>
+                            @if (Request::segment(3))
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    {{ Str::title(str_replace('-', ' ', Request::segment(3))) }}
+                                </li>
+                            @endif
+                        </ol>
+                    @endif
+                </nav>
+            </div>
 
             @yield('content')
         </div>
@@ -116,128 +72,20 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    {{-- boostrap --}}
+
+    {{-- bootstrap --}}
     <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!-- AdminLTE App -->
-    <script defer src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
-
-    @if (!str_contains(url()->current(), 'edit') && !str_contains(url()->current(), 'create'))
-        {{-- datatables  --}}
-        <link rel="preload stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"
-            as="style">
-        <link rel="preload stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"
-            as="style" />
-        <link rel="preload stylesheet" href='https://cdn.datatables.net/responsive/2.2.9/css/dataTables.responsive.css'
-            as="style" />
-        <script defer src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
-        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
-        <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-        <script defer src="//cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.js"></script>
-        {{-- datatables iniziing --}}
-
-        <script>
-            setTimeout(() => {
-                if (window.innerWidth <= 700) {
-                    var table = $('#example2').DataTable({
-                        "scrollX": true,
-
-                        select: true,
-                        dom: 'Blfrtip',
-                        lengthMenu: [
-                            [10, 25, 50, -1],
-                            ['10 row', '25 row', '50 row', 'All Rows']
-                        ],
-                        dom: 'Bfrtip',
-                        buttons: [{
-                                extend: 'print',
-                                exportOptions: {
-                                    stripHtml: false,
-                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
-                                }
-                            },
-                            {
-                                extend: 'excel',
-                                exportOptions: {
-                                    stripHtml: false,
-                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
-                                }
-                            },
-                            {
-                                extend: 'csv',
-                                exportOptions: {
-                                    stripHtml: false,
-                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
-                                }
-                            },
-
-                            {
-                                extend: 'colvis',
-
-                            },
-                            'pageLength',
-                        ]
-                    });
-
-                } else {
-
-                    var table = $('#example2').DataTable({
-                        // "scrollX": true,
-                        select: true,
-                        dom: 'Blfrtip',
-                        lengthMenu: [
-                            [10, 25, 50, -1],
-                            ['10 row', '25 row', '50 row', 'All Rows']
-                        ],
-                        dom: 'Bfrtip',
-                        buttons: [{
-                                extend: 'print',
-                                exportOptions: {
-                                    stripHtml: false,
-                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
-                                }
-                            },
-                            {
-                                extend: 'excel',
-                                exportOptions: {
-                                    stripHtml: false,
-                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
-                                }
-                            },
-                            {
-                                extend: 'csv',
-                                exportOptions: {
-                                    stripHtml: false,
-                                    columns: ':visible:not(:last-child,:nth-last-child(2))'
-                                }
-                            },
-
-                            {
-                                extend: 'colvis',
-
-                            },
-                            'pageLength',
-
-                        ]
-                    });
-
-                }
-            }, 2000);
-        </script>
-    @endif
+    <script defer src="{{ asset('admin/js/adminlte.min.js') }}"></script>
 
     @if (Session::has('message'))
         {{-- toastr --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @endif
+
     {{-- toastr  --}}
     <script>
         @if (Session::has('message')) //toatser
@@ -260,29 +108,6 @@
     </script>
 
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-
-    <script>
-        $('#delete_row').click(function(e) {
-            e.preventDefault()
-            url = $(this).attr('href')
-            swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this  file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location.href = url;
-
-
-                    } else {
-                        swal("Your Data is safe!");
-                    }
-                });
-        })
-    </script>
 
     @stack('scripts')
 
