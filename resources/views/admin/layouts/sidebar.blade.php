@@ -92,7 +92,8 @@
                   </li>
 
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('admin.bookings.index') }}"
+                          class="nav-link {{ Route::is('admin.bookings.*') ? 'active' : '' }}">
                           <i class="nav-icon fas fa-calendar-check"></i>
                           <p>Bookings</p>
                       </a>
