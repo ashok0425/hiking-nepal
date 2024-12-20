@@ -15,6 +15,8 @@ Route::view('/our-team', 'our-team')->name('our-team');
 
 Route::get('/tours/{slug}', \App\Http\Controllers\TourController::class)->name('tours');
 
+Route::post('/newsletter-subscribe', \App\Http\Controllers\NewsletterSubscriptionController::class)->name('newsletter.subscribe');
+
 // Booking
 Route::view('/book-a-call', 'book-a-call')->name('book-a-call');
 Route::post('/book-a-call', \App\Http\Controllers\ScheduleCallbackController::class);

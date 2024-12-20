@@ -41,14 +41,32 @@
 
                 <!-- Column 4: Newsletter -->
                 <div class="col-md-6 col-lg-3">
-                    <h6 class="text-success mb-3">NEWSLETTER</h6>
+                    <h6 class="text-success mb-3" id="newsletterForm">NEWSLETTER</h6>
                     <p class="small">Sign up for Deals and Discount. Get News, Notifications and Updates
                         about the recent Events and Offers.
                     </p>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email Address">
-                        <button class="btn btn-primary" type="button">SUBSCRIBE</button>
-                    </div>
+                    <form method="POST" class="newsletter-form" action="{{ route('newsletter.subscribe') }}">
+                        @csrf
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="First Name" name="first_name"
+                                required>
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Last Name" name="last_name"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email Address" name="email"
+                                required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">SUBSCRIBE</button>
+                        @if (session('status') === 'subscribed')
+                            <div class="alert alert-success mt-2">
+                                Thank you for subscribing to our newsletter!
+                            </div>
+                        @endif
+                    </form>
+
                     <!-- Payment Icons -->
                     <div class="payment-icons mt-3">
                         Payment:
