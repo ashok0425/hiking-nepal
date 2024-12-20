@@ -142,6 +142,7 @@
         <script defer src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
         <script defer src="//cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.js"></script>
         {{-- datatables iniziing --}}
+
         <script>
             setTimeout(() => {
                 if (window.innerWidth <= 700) {
@@ -259,7 +260,6 @@
     </script>
 
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('ckeditor.js') }}"></script>
 
     <script>
         $('#delete_row').click(function(e) {
