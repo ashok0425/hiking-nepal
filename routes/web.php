@@ -17,6 +17,8 @@ Route::get('/tours/{slug}', \App\Http\Controllers\TourController::class)->name('
 
 // Booking
 Route::view('/book-a-call', 'book-a-call')->name('book-a-call');
+Route::post('/book-a-call', \App\Http\Controllers\ScheduleCallbackController::class);
+
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 
 /**
