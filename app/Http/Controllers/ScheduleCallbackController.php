@@ -21,7 +21,15 @@ class ScheduleCallbackController extends Controller
             'time_slot' => 'required|string',
             'duration' => 'required|integer',
             'user_timezone' => 'required|string',
+            'callback_message' => 'nullable|string',
         ]);
+
+        $callback_message = sprintf(
+            "Duration: %d mins, Timezone: %s\n%s",
+            $validated['duration'],
+            $validated['user_timezone'],
+            $validated['callback_message'] ?? ''
+        );
 
         ScheduledCallback::create([
             'status' => ScheduledCallback::STATUS_PENDING,
@@ -31,7 +39,7 @@ class ScheduleCallbackController extends Controller
             'comments' => $validated['comments'],
             'callback_date' => $validated['datepicker'],
             'callback_time' => $validated['time_slot'],
-            'callback_message' => "Duration: {$validated['duration']} mins, Timezone: {$validated['user_timezone']}"
+            'callback_message' => $callback_message,
         ]);
 
         return redirect()->route('book-a-call', ['status' => 'submitted']);

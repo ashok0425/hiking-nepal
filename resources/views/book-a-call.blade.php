@@ -70,7 +70,7 @@
 
                                 <div class="mb-4">
                                     <label for="notes" class="form-label fw-bold">Optional</label>
-                                    <textarea class="form-control" id="notes" name="notes" rows="3"
+                                    <textarea class="form-control" id="notes" name="callback_message" rows="3"
                                         placeholder="Enter the time that best suits for you..."></textarea>
                                 </div>
 
@@ -97,7 +97,9 @@
                             <input type="hidden" name="datepicker" id="hiddenDate">
                             <input type="hidden" name="time_slot" id="hiddenTimeSlot">
                             <input type="hidden" name="duration" value="25">
+                            <input type="hidden" name="callback_message" id="hiddenCallbackMessage">
                             <input type="hidden" name="user_timezone" id="userTimezone">
+
                             <div class="mb-5">
                                 <div class="fw-bold mb-2 fs-5">Your information</div>
                                 <div class="fw-bold text-primary">Saturday, December 11, 2024 8:15 pm <a href="#"
@@ -245,6 +247,7 @@
 
                 document.getElementById('hiddenDate').value = dateInput.value;
                 document.getElementById('hiddenTimeSlot').value = timeSlot.value;
+                document.getElementById('hiddenCallbackMessage').value = notes.value;
 
                 goToStep(2);
             }
