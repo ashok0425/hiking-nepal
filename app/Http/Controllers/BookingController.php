@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class BookingController extends Controller
 {
@@ -31,8 +33,38 @@ class BookingController extends Controller
             'status' => Booking::STATUS_PENDING
         ]);
 
+        Notification::route('mail', config('mail.admin_address'))
+            ->notify(new BookingNotification($booking, true));
+
+        Notification::route('mail', $booking->email)
+            ->notify(new BookingNotification($booking, false));
+
         return redirect()
             ->back()
             ->with('success', 'Your booking request has been submitted successfully. We will contact you soon.');
+    }
+
+    public function handlePGWebhook(Request $request)
+    {
+        // Get the booking ID from the webhook payload
+        // $bookingId = $request->input('booking_id');
+
+        // Find the booking
+        // $booking = Booking::findOrFail($bookingId);
+
+        // Verify the payment signature/hash
+        // if (!$this->verifyPaymentSignature($request)) {
+        //     \Log::error('Invalid payment signature');
+        //     return response()->json(['error' => 'Invalid signature'], 400);
+        // }
+
+        // Update booking status based on payment status
+        // if ($request->input('payment_status') === 'success') {
+        //     $booking->update(['status' => Booking::STATUS_CONFIRMED]);
+        // } else {
+        //     $booking->update(['status' => Booking::STATUS_FAILED]);
+        // }
+
+        return [];
     }
 }

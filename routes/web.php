@@ -23,6 +23,7 @@ Route::post('/book-a-call', \App\Http\Controllers\ScheduleCallbackController::cl
 
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 Route::post('/book-your-trip', \App\Http\Controllers\BookingController::class);
+Route::post('/wh/pg-webhook', [\App\Http\Controllers\BookingController::class, 'handlePGWebhook']);
 
 /**
  * Blog routes
