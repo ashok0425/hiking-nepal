@@ -266,13 +266,6 @@ a {
     }
 }
 
-/* Optional: Smooth transition effect */
-.dropdown-menu {
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-}
-
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
