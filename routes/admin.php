@@ -27,6 +27,8 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::resource('/reviews', \App\Http\Controllers\Admin\ReviewController::class);
 
+    Route::resource('/scheduled-callbacks', \App\Http\Controllers\Admin\ScheduledCallbackController::class);
+
     //blog
     Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);
     Route::resource('/post-categories', \App\Http\Controllers\Admin\PostCategoryController::class);

@@ -84,7 +84,8 @@
                   <li class="dropdown-divider"></li>
 
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('admin.scheduled-callbacks.index') }}"
+                          class="nav-link {{ Route::is('admin.scheduled-callbacks.*') ? 'active' : '' }}">
                           <i class="nav-icon fas fa-phone-alt"></i>
                           <p>Call Requests</p>
                       </a>
