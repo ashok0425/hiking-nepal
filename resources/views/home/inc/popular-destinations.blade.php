@@ -28,11 +28,11 @@
             <div id="popularDestination" class="splide" aria-label="Popular destination">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        @for ($i = 0; $i < 10; $i++)
+                        @foreach ($places as $place)
                             <li class="splide__slide">
-                                <x-slide-one-card />
+                                <x-place-card :place="$place" />
                             </li>
-                        @endfor
+                        @endforeach
                     </ul>
                 </div>
             </div>
