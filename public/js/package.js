@@ -6,6 +6,14 @@ ClassicEditor.create(document.querySelector("#overview-editor"), {
     console.error(error);
 });
 
+ClassicEditor.create(document.querySelector("#itinerary-editor"), {
+    simpleUpload: {
+        uploadUrl: "{{ route('admin.ck-upload', ['_token' => csrf_token()]) }}",
+    },
+}).catch((error) => {
+    console.error(error);
+});
+
 document
     .getElementById("destination-select")
     .addEventListener("change", function () {

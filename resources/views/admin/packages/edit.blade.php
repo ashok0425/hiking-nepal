@@ -172,17 +172,7 @@
 
                             <div class="form-group mt-3">
                                 <label>Detailed Itinerary</label>
-                                <textarea name="itinerary" class="form-control" rows="10"
-                                    placeholder="## Day 1 - Arrival and Welcome
-Start your journey with hotel check-in and welcome dinner.
-
-## Day 2 - City Tour
-Morning sightseeing of major attractions followed by free time for shopping.
-
-## Day 3 - Mountain Trek
-Early morning trek to scenic viewpoints with packed lunch.">{{ old('itinerary', $package->itinerary) }}</textarea>
-                                <small class="text-muted">Use ## followed by heading text for each day/section title, then
-                                    add details in new line below</small>
+                                <textarea id="itinerary-editor" name="itinerary" class="form-control" rows="10">{{ old('itinerary', $package->itinerary) }}</textarea>
                             </div>
 
                             <div class="form-group mt-3">
