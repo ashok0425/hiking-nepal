@@ -27,7 +27,6 @@ document
 
 function previewImage(input) {
     if (input.files && input.files[0]) {
-        // Find the closest .mb-2 container and then find the preview image within it
         const container = input.closest(".mb-2");
         const preview = container.querySelector(".preview-image");
 
@@ -42,13 +41,16 @@ function previewImage(input) {
     }
 }
 
-function addGalleryInput() {
+function addGalleryInput(isEdit = false) {
     const container = document.querySelector(".gallery-inputs");
     const div = document.createElement("div");
     div.className = "mb-2";
+
+    const galleryInputName = isEdit ? "new_gallery[]" : "gallery[]";
+
     div.innerHTML = `
     <div class="d-flex">
-        <input type="file" name="gallery[]" class="form-control" accept="image/*" onchange="previewImage(this)">
+        <input type="file" name="${galleryInputName}" class="form-control" accept="image/*" onchange="previewImage(this)">
         <button type="button" class="btn btn-danger btn-sm ms-2" onclick="removeGalleryInput(this)">Remove</button>
     </div>
     <img class="preview-image mt-2" style="max-width: 100px; display: none;">
@@ -73,7 +75,15 @@ function updateGalleryRemoveButtons() {
 
 // Initialize event listeners
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('input[name="gallery[]"]').forEach((input) => {
+    // Check if we're in edit mode
+    const isEdit =
+        document.querySelector('input[name="new_gallery[]"]') !== null;
+
+    const galleryInputSelector = isEdit
+        ? 'input[name="new_gallery[]"]'
+        : 'input[name="gallery[]"]';
+
+    document.querySelectorAll(galleryInputSelector).forEach((input) => {
         input.addEventListener("change", function () {
             previewImage(this);
             updateGalleryRemoveButtons();
@@ -81,60 +91,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-let departureCount = 1;
-
 function addDepartureSection() {
-    departureCount++;
+    departureCount = document.querySelectorAll(".departure-section").length + 1;
     const container = document.getElementById("departures-container");
     const template = `
     <div class="departure-section border rounded p-3 mb-3">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h6 class="mb-0">Departure #${departureCount}</h6>
-        <button type="button" class="btn btn-danger btn-sm" onclick="removeDepartureSection(this)">Remove</button>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>From Date</label>
-                <input type="date" name="departures[${departureCount - 1}][from_date]" class="form-control" required>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">Departure #${departureCount}</h6>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeDepartureSection(this)">Remove</button>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>From Date</label>
+                    <input type="date" name="departures[${departureCount - 1}][from_date]" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>To Date</label>
+                    <input type="date" name="departures[${departureCount - 1}][to_date]" class="form-control" required>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-           <div class="form-group">
-                <label>To Date</label>
-                <input type="date" name="departures[${departureCount - 1}][to_date]" class="form-control" required>
-            </div>
-        </div>
     </div>
-
-
-    <div class="form-group mt-2">
-        <label>Available Days</label>
-        <div class="d-flex flex-wrap">
-            ${[
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-            ]
-                .map(
-                    (day) => `
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox"
-                                name="departures[${departureCount - 1}][days][]"
-                                value="${day.toLowerCase()}">
-                        <label class="form-check-label mr-2">${day}</label>
-                    </div>
-                `,
-                )
-                .join("")}
-        </div>
-    </div>
-</div>
 `;
     container.insertAdjacentHTML("beforeend", template);
 
@@ -144,7 +124,6 @@ function addDepartureSection() {
 
 function removeDepartureSection(button) {
     button.closest(".departure-section").remove();
-    departureCount--;
 
     // Update departure numbers
     document
