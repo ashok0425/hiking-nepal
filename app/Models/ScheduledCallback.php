@@ -10,14 +10,23 @@ class ScheduledCallback extends Model
     use HasFactory;
 
     const STATUS_PENDING = 'pending';
+
     const STATUS_SCHEDULED = 'scheduled';
+
     const STATUS_IN_PROGRESS = 'in progress';
+
     const STATUS_COMPLETED = 'completed';
+
     const STATUS_CANCELLED = 'cancelled';
+
     const STATUS_NO_ANSWER = 'no answer';
+
     const STATUS_RESCHEDULED = 'rescheduled';
+
     const STATUS_MISSED = 'missed';
+
     const STATUS_INVALID = 'invalid';
+
     const STATUS_DUPLICATE = 'duplicate';
 
     public static function getStatuses(): array
@@ -44,6 +53,6 @@ class ScheduledCallback extends Model
         'comments',
         'callback_date',
         'callback_time',
-        'callback_message'
+        'callback_message',
     ];
 }
