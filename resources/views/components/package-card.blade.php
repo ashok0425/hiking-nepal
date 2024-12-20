@@ -4,7 +4,7 @@
     <img src="{{ !empty($package->galleryImages()) ? $package->galleryImages()[0] : asset('images/card-img.png') }}"
         class="card-img-top"
         style="height: 300px; background-color: #f8f9fa; object-fit: cover; object-position: center center;"
-        alt="{{ $package->title }}">
+        alt="{{ $package->title }}" loading="lazy">
     <div class="card-body">
         <h5 class="card-title text-success mb-1">{{ $package->title }}</h5>
         <div class="mb-2">{{ $package->place->name }}, {{ $package->destination->name }}</div>
