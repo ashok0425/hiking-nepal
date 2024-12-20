@@ -95,23 +95,16 @@ function addDepartureSection() {
     departureCount = document.querySelectorAll(".departure-section").length + 1;
     const container = document.getElementById("departures-container");
     const template = `
-    <div class="departure-section border rounded p-3 mb-3">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="mb-0">Departure #${departureCount}</h6>
-            <button type="button" class="btn btn-danger btn-sm" onclick="removeDepartureSection(this)">Remove</button>
-        </div>
+    <div class="departure-section mb-2">
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>From Date</label>
-                    <input type="date" name="departures[${departureCount - 1}][from_date]" class="form-control" required>
-                </div>
+            <div class="col-md-5">
+                <input type="date" name="departures[${departureCount - 1}][from_date]" class="form-control" required>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>To Date</label>
-                    <input type="date" name="departures[${departureCount - 1}][to_date]" class="form-control" required>
-                </div>
+            <div class="col-md-5">
+                <input type="date" name="departures[${departureCount - 1}][to_date]" class="form-control" required>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-sm w-100" onclick="removeDepartureSection(this)">Remove</button>
             </div>
         </div>
     </div>
@@ -129,7 +122,6 @@ function removeDepartureSection(button) {
     document
         .querySelectorAll(".departure-section")
         .forEach((section, index) => {
-            section.querySelector("h6").textContent = `Departure #${index + 1}`;
             updateInputNames(section, index);
         });
 

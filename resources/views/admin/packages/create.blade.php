@@ -104,36 +104,27 @@
                     <div class="card mt-4">
                         <div class="card-header d-flex justify-content-between align-items-center w-100">
                             <h5 class="mb-0 w-100">Departure Details</h5>
-
                             <div>
                                 <button type="button" class="btn btn-secondary btn-sm"
                                     onclick="addDepartureSection()">Add</button>
                             </div>
-
                         </div>
                         <div class="card-body">
                             <div id="departures-container">
-                                <div class="departure-section border rounded p-3 mb-3">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h6 class="mb-0">Departure #1</h6>
-                                        <button type="button" class="btn btn-danger btn-sm"
-                                            onclick="removeDepartureSection(this)" style="display: none;">Remove</button>
-                                    </div>
-
+                                <div class="departure-section mb-2">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>From Date</label>
-                                                <input type="date" name="departures[0][from_date]" class="form-control"
-                                                    value="{{ old('departures.0.from_date') }}" required>
-                                            </div>
+                                        <div class="col-md-5">
+                                            <input type="date" name="departures[0][from_date]" class="form-control"
+                                                value="{{ old('departures.0.from_date') }}" required>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>To Date</label>
-                                                <input type="date" name="departures[0][to_date]" class="form-control"
-                                                    value="{{ old('departures.0.to_date') }}" required>
-                                            </div>
+                                        <div class="col-md-5">
+                                            <input type="date" name="departures[0][to_date]" class="form-control"
+                                                value="{{ old('departures.0.to_date') }}" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-danger btn-sm w-100"
+                                                onclick="removeDepartureSection(this)"
+                                                style="display: none;">Remove</button>
                                         </div>
                                     </div>
                                 </div>
