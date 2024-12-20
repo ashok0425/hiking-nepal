@@ -58,3 +58,7 @@ input::placeholder {
         margin-left 0.2s ease-in-out,
         width 0.2s;
 }
+
+[class*="sidebar-dark"] .brand-link {
+    border-bottom: 0;
+}

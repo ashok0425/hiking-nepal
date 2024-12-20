@@ -3,7 +3,7 @@
 
       <!-- Brand Logo -->
       <a href="{{ route('admin.dashboard') }}" class="brand-link">
-          <img src="{{ asset('logo-white.png') }}" alt="Hiking Nepal Logo" class="" width="200">
+          <img src="{{ asset('logo-white.png') }}" alt="Hiking Nepal Logo" width="200">
       </a>
 
       <!-- Sidebar -->
@@ -80,6 +80,24 @@
                           <p>Reviews</p>
                       </a>
                   </li>
+
+                  <li class="dropdown-divider"></li>
+
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-phone-alt"></i>
+                          <p>Call Requests</p>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-money-check-alt"></i>
+                          <p>Payments</p>
+                      </a>
+                  </li>
+
+                  <li class="dropdown-divider"></li>
 
                   {{-- Blog --}}
                   <li
