@@ -39,9 +39,20 @@ class AppServiceProvider extends ServiceProvider
                 ->get()
                 ->groupBy('destination_id');
 
+            // Get activities for all destinations in a single query
+            $destinationActivities = DB::table('activity_package')
+                ->join('packages', 'packages.id', '=', 'activity_package.package_id')
+                ->join('activities', 'activities.id', '=', 'activity_package.activity_id')
+                ->whereIn('packages.destination_id', $destinations->pluck('id'))
+                ->select('activities.id', 'activities.name', 'activities.slug', 'packages.destination_id')
+                ->distinct()
+                ->get()
+                ->groupBy('destination_id');
+
             // Attach categories to each destination
-            $destinations->each(function ($destination) use ($destinationCategories) {
+            $destinations->each(function ($destination) use ($destinationCategories, $destinationActivities) {
                 $destination->categories = $destinationCategories[$destination->id] ?? collect();
+                $destination->activities = $destinationActivities[$destination->id] ?? collect();
             });
 
             $view->with('destinations', $destinations);
