@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('scheduled_callbacks', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->default('pending');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
