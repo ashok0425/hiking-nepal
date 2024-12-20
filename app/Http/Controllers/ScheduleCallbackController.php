@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ScheduledCallback;
+use App\Notifications\ScheduledCallbackNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ScheduleCallbackController extends Controller
 {
@@ -31,7 +33,7 @@ class ScheduleCallbackController extends Controller
             $validated['callback_message'] ?? ''
         );
 
-        ScheduledCallback::create([
+        $callback = ScheduledCallback::create([
             'status' => ScheduledCallback::STATUS_PENDING,
             'first_name' => $validated['firstName'],
             'last_name' => $validated['lastName'],
@@ -41,6 +43,14 @@ class ScheduleCallbackController extends Controller
             'callback_time' => $validated['time_slot'],
             'callback_message' => $callback_message,
         ]);
+
+        // Send notification to user
+        Notification::route('mail', $callback->email)
+            ->notify(new ScheduledCallbackNotification($callback));
+
+        // Send notification to admin
+        Notification::route('mail', config('mail.admin_address'))
+            ->notify(new ScheduledCallbackNotification($callback, true));
 
         return redirect()->route('book-a-call', ['status' => 'submitted']);
     }
