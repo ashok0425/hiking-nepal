@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePackageRequest;
 use App\Http\Requests\UpdatePackageRequest;
+use App\Models\Activity;
 use App\Models\Destination;
 use App\Models\Package;
 use App\Models\PackageCategory;
@@ -16,7 +17,7 @@ class PackageController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Package::latest()->with(['destination', 'place', 'categories']);
+        $query = Package::latest()->with(['destination', 'place']);
 
         // Search functionality
         if ($request->has('q')) {
@@ -37,6 +38,7 @@ class PackageController extends Controller
             'destinations' => Destination::where('status', 'active')->get(),
             'places' => Place::where('status', 'active')->get(),
             'categories' => PackageCategory::where('status', 'active')->get(),
+            'activities' => Activity::all(),
         ]);
     }
 
@@ -56,8 +58,9 @@ class PackageController extends Controller
 
         $package = Package::create($validated);
 
-        // Sync categories
+        // Sync categories and activities
         $package->categories()->sync($request->categories);
+        $package->activities()->sync($request->activities);
 
         return redirect()
             ->route('admin.packages.index')
@@ -66,13 +69,14 @@ class PackageController extends Controller
 
     public function edit(Package $package)
     {
-        $package->load(['destination', 'place', 'categories']);
+        $package->load(['destination', 'place', 'categories', 'activities']);
 
         return view('admin.packages.edit', [
             'package' => $package,
             'destinations' => Destination::where('status', 'active')->get(),
             'places' => Place::where('status', 'active')->get(),
             'categories' => PackageCategory::where('status', 'active')->get(),
+            'activities' => Activity::all(),
         ]);
     }
 
@@ -106,8 +110,9 @@ class PackageController extends Controller
 
         $package->update($validated);
 
-        // Sync categories
+        // Sync categories and activities
         $package->categories()->sync($request->categories);
+        $package->activities()->sync($request->activities);
 
         return redirect()
             ->route('admin.packages.index')

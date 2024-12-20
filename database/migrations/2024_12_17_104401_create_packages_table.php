@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('slug')->nullable()->unique();
             $table->string('status')->default('draft');
 
-            $table->string('activities')->nullable();
             $table->string('fitness_level')->nullable();
             $table->string('max_elevation')->nullable();
             $table->string('commute')->nullable();

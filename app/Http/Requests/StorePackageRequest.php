@@ -17,7 +17,6 @@ class StorePackageRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'status' => ['required', Rule::in(['draft', 'published', 'private'])],
-            'activities' => ['required_if:status,published', 'nullable', 'string'],
             'fitness_level' => ['required_if:status,published', 'nullable', 'string'],
             'max_elevation' => ['required_if:status,published', 'nullable', 'string'],
             'commute' => ['required_if:status,published', 'nullable', 'string'],
@@ -46,6 +45,8 @@ class StorePackageRequest extends FormRequest
             'gallery.*' => ['image', 'max:2048'],
             'categories' => ['required', 'array'],
             'categories.*' => ['exists:package_categories,id'],
+            'activities' => ['nullable', 'array'],
+            'activities.*' => ['exists:activities,id'],
             'meta_title' => ['required_if:status,published', 'nullable', 'string'],
             'meta_description' => ['required_if:status,published', 'nullable', 'string'],
             'meta_keywords' => ['required_if:status,published', 'nullable', 'string'],

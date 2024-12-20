@@ -47,7 +47,7 @@ return new class extends Migration
                 'best_time' => $cleanValue($tour['best_time']),
                 'destination_id' => $destinationId ?? 2, // nepal
                 'place_id' => $placeId ?? 3, // everest
-                'activities' => $cleanValue($tour['activities']),
+                // 'activities' => $cleanValue($tour['activities']),
                 'max_elevation' => $cleanValue($tour['max_elevation']),
                 'commute' => $cleanValue($tour['commute']),
                 'arrival_at' => $cleanValue($tour['arrival_at']),

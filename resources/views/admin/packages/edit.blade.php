@@ -30,13 +30,6 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Activities</label>
-                                        <input type="text" name="activities" class="form-control"
-                                            value="{{ old('activities', $package->activities) }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <label>Fitness Level</label>
                                         <input type="text" name="fitness_level" class="form-control"
                                             value="{{ old('fitness_level', $package->fitness_level) }}">
@@ -137,8 +130,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>From Date</label>
-                                                    <input type="date"
-                                                        name="departures[{{ $index }}][from_date]"
+                                                    <input type="date" name="departures[{{ $index }}][from_date]"
                                                         class="form-control"
                                                         value="{{ old("departures.$index.from_date", $departure['from_date'] ?? '') }}"
                                                         required>
@@ -391,6 +383,28 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs', 
                                 </div>
                                 <button type="button" class="btn btn-secondary btn-sm mt-2"
                                     onclick="addGalleryInput()">Add Image</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Activities</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="d-flex flex-wrap">
+                                    @foreach ($activities as $activity)
+                                        <div class="form-check me-3 mb-2">
+                                            <input class="form-check-input" type="checkbox" name="activities[]"
+                                                value="{{ $activity->id }}" id="activity{{ $activity->id }}"
+                                                {{ in_array($activity->id, old('activities', $package->activities->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                            <label class="form-check-label mr-2" for="activity{{ $activity->id }}">
+                                                {{ $activity->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

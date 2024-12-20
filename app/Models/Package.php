@@ -14,7 +14,6 @@ class Package extends Model
     protected $fillable = [
         'title',
         'status',
-        'activities',
         'fitness_level',
         'max_elevation',
         'commute',
@@ -79,7 +78,7 @@ class Package extends Model
 
     public function activities()
     {
-        return $this->belongsToMany(Activity::class);
+        return $this->belongsToMany(Activity::class, 'activity_package');
     }
 
     public function galleryImages(): array
