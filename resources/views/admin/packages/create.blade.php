@@ -136,20 +136,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group mt-2">
-                                        <label>Available Days</label>
-                                        <div class="d-flex flex-wrap">
-                                            @foreach (['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
-                                                <div class="form-check me-3">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        name="departures[0][days][]" value="{{ strtolower($day) }}"
-                                                        {{ old('departures.0.days') && in_array(strtolower($day), old('departures.0.days')) ? 'checked' : '' }}>
-                                                    <label class="form-check-label mr-2">{{ $day }}</label>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +365,7 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
         // Create a mapping of places by destination
         const placesByDestination = @json($places->groupBy('destination_id'));
     </script>
-    <script src="{{ asset('js/package-create.js') }}"></script>
+    <script src="{{ asset('js/package.js') }}"></script>
 @endpush
 
 @push('style')

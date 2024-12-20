@@ -39,8 +39,6 @@ class StorePackageRequest extends FormRequest
             'departures' => ['required', 'array', 'min:1'],
             'departures.*.from_date' => ['required', 'date'],
             'departures.*.to_date' => ['required', 'date', 'after_or_equal:departures.*.from_date'],
-            'departures.*.days' => ['required', 'array', 'min:1'],
-            'departures.*.days.*' => ['required', 'string', Rule::in(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'])],
             'gallery' => ['required_if:status,published', 'nullable', 'array'],
             'gallery.*' => ['image', 'max:2048'],
             'categories' => ['required', 'array'],

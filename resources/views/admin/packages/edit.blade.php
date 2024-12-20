@@ -146,21 +146,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="form-group mt-2">
-                                            <label>Available Days</label>
-                                            <div class="d-flex flex-wrap">
-                                                @foreach (['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
-                                                    <div class="form-check me-3">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="departures[{{ $index }}][days][]"
-                                                            value="{{ strtolower($day) }}"
-                                                            {{ in_array(strtolower($day), old("departures.$index.days", $departure['days'] ?? [])) ? 'checked' : '' }}>
-                                                        <label class="form-check-label mr-2">{{ $day }}</label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
                                     </div>
                                 @empty
                                     <div class="departure-section border rounded p-3 mb-3">
@@ -185,19 +170,6 @@
                                                     <input type="date" name="departures[0][to_date]"
                                                         class="form-control" required>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group mt-2">
-                                            <label>Available Days</label>
-                                            <div class="d-flex flex-wrap">
-                                                @foreach (['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
-                                                    <div class="form-check me-3">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="departures[0][days][]" value="{{ strtolower($day) }}">
-                                                        <label class="form-check-label mr-2">{{ $day }}</label>
-                                                    </div>
-                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -467,7 +439,7 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs', 
         let departureCount = {{ count(old('departures', $package->departures ?? [])) ?: 1 }};
     </script>
 
-    <script src="{{ asset('js/package-edit.js') }}"></script>
+    <script src="{{ asset('js/package.js') }}"></script>
 @endpush
 
 @push('style')
