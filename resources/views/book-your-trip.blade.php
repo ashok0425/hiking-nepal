@@ -2,218 +2,75 @@
 
 @section('title', 'Hiking Nepal')
 
-@push('styles')
-    <style>
-        .booking-steps {
-            position: relative;
-            padding: 20px 0;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-
-        .booking-steps:before {
-            content: '';
-            position: absolute;
-            top: 55px;
-            left: 10%;
-            right: 10%;
-            height: 10px;
-            background: #dee2e6;
-            z-index: -1;
-        }
-
-        .booking-steps[data-completed-steps="1"]:before {
-            background: linear-gradient(to right, #004B87 20%, #dee2e6 20%);
-        }
-
-        .booking-steps[data-completed-steps="2"]:before {
-            background: linear-gradient(to right, #004B87 40%, #dee2e6 40%);
-        }
-
-        .booking-steps[data-completed-steps="3"]:before {
-            background: linear-gradient(to right, #004B87 60%, #dee2e6 60%);
-        }
-
-        .booking-steps[data-completed-steps="4"]:before {
-            background: linear-gradient(to right, #004B87 80%, #dee2e6 80%);
-        }
-
-        .booking-steps[data-completed-steps="5"]:before {
-            background: linear-gradient(to right, #004B87 100%, #dee2e6 100%);
-        }
-
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border: 2px solid #004B87;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            transition: all 0.3s ease;
-        }
-
-        .step-icon i {
-            color: #004B87;
-            font-size: 2.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .step-icon.completed {
-            background: #004B87;
-            border-color: #004B87;
-        }
-
-        .step-icon.completed i {
-            color: white;
-        }
-
-        .step-icon.active {
-            background: white;
-            border-color: #004B87;
-            box-shadow: 0 0 0 3px rgba(0, 75, 135, 0.2);
-        }
-
-        .step-text {
-            /* font-size: 0.8rem; */
-            color: #000;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .booking-steps:before {
-                display: none;
-            }
-
-            .step-icon {
-                width: 60px;
-                height: 60px;
-            }
-
-            .step-icon i {
-                font-size: 1.5rem;
-            }
-
-            .step-text {
-                font-size: 0.7rem;
-            }
-        }
-
-        .cursor-pointer {
-            cursor: pointer;
-        }
-
-        .traveller-type {
-            width: 150px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--brand-color);
-            background-color: rgba(242, 242, 242, 1);
-        }
-
-        .dates-option {
-            color: var(--brand-color);
-            background-color: rgba(242, 242, 242, 1);
-            padding: 20px;
-        }
-
-        .traveller-type:hover,
-        .dates-option:hover {
-            background-color: #e9ecef;
-        }
-
-        .selected {
-            background-color: var(--brand-color) !important;
-            color: white !important;
-        }
-
-        .step-3 .form-check {
-            border: 1px solid rgba(168, 166, 166, 1);
-            padding: 10px 30px;
-        }
-    </style>
-@endpush
-
 @section('content')
-    <div class="container py-5 my-5" style="max-width: 1200px;">
-        <h1 class="text-center mb-5">Select the plan that best suits you</h1>
+    <div class="container py-5">
+        <form action="{{ route('book-a-call') }}" method="POST">
+            @csrf
 
-        <div class="brand-shadow py-5 mb-5">
-            <div class="booking-steps" data-completed-steps="2">
-                <div class="row g-0 text-center justify-content-between">
-                    <div class="col-4 col-md-2 mb-4 mb-md-0">
-                        <div class="step-icon mb-2 completed">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <span class="step-text">Who</span>
-                    </div>
+            <div class="mb-5">
+                <div class="fw-bold mb-2 fs-5">Your information</div>
+            </div>
 
-                    <div class="col-4 col-md-2 mb-4 mb-md-0">
-                        <div class="step-icon mb-2 completed">
-                            <i class="fas fa-calendar"></i>
-                        </div>
-                        <span class="step-text">When</span>
-                    </div>
-
-                    <div class="col-4 col-md-2 mb-4 mb-md-0">
-                        <div class="step-icon mb-2">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <span class="step-text">Where</span>
-                    </div>
-
-                    <div class="col-4 col-md-2 mb-4 mb-md-0">
-                        <div class="step-icon mb-2">
-                            <i class="fas fa-bed"></i>
-                        </div>
-                        <span class="step-text">Accommodations</span>
-                    </div>
-
-                    <div class="col-4 col-md-2 mb-4 mb-md-0">
-                        <div class="step-icon mb-2">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <span class="step-text">Budget</span>
-                    </div>
-
-                    <div class="col-4 col-md-2">
-                        <div class="step-icon mb-2">
-                            <i class="fas fa-credit-card"></i>
-                        </div>
-                        <span class="step-text">Payment</span>
-                    </div>
+            <div class="row mb-5">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName" class="form-label fw-bold">First Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName"
+                        placeholder="Enter your first name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName" class="form-label fw-bold">Last Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter your last name" id="lastName"
+                        name="lastName" required>
                 </div>
             </div>
-        </div>
 
-        @switch(request()->query('step', 1))
-            @case(1)
-                @include('booking.inc.step-1')
-            @break
+            <div class="mb-5">
+                <label for="contactNumber" class="form-label fw-bold">Contact Number <span
+                        class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="contactNumber" name="contactNumber"
+                    placeholder="Enter your contact number" required>
+            </div>
 
-            @case(2)
-                @include('booking.inc.step-2')
-            @break
+            <div class="mb-5">
+                <label for="email" class="form-label fw-bold">Email <span class="text-danger">*</span></label>
+                <input type="email" placeholder="Enter your email address" class="form-control" id="email"
+                    name="email" required>
+            </div>
 
-            @case(3)
-                @include('booking.inc.step-3')
-            @break
+            <div class="mb-5">
+                <label for="nationality" class="form-label fw-bold">Nationality <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="nationality" name="nationality"
+                    placeholder="Enter your nationality" required>
+            </div>
 
-            @case(4)
-                @include('booking.inc.step-4')
-            @break
+            <div class="mb-5">
+                <label for="message" class="form-label fw-bold">Message <span class="text-danger">*</span></label>
+                <textarea class="form-control" placeholder="Write your message here" id="message" name="message" rows="10"
+                    required></textarea>
+            </div>
 
-            @case(5)
-                @include('booking.inc.step-5')
-            @break
+            <div class="fw-bold mb-2">Data Privacy</div>
 
-            @case(6)
-                @include('booking.inc.step-6')
-            @break
-        @endswitch
+            <div class="p-3 mb-5" style="background-color: rgba(242, 242, 242, 1)">
+                <p class="small">At Hiking Nepal, we respect your privacy and are committed to protecting
+                    your
+                    personal information. We collect and use data only to provide and improve our services.
+                    By
+                    using this website, you agree to the collection and use of information in accordance
+                    with our
+                    Privacy Policy.</p>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="terms" required>
+                    <label class="form-check-label small" for="terms">By clicking "I Agree" or using
+                        this
+                        site, you confirm that you have read and accept our Privacy Policy.</label>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">
+                    Proceed To Payment<i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </form>
     </div>
 @endsection
