@@ -22,6 +22,7 @@ Route::view('/book-a-call', 'book-a-call')->name('book-a-call');
 Route::post('/book-a-call', \App\Http\Controllers\ScheduleCallbackController::class);
 
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
+Route::post('/book-your-trip', \App\Http\Controllers\BookingController::class);
 
 /**
  * Blog routes
