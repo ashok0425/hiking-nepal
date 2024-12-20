@@ -2,66 +2,6 @@
 
 @section('title', 'Hiking Nepal')
 
-@push('styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <style>
-        .flatpickr-calendar {
-            box-shadow: none;
-            background-color: transparent;
-            color: #fff !important;
-        }
-
-        .flatpickr-month,
-        .flatpickr-weekday,
-        .flatpickr-next-month {
-            color: #fff !important;
-        }
-
-        .flatpickr-day,
-        .nextMonthDay {
-            color: #fff !important;
-        }
-
-        .flatpickr-day:hover,
-        .nextMonthDay:hover {
-            background-color: #767676 !important;
-        }
-
-        .flatpickr-next-month,
-        .flatpickr-prev-month {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .flatpickr-next-month svg,
-        .flatpickr-prev-month svg {
-            fill: #fff;
-        }
-
-        .flatpickr-disabled {
-            color: rgba(119, 119, 119, 1) !important;
-        }
-
-        .flatpickr-month {
-            margin-bottom: 10px;
-        }
-
-        .selected {
-            background-color: #fff !important;
-            color: var(--brand-color) !important;
-        }
-
-        #datepicker {
-            display: none;
-        }
-
-        .input-group {
-            display: none;
-        }
-    </style>
-@endpush
-
 @section('content')
 
     <div style="max-width: 900px;" class="mx-auto">
@@ -72,8 +12,7 @@
                     <div class="col-md-6 bg-primary p-3 p-md-5">
                         <div class="text-center mb-4">
                             <a href="{{ route('home') }}">
-                                <img src="{{ asset('logo-white.png') }}" height="50" width="auto"
-                                    alt="hiking nepal logo">
+                                <img src="{{ asset('logo-white.png') }}" height="50" width="auto" alt="hiking nepal logo">
                             </a>
                         </div>
 
@@ -92,9 +31,7 @@
 
                     <div class="col-md-6 p-3 p-md-5">
                         <form action="{{ route('book-a-call') }}" method="get" class="form-light">
-
-                            {{-- for testing only --}}
-                            <input type="hidden" name="submitted" value="yes">
+                            <input type="hidden" name="user_timezone" id="userTimezone">
 
                             <div class="mb-4">
                                 <div class="fw-bold mb-2">Meeting duration</div>
@@ -237,6 +174,9 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Get user's timezone
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
             const picker = flatpickr("#datepicker", {
                 inline: true,
                 appendTo: document.getElementById("inline-calendar"),
@@ -244,7 +184,6 @@
                 dateFormat: "Y-m-d",
                 disable: [
                     function(date) {
-                        // Disable weekends
                         return (date.getDay() === 0 || date.getDay() === 6);
                     }
                 ],
@@ -252,11 +191,19 @@
                     const formattedDate = new Date(dateStr).toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',
-                        year: 'numeric'
+                        year: 'numeric',
+                        timeZone: userTimezone
                     });
                     document.getElementById('selectedDate').textContent = formattedDate;
+                    // Add a hidden input for the timezone
+                    document.getElementById('userTimezone').value = userTimezone;
                 }
             });
         });
     </script>
+@endpush
+
+@push('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{{ asset('css/faltpicker.css') }}">
 @endpush
