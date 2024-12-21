@@ -394,17 +394,23 @@
                 </div>
 
                 <h2 class="mb-4">REVIEWS</h2>
-                <div id="testimonials" class="splide mb-5" aria-label="Testimonial">
-                    <div class="splide__track">
-                        <ul class="splide__list">
-                            @for ($i = 0; $i < 10; $i++)
-                                <li class="splide__slide">
-                                    <x-testimonial-card />
-                                </li>
-                            @endfor
-                        </ul>
+                @if ($tourPackage->reviews->count() > 0)
+                    <div id="testimonials" class="splide mb-5" aria-label="Testimonial">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                @foreach ($tourPackage->reviews as $review)
+                                    <li class="splide__slide">
+                                        <x-testimonial-card :review="$review" />
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="alert alert-info mb-5">
+                        <p class="mb-0">No reviews yet. Be the first to review this tour!</p>
+                    </div>
+                @endif
 
                 <h2 class="mb-4">RELATED TRIPS</h2>
 

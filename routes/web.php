@@ -13,9 +13,8 @@ Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('book
 Route::view('/legal-document', 'legal-document')->name('legal-document');
 Route::view('/our-team', 'our-team')->name('our-team');
 
+// Packages
 Route::get('/tours/{slug}', \App\Http\Controllers\TourController::class)->name('tours');
-
-Route::post('/newsletter-subscribe', \App\Http\Controllers\NewsletterSubscriptionController::class)->name('newsletter.subscribe');
 
 // Booking
 Route::view('/book-a-call', 'book-a-call')->name('book-a-call');
@@ -24,6 +23,9 @@ Route::post('/book-a-call', \App\Http\Controllers\ScheduleCallbackController::cl
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 Route::post('/book-your-trip', \App\Http\Controllers\BookingController::class);
 Route::post('/wh/pg-webhook', [\App\Http\Controllers\BookingController::class, 'handlePGWebhook']);
+
+// Newsletter
+Route::post('/newsletter-subscribe', \App\Http\Controllers\NewsletterSubscriptionController::class)->name('newsletter.subscribe');
 
 /**
  * Blog routes
