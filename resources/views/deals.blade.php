@@ -13,48 +13,68 @@
     </section>
 
     <section class="container py-5 mt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="mb-5" style="max-width:600px;">
-                    <h2>Deals & Offers Search</h2>
-                    <p>Findout deals and offers that are ongoing. These deals and offers are limited for a certain period of
-                        time.</p>
-                </div>
-
-                <form action="" method="GET" class="row row-cols-lg-auto g-4 align-items-center">
-                    <div class="col-12">
-                        <label class="form-label">KEYWORDS</label>
-                        <div class="input-group">
-                            <span class="input-group-text text-primary" id="basic-addon1">
-                                <i class="fas fa-search"></i>
-                            </span>
-                            <input class="form-control ps-0 border-start-0" type="text" placeholder="Find you trip"
-                                required>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label">ACTIVITY</label>
-                        <select name="activity" class="form-select border">
-                            <option value="">Any</option>
-                            <option value="trekking">Trekking</option>
-                            <option value="hiking">Hiking</option>
-                            <option value="climbing">Climbing</option>
-                            <option value="expedition">Expedition</option>
-                        </select>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">STYLES</label>
-                        <select name="style" class="form-select border">
-                            <option value="">Any</option>
-                            <option value="budget">Budget</option>
-                            <option value="comfort">Comfort</option>
-                            <option value="luxury">Luxury</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
+        <div class="mb-5" style="max-width:600px;">
+            <h2>Deals & Offers Search</h2>
+            <p>Findout deals and offers that are ongoing. These deals and offers are limited for a certain period of
+                time.</p>
         </div>
+
+        <form action="" method="GET" class="row row-cols-lg-auto g-4 align-items-end">
+            <div class="col-12">
+                <label class="form-label">KEYWORDS</label>
+                <div class="input-group">
+                    <span class="input-group-text text-primary" id="basic-addon1">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input name="search" value="{{ request('search') }}" class="form-control ps-0 border-start-0"
+                        type="text" placeholder="Find your trip">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">ACTIVITY</label>
+                <select name="activity" class="form-select border">
+                    <option value="">Any</option>
+                    @foreach ($activities as $activity)
+                        <option value="{{ $activity->id }}" {{ request('activity') == $activity->id ? 'selected' : '' }}>
+                            {{ $activity->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">DESTINATION</label>
+                <select name="destination" class="form-select border" id="destination-select">
+                    <option value="">Any</option>
+                    @foreach ($destinations as $destination)
+                        <option value="{{ $destination->id }}"
+                            {{ request('destination') == $destination->id ? 'selected' : '' }}>
+                            {{ $destination->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">PLACE</label>
+                <select name="place" class="form-select border" id="place-select"
+                    {{ !request('destination') ? 'disabled' : '' }}>
+                    <option value="">Any</option>
+                    @if (request('destination'))
+                        @foreach ($places as $place)
+                            <option value="{{ $place->id }}" {{ request('place') == $place->id ? 'selected' : '' }}>
+                                {{ $place->name }}
+                            </option>
+                        @endforeach
+                    @endif
+                </select>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
     </section>
 
     <section class="container py-5 mb-5 expandable-content">
@@ -150,6 +170,41 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const destinationSelect = document.getElementById('destination-select');
+            const placeSelect = document.getElementById('place-select');
+            const places = @json($allPlaces);
+
+            function updatePlaces(destinationId) {
+                placeSelect.disabled = !destinationId;
+                placeSelect.innerHTML = '<option value="">Any</option>';
+
+                if (destinationId) {
+                    const filteredPlaces = places.filter(place => place.destination_id == destinationId);
+                    filteredPlaces.forEach(place => {
+                        const option = document.createElement('option');
+                        option.value = place.id;
+                        option.textContent = place.name;
+                        if (place.id == '{{ request('place') }}') {
+                            option.selected = true;
+                        }
+                        placeSelect.appendChild(option);
+                    });
+                }
+            }
+
+            destinationSelect.addEventListener('change', function() {
+                updatePlaces(this.value);
+            });
+
+            // Initialize places if destination is selected
+            if (destinationSelect.value) {
+                updatePlaces(destinationSelect.value);
+            }
         });
     </script>
 @endpush
