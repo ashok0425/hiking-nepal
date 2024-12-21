@@ -14,7 +14,7 @@
                     Days</span>
             </h1>
 
-            <p class="position-relative text-center text-white fs-3">USD {{ number_format($tourPackage->price, 2) }} per
+            <p class="position-relative text-center text-white fs-3">USD {{ number_format($tourPackage->price) }} per
                 person</p>
 
             <div class="position-relative mx-auto flex-wrap d-flex justify-content-center gap-4 w-100 mt-5 pt-5"
