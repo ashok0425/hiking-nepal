@@ -43,7 +43,6 @@ class HomeController extends Controller
             ->get();
 
         $reviews = Review::where('status', 'approved')
-            ->with('package:id,title,slug')
             ->latest()
             ->take(10)
             ->get();
