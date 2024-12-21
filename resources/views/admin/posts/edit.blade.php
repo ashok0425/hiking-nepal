@@ -65,6 +65,26 @@
                         </div>
                     </div>
 
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Categories</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                @foreach ($categories as $category)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="categories[]"
+                                            value="{{ $category->id }}" id="category{{ $category->id }}"
+                                            {{ in_array($category->id, old('categories', $post->categories->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="category{{ $category->id }}">
+                                            {{ $category->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Images Card -->
                     <div class="card mb-4">
                         <div class="card-header">

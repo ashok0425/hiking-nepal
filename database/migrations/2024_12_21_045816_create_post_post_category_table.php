@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_category_post', function (Blueprint $table) {
+        Schema::create('post_post_category', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('post_category_id')->constrained('post_categories');
-            $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('post_category_id')->constrained('post_categories')->cascadeOnDelete();
+            $table->foreignId('post_id')->constrained('posts')->cascadeOnDelete();
             $table->timestamps();
         });
     }

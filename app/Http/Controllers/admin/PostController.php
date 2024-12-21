@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\PostCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,9 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = PostCategory::all();
+
+        return view('admin.posts.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -41,6 +44,8 @@ class PostController extends Controller
             'thumbnail' => 'nullable|image|max:2048|required_if:status,published',
             'cover' => 'nullable|image|max:2048|required_if:status,published',
             'meta_title' => 'nullable|max:255|required_if:status,published',
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:post_categories,id',
             'meta_description' => 'nullable|required_if:status,published',
             'meta_keywords' => 'nullable|max:255|required_if:status,published',
         ]);
@@ -54,14 +59,21 @@ class PostController extends Controller
         }
 
         $validated['published_at'] = $this->getPublishedAt($request->status, $request->published_at);
-        Post::create($validated);
+        $post = Post::create($validated);
+
+        // Sync categories if any are selected
+        if ($request->has('categories')) {
+            $post->categories()->sync($request->categories);
+        }
 
         return redirect()->route('admin.posts.index')->with('success', 'Post created successfully');
     }
 
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = PostCategory::all();
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     public function update(Request $request, Post $post)
@@ -72,6 +84,8 @@ class PostController extends Controller
             'status' => 'required|in:draft,published',
             'thumbnail' => ['nullable', 'image', 'max:2048', $post->thumbnail ? '' : 'required_if:status,published'],
             'cover' => ['nullable', 'image', 'max:2048', $post->cover ? '' : 'required_if:status,published'],
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:post_categories,id',
             'meta_title' => 'nullable|max:255|required_if:status,published',
             'meta_description' => 'nullable|required_if:status,published',
             'meta_keywords' => 'nullable|max:255|required_if:status,published',
@@ -93,6 +107,9 @@ class PostController extends Controller
 
         $validated['published_at'] = $this->getPublishedAt($request->status, $request->published_at);
         $post->update($validated);
+
+        // Sync categories
+        $post->categories()->sync($request->input('categories', []));
 
         return redirect()->route('admin.posts.index')->with('success', 'Post updated successfully');
     }
