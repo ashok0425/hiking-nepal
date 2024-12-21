@@ -7,7 +7,7 @@ Route::get('/deals', \App\Http\Controllers\DealController::class)->name('deals')
 
 // About
 Route::view('/information', 'information')->name('information');
-Route::view('/who-we-are', 'who-we-are')->name('who-we-are');
+Route::get('/who-we-are', [\App\Http\Controllers\AboutController::class, 'whoWeAre'])->name('who-we-are');
 Route::view('/what-we-offer', 'what-we-offer')->name('what-we-offer');
 Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('booking-terms');
 Route::view('/legal-document', 'legal-document')->name('legal-document');
