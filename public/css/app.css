@@ -159,9 +159,8 @@ a {
 .form-control:active,
 .form-select:focus,
 .form-select:active {
-    /* outline: none;
-    border: 0; */
     box-shadow: none;
+    border-color: #dee2e6;
 }
 
 .form-light .form-control,
