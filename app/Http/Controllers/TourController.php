@@ -33,12 +33,57 @@ class TourController extends Controller
             ->take(2)
             ->get();
 
+        $faqs = $this->getTourFaqs($tourPackage);
+
         return view('tours', compact(
             'tourPackage',
             'packages',
             'departures',
             'month',
-            'year'
+            'year',
+            'faqs'
         ));
+    }
+
+    private function getTourFaqs(Package $tourPackage)
+    {
+        $faqs = [];
+
+        if ($tourPackage->faqs) {
+            $faqLines = explode("\n", trim($tourPackage->faqs));
+            $currentQuestion = null;
+            $currentAnswer = '';
+
+            foreach ($faqLines as $line) {
+                $line = trim($line);
+                if (empty($line)) continue;
+
+                if (str_starts_with($line, '##')) {
+                    // If we have a previous QA pair, save it
+                    if ($currentQuestion !== null) {
+                        $faqs[] = [
+                            'question' => $currentQuestion,
+                            'answer' => trim($currentAnswer)
+                        ];
+                    }
+                    // Start new question
+                    $currentQuestion = trim(substr($line, 2));
+                    $currentAnswer = '';
+                } else {
+                    // Add to current answer
+                    $currentAnswer .= $line . ' ';
+                }
+            }
+
+            // Add the last QA pair
+            if ($currentQuestion !== null) {
+                $faqs[] = [
+                    'question' => $currentQuestion,
+                    'answer' => trim($currentAnswer)
+                ];
+            }
+        }
+
+        return  $faqs;
     }
 }

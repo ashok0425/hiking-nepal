@@ -290,6 +290,7 @@
                 <h2 class="mb-4">EVEREST BASE CAMP ALTITUDE CHART</h2>
                 <img src="{{ asset('images/chart.jpg') }}" alt="chart" class="w-100 mb-5">
 
+                {{-- DEPARTURE --}}
                 <div class="d-flex justify-content-between align-items-center mb-4" id="departures">
                     <h2>DEPARTURE DATES</h2>
                     <form action="{{ route('tours', ['slug' => $tourPackage->slug]) }}#departures" method="get">
@@ -344,54 +345,30 @@
                     </table>
                 </div>
 
+                {{-- FAQ --}}
                 <h2 class="mb-4">FAQ</h2>
                 <div class="accordion accordion-flush mx-auto mb-5" id="faqAccordion" style="max-width: 996px">
-                    <div class="accordion-item brand-shadow mb-4 p-3">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                                What is the best time to trek in Nepal?
-                            </button>
-                        </h3>
-                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                The best seasons for trekking in Nepal are Spring (March-May) and Autumn
-                                (September-November) when
-                                the weather is clear and temperatures are moderate.
+                    @forelse($faqs as $index => $faq)
+                        <div class="accordion-item brand-shadow mb-4 p-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq{{ $index }}" aria-expanded="false"
+                                    aria-controls="faq{{ $index }}">
+                                    {{ $faq['question'] }}
+                                </button>
+                            </h3>
+                            <div id="faq{{ $index }}" class="accordion-collapse collapse"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    {{ $faq['answer'] }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="accordion-item brand-shadow mb-4 p-3">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                                Do I need a guide for trekking?
-                            </button>
-                        </h3>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                While not always mandatory, having a guide is highly recommended for safety, navigation, and
-                                cultural insights. Some routes require mandatory guides.
-                            </div>
+                    @empty
+                        <div class="text-center text-muted">
+                            <p>No FAQs available for this tour.</p>
                         </div>
-                    </div>
-
-                    <div class="accordion-item brand-shadow mb-4 p-3">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                                What permits do I need for trekking?
-                            </button>
-                        </h3>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Required permits vary by region. Most treks need TIMS card and specific area permits. Our
-                                team will
-                                handle all necessary permit arrangements.
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
 
                 <h2 class="mb-4">REVIEWS</h2>
