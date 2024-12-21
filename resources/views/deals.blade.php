@@ -48,8 +48,8 @@
                 <select name="destination" class="form-select border" id="destination-select">
                     <option value="">Any</option>
                     @foreach ($destinations as $destination)
-                        <option value="{{ $destination->id }}"
-                            {{ request('destination') == $destination->id ? 'selected' : '' }}>
+                        <option value="{{ $destination->slug }}"
+                            {{ request('destination') == $destination->slug ? 'selected' : '' }}>
                             {{ $destination->name }}
                         </option>
                     @endforeach
@@ -63,9 +63,7 @@
                     <option value="">Any</option>
                     @if (request('destination'))
                         @foreach ($places as $place)
-                            <option value="{{ $place->id }}" {{ request('place') == $place->id ? 'selected' : '' }}>
-                                {{ $place->name }}
-                            </option>
+                            <option value="{{ $place->slug }}" {{ request('place') == $place->slug ? 'selected' : '' }}>
                         @endforeach
                     @endif
                 </select>
@@ -73,8 +71,7 @@
 
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Search</button>
-                <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
-
+                <a href="{{ route('deals') }}" class="btn btn-outline-secondary ms-2">Reset</a>
             </div>
         </form>
     </section>
@@ -181,17 +178,17 @@
             const placeSelect = document.getElementById('place-select');
             const places = @json($allPlaces);
 
-            function updatePlaces(destinationId) {
-                placeSelect.disabled = !destinationId;
+            function updatePlaces(destinationSlug) {
+                placeSelect.disabled = !destinationSlug;
                 placeSelect.innerHTML = '<option value="">Any</option>';
 
-                if (destinationId) {
-                    const filteredPlaces = places.filter(place => place.destination_id == destinationId);
+                if (destinationSlug) {
+                    const filteredPlaces = places.filter(place => place.destination_slug === destinationSlug);
                     filteredPlaces.forEach(place => {
                         const option = document.createElement('option');
-                        option.value = place.id;
+                        option.value = place.slug;
                         option.textContent = place.name;
-                        if (place.id == '{{ request('place') }}') {
+                        if (place.slug === '{{ request('place') }}') {
                             option.selected = true;
                         }
                         placeSelect.appendChild(option);

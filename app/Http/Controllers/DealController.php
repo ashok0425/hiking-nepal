@@ -29,7 +29,11 @@ class DealController extends Controller
         // Get all active places for JavaScript
         $allPlaces = Place::where('status', 'active')
             ->orderBy('name')
-            ->get(['id', 'name', 'destination_id']);
+            ->get(['id', 'name', 'destination_id', 'slug'])
+            ->map(function ($place) {
+                $place->destination_slug = Destination::find($place->destination_id)->slug;
+                return $place;
+            });
 
 
         $packages = Package::where('status', 'published')

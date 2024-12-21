@@ -1,6 +1,6 @@
 @props(['place'])
 
-<a href="#">
+<a href="{{ route('deals', ['destination' => $place->destination->slug, 'place' => $place->slug]) }}">
     <div class="d-card">
         <img src="{{ $place->cover ?? asset('images/dest-1.jpg') }}" alt="{{ $place->name }} image" class="img-fluid">
 
