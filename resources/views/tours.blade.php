@@ -1,19 +1,21 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', $tourPackage->title)
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 700px;">
-        <img src="{{ asset('images/tour.jpg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
-            style="height: 700px; object-fit:cover; filter: brightness(80%) contrast(110%);">
+        <img src="{{ $tourPackage->galleryImages()[0] ?? asset('images/tour.jpg') }}" alt="{{ $tourPackage->title }}"
+            class="w-100 position-absolute start-0 top-0"
+            style="height: 700px; object-fit:cover; filter: brightness(50%) contrast(110%);">
         <div class="container">
-            <h1 class="mb-3 z-1 position-relative text-uppercase text-white text-center">Everest Trek <span
-                    class="fs-4 fw-normal">14
+            <h1 class="mb-3 z-1 position-relative text-uppercase text-white text-center">{{ $tourPackage->title }} <span
+                    class="fs-4 fw-normal">{{ $tourPackage->tour_duration }}
                     Days</span>
             </h1>
 
-            <p class="position-relative text-center text-white fs-3">USD 1,499 per person</p>
+            <p class="position-relative text-center text-white fs-3">USD {{ number_format($tourPackage->price, 2) }} per
+                person</p>
 
             <div class="position-relative mx-auto flex-wrap d-flex justify-content-center gap-4 w-100 mt-5 pt-5"
                 style="max-width: 800px">
@@ -38,63 +40,65 @@
                                     <i class="fas fa-hiking text-primary me-2"></i>
                                     Activities
                                 </td>
-                                <td class="col-3">Trekking</td>
+                                <td class="col-3">
+                                    {{ $tourPackage->activities->pluck('name')->implode(', ') ?: '-' }}
+                                </td>
 
                                 <td class="col-3">
                                     <i class="fas fa-heartbeat text-primary me-2"></i>
                                     Fitness Level
                                 </td>
-                                <td class="col-3">Moderate to Strenuous</td>
+                                <td class="col-3">{{ $tourPackage->fitness_level ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <i class="fas fa-mountain text-primary me-2"></i>
                                     Max Elevation
                                 </td>
-                                <td>(5,500m/18,208ft) Everest</td>
+                                <td>{{ $tourPackage->max_elevation ?: '-' }}</td>
 
                                 <td>
                                     <i class="fas fa-car text-primary me-2"></i>
                                     Commute
                                 </td>
-                                <td>Private Vehicle/Flight</td>
+                                <td>{{ $tourPackage->commute ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <i class="fas fa-calendar-alt text-primary me-2"></i>
                                     Best Month
                                 </td>
-                                <td>Mar to May & Sept to Dec</td>
+                                <td>{{ $tourPackage->best_time ?: '-' }}</td>
 
                                 <td>
                                     <i class="fas fa-users text-primary me-2"></i>
                                     Group Size
                                 </td>
-                                <td>1 - 20 persons</td>
+                                <td>{{ $tourPackage->group_size ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <i class="fas fa-plane-arrival text-primary me-2"></i>
                                     Arrival on
                                 </td>
-                                <td>Kathmandu</td>
+                                <td>{{ $tourPackage->arrival_at ?: '-' }}</td>
                                 <td>
                                     <i class="fas fa-plane-departure text-primary me-2"></i>
                                     Depart From
                                 </td>
-                                <td>Kathmandu</td>
+                                <td>{{ $tourPackage->departure_from ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
                                     <i class="fas fa-utensils text-primary me-2"></i>
                                     Meal
                                 </td>
-                                <td>Breakfast in Kathmandu and all meals during trek</td>
+                                <td>{{ $tourPackage->meal ?: '-' }}</td>
                                 <td>
                                     <i class="fas fa-clock text-primary me-2"></i>
                                     Duration
                                 </td>
-                                <td>14 days</td>
+                                <td>{{ $tourPackage->tour_duration ?: '-' }}</td>
                             </tr>
 
                             <tr>
@@ -102,12 +106,15 @@
                                     <i class="fas fa-bed text-primary me-2"></i>
                                     Stay
                                 </td>
-                                <td>Deluxe accommodation in Kathmandu </td>
+                                <td>{{ $tourPackage->stay ?: '-' }}</td>
                                 <td>
                                     <i class="fas fa-dollar-sign text-primary me-2"></i>
                                     Price
                                 </td>
-                                <td>USD <span class="fw-bold">1595</span> per person</td>
+                                <td>USD <span
+                                        class="fw-bold">{{ $tourPackage->price ? number_format($tourPackage->price, 2) : '-' }}</span>
+                                    per person
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -246,7 +253,9 @@
                     <div class="d-flex justify-content-center gap-2 align-items-center">
                         <div>
                             <div class="fw-bold">All Inclusive cost</div>
-                            <div class="fw-bold">USD <span class="fs-4">1200</span> per person</div>
+                            <div class="fw-bold fs-5">
+                                {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
+                            </div>
                         </div>
                         <img src="{{ asset('images/sale.png') }}" alt="sale" width="120" height="120">
                     </div>
@@ -262,22 +271,28 @@
                         <tbody>
                             <tr>
                                 <td class="text-center">
-                                    <div class="fw-bold">$1300/per</div>
+                                    <div class="fw-bold">
+                                        {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                    </div>
                                     <small class="text-muted">Partial Pay</small>
                                 </td>
                                 <td class="text-center">
-                                    <div class="fw-bold">$1250/per</div>
+                                    <div class="fw-bold">
+                                        {{ $tourPackage->sale_price_two_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_two_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                    </div>
                                     <small class="text-muted">Partial Pay</small>
                                 </td>
                                 <td class="text-center">
-                                    <div class="fw-bold">$1200/per</div>
+                                    <div class="fw-bold">
+                                        {{ $tourPackage->sale_price_eight_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_eight_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                    </div>
                                     <small class="text-muted">Partial Pay</small>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <button class="btn bg-white text-primary w-100">BOOK NOW</button>
+                    <a class="btn bg-white text-primary w-100" href="{{ route('book-trip') }}">BOOK NOW</a>
                 </div>
 
                 <form class="bg-primary text-white p-3 mb-3">
