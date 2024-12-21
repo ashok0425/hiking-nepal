@@ -73,6 +73,8 @@
 
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Search</button>
+                <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+
             </div>
         </form>
     </section>
