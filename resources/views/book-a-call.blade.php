@@ -187,6 +187,8 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const bookingForm = document.getElementById('bookingSteps');
+
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('status') === 'submitted') {
                 const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
@@ -196,8 +198,8 @@
             const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             console.log('Detected user timezone:', userTimezone);
 
-            // Set the timezone value in all timezone input fields
-            const timezoneInputs = document.querySelectorAll('#userTimezone');
+            // Scope timezone inputs to booking form
+            const timezoneInputs = bookingForm.querySelectorAll('#userTimezone');
             timezoneInputs.forEach(input => {
                 input.value = userTimezone;
                 console.log('Set timezone input value:', input.value);
@@ -220,20 +222,23 @@
                         year: 'numeric',
                         timeZone: userTimezone
                     });
-                    document.getElementById('selectedDate').textContent = formattedDate;
+                    bookingForm.querySelector('#selectedDate').textContent = formattedDate;
                 }
             });
         });
 
         function goToStep(step) {
-            document.querySelectorAll('.step').forEach(el => el.style.display = 'none');
-            document.getElementById(`step${step}`).style.display = 'block';
+            const bookingForm = document.getElementById('bookingSteps');
+            bookingForm.querySelectorAll('.step').forEach(el => el.style.display = 'none');
+            bookingForm.querySelector(`#step${step}`).style.display = 'block';
         }
 
         function validateAndProceed(currentStep) {
             if (currentStep === 1) {
-                const dateInput = document.getElementById('datepicker');
-                const timeSlot = document.getElementById('timeSlot');
+                const bookingForm = document.getElementById('bookingSteps');
+                const dateInput = bookingForm.querySelector('#datepicker');
+                const timeSlot = bookingForm.querySelector('#timeSlot');
+                const notes = bookingForm.querySelector('#notes');
 
                 if (!dateInput.value) {
                     alert('Please select a date');
@@ -245,9 +250,9 @@
                     return false;
                 }
 
-                document.getElementById('hiddenDate').value = dateInput.value;
-                document.getElementById('hiddenTimeSlot').value = timeSlot.value;
-                document.getElementById('hiddenCallbackMessage').value = notes.value;
+                bookingForm.querySelector('#hiddenDate').value = dateInput.value;
+                bookingForm.querySelector('#hiddenTimeSlot').value = timeSlot.value;
+                bookingForm.querySelector('#hiddenCallbackMessage').value = notes.value;
 
                 goToStep(2);
             }
@@ -255,14 +260,15 @@
 
         function validateAndSubmit(event) {
             event.preventDefault();
+            const form = event.target;
 
             // Log timezone value before form submission
-            const timezoneInput = document.getElementById('userTimezone');
-            const firstName = document.getElementById('firstName');
-            const lastName = document.getElementById('lastName');
-            const email = document.getElementById('email');
-            const comments = document.getElementById('comments');
-            const terms = document.getElementById('terms');
+            const timezoneInput = form.querySelector('#userTimezone');
+            const firstName = form.querySelector('#firstName');
+            const lastName = form.querySelector('#lastName');
+            const email = form.querySelector('#email');
+            const comments = form.querySelector('#comments');
+            const terms = form.querySelector('#terms');
 
             if (!firstName.value.trim()) {
                 alert('Please enter your first name');
@@ -307,7 +313,7 @@
                 timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
             }
 
-            event.target.submit();
+            form.submit();
             return false;
         }
     </script>
