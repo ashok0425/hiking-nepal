@@ -11,6 +11,7 @@ A new callback request has been received.
 
 - Name: {{ $callback->first_name }} {{ $callback->last_name }}
 - Email: {{ $callback->email }}
+- Phone: {{ $callback->phone }}
 - Date: {{ \Carbon\Carbon::parse($callback->callback_date)->format('l, F j, Y') }}
 - Time: {{ $callback->callback_time }}
 @if(!$isAdmin)

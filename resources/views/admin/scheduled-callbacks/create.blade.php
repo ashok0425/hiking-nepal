@@ -42,6 +42,11 @@
                             </div>
 
                             <div class="form-group mt-3">
+                                <label>Phone</label>
+                                <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
+                            </div>
+
+                            <div class="form-group mt-3">
                                 <label>Comments</label>
                                 <textarea name="comments" class="form-control" rows="4" required>{{ old('comments') }}</textarea>
                             </div>
@@ -68,7 +73,8 @@
                                 <label>Status</label>
                                 <select name="status" class="form-control">
                                     @foreach (App\Models\ScheduledCallback::getStatuses() as $value => $label)
-                                        <option value="{{ $value }}" {{ old('status') == $value ? 'selected' : '' }}>
+                                        <option value="{{ $value }}"
+                                            {{ old('status') == $value ? 'selected' : '' }}>
                                             {{ $label }}
                                         </option>
                                     @endforeach

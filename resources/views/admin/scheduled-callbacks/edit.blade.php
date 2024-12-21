@@ -43,6 +43,12 @@
                             </div>
 
                             <div class="form-group mt-3">
+                                <label>Phone</label>
+                                <input type="text" name="phone" class="form-control"
+                                    value="{{ old('phone', $scheduledCallback->phone) }}">
+                            </div>
+
+                            <div class="form-group mt-3">
                                 <label>Comments</label>
                                 <textarea name="comments" class="form-control" rows="4" required>{{ old('comments', $scheduledCallback->comments) }}</textarea>
                             </div>

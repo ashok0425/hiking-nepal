@@ -129,6 +129,13 @@
                             </div>
 
                             <div class="mb-5">
+                                <label for="phone" class="form-label fw-bold">Phone <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" placeholder="Enter your phone number" class="form-control"
+                                    id="phone" name="phone" required>
+                            </div>
+
+                            <div class="mb-5">
                                 <label for="comments" class="form-label fw-bold">Comments <span
                                         class="text-danger">*</span></label>
                                 <textarea class="form-control" placeholder="Write your comment" id="comments" name="comments" rows="10"></textarea>

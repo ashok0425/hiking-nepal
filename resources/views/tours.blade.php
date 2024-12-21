@@ -295,30 +295,48 @@
                     <a class="btn bg-white text-primary w-100" href="{{ route('book-trip') }}">BOOK NOW</a>
                 </div>
 
-                <form class="bg-primary text-white p-3 mb-3">
+                <form method="post" action="{{ route('book-a-call') }}" class="bg-primary text-white p-3 mb-3">
+                    @csrf
                     <div class="fw-bold mb-4">Send us your queries or requests</div>
 
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name"
-                            required>
+                        <input type="text" class="form-control @error('firstName') is-invalid @enderror"
+                            id="firstName" name="firstName" value="{{ old('firstName') }}"
+                            placeholder="Enter First Name" required>
+                        @error('firstName')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control @error('lastName') is-invalid @enderror" id="lastName"
+                            name="lastName" value="{{ old('lastName') }}" placeholder="Enter Last Name" required>
+                        @error('lastName')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" placeholder="Enter Email Address"
-                            required>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                            name="email" value="{{ old('email') }}" placeholder="Enter Email Address" required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
-                        <input type="tel" class="form-control" id="phone" placeholder="Enter Phone Number"
-                            required>
+                        <input type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone"
+                            name="phone" value="{{ old('phone') }}" placeholder="Enter Phone Number" required>
+                        @error('phone')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
-                        <textarea class="form-control" id="message" rows="4" placeholder="Enter Your Message" required></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <div class="g-recaptcha" data-sitekey="your-recaptcha-site-key"></div>
+                        <textarea class="form-control @error('comments') is-invalid @enderror" id="message" name="comments" rows="4"
+                            placeholder="Enter Your Message" required>{{ old('comments') }}</textarea>
+                        @error('comments')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3 small fw-light">

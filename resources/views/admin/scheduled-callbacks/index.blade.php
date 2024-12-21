@@ -36,7 +36,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Contact</th>
                     <th>Callback Date</th>
                     <th>Status</th>
                     <th width="200">Actions</th>
@@ -46,7 +46,10 @@
                 @forelse ($scheduledCallbacks as $callback)
                     <tr>
                         <td>{{ $callback->first_name }} {{ $callback->last_name }}</td>
-                        <td>{{ $callback->email }}</td>
+                        <td>
+                            <div>{{ $callback->email }}</div>
+                            <div>{{ $callback->phone }}</div>
+                        </td>
                         <td>{{ $callback->callback_date }} {{ $callback->callback_time }}</td>
                         <td>
                             <span

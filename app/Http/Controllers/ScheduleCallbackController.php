@@ -18,18 +18,19 @@ class ScheduleCallbackController extends Controller
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'comments' => 'required|string',
-            'datepicker' => 'required|date|after_or_equal:today',
-            'time_slot' => 'required|string',
-            'duration' => 'required|integer',
-            'user_timezone' => 'required|string',
+            'phone' => 'nullable|string|max:255',
+            'comments' => 'nullable|string',
+            'datepicker' => 'nullable|date|after_or_equal:today',
+            'time_slot' => 'nullable|string',
+            'duration' => 'nullable|integer',
+            'user_timezone' => 'nullable|string',
             'callback_message' => 'nullable|string',
         ]);
 
         $callback_message = sprintf(
             "Duration: %d mins, Timezone: %s\n%s",
-            $validated['duration'],
-            $validated['user_timezone'],
+            $validated['duration'] ?? '',
+            $validated['user_timezone'] ?? '',
             $validated['callback_message'] ?? ''
         );
 
@@ -38,9 +39,10 @@ class ScheduleCallbackController extends Controller
             'first_name' => $validated['firstName'],
             'last_name' => $validated['lastName'],
             'email' => $validated['email'],
+            'phone' => $validated['phone'],
             'comments' => $validated['comments'],
-            'callback_date' => $validated['datepicker'],
-            'callback_time' => $validated['time_slot'],
+            'callback_date' => $validated['datepicker'] ?? null,
+            'callback_time' => $validated['time_slot'] ?? null,
             'callback_message' => $callback_message,
         ]);
 

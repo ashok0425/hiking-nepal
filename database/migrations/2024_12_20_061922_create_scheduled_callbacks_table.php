@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
-            $table->text('comments');
-            $table->date('callback_date');
-            $table->string('callback_time');
+            $table->string('phone')->nullable();
+            $table->text('comments')->nullable();
+            $table->date('callback_date')->nullable();
+            $table->string('callback_time')->nullable();
             $table->text('callback_message')->nullable();
             $table->timestamps();
         });
