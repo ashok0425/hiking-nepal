@@ -36,7 +36,7 @@ class StorePackageRequest extends FormRequest
             'overview' => ['required', 'string'],
             'itinerary' => ['required_if:status,published', 'nullable', 'string'],
             'faqs' => ['required_if:status,published', 'nullable', 'string'],
-            'departures' => ['required', 'array', 'min:1'],
+            'departures' => ['required_if:status,published', 'nullable', 'array'],
             'departures.*.from_date' => ['required', 'date'],
             'departures.*.to_date' => ['required', 'date', 'after_or_equal:departures.*.from_date'],
             'gallery' => ['required_if:status,published', 'nullable', 'array'],

@@ -33,7 +33,6 @@ class Package extends Model
         'overview',
         'itinerary',
         'faqs',
-        'departures',
         'gallery',
         'meta_title',
         'meta_description',
@@ -41,7 +40,6 @@ class Package extends Model
     ];
 
     protected $casts = [
-        'departures' => 'array',
         'gallery' => 'array',
         'price' => 'decimal:2',
         'sale_price_per_person' => 'decimal:2',

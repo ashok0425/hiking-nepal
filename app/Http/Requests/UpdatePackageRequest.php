@@ -41,6 +41,8 @@ class UpdatePackageRequest extends FormRequest
             'itinerary' => ['required_if:status,published', 'nullable', 'string'],
             'faqs' => ['required_if:status,published', 'nullable', 'string'],
             'departures' => ['required_if:status,published', 'nullable', 'array'],
+            'departures.*.from_date' => ['required', 'date'],
+            'departures.*.to_date' => ['required', 'date', 'after_or_equal:departures.*.from_date'],
             'new_gallery' => $galleryRules,
             'new_gallery.*' => ['image', 'max:2048'],
             'remove_gallery' => ['nullable', 'array'],

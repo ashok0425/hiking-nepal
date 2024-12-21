@@ -113,49 +113,73 @@
                         </div>
                         <div class="card-body">
                             <div id="departures-container">
-                                @forelse(old('departures', $package->departures ?? []) as $index => $departure)
-                                    <div class="departure-section mb-2">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <input type="date" name="departures[{{ $index }}][from_date]"
-                                                    class="form-control"
-                                                    value="{{ old("departures.$index.from_date", $departure['from_date'] ?? '') }}"
-                                                    required>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <input type="date" name="departures[{{ $index }}][to_date]"
-                                                    class="form-control"
-                                                    value="{{ old("departures.$index.to_date", $departure['to_date'] ?? '') }}"
-                                                    required>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-danger btn-sm w-100"
-                                                    onclick="removeDepartureSection(this)"
-                                                    style="display: {{ count(old('departures', $package->departures ?? [])) > 1 ? 'block' : 'none' }};">
-                                                    Remove
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @empty
-                                    <div class="departure-section mb-2">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <input type="date" name="departures[0][from_date]"
-                                                    class="form-control" required>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <input type="date" name="departures[0][to_date]" class="form-control"
-                                                    required>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-danger btn-sm w-100"
-                                                    onclick="removeDepartureSection(this)"
-                                                    style="display: none;">Remove</button>
+                                @if (old('departures'))
+                                    @foreach (old('departures') as $index => $departure)
+                                        <div class="departure-section mb-2">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <input type="date" name="departures[{{ $index }}][from_date]"
+                                                        class="form-control" value="{{ $departure['from_date'] }}"
+                                                        required>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input type="date" name="departures[{{ $index }}][to_date]"
+                                                        class="form-control" value="{{ $departure['to_date'] }}" required>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn btn-danger btn-sm w-100"
+                                                        onclick="removeDepartureSection(this)"
+                                                        style="display: {{ count(old('departures')) > 1 ? 'block' : 'none' }};">
+                                                        Remove
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforelse
+                                    @endforeach
+                                @else
+                                    @forelse($package->departures as $index => $departure)
+                                        <div class="departure-section mb-2">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <input type="date"
+                                                        name="departures[{{ $index }}][from_date]"
+                                                        class="form-control"
+                                                        value="{{ $departure->start_date->format('Y-m-d') }}" required>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input type="date" name="departures[{{ $index }}][to_date]"
+                                                        class="form-control"
+                                                        value="{{ $departure->end_date->format('Y-m-d') }}" required>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn btn-danger btn-sm w-100"
+                                                        onclick="removeDepartureSection(this)"
+                                                        style="display: {{ $package->departures->count() > 1 ? 'block' : 'none' }};">
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <div class="departure-section mb-2">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <input type="date" name="departures[0][from_date]"
+                                                        class="form-control" required>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input type="date" name="departures[0][to_date]"
+                                                        class="form-control" required>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn btn-danger btn-sm w-100"
+                                                        onclick="removeDepartureSection(this)"
+                                                        style="display: none;">Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforelse
+                                @endif
                             </div>
                         </div>
                     </div>

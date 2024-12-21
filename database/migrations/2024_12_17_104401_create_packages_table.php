@@ -40,7 +40,6 @@ return new class extends Migration
             $table->text('itinerary')->nullable();
             $table->text('faqs')->nullable();
 
-            $table->json('departures')->nullable();
             $table->json('gallery')->nullable();
 
             $table->integer('rating_count')->default(0);

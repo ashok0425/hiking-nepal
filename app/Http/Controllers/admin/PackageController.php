@@ -62,6 +62,18 @@ class PackageController extends Controller
         $package->categories()->sync($request->categories);
         $package->activities()->sync($request->activities);
 
+        // Create departures
+        if ($request->has('departures') && is_array($request->departures)) {
+            foreach ($request->departures as $departure) {
+                if (!empty($departure['from_date']) && !empty($departure['to_date'])) {
+                    $package->departures()->create([
+                        'start_date' => $departure['from_date'],
+                        'end_date' => $departure['to_date'],
+                    ]);
+                }
+            }
+        }
+
         return redirect()
             ->route('admin.packages.index')
             ->with('success', 'Package created successfully');
@@ -69,7 +81,7 @@ class PackageController extends Controller
 
     public function edit(Package $package)
     {
-        $package->load(['destination', 'place', 'categories', 'activities']);
+        $package->load(['destination', 'place', 'categories', 'activities', 'departures']);
 
         return view('admin.packages.edit', [
             'package' => $package,
@@ -113,6 +125,22 @@ class PackageController extends Controller
         // Sync categories and activities
         $package->categories()->sync($request->categories);
         $package->activities()->sync($request->activities);
+
+        // Update departures
+        if ($request->has('departures')) {
+            // Delete existing departures
+            $package->departures()->delete();
+
+            // Create new departures
+            foreach ($request->departures as $departure) {
+                if (!empty($departure['from_date']) && !empty($departure['to_date'])) {
+                    $package->departures()->create([
+                        'start_date' => $departure['from_date'],
+                        'end_date' => $departure['to_date'],
+                    ]);
+                }
+            }
+        }
 
         return redirect()
             ->route('admin.packages.index')
