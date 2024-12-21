@@ -49,6 +49,7 @@ class DepartureController extends Controller
     public function edit(Departure $departure)
     {
         $packages = Package::all();
+
         return view('admin.departures.edit', compact('departure', 'packages'));
     }
 

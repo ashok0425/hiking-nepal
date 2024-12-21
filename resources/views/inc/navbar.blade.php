@@ -36,26 +36,51 @@
                     </li>
 
                     @foreach ($destinations as $destination)
-                        <li class="nav-item dropdown">
+                        <li class="nav-item destination-dropdown dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                {{ $destination->name }}
+                                {{ $destination['name'] }}
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu destination-menu">
                                 <li>
                                     <a class="dropdown-item"
-                                        href="{{ route('dynamic-page', strtolower($destination->slug)) }}">OVERVIEW</a>
+                                        href="{{ route('dynamic-page', strtolower($destination['slug'])) }}">OVERVIEW</a>
                                 </li>
 
-                                @foreach ($destination->categories as $category)
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('dynamic-page', $destination->slug) }}#category-{{ $category->slug }}">{{ strtoupper($category->name) }}</a>
+                                @foreach ($destination['categories'] as $category)
+                                    <li class="package-dropend">
+                                        <a class="dropdown-item package-dropdown-toggle">
+                                            {{ strtoupper($category['name']) }}
+                                            <i class="fas fa-chevron-right float-end mt-1"></i>
+                                        </a>
+                                        <ul class="dropdown-menu package-submenu">
+                                            @foreach ($category['packages'] as $package)
+                                                <li>
+                                                    <a class="dropdown-item package-item"
+                                                        href="{{ route('tours', $package['slug']) }}">
+                                                        {{ $package['title'] }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </li>
                                 @endforeach
-                                @foreach ($destination->activities as $activity)
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('dynamic-page', $destination->slug) }}#category-{{ $activity->slug }}">{{ strtoupper($activity->name) }}</a>
+
+                                @foreach ($destination['activities'] as $activity)
+                                    <li class="package-dropend">
+                                        <a class="dropdown-item package-dropdown-toggle">
+                                            {{ strtoupper($activity['name']) }}
+                                            <i class="fas fa-chevron-right float-end mt-1"></i>
+                                        </a>
+                                        <ul class="dropdown-menu package-submenu">
+                                            @foreach ($activity['packages'] as $package)
+                                                <li>
+                                                    <a class="dropdown-item package-item"
+                                                        href="{{ route('tours', $package['slug']) }}">
+                                                        {{ $package['title'] }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </li>
                                 @endforeach
                             </ul>
@@ -71,7 +96,7 @@
                             href="#" role="button" data-bs-toggle="dropdown">
                             About
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu hover-menu">
                             <li><a class="dropdown-item {{ Route::is('who-we-are') ? 'active' : '' }}"
                                     href="{{ route('who-we-are') }}">Who We Are</a></li>
                             <li><a class="dropdown-item {{ Route::is('what-we-offer') ? 'active' : '' }}"
@@ -92,7 +117,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Contact
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu hover-menu">
                             <li><a class="dropdown-item" href="{{ route('book-a-call') }}">BOOK A
                                     CALL</a>
                             </li>

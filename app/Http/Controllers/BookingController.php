@@ -30,7 +30,7 @@ class BookingController extends Controller
             'email' => $validated['email'],
             'nationality' => $validated['nationality'],
             'message' => $validated['message'],
-            'status' => Booking::STATUS_PENDING
+            'status' => Booking::STATUS_PENDING,
         ]);
 
         Notification::route('mail', config('mail.admin_address'))

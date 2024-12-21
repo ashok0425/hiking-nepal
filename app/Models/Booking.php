@@ -16,11 +16,13 @@ class Booking extends Model
         'contact_number',
         'email',
         'nationality',
-        'message'
+        'message',
     ];
 
     const STATUS_PENDING = 'pending';
+
     const STATUS_CONFIRMED = 'confirmed';
+
     const STATUS_CANCELLED = 'cancelled';
 
     public static function getStatuses(): array
@@ -28,7 +30,7 @@ class Booking extends Model
         return [
             self::STATUS_PENDING,
             self::STATUS_CONFIRMED,
-            self::STATUS_CANCELLED
+            self::STATUS_CANCELLED,
         ];
     }
 }

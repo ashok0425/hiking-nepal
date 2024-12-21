@@ -15,14 +15,14 @@ class NewsletterSubscriptionController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:newsletter_subscribers,email'
+            'email' => 'required|email|unique:newsletter_subscribers,email',
         ]);
 
         NewsletterSubscriber::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
-            'status' => 'active'
+            'status' => 'active',
         ]);
 
         return redirect()->back()->withFragment('newsletterForm')->with('status', 'subscribed');

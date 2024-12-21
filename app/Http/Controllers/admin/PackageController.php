@@ -65,7 +65,7 @@ class PackageController extends Controller
         // Create departures
         if ($request->has('departures') && is_array($request->departures)) {
             foreach ($request->departures as $departure) {
-                if (!empty($departure['from_date']) && !empty($departure['to_date'])) {
+                if (! empty($departure['from_date']) && ! empty($departure['to_date'])) {
                     $package->departures()->create([
                         'start_date' => $departure['from_date'],
                         'end_date' => $departure['to_date'],
@@ -133,7 +133,7 @@ class PackageController extends Controller
 
             // Create new departures
             foreach ($request->departures as $departure) {
-                if (!empty($departure['from_date']) && !empty($departure['to_date'])) {
+                if (! empty($departure['from_date']) && ! empty($departure['to_date'])) {
                     $package->departures()->create([
                         'start_date' => $departure['from_date'],
                         'end_date' => $departure['to_date'],

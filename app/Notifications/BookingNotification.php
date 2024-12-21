@@ -13,6 +13,7 @@ class BookingNotification extends Notification implements ShouldQueue
     use Queueable;
 
     private $booking;
+
     private $isAdminNotification;
 
     public function __construct(Booking $booking, bool $isAdminNotification = false)
@@ -39,7 +40,7 @@ class BookingNotification extends Notification implements ShouldQueue
     private function getEmailSubject(): string
     {
         if ($this->isAdminNotification) {
-            return 'New Booking Request - ' . $this->booking->first_name . ' ' . $this->booking->last_name;
+            return 'New Booking Request - '.$this->booking->first_name.' '.$this->booking->last_name;
         }
 
         return 'Your Booking Request Confirmation';

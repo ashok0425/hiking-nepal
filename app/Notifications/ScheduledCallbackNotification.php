@@ -13,6 +13,7 @@ class ScheduledCallbackNotification extends Notification implements ShouldQueue
     use Queueable;
 
     private $callback;
+
     private $isAdminNotification;
 
     public function __construct(ScheduledCallback $callback, bool $isAdminNotification = false)
@@ -39,7 +40,7 @@ class ScheduledCallbackNotification extends Notification implements ShouldQueue
     private function getEmailSubject(): string
     {
         if ($this->isAdminNotification) {
-            return 'New Callback Request - ' . $this->callback->first_name . ' ' . $this->callback->last_name;
+            return 'New Callback Request - '.$this->callback->first_name.' '.$this->callback->last_name;
         }
 
         return 'Your Callback Request Confirmation';

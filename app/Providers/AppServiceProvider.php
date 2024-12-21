@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Destination;
+use App\Models\Package;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,34 +26,68 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
 
         View::composer('layouts.website', function ($view) {
-            $destinations = Destination::getList();
+            // Get all published packages with their relationships
+            $packages = Package::with([
+                'destination:id,name,slug',
+                'categories:id,name,slug',
+                'activities:id,name,slug',
+            ])
+                ->select('id', 'title', 'slug', 'destination_id', 'status')
+                ->where('status', 'published')
+                ->get();
+            // First level: Group packages by destination to get unique destinations
+            $destinations = $packages->groupBy('destination_id')
+                ->map(function ($destinationPackages) {
+                    $destination = $destinationPackages->first()->destination;
 
-            // Get categories for all destinations in a single query
-            $destinationCategories = DB::table('package_package_category')
-                ->join('packages', 'packages.id', '=', 'package_package_category.package_id')
-                ->join('package_categories', 'package_categories.id', '=', 'package_package_category.package_category_id')
-                ->whereIn('packages.destination_id', $destinations->pluck('id'))
-                ->where('package_categories.status', 'active')
-                ->select('package_categories.id', 'package_categories.name', 'package_categories.slug', 'packages.destination_id')
-                ->distinct()
-                ->get()
-                ->groupBy('destination_id');
+                    // Second level: Get unique categories and activities for this destination
+                    $categories = $destinationPackages->flatMap->categories
+                        ->unique('id')
+                        ->map(function ($category) use ($destinationPackages) {
+                            // Third level: Get packages for this category in this destination
+                            $categoryPackages = $destinationPackages->filter(function ($package) use ($category) {
+                                return $package->categories->contains('id', $category->id);
+                            });
 
-            // Get activities for all destinations in a single query
-            $destinationActivities = DB::table('activity_package')
-                ->join('packages', 'packages.id', '=', 'activity_package.package_id')
-                ->join('activities', 'activities.id', '=', 'activity_package.activity_id')
-                ->whereIn('packages.destination_id', $destinations->pluck('id'))
-                ->select('activities.id', 'activities.name', 'activities.slug', 'packages.destination_id')
-                ->distinct()
-                ->get()
-                ->groupBy('destination_id');
+                            return [
+                                'name' => $category->name,
+                                'slug' => $category->slug,
+                                'packages' => $categoryPackages->map(function ($package) {
+                                    return [
+                                        'title' => $package->title,
+                                        'slug' => $package->slug,
+                                    ];
+                                })->toArray(),
+                            ];
+                        });
 
-            // Attach categories to each destination
-            $destinations->each(function ($destination) use ($destinationCategories, $destinationActivities) {
-                $destination->categories = $destinationCategories[$destination->id] ?? collect();
-                $destination->activities = $destinationActivities[$destination->id] ?? collect();
-            });
+                    $activities = $destinationPackages->flatMap->activities
+                        ->unique('id')
+                        ->map(function ($activity) use ($destinationPackages) {
+                            // Third level: Get packages for this activity in this destination
+                            $activityPackages = $destinationPackages->filter(function ($package) use ($activity) {
+                                return $package->activities->contains('id', $activity->id);
+                            });
+
+                            return [
+                                'name' => $activity->name,
+                                'slug' => $activity->slug,
+                                'packages' => $activityPackages->map(function ($package) {
+                                    return [
+                                        'title' => $package->title,
+                                        'slug' => $package->slug,
+                                    ];
+                                })->toArray(),
+                            ];
+                        });
+
+                    return [
+                        'name' => $destination->name,
+                        'slug' => $destination->slug,
+                        'categories' => $categories->toArray(),
+                        'activities' => $activities->toArray(),
+                    ];
+                })->toArray();
 
             $view->with('destinations', $destinations);
         });
