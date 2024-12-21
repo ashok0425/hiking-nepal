@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departure;
 use App\Models\Package;
 use App\Models\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -25,6 +27,20 @@ class HomeController extends Controller
             ->having('packages_count', '>', 0)
             ->get();
 
-        return view('home.index', compact('packages', 'places'));
+        $month = $request->get('month', Carbon::now()->month);
+        $year = $request->get('year', Carbon::now()->year);
+
+        $departures = Departure::whereYear('start_date', $year)
+            ->whereMonth('start_date', $month)
+            ->with(['package' => function ($query) {
+                $query->select('id', 'title', 'slug', 'tour_duration', 'price', 'status');
+            }])
+            ->whereHas('package', function ($query) {
+                $query->where('status', 'published');
+            })
+            ->select('id', 'package_id', 'start_date', 'end_date')
+            ->get();
+
+        return view('home.index', compact('packages', 'places', 'departures', 'month', 'year'));
     }
 }
