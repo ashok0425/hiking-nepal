@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Departure;
 use App\Models\Package;
 use App\Models\Place;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -41,6 +42,12 @@ class HomeController extends Controller
             ->select('id', 'package_id', 'start_date', 'end_date')
             ->get();
 
-        return view('home.index', compact('packages', 'places', 'departures', 'month', 'year'));
+        $reviews = Review::where('status', 'approved')
+            ->with('package:id,title,slug')
+            ->latest()
+            ->take(10)
+            ->get();
+
+        return view('home.index', compact('packages', 'places', 'departures', 'month', 'year', 'reviews'));
     }
 }

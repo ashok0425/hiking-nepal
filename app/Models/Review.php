@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Review extends Model
 {
@@ -29,5 +30,18 @@ class Review extends Model
     public function package()
     {
         return $this->belongsTo(Package::class);
+    }
+
+    public function getUserPhotoAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+
+        if (str_starts_with($value, 'http')) {
+            return $value;
+        }
+
+        return Storage::disk('public')->url($value);
     }
 }
