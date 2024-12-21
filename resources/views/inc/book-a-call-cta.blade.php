@@ -2,6 +2,6 @@
     <div class="container text-center">
         <h2 class="text-success">Planning a Trip?</h2>
         <p>We have a pool of travel experts working in this industry for more than a decade. Consult to get started</p>
-        <a href="#" class="btn btn-primary">BOOK A CALL</a>
+        <a href="{{ route('book-a-call') }}" class="btn btn-primary">BOOK A CALL</a>
     </div>
 </section>

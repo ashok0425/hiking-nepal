@@ -14,7 +14,7 @@
 
     <section class="container py-5 mt-5">
         <div class="mb-5" style="max-width:600px;">
-            <h2>Deals & Offers Search</h2>
+            <h2>Search Deals & Offers</h2>
             <p>Findout deals and offers that are ongoing. These deals and offers are limited for a certain period of
                 time.</p>
         </div>
