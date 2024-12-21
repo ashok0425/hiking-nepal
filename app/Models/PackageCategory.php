@@ -25,4 +25,9 @@ class PackageCategory extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
+    public function packages()
+    {
+        return $this->belongsToMany(Package::class);
+    }
 }
