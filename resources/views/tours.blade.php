@@ -113,182 +113,21 @@
                     </table>
                 </div>
 
-                <h2 class="mb-4">Take pride on being on the top of world’s 1st highest mouuntain</h2>
+                <div class="mb-4">
+                    {!! $tourPackage->overview !!}
+                </div>
 
-                <p>Everest Base Camp Trek offers you a spectacular view of towering mountains of Everest Region from vintage
-                    points of Kalapatthar (5550 m) and Base Camp (5357m). The main highligts of the trip is to explore
-                    Sherpa
-                    Communities their Culture and civilization as well as to visit the oldest and largest monastery of the
-                    region, Tengboche.</p>
+                <div class="mb-4">
+                    <h2 class="mb-4">DETAILED ITINERARY</h2>
 
-                <p>Trekking to Everest Base Camp is adventurous, exciting as well as challenging. There are some sections
-                    that
-                    consist of rough and challenging terrain but with high determination and  basic fitness level one could
-                    acheive their dream of being at base of mighty Mt. Everest (8848m/29022ft). Best season To Trek Everest
-                    Base
-                    Camp</p>
-
-                <p>Everest Base Camp can be acheived throughout the year but to get most out from Everest Base Camp
-                    Trek, you
-                    have to select the best months.</p>
-
-                <p>Spring (March, April and May) and Autumn (September, October, November) is the main trekking season in
-                    Nepal. The reason behind is clear, sunny & pleasant weather. And most importantly you can enjoy the
-                    Himalayan vista than other season.</p>
-
-                <p>Monsoon (Jun, July, August) – This is generally a monsoon season in Nepal, You need to carry your rain
-                    gears
-                    and be ready for slippery trails.</p>
-
-                <p>Winter (December, January, Feburary) – At this time it can be extreme cold with strong cold winds, icy
-                    pathway, snowfall, and temperatures reach minus degrees. If you love this season then it might be the
-                    best
-                    option for you.</p>
-
-                <p>Trekkers who want to escape overcrowded season of Autumn and Spring season then Winter and Monsoon Season
-                    is
-                    perfect for you.</p>
-
-                <p>If you are not satisfied with this itinerary or if you want to customize this package in your timeline or
-                    budget, then you could contact us, or email to info@hikingnepal.com</p>
-
-                <h2 class="mb-4">EVEREST CAMP TREKKING ROUTE</h2>
-
-                <img src="{{ asset('images/map.jpg') }}" alt="map" class="w-100 mb-5">
-
-                <h2 class="mb-4">OUTLINE ITINERARY</h2>
-
-                <table class="table table-striped my-5">
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Itinerary</th>
-                            <th>Maximum Altitude</th>
-                            <th>Walking / Hiking</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Day 01</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 02</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 03</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 04</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 05</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 06</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 07</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 08</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 09</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 10</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 11</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                        <tr>
-                            <td>Day 12</td>
-                            <td>Arrival in Kathmandu</td>
-                            <td>1,350m / 4,429 ft</td>
-                            <td>6 - 7 hrs</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                @for ($i = 1; $i <= 3; $i++)
-                    <div class="mb-5">
-                        <h2 class="mb-4">Day {{ $i }}: Arrival in Kathmandu (1,350m/4,429ft)</h2>
-                        <ul class="list-group list-group-flush mb-4">
-                            <li class="list-group-item">
-                                <i class="fas fa-plane text-primary me-2"></i>
-                                Flight Time: 35 to 45 mins
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-bed text-primary me-2"></i>
-                                Accommodation: Tea House
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-utensils text-primary me-2"></i>
-                                Meals: Welcome Dinner
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-route text-primary me-2"></i>
-                                Trek Distance: 6.2km / 3.8 miles
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-hiking text-primary me-2"></i>
-                                Activities: Hiking, Cycling
-                            </li>
-                        </ul>
-
-                        <p>On your arrival at Tribhuvan International Airport in Kathmandu, you will be met by our
-                            representative
-                            and
-                            transferred to your hotel.</p>
-
-                        <p>Your hotel is in the city's center, the vibrant and colorful area known as Thamel. With its
-                            restaurants,
-                            bars, and shops with unique Nepali handcrafted items and trekking gear, this is an interesting
-                            place to
-                            spend the afternoon.</p>
-
-                        <p>There will be the opportunity to meet your guide today and ask any questions you may still have
-                            about
-                            your
-                            trip to Everest Base Camp.</p>
-                    </div>
-                @endfor
-
-                <h2 class="mb-4">EVEREST BASE CAMP ALTITUDE CHART</h2>
-                <img src="{{ asset('images/chart.jpg') }}" alt="chart" class="w-100 mb-5">
+                    @if ($tourPackage->itinerary)
+                        {!! $tourPackage->itinerary !!}
+                    @else
+                        <div class="alert alert-info">
+                            <p class="mb-0">Detailed itinerary is not available for this tour yet.</p>
+                        </div>
+                    @endif
+                </div>
 
                 {{-- DEPARTURE --}}
                 <div class="d-flex justify-content-between align-items-center mb-4" id="departures">
