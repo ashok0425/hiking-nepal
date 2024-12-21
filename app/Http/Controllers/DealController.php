@@ -57,12 +57,10 @@ class DealController extends Controller
                 }
             }
 
-            if (request('activity')) {
-                $activityId = $activities->firstWhere('slug', request('activity'))->id ?? null;
-                if ($activityId) {
-                    $query->whereJsonContains('activities', $activityId);
-                }
-            }
+            // if (request('activity')) {
+            //     $query->where('activities', $request('activity'));
+            // }
+
             if (request('search')) {
                 $search = request('search');
                 $query->where(function ($q) use ($search) {
