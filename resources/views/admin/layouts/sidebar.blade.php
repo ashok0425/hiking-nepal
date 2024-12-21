@@ -74,6 +74,14 @@
                   </li>
 
                   <li class="nav-item">
+                      <a href="{{ route('admin.departures.index') }}"
+                          class="nav-link {{ Route::is('admin.departures.*') ? 'active' : '' }} ">
+                          <i class="nav-icon fas fa-plane-departure"></i>
+                          <p>Departures</p>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
                       <a href="{{ route('admin.reviews.index') }}"
                           class="nav-link {{ Route::is('admin.reviews.*') ? 'active' : '' }} ">
                           <i class="nav-icon fas fa-star"></i>

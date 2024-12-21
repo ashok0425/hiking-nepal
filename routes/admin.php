@@ -25,6 +25,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('/packages', \App\Http\Controllers\Admin\PackageController::class);
     Route::resource('/package-categories', \App\Http\Controllers\Admin\PackageCategoryController::class);
 
+    Route::resource('/departures', \App\Http\Controllers\Admin\DepartureController::class);
     Route::resource('/reviews', \App\Http\Controllers\Admin\ReviewController::class);
 
     Route::resource('/scheduled-callbacks', \App\Http\Controllers\Admin\ScheduledCallbackController::class);
