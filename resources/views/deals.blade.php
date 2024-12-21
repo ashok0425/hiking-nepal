@@ -76,69 +76,55 @@
         </form>
     </section>
 
-    <section class="container py-5 mb-5 expandable-content">
-        <div class="mb-5" style="max-width: 600px;">
-            <h2>Nature And Wildlife</h2>
-            <p>Findout trips that fits based around your interests, tastes, and budget.</p>
-        </div>
-
-        <div class="row gy-4 mb-4 initial-content">
-            @foreach ($packages as $package)
-                <div class="col-md-4">
-                    <x-package-card :package="$package" />
-                </div>
-            @endforeach
-        </div>
-
-        <div class="collapse expandable-section">
-            <div class="row gy-4">
+    @if (count($packages) > 0)
+        <div class="container py-5 mb-5">
+            <div class="row mb-5 gy-4">
                 @foreach ($packages as $package)
                     <div class="col-md-4">
                         <x-package-card :package="$package" />
                     </div>
                 @endforeach
             </div>
-        </div>
 
-        <div class="text-center mt-5">
-            <button class="btn btn-primary expand-toggle" type="button">
-                <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
-                <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
-            </button>
+            {{ $packages->links() }}
         </div>
-    </section>
+    @endif
 
-    <section class="container py-5 mb-5 expandable-content">
-        <div class="mb-5" style="max-width: 600px;">
-            <h2>Expedition</h2>
-            <p>Findout trips that fits based around your interests, tastes, and budget.</p>
-        </div>
+    @foreach ($packageCategories as $packageCategory)
+        <section class="container py-5 mb-5 expandable-content">
+            <div class="mb-5" style="max-width: 600px;">
+                <h2>{{ $packageCategory->name }}</h2>
+                <p>{{ $packageCategory->tagline }}</p>
+            </div>
 
-        <div class="row gy-4 mb-4 initial-content">
-            @foreach ($packages as $package)
-                <div class="col-md-4">
-                    <x-package-card :package="$package" />
-                </div>
-            @endforeach
-        </div>
-
-        <div class="collapse expandable-section">
-            <div class="row gy-4">
-                @foreach ($packages as $package)
+            <div class="row gy-4 mb-4 initial-content">
+                @foreach ($packageCategory->packages->take(3) as $package)
                     <div class="col-md-4">
                         <x-package-card :package="$package" />
                     </div>
                 @endforeach
             </div>
-        </div>
 
-        <div class="text-center mt-5">
-            <button class="btn btn-primary expand-toggle" type="button">
-                <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
-                <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
-            </button>
-        </div>
-    </section>
+            <div class="collapse expandable-section">
+                <div class="row gy-4">
+                    @foreach ($packageCategory->packages->slice(3) as $package)
+                        <div class="col-md-4">
+                            <x-package-card :package="$package" />
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            @if ($packageCategory->packages->count() > 3)
+                <div class="text-center mt-5">
+                    <button class="btn btn-primary expand-toggle" type="button">
+                        <span class="show-more-text">Show More <i class="fas fa-chevron-down ms-1"></i></span>
+                        <span class="show-less-text d-none">Show Less <i class="fas fa-chevron-up ms-1"></i></span>
+                    </button>
+                </div>
+            @endif
+        </section>
+    @endforeach
 
     @include('inc.book-a-call-cta')
 @endsection
@@ -188,7 +174,10 @@
                         const option = document.createElement('option');
                         option.value = place.slug;
                         option.textContent = place.name;
-                        if (place.slug === '{{ request('place') }}') {
+                        if (place.slug ===
+                            '{{ request('
+                                                                                                                                                                                                                                                                                                                                                                                                place ') }}'
+                        ) {
                             option.selected = true;
                         }
                         placeSelect.appendChild(option);
