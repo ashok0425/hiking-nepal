@@ -290,22 +290,15 @@
                 <h2 class="mb-4">EVEREST BASE CAMP ALTITUDE CHART</h2>
                 <img src="{{ asset('images/chart.jpg') }}" alt="chart" class="w-100 mb-5">
 
-                <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-4" id="departures">
                     <h2>DEPARTURE DATES</h2>
-                    <form>
-                        <select class="form-select" id="monthSelect">
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
+                    <form action="{{ route('tours', ['slug' => $tourPackage->slug]) }}#departures" method="get">
+                        <select class="form-select" id="monthSelect" name="month" onchange="this.form.submit()">
+                            @foreach (range(1, 12) as $m)
+                                <option value="{{ $m }}" {{ $month == $m ? 'selected' : '' }}>
+                                    {{ Carbon\Carbon::create(null, $m)->format('F') }}
+                                </option>
+                            @endforeach
                         </select>
                     </form>
                 </div>
@@ -321,24 +314,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i = 0; $i < 5; $i++)
+                            @forelse($tourPackage->departures as $departure)
                                 <tr>
-                                    <th scope="row">9th Nov</th>
+                                    <th scope="row">{{ $departure->start_date->format('jS M') }}</th>
                                     <td class="fw-bold">
-                                        24th Nov
+                                        {{ $departure->end_date->format('jS M') }}
                                     </td>
                                     <td>
-                                        3 People Joined
+                                        Limited Seats
                                     </td>
                                     <td>
-                                        <div class="fw-bold mb-1">$ 4500</div>
+                                        <div class="fw-bold mb-1">$ {{ number_format($departure->price) }}</div>
                                         <div class="small text-muted">
-                                            <a href="#" class="btn btn-primary">Join us <i
-                                                    class="fas fa-arrow-right"></i></a>
+                                            <a href="{{ route('book-a-call', ['departure' => $departure->id]) }}"
+                                                class="btn btn-primary">
+                                                Join us <i class="fas fa-arrow-right"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
-                            @endfor
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center py-4">
+                                        No departures found for {{ Carbon\Carbon::create(null, $month)->format('F') }}
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
