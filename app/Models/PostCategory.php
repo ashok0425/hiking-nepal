@@ -32,4 +32,9 @@ class PostCategory extends Model
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate();
     }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }

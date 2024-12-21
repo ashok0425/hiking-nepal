@@ -73,4 +73,9 @@ class Post extends Model
                 ->get();
         });
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(PostCategory::class);
+    }
 }
