@@ -13,20 +13,20 @@
     <meta property="og:title" content="What We Offer - Hiking Nepal">
     <meta property="og:description"
         content="Discover what Hiking Nepal offers - personalized adventures, small group sizes, safety-first approach, flexible itineraries, and stress-free travel experiences in Nepal.">
-    <meta property="og:image" content="{{ asset('images/what-we-offer-cover.png') }}">
+    <meta property="og:image" content="{{ asset('images/what-we-offer-cover.jpeg') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="What We Offer - Hiking Nepal">
     <meta name="twitter:description"
         content="Discover what Hiking Nepal offers - personalized adventures, small group sizes, safety-first approach, flexible itineraries, and stress-free travel experiences in Nepal.">
-    <meta name="twitter:image" content="{{ asset('images/what-we-offer-cover.png') }}">
+    <meta name="twitter:image" content="{{ asset('images/what-we-offer-cover.jpeg') }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 330px;">
-        <img src="{{ asset('images/what-we-offer-cover.png') }}" alt="head cover"
+        <img src="{{ asset('images/what-we-offer-cover.jpeg') }}" alt="head cover"
             class="w-100 position-absolute start-0 top-0"
             style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">

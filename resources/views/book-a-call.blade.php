@@ -1,6 +1,24 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Book a Call')
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="Schedule a call with Hiking Nepal's team to discuss your trekking plans, get expert advice, and plan your perfect Himalayan adventure. Book a personalized consultation today.">
+    <meta name="keywords"
+        content="book call hiking nepal, trek consultation nepal, himalayan trek planning, trekking consultation, nepal hiking consultation">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Book a Call - Hiking Nepal">
+    <meta property="og:description"
+        content="Schedule a call with Hiking Nepal's team to discuss your trekking plans, get expert advice, and plan your perfect Himalayan adventure. Book a personalized consultation today.">
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book a Call - Hiking Nepal">
+    <meta name="twitter:description"
+        content="Schedule a call with Hiking Nepal's team to discuss your trekking plans, get expert advice, and plan your perfect Himalayan adventure. Book a personalized consultation today.">
+@endsection
 
 @section('content')
     <div style="max-width: 900px;" class="mx-auto">

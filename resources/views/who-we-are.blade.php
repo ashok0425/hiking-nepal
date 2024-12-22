@@ -1,11 +1,32 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Who We Are')
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="Learn about Hiking Nepal - your trusted partner for tailored Himalayan adventures. We deliver world-class adventure holidays with competitive pricing and experienced guides.">
+    <meta name="keywords"
+        content="hiking nepal about, nepal trekking company, himalayan adventures, experienced guides nepal, adventure tourism nepal, nepal tour operator">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Who We Are - Hiking Nepal">
+    <meta property="og:description"
+        content="Learn about Hiking Nepal - your trusted partner for tailored Himalayan adventures. We deliver world-class adventure holidays with competitive pricing and experienced guides.">
+    <meta property="og:image" content="{{ asset('images/who-we-are-cover.png') }}">
+
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Who We Are - Hiking Nepal">
+    <meta name="twitter:description"
+        content="Learn about Hiking Nepal - your trusted partner for tailored Himalayan adventures. We deliver world-class adventure holidays with competitive pricing and experienced guides.">
+    <meta name="twitter:image" content="{{ asset('images/who-we-are-cover.png') }}">
+@endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 330px;">
-        <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ asset('images/who-we-are-cover.png') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
             style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">WHO WE ARE</h1>
