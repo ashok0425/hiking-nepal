@@ -8,9 +8,12 @@
                         class="mb-3">
                     <h6 class="text-success mb-3">Let’s Explore Places</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#">Thamel Kathmandu</a></li>
-                        <li><a href="mailto:support@domain.com">support@domain.com</a></li>
-                        <li><a href="www.damiwebsite.com">www.damiwebsite.com</a></li>
+                        <li><a href="#">Keshar Mahal, Thamel, Kathmandu</a></li>
+                        <li><a href="mailto:info@hikingnepal.com">info@hikingnepal.com</a></li>
+                        <li><a href="tel:+97714701537">+977 1 4701537</a></li>
+                        <li><a href="tel:+9779802342080">+977 9802342080</a></li>
+                        <li><a href="mailto:info@hikingnepal.com">info@hikingnepal.com</a></li>
+                        <li><a href="https://hikingnepal.com">hikingnepal.com</a></li>
                     </ul>
                 </div>
 
