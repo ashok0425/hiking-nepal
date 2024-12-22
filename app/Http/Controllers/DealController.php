@@ -67,7 +67,7 @@ class DealController extends Controller
                     $q->where('title', 'like', "%{$search}%");
                 });
             }
-            $packages = $query->paginate();
+            $packages = $query->paginate()->withQueryString();
         }
 
         $packageCategories = PackageCategory::where('status', 'active')

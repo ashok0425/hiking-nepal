@@ -174,25 +174,26 @@
                         const option = document.createElement('option');
                         option.value = place.slug;
                         option.textContent = place.name;
-                        if (place.slug ===
-                            '{{ request('
-                                                                                                                                                                                                                                                                                                                                                                                                                            place ') }}'
-                        ) {
+
+                        // Check if this place matches the currently selected place
+                        if (place.slug === '{{ request('place') }}') {
                             option.selected = true;
                         }
+
                         placeSelect.appendChild(option);
                     });
                 }
             }
 
-            destinationSelect.addEventListener('change', function() {
-                updatePlaces(this.value);
-            });
-
-            // Initialize places if destination is selected
+            // Initial setup when the page loads
             if (destinationSelect.value) {
                 updatePlaces(destinationSelect.value);
             }
+
+            // Add event listener for destination change
+            destinationSelect.addEventListener('change', function() {
+                updatePlaces(this.value);
+            });
         });
     </script>
 @endpush
