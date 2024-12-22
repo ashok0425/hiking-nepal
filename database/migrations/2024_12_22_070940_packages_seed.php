@@ -39,6 +39,7 @@ return new class extends Migration
 
             $package = [
                 'id' => (int) $cleanValue($tour['id']),
+                'show_in_nav' => true,
                 'title' => $cleanValue($tour['title']) ?? 'No Title',
                 'slug' => $cleanValue($tour['slug']),
                 'status' => $cleanValue($tour['status']) === 'publish' ? 'published' : $cleanValue($tour['status']),

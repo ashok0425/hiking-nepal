@@ -45,6 +45,8 @@ return new class extends Migration
             $table->integer('rating_count')->default(0);
             $table->decimal('average_rating', 3, 2)->default(0.00);
 
+            $table->boolean('show_in_nav')->default(false);
+
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();
