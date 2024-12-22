@@ -39,7 +39,7 @@
         <p>{{ $destination->desc }}</p>
     </section>
 
-    <section class="container py-5 mt-5">
+    {{-- <section class="container py-5 mt-5">
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-5" style="max-width:600px;">
@@ -69,19 +69,11 @@
                             <option value="expedition">Expedition</option>
                         </select>
                     </div>
-                    {{-- <div class="col-12">
-                        <label class="form-label">STYLES</label>
-                        <select name="style" class="form-select border">
-                            <option value="">Any</option>
-                            <option value="budget">Budget</option>
-                            <option value="comfort">Comfort</option>
-                            <option value="luxury">Luxury</option>
-                        </select>
-                    </div> --}}
+
                 </form>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     @foreach ($packagesByCategories as $packagesByCategory)
         <section class="container py-5 mb-5 expandable-content" id="category-{{ $packagesByCategory['slug'] }}">
