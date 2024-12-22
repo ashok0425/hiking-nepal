@@ -54,10 +54,39 @@
         </div>
     </section>
 
+    <nav class="navbar navbar-expand-lg bg-body-white brand-shadow fw-bold ">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#tourOverview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#tourItinerary">Itinerary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#departures">Departure Dates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#tourFaqs">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#tourReviews">Reviews</a>
+                    </li>
+                </ul>
+            </div>
+
+            <a class="btn btn-primary" href="{{ route('book-a-call') }}">Book Now</a>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-
                 <div class="table-responsive">
                     <table class="table table-bordered my-5">
                         <tbody>
@@ -145,18 +174,18 @@
                     </table>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4" id="tourOverview">
                     {!! $tourPackage->overview !!}
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4" id="tourItinerary">
                     <h2 class="mb-4">DETAILED ITINERARY</h2>
 
                     @if ($tourPackage->itinerary)
                         {!! $tourPackage->itinerary !!}
                     @else
-                        <div class="alert alert-info">
-                            <p class="mb-0">Detailed itinerary is not available for this tour yet.</p>
+                        <div class="text-center text-muted mb-5">
+                            <p>Detailed itinerary is not available for this tour yet.</p>
                         </div>
                     @endif
                 </div>
@@ -217,14 +246,14 @@
                 </div>
 
                 {{-- FAQ --}}
-                <h2 class="mb-4">FAQ</h2>
+                <h2 class="mb-4" id="tourFaqs">FAQ</h2>
                 <div class="accordion accordion-flush mx-auto mb-5" id="faqAccordion" style="max-width: 996px">
                     @forelse($faqs as $index => $faq)
                         <div class="accordion-item brand-shadow mb-4 p-3">
                             <h3 class="accordion-header">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq{{ $index }}" aria-expanded="false"
-                                    aria-controls="faq{{ $index }}">
+                                <button class="accordion-button collapsed fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq{{ $index }}"
+                                    aria-expanded="false" aria-controls="faq{{ $index }}">
                                     {{ $faq['question'] }}
                                 </button>
                             </h3>
@@ -242,7 +271,7 @@
                     @endforelse
                 </div>
 
-                <h2 class="mb-4">REVIEWS</h2>
+                <h2 class="mb-4" id="tourReviews">REVIEWS</h2>
                 @if ($tourPackage->reviews->count() > 0)
                     <div id="testimonials" class="splide mb-5" aria-label="Testimonial">
                         <div class="splide__track">
@@ -256,8 +285,8 @@
                         </div>
                     </div>
                 @else
-                    <div class="alert alert-info mb-5">
-                        <p class="mb-0">No reviews yet.</p>
+                    <div class="text-center text-muted mb-5">
+                        <p>No reviews yet.</p>
                     </div>
                 @endif
 
