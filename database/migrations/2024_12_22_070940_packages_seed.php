@@ -11,7 +11,12 @@ return new class extends Migration
     public function up(): void
     {
         $csvPath = database_path('packages.csv');
+        $itineraryPath = database_path('itinarary.csv');
+
         $file = fopen($csvPath, 'r');
+
+        // Process itinerary data first
+        $itineraryData = $this->processItineraryData($itineraryPath);
 
         $headers = fgetcsv($file);
 
@@ -35,7 +40,29 @@ return new class extends Migration
 
             $placeName = $cleanValue(str_replace(' Region', '', $tour['places']));
             $placeId = $placeName ? ($places[trim($placeName)] ?? null) : null;
-            $overview = preg_replace(['/<strong>/'], ['<br><strong>'], $cleanValue($tour['overview']) ?? 'No Overview');
+            $overview = $cleanValue($tour['overview']) ?? 'No Overview';
+
+            // Process additional content from itinerary data
+            $productId = $cleanValue($tour['id']);
+            if (isset($itineraryData[$productId])) {
+                $tabContent = $this->processTabContent($itineraryData[$productId], $overview);
+                $overview = $tabContent['overview'];
+                $itinerary = $tabContent['itinerary'];
+            } else {
+                $itinerary = null;
+            }
+
+            // Replace URLs and clean HTML attributes
+            $cleanHtml = function ($content) {
+                if (!$content) return null;
+                // Replace URLs
+                $content = preg_replace('/https:\/\/new\./i', 'https://', $content);
+                // Remove class, style, and id attributes
+                return preg_replace('/\s(class|style|id)=["\'][^\'"]*["\']/', '', $content);
+            };
+
+            $overview = $cleanHtml($overview);
+            $itinerary = $cleanHtml($itinerary);
 
             $package = [
                 'id' => (int) $cleanValue($tour['id']),
@@ -43,7 +70,8 @@ return new class extends Migration
                 'title' => $cleanValue($tour['title']) ?? 'No Title',
                 'slug' => $cleanValue($tour['slug']),
                 'status' => $cleanValue($tour['status']) === 'publish' ? 'published' : $cleanValue($tour['status']),
-                'overview' => $overview,
+                'overview' => preg_replace(['/<strong>/'], ['<br><strong>'], $overview),
+                'itinerary' => preg_replace(['/<strong>/'], ['<br><strong>'], $itinerary),
                 'tour_duration' => $cleanValue($tour['tour_duration']),
                 'fitness_level' => $cleanValue($tour['fitness_level']),
                 'group_size' => $cleanValue($tour['group_size']),
@@ -106,6 +134,64 @@ return new class extends Migration
         }
 
         fclose($file);
+    }
+
+    private function processItineraryData($csvPath): array
+    {
+        $data = [];
+        if (($handle = fopen($csvPath, 'r')) !== false) {
+            $keys = fgetcsv($handle);
+            while (($row = fgetcsv($handle)) !== false) {
+                $row = array_combine($keys, $row);
+                $otherData = @unserialize(base64_decode($row['other_data'])) ?? null;
+                if ($otherData && isset($otherData['tabs'])) {
+                    $data[$row['product_id']] = $otherData;
+                }
+            }
+            fclose($handle);
+        }
+        return $data;
+    }
+
+    private function processTabContent($data, $originalOverview): array
+    {
+        $itinerary = '';
+        $additionalContent = '';
+        $tabOrder = ['detailed itinerary', 'costs', 'useful information', 'map'];
+
+        if (isset($data['tabs']) && is_array($data['tabs'])) {
+            foreach ($data['tabs'] as $tab) {
+                $title = strtolower(trim($tab['title']));
+                $content = trim($tab['content']);
+
+                if (empty($title) || empty($content)) {
+                    continue;
+                }
+
+                if (str_contains($title, 'itinerary')) {
+                    $itinerary = $content;
+                } else {
+                    // Check if the tab title matches any of our desired sections
+                    foreach ($tabOrder as $orderTitle) {
+                        if (str_contains($title, $orderTitle)) {
+                            $additionalContent .= "<h3>" . ucwords($title) . "</h3>" . $content;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Combine original overview with additional content
+        $finalOverview = $originalOverview;
+        if (!empty($additionalContent)) {
+            $finalOverview .= $additionalContent;
+        }
+
+        return [
+            'overview' => $finalOverview,
+            'itinerary' => $itinerary,
+        ];
     }
 
     /**
