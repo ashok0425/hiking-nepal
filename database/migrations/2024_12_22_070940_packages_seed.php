@@ -35,13 +35,14 @@ return new class extends Migration
 
             $placeName = $cleanValue(str_replace(' Region', '', $tour['places']));
             $placeId = $placeName ? ($places[trim($placeName)] ?? null) : null;
+            $overview = preg_replace(['/<strong>/'], ['<br><strong>'], $cleanValue($tour['overview']) ?? 'No Overview');
 
             $package = [
                 'id' => (int) $cleanValue($tour['id']),
                 'title' => $cleanValue($tour['title']) ?? 'No Title',
                 'slug' => $cleanValue($tour['slug']),
                 'status' => $cleanValue($tour['status']) === 'publish' ? 'published' : $cleanValue($tour['status']),
-                'overview' => $cleanValue($tour['overview']) ?? 'No Overview',
+                'overview' => $overview,
                 'tour_duration' => $cleanValue($tour['tour_duration']),
                 'fitness_level' => $cleanValue($tour['fitness_level']),
                 'group_size' => $cleanValue($tour['group_size']),
