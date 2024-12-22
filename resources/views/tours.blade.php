@@ -39,8 +39,9 @@
                     Days</span>
             </h1>
 
-            <p class="position-relative text-center text-white fs-3">USD {{ number_format($tourPackage->price) }} per
-                person</p>
+            <p class="position-relative text-center text-white fs-3">
+                {{ $tourPackage->sale_price_per_person > 0 ? 'USD ' . number_format($tourPackage->sale_price_per_person) . ' per person' : 'Price on request' }}
+            </p>
 
             <div class="position-relative mx-auto flex-wrap d-flex justify-content-center gap-4 w-100 mt-5 pt-5"
                 style="max-width: 800px">
@@ -136,9 +137,8 @@
                                     <i class="fas fa-dollar-sign text-primary me-2"></i>
                                     Price
                                 </td>
-                                <td>USD <span
-                                        class="fw-bold">{{ $tourPackage->price ? number_format($tourPackage->price, 2) : '-' }}</span>
-                                    per person
+                                <td>
+                                    {{ $tourPackage->sale_price_per_person > 0 ? 'USD ' . number_format($tourPackage->sale_price_per_person, 2) . ' per person' : ($tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price, 2) . ' per person' : 'Price on request') }}
                                 </td>
                             </tr>
                         </tbody>
