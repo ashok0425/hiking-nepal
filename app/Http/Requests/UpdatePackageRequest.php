@@ -50,6 +50,7 @@ class UpdatePackageRequest extends FormRequest
             'categories.*' => ['exists:package_categories,id'],
             'activities' => ['nullable', 'array'],
             'activities.*' => ['exists:activities,id'],
+            'show_in_nav' => ['nullable', 'boolean'],
             'meta_title' => ['required_if:status,published', 'nullable', 'string'],
             'meta_description' => ['required_if:status,published', 'nullable', 'string'],
             'meta_keywords' => ['required_if:status,published', 'nullable', 'string'],

@@ -34,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
             ])
                 ->select('id', 'title', 'slug', 'destination_id', 'status')
                 ->where('status', 'published')
+                ->where('show_in_nav', true)
                 ->get();
             // First level: Group packages by destination to get unique destinations
             $destinations = $packages->groupBy('destination_id')

@@ -268,6 +268,19 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs', 
                                 </select>
                             </div>
 
+                            <div class="form-group mt-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="show_in_nav" id="show_in_nav"
+                                        value="1" {{ old('show_in_nav', $package->show_in_nav) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="show_in_nav">
+                                        Show in Navigation
+                                    </label>
+                                    <small class="form-text text-muted">
+                                        Enable this to display the package in navigation menus
+                                    </small>
+                                </div>
+                            </div>
+
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-primary">Update Package</button>
                             </div>

@@ -34,6 +34,7 @@ class Package extends Model
         'itinerary',
         'faqs',
         'gallery',
+        'show_in_nav',
         'meta_title',
         'meta_description',
         'meta_keywords',
