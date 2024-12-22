@@ -44,8 +44,17 @@ class HomeController extends Controller
         $month = $request->get('month', Carbon::now()->month);
         $year = $request->get('year', Carbon::now()->year);
 
-        $departures = Departure::whereYear('start_date', $year)
-            ->whereMonth('start_date', $month)
+        $start = Carbon::createFromDate($year, $month, 1)->startOfMonth();
+        $end = Carbon::createFromDate($year, $month, 1)->endOfMonth();
+
+        $departures = Departure::where(function ($query) use ($start, $end) {
+            $query->whereBetween('start_date', [$start, $end])
+                ->orWhereBetween('end_date', [$start, $end])
+                ->orWhere(function ($q) use ($start, $end) {
+                    $q->where('start_date', '<=', $start)
+                        ->where('end_date', '>=', $end);
+                });
+        })
             ->with(['package' => function ($query) {
                 $query->select('id', 'title', 'slug', 'tour_duration', 'price', 'status');
             }])
@@ -53,6 +62,8 @@ class HomeController extends Controller
                 $query->where('status', 'published');
             })
             ->select('id', 'package_id', 'start_date', 'end_date')
+            ->inRandomOrder()
+            ->limit(10)
             ->get();
 
         $reviews = Review::where('status', 'approved')
