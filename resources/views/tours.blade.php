@@ -84,7 +84,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <main class="container">
         <div class="row">
             <div class="col-lg-8 tour-content">
                 <div class="table-responsive">
@@ -452,7 +452,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     @include('inc.book-a-call-cta')
 @endsection
