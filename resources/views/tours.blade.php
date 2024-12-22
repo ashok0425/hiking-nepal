@@ -86,7 +86,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 tour-content">
                 <div class="table-responsive">
                     <table class="table table-bordered my-5">
                         <tbody>
