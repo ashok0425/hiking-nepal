@@ -12,7 +12,7 @@
         <div id="popularPackages" class="splide mb-3" aria-label="Most Popular Packages">
             <div class="splide__track">
                 <ul class="splide__list">
-                    @foreach ($packages as $package)
+                    @foreach ($featuredPackages as $package)
                         <li class="splide__slide py-2">
                             <x-package-card :package="$package" />
                         </li>

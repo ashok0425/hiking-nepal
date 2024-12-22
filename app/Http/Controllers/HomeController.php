@@ -10,6 +10,7 @@ use App\Models\Review;
 use App\Models\SocialEmbed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -18,10 +19,20 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $packages = Package::where('status', 'published')
-            ->with('place', 'destination')
-            ->take(6)
-            ->get();
+        $featuredPackages = Cache::remember('featured_packages', now()->endOfDay(), function () {
+            return Package::where('status', 'published')
+                ->with('place', 'destination')
+                ->take(6)
+                ->get();
+        });
+
+        $regularPackages = Cache::remember('regular_packages', now()->endOfDay(), function () {
+            return Package::where('status', 'published')
+                ->with('place', 'destination')
+                ->inRandomOrder()
+                ->take(6)
+                ->get();
+        });
 
         $places = Place::where('status', 'active')
             ->withCount(['packages' => function ($query) {
@@ -55,7 +66,8 @@ class HomeController extends Controller
         $pageFaqs = $this->getPageFaqs($faqContent->value);
 
         return view('home.index', compact(
-            'packages',
+            'featuredPackages',
+            'regularPackages',
             'places',
             'departures',
             'month',
