@@ -185,7 +185,7 @@
                         {!! $tourPackage->itinerary !!}
                     @else
                         <div class="text-center text-muted mb-5">
-                            <p>Detailed itinerary is not available for this tour yet.</p>
+                            <p>Please contact us for detailed itinerary and other information about this tour.</p>
                         </div>
                     @endif
                 </div>

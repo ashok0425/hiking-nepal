@@ -65,6 +65,10 @@ return new class extends Migration
             $overview = $cleanHtml($overview);
             $itinerary = $cleanHtml($itinerary);
 
+            if ($itinerary === 'insert_itinerary') {
+                $itinerary = null;
+            }
+
             $overview = preg_replace('/\[icon_tick state="on"\]/', "<br>✓ &nbsp;", $overview);
             $overview = preg_replace('/\[icon_tick state="off"\]/', "<br>✗ &nbsp;", $overview);
             $overview = $cleanHtml($overview);
