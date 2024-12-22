@@ -170,6 +170,14 @@
                         <p>Social Embeds</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.home-faqs.edit', 'home_faqs') }}"
+                        class="nav-link {{ Route::is('admin.home-faqs.*') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-question-circle"></i>
+                        <p>Home FAQ</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

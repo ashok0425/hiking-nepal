@@ -40,6 +40,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('/newsletter-posts', \App\Http\Controllers\Admin\NewsletterPostController::class);
 
     Route::resource('/social-embeds', \App\Http\Controllers\Admin\SocialEmbedController::class);
+    Route::resource('/home-faqs', \App\Http\Controllers\Admin\HomeFAQController::class)->only(['index', 'edit', 'update']);
 
     Route::post('/ck-upload', \App\Http\Controllers\Admin\CKEditorUploadController::class)->name('ck-upload');
 });
