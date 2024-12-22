@@ -1,6 +1,31 @@
 @extends('layouts.website')
 
-@section('title', $tourPackage->title)
+@section('title', $tourPackage->meta_title ?? $tourPackage->title)
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="{{ isset($tourPackage->meta_description) ? $tourPackage->meta_description : "Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains." }}">
+    <meta name="keywords"
+        content="{{ isset($tourPackage->meta_keywords) ? $tourPackage->meta_keywords : 'nepal travel blog, nepal trekking blog, hiking nepal blog, nepal hiking stories, nepal trekking experiences, nepal adventure blog' }}">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title"
+        content="{{ isset($tourPackage->meta_title) ? $tourPackage->meta_title : 'Travel Blogs - Hiking Nepal' }}">
+    <meta property="og:description"
+        content="{{ isset($tourPackage->meta_description) ? $tourPackage->meta_description : "Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains." }}">
+    <meta property="og:image"
+        content="{{ isset($tourPackage->gallery[0]) ? Storage::disk('public')->url($tourPackage->gallery[0]) : asset('images/deals-cover.jpeg') }}">
+
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="{{ isset($tourPackage->meta_title) ? $tourPackage->meta_title : 'Travel Blogs - Hiking Nepal' }}">
+    <meta name="twitter:description"
+        content="{{ isset($tourPackage->meta_description) ? $tourPackage->meta_description : "Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains." }}">
+    <meta name="twitter:image"
+        content="{{ isset($tourPackage->gallery[0]) ? Storage::disk('public')->url($tourPackage->gallery[0]) : asset('images/deals-cover.jpeg') }}">
+@endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
