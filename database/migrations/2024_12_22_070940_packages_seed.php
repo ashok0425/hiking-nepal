@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
@@ -129,6 +130,25 @@ return new class extends Migration
                         'created_at' => now(),
                         'updated_at' => now(),
                     ]);
+                }
+            }
+
+            // Process and insert departures
+            $departuresData = $cleanValue($tour['departures']);
+            if ($departuresData) {
+                $departures = @unserialize($departuresData) ?? null;
+                if ($departures && is_array($departures)) {
+                    foreach ($departures as $departure) {
+                        if (isset($departure['from'], $departure['to'])) {
+                            DB::table('departures')->insert([
+                                'package_id' => $package['id'],
+                                'start_date' => $departure['from'],
+                                'end_date' => $departure['to'],
+                                'created_at' => now(),
+                                'updated_at' => now(),
+                            ]);
+                        }
+                    }
                 }
             }
         }
