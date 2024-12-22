@@ -6,6 +6,7 @@ use App\Models\Departure;
 use App\Models\Package;
 use App\Models\Place;
 use App\Models\Review;
+use App\Models\SocialEmbed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -47,6 +48,8 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
-        return view('home.index', compact('packages', 'places', 'departures', 'month', 'year', 'reviews'));
+        $socialEmbeds = SocialEmbed::limit(3)->latest()->get();
+
+        return view('home.index', compact('packages', 'places', 'departures', 'month', 'year', 'reviews', 'socialEmbeds'));
     }
 }
