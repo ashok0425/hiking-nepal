@@ -64,8 +64,7 @@ class DealController extends Controller
             if (request('search')) {
                 $search = request('search');
                 $query->where(function ($q) use ($search) {
-                    $q->where('title', 'like', "%{$search}%")
-                        ->orWhere('description', 'like', "%{$search}%");
+                    $q->where('title', 'like', "%{$search}%");
                 });
             }
             $packages = $query->paginate();
