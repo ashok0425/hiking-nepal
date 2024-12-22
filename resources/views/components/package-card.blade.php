@@ -11,7 +11,9 @@
         <div class="d-flex justify-content-between mb-2">
             <div><i class="fa-solid fa-clock text-primary me-1"></i> {{ strtoupper($package->tour_duration) }}</div>
             <div class="d-inline-flex align-items-center gap-2">
-                @if ($package->sale_price_per_person)
+                @if ($package->price == 0)
+                    <span class="text-success fs-5 fw-bold">Price on Request</span>
+                @elseif ($package->sale_price_per_person)
                     @if ($package->sale_price_per_person == $package->price)
                         <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
                     @else

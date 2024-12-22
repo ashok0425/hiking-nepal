@@ -57,7 +57,7 @@ return new class extends Migration
                 'meal' => $cleanValue($tour['meal']),
                 'stay' => $cleanValue($tour['stay']),
                 // 'departures' => $cleanValue($tour['departures']) ? json_encode(@unserialize($cleanValue($tour['departures']))) : null,
-                'price' => (float) $cleanValue($tour['price']),
+                'price' => $cleanValue($tour['price']) > 0 ? ((float) $cleanValue($tour['price']) + 100) : 0,
                 'sale_price_per_person' => (float) $cleanValue($tour['sale_price_per_person']),
                 'sale_price_two_plus_per_person' => (float) $cleanValue($tour['sale_price_two_plus_per_person']),
                 'sale_price_eight_plus_per_person' => (float) $cleanValue($tour['sale_price_eight_plus_per_person']),
