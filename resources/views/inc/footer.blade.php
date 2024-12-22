@@ -18,11 +18,12 @@
                 <div class="col-md-6 col-lg-3">
                     <h6 class="text-success mb-3">QUICK LINKS</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Trekking</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Our Team</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="{{ route('information') }}">Information</a></li>
+                        <li><a href="{{ route('who-we-are') }}">Who We Are</a></li>
+                        <li><a href="{{ route('what-we-offer') }}">What We Offer</a></li>
+                        <li><a href="{{ route('our-team') }}">Our Team</a></li>
+                        <li><a href="{{ route('blog') }}">Blog</a></li>
+                        <li><a href="{{ route('book-a-call') }}">Book a Call</a></li>
                     </ul>
                 </div>
 
@@ -30,12 +31,10 @@
                 <div class="col-md-6 col-lg-3">
                     <h6 class="text-success mb-3">USEFUL LINKS</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Conditions</a>
-                        </li>
-                        <li><a href="#">Disclaimer</a></li>
-                        <li><a href="#">Elements</a></li>
-                        <li><a href="#">Support</a></li>
+                        <li><a href="{{ route('booking-terms') }}">Booking Terms & Conditions</a></li>
+                        <li><a href="{{ route('legal-document') }}">Legal Document</a></li>
+                        <li><a href="{{ route('deals') }}">Deals</a></li>
+                        <li><a href="{{ route('book-trip') }}">Book Your Trip</a></li>
                     </ul>
                 </div>
 
@@ -71,7 +70,8 @@
                     <div class="payment-icons mt-3">
                         Payment:
                         <img src="{{ asset('images/visa.png') }}" alt="Visa" class="me-2" style="height: 20px;">
-                        <img src="{{ asset('images/paypal.png') }}" alt="PayPal" class="me-2" style="height: 20px;">
+                        <img src="{{ asset('images/paypal.png') }}" alt="PayPal" class="me-2"
+                            style="height: 20px;">
                         <img src="{{ asset('images/mastercard.png') }}" alt="Mastercard" class="me-2"
                             style="height: 20px;">
                         <img src="{{ asset('images/apple-pay.png') }}" alt="ApplePay" class="me-2"
