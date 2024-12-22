@@ -1,6 +1,24 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Our Team')
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="Meet the passionate and experienced team behind Hiking Nepal. Our dedicated professionals, from expert guides to support staff, work together to provide unforgettable trekking experiences in the Himalayas.">
+    <meta name="keywords"
+        content="hiking nepal team, nepal trekking guides, himalayan trek guides, professional trekking team nepal, experienced mountain guides nepal">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Our Team - Hiking Nepal">
+    <meta property="og:description"
+        content="Meet the passionate and experienced team behind Hiking Nepal. Our dedicated professionals, from expert guides to support staff, work together to provide unforgettable trekking experiences in the Himalayas.">
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Team - Hiking Nepal">
+    <meta name="twitter:description"
+        content="Meet the passionate and experienced team behind Hiking Nepal. Our dedicated professionals, from expert guides to support staff, work together to provide unforgettable trekking experiences in the Himalayas.">
+@endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"

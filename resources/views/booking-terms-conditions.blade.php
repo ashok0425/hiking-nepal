@@ -1,11 +1,33 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Booking Terms and Conditions')
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="Read our booking terms and conditions for trekking and tours in Nepal. Important information about deposits, cancellations, insurance requirements, and payment policies at Hiking Nepal.">
+    <meta name="keywords"
+        content="hiking nepal booking terms, nepal trekking conditions, tour booking policy nepal, trekking cancellation policy, travel insurance nepal, payment terms nepal trekking">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Booking Terms and Conditions - Hiking Nepal">
+    <meta property="og:description"
+        content="Read our booking terms and conditions for trekking and tours in Nepal. Important information about deposits, cancellations, insurance requirements, and payment policies at Hiking Nepal.">
+    <meta property="og:image" content="{{ asset('images/booking-terms-cover.jpeg') }}">
+
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Booking Terms and Conditions - Hiking Nepal">
+    <meta name="twitter:description"
+        content="Read our booking terms and conditions for trekking and tours in Nepal. Important information about deposits, cancellations, insurance requirements, and payment policies at Hiking Nepal.">
+    <meta name="twitter:image" content="{{ asset('images/booking-terms-cover.jpeg') }}">
+@endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 330px;">
-        <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ asset('images/booking-terms-cover.jpeg') }}" alt="head cover"
+            class="w-100 position-absolute start-0 top-0"
             style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">BOOKING TERMS AND CONDITIONS</h1>

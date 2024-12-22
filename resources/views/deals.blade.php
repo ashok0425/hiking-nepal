@@ -9,12 +9,10 @@
     <meta name="keywords" content="travel deals, tour offers, holiday packages, travel discounts, special offers">
     {{-- Open Graph / Facebook --}}
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Search Deals and Offers">
     <meta property="og:title" content="Search Deals and Offers">
     <meta property="og:description"
         content="Find exclusive deals and offers on travel packages. Browse limited time discounts and special offers on tours, treks and adventures.">
     <meta property="og:image" content="{{ asset('images/deals-cover.jpeg') }}">
-    <meta property="og:url" content="{{ url()->current() }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">

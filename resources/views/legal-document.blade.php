@@ -1,6 +1,25 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Legal Documents')
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="View the legal documents and certifications of Hiking Nepal. Our company is fully authorized and follows all government rules and regulations for tourism operations in Nepal.">
+    <meta name="keywords"
+        content="hiking nepal legal documents, nepal trekking certifications, tourism company registration nepal, trekking company documents, authorized trekking company nepal">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Legal Documents - Hiking Nepal">
+    <meta property="og:description"
+        content="View the legal documents and certifications of Hiking Nepal. Our company is fully authorized and follows all government rules and regulations for tourism operations in Nepal.">
+
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Legal Documents - Hiking Nepal">
+    <meta name="twitter:description"
+        content="View the legal documents and certifications of Hiking Nepal. Our company is fully authorized and follows all government rules and regulations for tourism operations in Nepal.">
+@endsection
 
 @section('content')
     <div class="container py-5 my-5">

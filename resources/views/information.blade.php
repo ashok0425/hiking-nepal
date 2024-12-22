@@ -1,6 +1,27 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Information')
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="Essential information about trekking in Nepal including visa requirements, travel insurance, accommodation, meals, best time to visit, altitude information and more.">
+    <meta name="keywords"
+        content="nepal trekking information, nepal visa, travel insurance nepal, trekking accommodation, nepal weather, altitude sickness, nepal guide">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Information - Hiking Nepal">
+    <meta property="og:description"
+        content="Essential information about trekking in Nepal including visa requirements, travel insurance, accommodation, meals, best time to visit, altitude information and more.">
+    <meta property="og:image" content="{{ asset('images/head-cover.jpeg') }}">
+
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Information - Hiking Nepal">
+    <meta name="twitter:description"
+        content="Essential information about trekking in Nepal including visa requirements, travel insurance, accommodation, meals, best time to visit, altitude information and more.">
+    <meta name="twitter:image" content="{{ asset('images/head-cover.jpeg') }}">
+@endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
