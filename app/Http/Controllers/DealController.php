@@ -43,6 +43,12 @@ class DealController extends Controller
             $query = Package::where('status', 'published')
                 ->with('place', 'destination');
 
+            if (request('activity')) {
+                $query->whereHas('activities', function ($q) {
+                    $q->where('activities.id', request('activity'));
+                });
+            }
+
             if (request('destination')) {
                 $destinationId = $destinations->firstWhere('slug', request('destination'))->id ?? null;
                 if ($destinationId) {
@@ -56,10 +62,6 @@ class DealController extends Controller
                     $query->where('place_id', $placeId);
                 }
             }
-
-            // if (request('activity')) {
-            //     $query->where('activities', $request('activity'));
-            // }
 
             if (request('search')) {
                 $search = request('search');

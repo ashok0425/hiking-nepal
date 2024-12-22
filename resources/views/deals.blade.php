@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            {{-- <div class="col-12">
+            <div class="col-12">
                 <label class="form-label">ACTIVITY</label>
                 <select name="activity" class="form-select border">
                     <option value="">Any</option>
@@ -61,7 +61,7 @@
                         </option>
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
 
             <div class="col-12">
                 <label class="form-label">DESTINATION</label>
