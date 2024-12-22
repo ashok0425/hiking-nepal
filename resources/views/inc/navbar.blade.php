@@ -2,8 +2,9 @@
     <div class="d-block w-100">
         <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2">
             <div class="ms-auto d-flex flex-wrap align-items-center gap-2 gap-md-4">
-                <a href="#" class="text-uppercase">Join Groups</a>
-                <a href="#" class="d-inline-flex align-items-center gap-1 text-dark"><img
+                <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-uppercase">Join Groups</a>
+                <a href="https://api.whatsapp.com/send?phone=9779802342080"
+                    class="d-inline-flex align-items-center gap-1 text-dark"><img
                         src="{{ asset('images/ic_outline-whatsapp.png') }}" alt="whatsapp" width="24" height="24">
                     +977-9802342080</a>
 

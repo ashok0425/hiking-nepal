@@ -79,13 +79,18 @@
                     </div>
                     <!-- Social Media Icons -->
                     <div class="social-icons mt-3">
-                        <a href="#" class="text-primary me-2"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-primary me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-primary me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-primary me-2"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="text-primary me-2"><i class="fab fa-google"></i></a>
-                        <a href="#" class="text-primary me-2"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/hikingnepal" class="text-primary me-2" target="_blank"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/hikingnepal" class="text-primary me-2" target="_blank"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/hiking.nepal" class="text-primary me-2" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/hiking-nepal" class="text-primary me-2"
+                            target="_blank"><i class="fab fa-linkedin"></i></a>
+                        {{-- <a href="https://www.youtube.com/hikingnepal" class="text-primary me-2" target="_blank"><i
+                                class="fab fa-youtube"></i></a> --}}
+                        <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-primary me-2"
+                            target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -94,7 +99,7 @@
             <div class="row mt-4">
                 <div class="col-12">
                     <p class="text-secondary small mb-0">
-                        Copyright © 2023. All Rights Reserved
+                        Copyright &copy; {{ date('Y') }}. All Rights Reserved
                     </p>
                 </div>
             </div>
