@@ -1,11 +1,32 @@
 @extends('layouts.website')
 
-@section('title', 'Hiking Nepal')
+@section('title', 'Travel Blogs')
+
+@section('meta')
+    {{-- Primary Meta Tags --}}
+    <meta name="description"
+        content="Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains.">
+    <meta name="keywords"
+        content="nepal travel blog, nepal trekking blog, hiking nepal blog, nepal hiking stories, nepal trekking experiences, nepal adventure blog">
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Travel Blogs - Hiking Nepal">
+    <meta property="og:description"
+        content="Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains.">
+    <meta property="og:image" content="{{ asset('images/deals-cover.jpeg') }}">
+
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Travel Blogs - Hiking Nepal">
+    <meta name="twitter:description"
+        content="Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains.">
+    <meta name="twitter:image" content="{{ asset('images/deals-cover.jpeg') }}">
+@endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 330px;">
-        <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ asset('images/deals-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
             style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">TRAVEL BLOGS</h1>
