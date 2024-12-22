@@ -108,6 +108,14 @@
 
             {{ $packages->links() }}
         </div>
+    @elseif (request()->hasAny(['destination', 'place', 'activity', 'search']))
+        <div class="container py-5 mb-5">
+            <div class="text-center">
+                <h3>No packages found</h3>
+                <p class="text-muted">Try adjusting your search criteria or filters</p>
+                <a href="{{ route('deals') }}" class="btn btn-primary mt-3">Clear all filters</a>
+            </div>
+        </div>
     @endif
 
     @foreach ($packageCategories as $packageCategory)
