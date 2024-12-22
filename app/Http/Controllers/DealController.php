@@ -73,7 +73,11 @@ class DealController extends Controller
         $packageCategories = PackageCategory::where('status', 'active')
             ->with(['packages' => function ($query) {
                 $query->where('status', 'published')->with('place', 'destination');
-            }])->get();
+            }])
+            ->whereHas('packages', function ($query) {
+                $query->where('status', 'published');
+            }, '>', 1)
+            ->get();
 
         return view('deals', [
             'activities' => $activities,
