@@ -24,6 +24,7 @@ return new class extends Migration
         $destinations = DB::table('destinations')->pluck('id', 'name')->toArray();
         $places = DB::table('places')->pluck('id', 'name')->toArray();
         $categories = DB::table('package_categories')->pluck('id', 'name')->toArray();
+        $activities = DB::table('activities')->get(['id', 'name'])->toArray();
 
         while ($row = fgetcsv($file)) {
             $tour = array_combine($headers, $row);
@@ -75,12 +76,26 @@ return new class extends Migration
 
             DB::table('packages')->insert($package);
 
+            // Add categories
             $categoryNames = array_filter(array_map('trim', explode(',', $cleanValue($tour['categories']) ?? '')));
             foreach ($categoryNames as $categoryName) {
                 if (! empty($categoryName) && isset($categories[$categoryName])) {
                     DB::table('package_package_category')->insert([
                         'package_id' => $package['id'],
                         'package_category_id' => $categories[$categoryName],
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
+
+            // Map activities based on package title
+            $packageTitle = strtolower($package['title']);
+            foreach ($activities as $activity) {
+                if (str_contains($packageTitle, strtolower($activity->name))) {
+                    DB::table('activity_package')->insert([
+                        'package_id' => $package['id'],
+                        'activity_id' => $activity->id,
                         'created_at' => now(),
                         'updated_at' => now(),
                     ]);
