@@ -232,7 +232,7 @@
                     </div>
                 @else
                     <div class="alert alert-info mb-5">
-                        <p class="mb-0">No reviews yet. Be the first to review this tour!</p>
+                        <p class="mb-0">No reviews yet.</p>
                     </div>
                 @endif
 
