@@ -225,7 +225,9 @@
                                         Limited Seats
                                     </td>
                                     <td>
-                                        <div class="fw-bold mb-1">$ {{ number_format($departure->price) }}</div>
+                                        <div class="fw-bold mb-1">
+                                            {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) : 'Price on request') }}
+                                        </div>
                                         <div class="small text-muted">
                                             <a href="{{ route('book-a-call', ['departure' => $departure->id]) }}"
                                                 class="btn btn-primary">
