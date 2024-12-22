@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Departure;
 use App\Models\Package;
+use App\Models\PageSection;
 use App\Models\Place;
 use App\Models\Review;
 use App\Models\SocialEmbed;
@@ -50,6 +51,61 @@ class HomeController extends Controller
 
         $socialEmbeds = SocialEmbed::limit(3)->latest()->get();
 
-        return view('home.index', compact('packages', 'places', 'departures', 'month', 'year', 'reviews', 'socialEmbeds'));
+        $faqContent = PageSection::where('key', 'home_faqs')->first();
+        $pageFaqs = $this->getPageFaqs($faqContent->value);
+
+        return view('home.index', compact(
+            'packages',
+            'places',
+            'departures',
+            'month',
+            'year',
+            'reviews',
+            'socialEmbeds',
+            'pageFaqs'
+        ));
+    }
+
+
+    private function getPageFaqs($pageFaqs)
+    {
+        $faqs = [];
+
+        if ($pageFaqs) {
+            $faqLines = explode("\n", trim($pageFaqs));
+            $currentQuestion = null;
+            $currentAnswer = '';
+
+            foreach ($faqLines as $line) {
+                $line = trim($line);
+                if (empty($line)) continue;
+
+                if (str_starts_with($line, '##')) {
+                    // If we have a previous QA pair, save it
+                    if ($currentQuestion !== null) {
+                        $faqs[] = [
+                            'question' => $currentQuestion,
+                            'answer' => trim($currentAnswer)
+                        ];
+                    }
+                    // Start new question
+                    $currentQuestion = trim(substr($line, 2));
+                    $currentAnswer = '';
+                } else {
+                    // Add to current answer
+                    $currentAnswer .= $line . ' ';
+                }
+            }
+
+            // Add the last QA pair
+            if ($currentQuestion !== null) {
+                $faqs[] = [
+                    'question' => $currentQuestion,
+                    'answer' => trim($currentAnswer)
+                ];
+            }
+        }
+
+        return  $faqs;
     }
 }
