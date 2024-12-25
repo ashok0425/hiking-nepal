@@ -24,7 +24,7 @@
 @section('content')
     <div class="position-relative" style="height: 60vh;">
         <img src="{{ $destination->cover }}" alt="product category" class="w-100 h-100 object-fit-cover position-absolute"
-            style="object-position: center center; animation: slowZoom 20s infinite alternate;">
+            style="object-position: center center;">
     </div>
     <section class="py-5 my-5 container text-center">
         <div class="mx-auto" style="max-width: 800px;">
