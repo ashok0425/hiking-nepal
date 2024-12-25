@@ -1,4 +1,4 @@
-<section class="bg-light py-md-5" id="departures">
+<section class="py-md-5" id="departures">
     <div class="container py-5 my-5">
         <div class="fw-bold d-inline-flex align-items-center mb-3">
             <span style="width: 50px; height:1px; background-color: var(--brand-color)"
