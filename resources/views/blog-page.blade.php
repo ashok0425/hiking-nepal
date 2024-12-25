@@ -20,10 +20,10 @@
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
-        style="height: 330px;">
+        style="height: 530px;">
         <img src="{{ $post->thumbnail ?? $post->cover }}" alt="{{ $post->title }}"
             class="w-100 position-absolute start-0 top-0"
-            style="height: 330px; object-fit:cover; filter: brightness(30%) contrast(100%);">
+            style="height: 530px; object-fit:cover; filter: brightness(30%) contrast(100%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">{{ $post->title }}</h1>
         </div>

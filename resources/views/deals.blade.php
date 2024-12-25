@@ -24,9 +24,9 @@
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
-        style="height: 330px;">
+        style="height: 530px;">
         <img src="{{ asset('images/deals-cover.jpeg') }}" alt="deals cover" class="w-100 position-absolute start-0 top-0"
-            style="height: 330px; object-fit:cover; filter: brightness(80%) contrast(110%);">
+            style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">DEALS</h1>
         </div>
