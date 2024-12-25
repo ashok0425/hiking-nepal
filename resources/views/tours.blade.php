@@ -53,8 +53,7 @@
         </div>
     </section>
 
-    <nav class="navbar navbar-expand-lg bg-body-white brand-shadow fw-bold bg-white position-sticky z-1"
-        style="top: 138px;">
+    <nav class="navbar navbar-expand-lg bg-body-white brand-shadow fw-bold bg-white tour-sub-nav">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -313,7 +312,8 @@
                                     {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
                                 </div>
                             </div>
-                            <img src="{{ asset('images/sale.png') }}" alt="sale" width="120" height="120">
+                            <img src="{{ asset('images/best-price.png') }}" alt="sale" width="120"
+                                height="120">
                         </div>
 
                         <table class="table table-bordered mb-3">
@@ -398,7 +398,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3 small fw-light">
+                        <div class="mb-3 small fw-light fst-italic">
                             Your information will never be shared with anyone outside our company
                         </div>
 
@@ -420,9 +420,9 @@
 
                         <div class="d-flex gap-2 justify-content-between align-items-center w-100 px-3">
                             <img src="{{ asset('images/pay_visa.png') }}" alt="ammex" width="60">
-                            <img src="{{ asset('images/pay_mastercard.png') }}" alt="ammex" width="60">
                             <img src="{{ asset('images/pay_unionpay.png') }}" alt="ammex" width="60">
                             <img src="{{ asset('images/pay_ammex.png') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/master-card.png') }}" alt="ammex" width="60">
                         </div>
 
                     </div>
@@ -450,7 +450,8 @@
                                 Call Us (24/7) : +977- 12345678
                             </li>
                             <li class="list-group-item bg-cta text-white">
-                                <i class="fab fa-whatsapp me-2"></i>
+                                <img src="{{ asset('images/whatsapp.png') }}" alt="whataspp" height="22"
+                                    width="auto" class="me-1">
                                 WhatsApp (24/7) : +977- 12345678
                             </li>
                         </ul>

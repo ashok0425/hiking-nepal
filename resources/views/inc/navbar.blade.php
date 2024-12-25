@@ -3,7 +3,7 @@
         <div class="d-block w-100">
             <div class="bg-white">
                 <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2">
-                    <div class="ms-auto d-none d-lg-flex flex-wrap align-items-center gap-3 gap-md-5">
+                    <div class="ms-auto d-flex flex-wrap align-items-center gap-3 gap-md-5">
                         <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-uppercase">Join Groups</a>
                         <a href="https://api.whatsapp.com/send?phone=9779802342080"
                             class="d-inline-flex align-items-center gap-1 text-dark"><img
@@ -16,6 +16,8 @@
                             <a href="{{ route('book-trip') }}" class="btn btn-cta">Pay Online</a>
                         </div>
                     </div>
+
+                    <div class="border-bottom w-100 mt-2 my-lg-0 d-lg-none"></div>
 
                     <div class="d-flex justify-content-between align-items-center">
                         <a class="navbar-brand" href="{{ route('home') }}">

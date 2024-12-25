@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="py-5">
-        <div class="container py-lg-5 my-5" style="max-width: 960px;">
+        <div class="container py-5 my-5" style="max-width: 960px;">
             @if (session('success'))
                 <div class="alert alert-success mb-4">
                     {{ session('success') }}
