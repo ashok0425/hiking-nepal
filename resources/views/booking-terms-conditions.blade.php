@@ -51,7 +51,7 @@
             your
             acceptance of all the terms and conditions.</p>
 
-        <h2 class="text-success">1. The Contract</h2>
+        <h2>1. The Contract</h2>
 
         <p>
             We kindly request you to apply the following Terms and Conditions that guide the relationship between you (the
@@ -81,7 +81,7 @@
             book through another party or third-party agent, their Terms and Conditions will apply, not ours.
         </p>
 
-        <h2 class="text-success">2. Privacy is Our Ornament – Assurance Policy</h2>
+        <h2>2. Privacy is Our Ornament – Assurance Policy</h2>
         <p> When booking a trip with us, we may require some personal and travel-related information from you. Rest assured,
             we
             are committed to protecting your privacy. Any personal or private information you provide will never be shared
@@ -91,7 +91,7 @@
             trust is
             of utmost importance, and we take every measure to ensure your information remains secure and private.</p>
 
-        <h2 class="text-success">3. Trip Booking</h2>
+        <h2>3. Trip Booking</h2>
         <p>The term "trip" refers to any type of product, itinerary, or activity purchased by clients through Hiking Nepal,
             including trekking, tours, expeditions, and other adventure or tour programs.</p>
         <p>The existence of the contract and booking will be confirmed when Hiking Nepal issues a written confirmation
@@ -107,7 +107,7 @@
             Except as expressly stated herein, Hiking Nepal is not liable for any warranties, collateral agreements, prior
             agreements, descriptions of services, or conditions not directly specified in this document.</p>
 
-        <h2 class="text-success">4. Deposit Requirements</h2>
+        <h2>4. Deposit Requirements</h2>
         <p>Deposit requirements may vary depending on the country of origin, so Hiking Nepal has set a fixed deposit
             procedure
             to ensure clarity and consistency.</p>
@@ -167,7 +167,7 @@
             track the payment if it is forwarded with a different name. We can follow up with the bank upon receiving your
             reference number and remittance slip.</p>
 
-        <h2 class="text-success">5. The Way of Booking Acceptance and Final Payment</h2>
+        <h2>5. The Way of Booking Acceptance and Final Payment</h2>
         <p> You have the flexibility to make the final payment for trekking, tours, climbing, expeditions, or any other
             trips in
             Nepal upon your arrival. The final payment can be made in various ways, including bank transfer, cash, or by
@@ -177,7 +177,7 @@
             purchases
             made during your trip.</p>
 
-        <h2 class="text-success">6. The Cancellation Policy</h2>
+        <h2>6. The Cancellation Policy</h2>
 
         <p class="fw-bold">I) If Clients Cancel the Trip</p>
         <p>All cancellations must be made in writing and acknowledged by the Company. The cancellation charge will be
@@ -224,7 +224,7 @@
             train tickets, other fees, loss of earnings, or loss of enjoyment due to changes or cancellations beyond our
             control.</p>
 
-        <h2 class="text-success">7. Special Health Requirements and Medical Conditions</h2>
+        <h2>7. Special Health Requirements and Medical Conditions</h2>
         <p> Hiking Nepal has designed its tours and treks to suit the varying levels of interest and fitness of our clients.
             All
             of our trips require a certain level of physical fitness, and we highly recommend that you consult with your
@@ -253,7 +253,7 @@
             It is crucial that you consider your physical condition and health needs carefully before committing to any
             adventure.</p>
 
-        <h2 class="text-success">8. Travel Insurance</h2>
+        <h2>8. Travel Insurance</h2>
 
         <p>Adequate and valid travel insurance is essential for all travelers before embarking on any trip. Your insurance
             should cover accidents, injury, illness, and death, as well as medical expenses, including any related to
@@ -268,7 +268,7 @@
             that your insurance policy covers all aspects of your travel, as it is vital for your safety and peace of mind
             throughout your journey.</p>
 
-        <h2 class="text-success">9.Itinerary Changes & Responsibility</h2>
+        <h2>9.Itinerary Changes & Responsibility</h2>
 
         <p>Mountain adventures are inherently unpredictable, and bad weather conditions in the mountains may cause delays in
             domestic flights. Please be aware that such delays are common, and clients are responsible for bearing any
@@ -294,7 +294,7 @@
             in
             price if the rescheduled trip costs more than the original booking.</p>
 
-        <h2 class="text-success">10. Flexibility on Trip Amendments</h2>
+        <h2>10. Flexibility on Trip Amendments</h2>
 
         <p> If you request a trip amendment 15 days or more before your original departure, we will accommodate the changes
             with
@@ -303,7 +303,7 @@
             as
             hotels, flights, or other services for the new destination, which may result in additional costs.</p>
 
-        <h2 class="text-success">11. Visa & Passport Requirements</h2>
+        <h2>11. Visa & Passport Requirements</h2>
         <p> When traveling with us, you must have a valid passport with at least 6 months' validity. You can obtain an
             on-arrival visa for Nepal. For Tibet and Bhutan, we will assist with necessary arrangements upon request. For
             India,
@@ -315,7 +315,7 @@
             missing
             visa documentation.</p>
 
-        <h2 class="text-success">12. Injuries & Evacuation</h2>
+        <h2>12. Injuries & Evacuation</h2>
 
         <p>Hiking Nepal is not liable for any injuries, health conditions, emotional distress, or other issues that may
             arise
@@ -325,7 +325,7 @@
             (e.g.,
             helicopter rescue), when booking your trip to ensure you are fully protected.</p>
 
-        <h2 class="text-success">13. Unused or Missed Services</h2>
+        <h2>13. Unused or Missed Services</h2>
 
         <p> No discounts or refunds will be provided for unused or missed services, including cases of voluntary or
             involuntary
@@ -333,18 +333,18 @@
             premature
             departure, or any other unforeseen circumstances that prevent you from fully participating in the tour.</p>
 
-        <h2 class="text-success">14. Are Children Allowed?</h2>
+        <h2>14. Are Children Allowed?</h2>
 
         <p>Children under the age of 14 are not permitted to join the trip unless accompanied by a legal guardian and under
             their full supervision at all times.</p>
 
-        <h2 class="text-success">15. Responsible Tourism Policy</h2>
+        <h2>15. Responsible Tourism Policy</h2>
 
         <p> Hiking Nepal is committed to responsible tourism, focusing on benefiting local communities, tourists, the
             environment, and the tourism industry as a whole. We expect all our clients to adhere to our responsible tourism
             guidelines. Failure to comply with these policies may result in expulsion from the trip program.</p>
 
-        <h2 class="text-success">16. Submission of Complaints</h2>
+        <h2>16. Submission of Complaints</h2>
 
         <p> We warmly welcome all constructive and reasonable complaints. If you encounter any problems or obstacles during
             your
@@ -354,7 +354,7 @@
             our
             best to address them promptly.</p>
 
-        <h2 class="text-success">17. Airfare</h2>
+        <h2>17. Airfare</h2>
 
         <p>International airfare and other flight costs are not included in our tour packages unless specifically mentioned
             in
@@ -365,7 +365,7 @@
             status
             or issues with your flight.</p>
 
-        <h2 class="text-success">18. Special Offer Price vs. Regular Price</h2>
+        <h2>18. Special Offer Price vs. Regular Price</h2>
 
         <p>During holiday and off-seasons, the company offers special discount rates on certain services. These special
             offers
@@ -373,7 +373,7 @@
             bookings must be made within the specified period. Any bookings made before or after the offer period are not
             eligible for the discount and cannot claim the offer at any time.</p>
 
-        <h2 class="text-success">19. Updating Terms and Conditions</h2>
+        <h2>19. Updating Terms and Conditions</h2>
 
         <p>Hiking Nepal reserves the right to update and amend these terms and conditions at any time. We encourage you to
             regularly check for any changes. The latest version of the terms and conditions will be available on our website

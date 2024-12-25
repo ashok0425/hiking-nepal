@@ -23,7 +23,7 @@
 
 @section('content')
     <div class="container py-5 my-5">
-        <h1 class="text-center text-success mb-5">LEGAL DOCUMENTS</h1>
+        <h1 class="text-center mb-5">LEGAL DOCUMENTS</h1>
 
         <p class="mb-5">Hiking Nepal is established by the professional who have been working in the field of tourism for
             more than 15

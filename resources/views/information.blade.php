@@ -34,7 +34,7 @@
     </section>
 
     <section class="container py-md-5 my-5">
-        <h2 class="text-center text-success mb-4">Useful Information for the package</h2>
+        <h2 class="text-center mb-4">Useful Information for the package</h2>
         <p>At Hiking Nepal, our team is made up of passionate, experienced, and dedicated professionals who are committed to
             providing unforgettable trekking experiences in the Himalayas. From seasoned guides with extensive knowledge of
             Nepal's trekking routes to support staff who ensure your journey is smooth and comfortable, we work together to
@@ -42,7 +42,7 @@
             expertise, ensures that you not only explore the breathtaking landscapes of Nepal but also immerse yourself in
             its rich culture and heritage.</p>
 
-        <h2 class="text-success">Passport And Visa Requirements</h2>
+        <h2>Passport And Visa Requirements</h2>
         <p>All foreigners require a visa for entry into Nepal (except Indian nationals). It is your responsibility to obtain
             an entry visa. You can get it from a Nepalese embassy overseas or on arrival in Kathmandu, Nepal. Most people
             will obtain their visa on arrival at Kathmandu airport. You will need two passport photos and the following fees
@@ -55,7 +55,7 @@
             <li>Multiple entries 90 days US$ 125 or equivalent convertible currency</li>
         </ol>
 
-        <h2 class="text-success">Travel Insurance</h2>
+        <h2>Travel Insurance</h2>
         <p>Travel Insurance is mandatory for booking any of Himalayas Nepal Visionâs Adventure packages. Trekking in the
             Himalayas is full of fun and adventure but you have to be prepared for risk management. While you are in High
             Altitude region, there are higher risks of difficulties. You may suffer from various health problems, injuries,
@@ -68,7 +68,7 @@
             Having good travel insurance will not only guarantee you peace of mind while you travel with us but also provide
             you with complete cover for anything things that may go wrong.</p>
 
-        <h2 class="text-success">Trip Meal Plan</h2>
+        <h2>Trip Meal Plan</h2>
         <p>Eating is a big part of traveling. With Nepal Vision, you will experience the vast array of wonderful food that
             is available in the Mountains. Nepal Vision will provide Traveling Mountains meals (breakfast, lunch & dinner)
             that crews require on the trail. On this trip, you can enjoy both traditional Nepalese three-time served as Dal
@@ -82,7 +82,7 @@
             at a time along the trail. Our guides will carefully be checked for the quality and quantity of the food in
             every teahouse. Explicit cooking directions are indicated on each food for your convenience.</p>
 
-        <h2 class="text-success">Trip Accommodation</h2>
+        <h2>Trip Accommodation</h2>
         <p>During this trip, we will spend a few nights in Kathmandu at four-star standard hotels. We will spend the nights
             at standard mountain teahouses. A Tea House is a combination of a guesthouse, restaurant, and social hang-out.
             Private rooms are available in most tea houses. The lodges are fairly basic. The rooms are spare with twin beds
@@ -93,7 +93,7 @@
             which a log fire is lit. Most teahouses now also have electricity for charging small appliances, mobile phones,
             and cameras. Some might charge a small amount for this.</p>
 
-        <h2 class="text-success">Best time to visit Nepal</h2>
+        <h2>Best time to visit Nepal</h2>
         <p>Nepal is for all seasons! But because of the huge range in altitude and landscape, the climate of Nepal differs
             significantly throughout the country. The most recommended seasons for trekking are autumn (Sept, Oct, Nov) and
             spring (March, April, and May). In these seasons you will be rewarded with good weather, sunny and warm with
@@ -107,7 +107,7 @@
             patterns. There could be a hoax of bad weather and sometimes even in adverse months during the best seasons
             too.</p>
 
-        <h2 class="text-success">Leader(s) and Staff</h2>
+        <h2>Leader(s) and Staff</h2>
         <p>The Trek Leader of your group has a role to ensure all aspects of the trip run smoothly. Our guides are
             intimately familiar with all local castes and customs along the trails and will share with you many cultural
             insights that are not covered in any guidebook. You will have a good chance to learn Nepali phrases, cultural
@@ -122,7 +122,7 @@
             <li>Rock climbing, ice climbing amd mountaineering (for expedition leaders)</li>
         </ol>
 
-        <h2 class="text-success">Altitude Information</h2>
+        <h2>Altitude Information</h2>
         <p>What is Altitude?</p>
         <p>Altitude is known as elevation, and it is often used to refer to the height above sea level. Altitude is related
             to air pressure. Trekkers and mountaineers can measure their altitude by measuring the air pressure around them.
@@ -139,7 +139,7 @@
             trips to altitudes over 3,000 meters carry medicines essential to the treatment of altitude illness, and our
             leaders are trained to administer them and to know the symptoms</p>
 
-        <h2 class="text-success">Altitude Information</h2>
+        <h2>Altitude Information</h2>
         <p>What is Altitude?</p>
         <p>Altitude is known as elevation, and it is often used to refer to the height above sea level. Altitude is related
             to air pressure. Trekkers and mountaineers can measure their altitude by measuring the air pressure around them.
@@ -156,7 +156,7 @@
             trips to altitudes over 3,000 meters carry medicines essential to the treatment of altitude illness, and our
             leaders are trained to administer them and to know the symptoms</p>
 
-        <h2 class="text-success">Altitude Information</h2>
+        <h2>Altitude Information</h2>
         <p>What is Altitude?</p>
         <p>Altitude is known as elevation, and it is often used to refer to the height above sea level. Altitude is related
             to air pressure. Trekkers and mountaineers can measure their altitude by measuring the air pressure around them.

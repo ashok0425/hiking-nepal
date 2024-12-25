@@ -2,7 +2,7 @@
     <div class="container">
         <div class="d-md-flex justify-content-between">
             <div class="mb-2 mb-md-5">
-                <h2 class="text-success">The best place you must visit</h2>
+                <h2>The best place you must visit</h2>
                 <p class="mb-0">A wonderful serenity to have in ur bucket list</p>
             </div>
 

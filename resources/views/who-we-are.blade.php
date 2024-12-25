@@ -104,25 +104,25 @@
                             <div class="col-md-3 col-6 text-center">
                                 <img src="{{ asset('images/temple.png') }}" class="mb-3" alt="temple" width="60"
                                     height="60">
-                                <div class="fs-3 fw-bold text-success">354</div>
+                                <div class="fs-3 fw-bold">354</div>
                                 <div>Destination</div>
                             </div>
                             <div class="col-md-3 col-6 text-center">
                                 <img src="{{ asset('images/plane.png') }}" class="mb-3" alt="plane" width="60"
                                     height="60">
-                                <div class="fs-3 fw-bold text-success">1250</div>
+                                <div class="fs-3 fw-bold">1250</div>
                                 <div>Tour</div>
                             </div>
                             <div class="col-md-3 col-6 text-center">
                                 <img src="{{ asset('images/globe.png') }}" class="mb-3" alt="globe" width="60"
                                     height="60">
-                                <div class="fs-3 fw-bold text-success">25</div>
+                                <div class="fs-3 fw-bold">25</div>
                                 <div>Country</div>
                             </div>
                             <div class="col-md-3 col-6 text-center">
                                 <img src="{{ asset('images/tourist.png') }}" class="mb-3" alt="tourist" width="60"
                                     height="60">
-                                <div class="fs-3 fw-bold text-success">4600</div>
+                                <div class="fs-3 fw-bold">4600</div>
                                 <div>Tourists</div>
                             </div>
                         </div>

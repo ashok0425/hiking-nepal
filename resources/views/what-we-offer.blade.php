@@ -35,7 +35,7 @@
     </section>
 
     <section class="container py-5 my-5">
-        <h2 class="text-center text-success mb-5">More Than Just a Trip : Creating Meaningful Adventures with Hiking Nepal
+        <h2 class="text-center mb-5">More Than Just a Trip : Creating Meaningful Adventures with Hiking Nepal
         </h2>
         <div class="row g-5">
             <div class="col-md-6">
