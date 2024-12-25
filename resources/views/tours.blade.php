@@ -305,7 +305,7 @@
             </div>
 
             <div class="col-lg-4 py-5">
-                <div class="position-sticky" style="top: 200px;">
+                <div class="position-sticky" style="top: 220px;">
                     <div class="bg-primary text-white p-3 mb-3">
                         <div class="d-flex justify-content-center gap-2 align-items-center">
                             <div>
