@@ -34,8 +34,7 @@
             class="w-100 position-absolute start-0 top-0 tour-hero-image">
         <div class="container">
             <h1 class="mb-3 z-1 position-relative text-uppercase text-white text-center">{{ $tourPackage->title }} <span
-                    class="fs-4 fw-normal">{{ $tourPackage->tour_duration }}
-                    Days</span>
+                    class="fs-4 fw-normal">{{ $tourPackage->tour_duration }}</span>
             </h1>
 
             <p class="position-relative text-center text-white fs-3">
