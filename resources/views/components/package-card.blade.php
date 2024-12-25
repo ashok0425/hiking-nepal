@@ -15,14 +15,14 @@
                     <span class="text-primary fs-5 fw-bold">Price on Request</span>
                 @elseif ($package->sale_price_per_person)
                     @if ($package->sale_price_per_person == $package->price)
-                        <span class="text-primary fs-5 fw-bold">${{ number_format($package->price) }}</span>
+                        <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
                     @else
                         <del class="text-muted">${{ number_format($package->price) }}</del>
                         <span
-                            class="text-primary fs-5 fw-bold">${{ number_format($package->sale_price_per_person) }}</span>
+                            class="text-success fs-5 fw-bold">${{ number_format($package->sale_price_per_person) }}</span>
                     @endif
                 @else
-                    <span class="text-primary fs-5 fw-bold">${{ number_format($package->price) }}</span>
+                    <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
                 @endif
             </div>
         </div>

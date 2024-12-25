@@ -46,10 +46,10 @@
             <div class="position-relative mx-auto flex-wrap d-flex justify-content-center gap-4 w-100 mt-5 pt-5"
                 style="max-width: 800px">
                 <div class="service-header">Accommodation</div>
-                <div class="service-header">Dining</div>
-                <div class="service-header">Activities</div>
+                <div class="service-header">Meal</div>
+                <div class="service-header">Guides</div>
                 <div class="service-header">Transports</div>
-                <div class="service-header">Extras</div>
+                <div class="service-header">Porter</div>
             </div>
         </div>
     </section>
@@ -81,7 +81,7 @@
                 </ul>
             </div>
 
-            <a class="btn btn-primary" href="{{ route('book-a-call') }}">Book Now</a>
+            <a class="btn btn-cta" href="{{ route('book-a-call') }}">Book Now</a>
         </div>
     </nav>
 
@@ -93,7 +93,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-3">
-                                    <i class="fas fa-hiking text-primary me-2"></i>
+                                    <i class="fas fa-hiking text-cta me-2"></i>
                                     Activities
                                 </td>
                                 <td class="col-3">
@@ -101,57 +101,57 @@
                                 </td>
 
                                 <td class="col-3">
-                                    <i class="fas fa-heartbeat text-primary me-2"></i>
+                                    <i class="fas fa-heartbeat text-cta me-2"></i>
                                     Fitness Level
                                 </td>
                                 <td class="col-3">{{ $tourPackage->fitness_level ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="fas fa-mountain text-primary me-2"></i>
+                                    <i class="fas fa-mountain text-cta me-2"></i>
                                     Max Elevation
                                 </td>
                                 <td>{{ $tourPackage->max_elevation ?: '-' }}</td>
 
                                 <td>
-                                    <i class="fas fa-car text-primary me-2"></i>
+                                    <i class="fas fa-car text-cta me-2"></i>
                                     Commute
                                 </td>
                                 <td>{{ $tourPackage->commute ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="fas fa-calendar-alt text-primary me-2"></i>
+                                    <i class="fas fa-calendar-alt text-cta me-2"></i>
                                     Best Month
                                 </td>
                                 <td>{{ $tourPackage->best_time ?: '-' }}</td>
 
                                 <td>
-                                    <i class="fas fa-users text-primary me-2"></i>
+                                    <i class="fas fa-users text-cta me-2"></i>
                                     Group Size
                                 </td>
                                 <td>{{ $tourPackage->group_size ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="fas fa-plane-arrival text-primary me-2"></i>
+                                    <i class="fas fa-plane-arrival text-cta me-2"></i>
                                     Arrival on
                                 </td>
                                 <td>{{ $tourPackage->arrival_at ?: '-' }}</td>
                                 <td>
-                                    <i class="fas fa-plane-departure text-primary me-2"></i>
+                                    <i class="fas fa-plane-departure text-cta me-2"></i>
                                     Depart From
                                 </td>
                                 <td>{{ $tourPackage->departure_from ?: '-' }}</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="fas fa-utensils text-primary me-2"></i>
+                                    <i class="fas fa-utensils text-cta me-2"></i>
                                     Meal
                                 </td>
                                 <td>{{ $tourPackage->meal ?: '-' }}</td>
                                 <td>
-                                    <i class="fas fa-clock text-primary me-2"></i>
+                                    <i class="fas fa-clock text-cta me-2"></i>
                                     Duration
                                 </td>
                                 <td>{{ $tourPackage->tour_duration ?: '-' }}</td>
@@ -159,12 +159,12 @@
 
                             <tr>
                                 <td>
-                                    <i class="fas fa-bed text-primary me-2"></i>
+                                    <i class="fas fa-bed text-cta me-2"></i>
                                     Stay
                                 </td>
                                 <td>{{ $tourPackage->stay ?: '-' }}</td>
                                 <td>
-                                    <i class="fas fa-dollar-sign text-primary me-2"></i>
+                                    <i class="fas fa-dollar-sign text-cta me-2"></i>
                                     Price
                                 </td>
                                 <td>
@@ -306,7 +306,7 @@
 
             <div class="col-lg-4 py-5">
                 <div class="position-sticky" style="top: 220px;">
-                    <div class="bg-primary text-white p-3 mb-3">
+                    <div class="bg-cta text-white p-3 mb-3">
                         <div class="d-flex justify-content-center gap-2 align-items-center">
                             <div>
                                 <div class="fw-bold">All Inclusive cost</div>
@@ -349,10 +349,10 @@
                             </tbody>
                         </table>
 
-                        <a class="btn bg-white text-primary w-100" href="{{ route('book-trip') }}">BOOK NOW</a>
+                        <a class="btn bg-white text-cta w-100" href="{{ route('book-trip') }}">BOOK NOW</a>
                     </div>
 
-                    <form method="post" action="{{ route('book-a-call') }}" class="bg-primary text-white p-3 mb-3">
+                    <form method="post" action="{{ route('book-a-call') }}" class="bg-cta text-white p-3 mb-3">
                         @csrf
                         <div class="fw-bold mb-4">Send us your queries or requests</div>
 
@@ -403,10 +403,10 @@
                             Your information will never be shared with anyone outside our company
                         </div>
 
-                        <button type="submit" class="btn bg-white text-primary w-100">Enquire Now</button>
+                        <button type="submit" class="btn bg-white text-cta w-100">Enquire Now</button>
                     </form>
 
-                    <div class="bg-primary text-white p-3 mb-3">
+                    <div class="bg-cta text-white p-3 mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>We Accept</div>
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
@@ -428,7 +428,7 @@
 
                     </div>
 
-                    <div class="bg-primary text-white p-3 mb-3">
+                    <div class="bg-cta text-white p-3 mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>Contact Us</div>
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
@@ -443,14 +443,14 @@
                         <hr>
 
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item bg-primary text-white">
+                            <li class="list-group-item bg-cta text-white">
                                 Speak to one of our travel consultants
                             </li>
-                            <li class="list-group-item bg-primary text-white">
+                            <li class="list-group-item bg-cta text-white">
                                 <i class="fas fa-phone me-2"></i>
                                 Call Us (24/7) : +977- 12345678
                             </li>
-                            <li class="list-group-item bg-primary text-white">
+                            <li class="list-group-item bg-cta text-white">
                                 <i class="fab fa-whatsapp me-2"></i>
                                 WhatsApp (24/7) : +977- 12345678
                             </li>

@@ -36,6 +36,11 @@ h3 {
     color: var(--brand-color);
 }
 
+main a {
+    text-decoration: underline;
+    color: #000;
+}
+
 .btn {
     font-family: "Poppins", serif;
     font-weight: 700;
@@ -95,12 +100,20 @@ h3 {
     background-color: #fcfbfb !important;
 }
 
+.bg-cta {
+    background-color: var(--brand-secondary);
+}
+
 .text-muted {
     color: #777777 !important;
 }
 
 .text-primary {
     color: var(--brand-color) !important;
+}
+
+.text-cta {
+    color: var(--brand-secondary) !important;
 }
 
 .text-success {
@@ -231,10 +244,11 @@ a {
     text-align: center;
     padding: 0.7rem 1.2rem;
     font-weight: bold;
-    background-color: rgba(0, 134, 5, 0.4);
+    background-color: rgba(0, 123, 132, 0.4);
+    color: white;
+    border: 1px solid rgba(0, 123, 132, 0.4);
     backdrop-filter: blur(20px);
     box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.4) inset;
-    color: white;
 }
 
 /* Navbar CSS */

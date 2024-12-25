@@ -21,7 +21,7 @@
 @endsection
 
 @section('content')
-    <div style="max-width: 900px;" class="mx-auto">
+    <div style="max-width: 900px;" class="mx-auto py-lg-5 my-5">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">
@@ -36,7 +36,7 @@
             <div class="step" id="step1">
                 <div class="container">
                     <div class="row my-5 brand-shadow-lg">
-                        <div class="col-md-6 bg-primary p-3 p-md-5">
+                        <div class="col-md-6 bg-cta p-3 p-md-5">
                             <div class="text-center mb-4">
                                 <a href="{{ route('home') }}">
                                     <img src="{{ asset('logo-white.png') }}" height="50" width="auto"
