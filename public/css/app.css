@@ -10,6 +10,19 @@ html body {
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: 400;
+    margin-top: 178px;
+}
+
+@media screen and (min-width: 426px) {
+    html body {
+        margin-top: 145px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    html body {
+        margin-top: 84px;
+    }
 }
 
 h1,
@@ -112,6 +125,8 @@ a {
 
 .dropdown-menu {
     border-radius: 0;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .dropdown-item {
@@ -225,6 +240,13 @@ a {
 }
 
 /* Navbar CSS */
+#mainNavbar #navbarNav {
+    background-color: rgba(2, 93, 100, 0.3);
+    border-top: 1px solid rgba(119, 119, 119, 0.47);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
 #mainNavbar
     .navbar
     .navbar-collapse

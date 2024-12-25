@@ -1,37 +1,39 @@
-<div id="mainNavbar">
+<div id="mainNavbar" class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark py-0">
         <div class="d-block w-100">
-            <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2">
-                <div class="ms-auto d-flex flex-wrap align-items-center gap-2 gap-md-4">
-                    <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-uppercase">Join Groups</a>
-                    <a href="https://api.whatsapp.com/send?phone=9779802342080"
-                        class="d-inline-flex align-items-center gap-1 text-dark"><img
-                            src="{{ asset('images/ic_outline-whatsapp.png') }}" alt="whatsapp" width="24"
-                            height="24">
-                        +977-9802342080</a>
+            <div class="bg-white">
+                <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2 ">
+                    <div class="ms-auto d-flex flex-wrap align-items-center gap-2 gap-md-4">
+                        <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-uppercase">Join Groups</a>
+                        <a href="https://api.whatsapp.com/send?phone=9779802342080"
+                            class="d-inline-flex align-items-center gap-1 text-dark"><img
+                                src="{{ asset('images/ic_outline-whatsapp.png') }}" alt="whatsapp" width="24"
+                                height="24">
+                            +977-9802342080</a>
 
-                    <div class="d-inline-flex gap-2 gap-md-4">
-                        <a href="{{ route('deals') }}" class="btn btn-primary blink-button">DEALS</a>
-                        <a href="{{ route('book-trip') }}" class="btn btn-primary">Pay Online</a>
+                        <div class="d-inline-flex gap-2 gap-md-4">
+                            <a href="{{ route('deals') }}" class="btn btn-primary blink-button">DEALS</a>
+                            <a href="{{ route('book-trip') }}" class="btn btn-primary">Pay Online</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="border-bottom w-100 my-2 my-lg-0 d-lg-none"></div>
+                    <div class="border-bottom w-100 my-2 my-lg-0 d-lg-none"></div>
 
-                <div class="d-flex justify-content-between align-items-center">
-                    <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ asset('logo.png') }}" alt="hiking nepal logo" width="208" height="auto">
-                    </a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a class="navbar-brand" href="{{ route('home') }}">
+                            <img src="{{ asset('logo.png') }}" alt="hiking nepal logo" width="208" height="auto">
+                        </a>
 
-                    <button class="navbar-toggler text-white bg-primary" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                        <button class="navbar-toggler text-white bg-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse bg-primary w-100" id="navbarNav">
+            <div class="collapse navbar-collapse w-100" id="navbarNav">
                 <div class="container">
                     <ul class="navbar-nav">
                         <li class="nav-item">
