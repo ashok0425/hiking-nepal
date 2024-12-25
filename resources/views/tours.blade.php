@@ -54,7 +54,8 @@
         </div>
     </section>
 
-    <nav class="navbar navbar-expand-lg bg-body-white brand-shadow fw-bold ">
+    <nav class="navbar navbar-expand-lg bg-body-white brand-shadow fw-bold bg-white position-sticky z-1"
+        style="top: 138px;">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -304,154 +305,159 @@
             </div>
 
             <div class="col-lg-4 py-5">
-
-                <div class="bg-primary text-white p-3 mb-3">
-                    <div class="d-flex justify-content-center gap-2 align-items-center">
-                        <div>
-                            <div class="fw-bold">All Inclusive cost</div>
-                            <div class="fw-bold fs-5">
-                                {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
+                <div class="position-sticky" style="top: 200px;">
+                    <div class="bg-primary text-white p-3 mb-3">
+                        <div class="d-flex justify-content-center gap-2 align-items-center">
+                            <div>
+                                <div class="fw-bold">All Inclusive cost</div>
+                                <div class="fw-bold fs-5">
+                                    {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
+                                </div>
                             </div>
+                            <img src="{{ asset('images/sale.png') }}" alt="sale" width="120" height="120">
                         </div>
-                        <img src="{{ asset('images/sale.png') }}" alt="sale" width="120" height="120">
+
+                        <table class="table table-bordered mb-3">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">1 person</th>
+                                    <th class="text-center">2-7 person</th>
+                                    <th class="text-center">8+ person</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">
+                                        <div class="fw-bold">
+                                            {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                        </div>
+                                        <small class="text-muted">Partial Pay</small>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="fw-bold">
+                                            {{ $tourPackage->sale_price_two_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_two_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                        </div>
+                                        <small class="text-muted">Partial Pay</small>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="fw-bold">
+                                            {{ $tourPackage->sale_price_eight_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_eight_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                        </div>
+                                        <small class="text-muted">Partial Pay</small>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <a class="btn bg-white text-primary w-100" href="{{ route('book-trip') }}">BOOK NOW</a>
                     </div>
 
-                    <table class="table table-bordered mb-3">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="text-center">1 person</th>
-                                <th class="text-center">2-7 person</th>
-                                <th class="text-center">8+ person</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center">
-                                    <div class="fw-bold">
-                                        {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
-                                    </div>
-                                    <small class="text-muted">Partial Pay</small>
-                                </td>
-                                <td class="text-center">
-                                    <div class="fw-bold">
-                                        {{ $tourPackage->sale_price_two_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_two_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
-                                    </div>
-                                    <small class="text-muted">Partial Pay</small>
-                                </td>
-                                <td class="text-center">
-                                    <div class="fw-bold">
-                                        {{ $tourPackage->sale_price_eight_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_eight_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
-                                    </div>
-                                    <small class="text-muted">Partial Pay</small>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <form method="post" action="{{ route('book-a-call') }}" class="bg-primary text-white p-3 mb-3">
+                        @csrf
+                        <div class="fw-bold mb-4">Send us your queries or requests</div>
 
-                    <a class="btn bg-white text-primary w-100" href="{{ route('book-trip') }}">BOOK NOW</a>
+                        <div class="mb-3">
+                            <input type="text" class="form-control @error('firstName') is-invalid @enderror"
+                                id="firstName" name="firstName" value="{{ old('firstName') }}"
+                                placeholder="Enter First Name" required>
+                            @error('firstName')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control @error('lastName') is-invalid @enderror"
+                                id="lastName" name="lastName" value="{{ old('lastName') }}"
+                                placeholder="Enter Last Name" required>
+                            @error('lastName')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                id="email" name="email" value="{{ old('email') }}"
+                                placeholder="Enter Email Address" required>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="tel" class="form-control @error('phone') is-invalid @enderror"
+                                id="phone" name="phone" value="{{ old('phone') }}"
+                                placeholder="Enter Phone Number" required>
+                            @error('phone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea class="form-control @error('comments') is-invalid @enderror" id="message" name="comments" rows="4"
+                                placeholder="Enter Your Message" required>{{ old('comments') }}</textarea>
+                            @error('comments')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3 small fw-light">
+                            Your information will never be shared with anyone outside our company
+                        </div>
+
+                        <button type="submit" class="btn bg-white text-primary w-100">Enquire Now</button>
+                    </form>
+
+                    <div class="bg-primary text-white p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>We Accept</div>
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 20.5C2.45 20.5 1.97933 20.3043 1.588 19.913C1.19667 19.5217 1.00067 19.0507 1 18.5V7.5H3V18.5H20V20.5H3ZM7 16.5C6.45 16.5 5.97933 16.3043 5.588 15.913C5.19667 15.5217 5.00067 15.0507 5 14.5V6.5C5 5.95 5.196 5.47933 5.588 5.088C5.98 4.69667 6.45067 4.50067 7 4.5H21C21.55 4.5 22.021 4.696 22.413 5.088C22.805 5.48 23.0007 5.95067 23 6.5V14.5C23 15.05 22.8043 15.521 22.413 15.913C22.0217 16.305 21.5507 16.5007 21 16.5H7ZM9 14.5C9 13.95 8.80433 13.4793 8.413 13.088C8.02167 12.6967 7.55067 12.5007 7 12.5V14.5H9ZM19 14.5H21V12.5C20.45 12.5 19.9793 12.696 19.588 13.088C19.1967 13.48 19.0007 13.9507 19 14.5ZM14 13.5C14.8333 13.5 15.5417 13.2083 16.125 12.625C16.7083 12.0417 17 11.3333 17 10.5C17 9.66667 16.7083 8.95833 16.125 8.375C15.5417 7.79167 14.8333 7.5 14 7.5C13.1667 7.5 12.4583 7.79167 11.875 8.375C11.2917 8.95833 11 9.66667 11 10.5C11 11.3333 11.2917 12.0417 11.875 12.625C12.4583 13.2083 13.1667 13.5 14 13.5ZM7 8.5C7.55 8.5 8.021 8.30433 8.413 7.913C8.805 7.52167 9.00067 7.05067 9 6.5H7V8.5ZM21 8.5V6.5H19C19 7.05 19.196 7.521 19.588 7.913C19.98 8.305 20.4507 8.50067 21 8.5Z"
+                                    fill="white" />
+                            </svg>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex gap-2 justify-content-between align-items-center w-100 px-3">
+                            <img src="{{ asset('images/pay_visa.png') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/pay_mastercard.png') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/pay_unionpay.png') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/pay_ammex.png') }}" alt="ammex" width="60">
+                        </div>
+
+                    </div>
+
+                    <div class="bg-primary text-white p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>Contact Us</div>
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M4.285 8.844C3.70091 9.00127 3.18497 9.34674 2.81708 9.82689C2.44919 10.307 2.24987 10.8951 2.25 11.5V14.5C2.25 15.2293 2.53973 15.9288 3.05546 16.4445C3.57118 16.9603 4.27065 17.25 5 17.25H7.5C7.69891 17.25 7.88968 17.171 8.03033 17.0303C8.17098 16.8897 8.25 16.6989 8.25 16.5V9.5C8.25 9.30109 8.17098 9.11032 8.03033 8.96967C7.88968 8.82902 7.69891 8.75 7.5 8.75H5.815C6.244 6.28 8.759 4.25 12 4.25C15.241 4.25 17.756 6.28 18.185 8.75H16.5C16.3011 8.75 16.1103 8.82902 15.9697 8.96967C15.829 9.11032 15.75 9.30109 15.75 9.5V16.5C15.75 16.914 16.086 17.25 16.5 17.25H18.163C17.9942 17.9619 17.59 18.596 17.016 19.0497C16.442 19.5034 15.7317 19.7502 15 19.75H13.855C13.6809 19.3197 13.3627 18.9634 12.9547 18.7421C12.5467 18.5207 12.0745 18.4482 11.6189 18.5368C11.1633 18.6255 10.7528 18.8698 10.4576 19.228C10.1624 19.5862 10.001 20.0359 10.001 20.5C10.001 20.9641 10.1624 21.4138 10.4576 21.772C10.7528 22.1302 11.1633 22.3745 11.6189 22.4632C12.0745 22.5518 12.5467 22.4793 12.9547 22.2579C13.3627 22.0366 13.6809 21.6803 13.855 21.25H15C17.4 21.25 19.384 19.47 19.705 17.159C20.2914 17.0035 20.81 16.6583 21.1799 16.1774C21.5497 15.6965 21.7502 15.1067 21.75 14.5V11.5C21.7501 10.8951 21.5508 10.307 21.1829 9.82689C20.815 9.34674 20.2991 9.00127 19.715 8.844C19.333 5.34 15.926 2.75 12 2.75C8.074 2.75 4.667 5.34 4.285 8.844Z"
+                                    fill="white" />
+                            </svg>
+
+                        </div>
+
+                        <hr>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-primary text-white">
+                                Speak to one of our travel consultants
+                            </li>
+                            <li class="list-group-item bg-primary text-white">
+                                <i class="fas fa-phone me-2"></i>
+                                Call Us (24/7) : +977- 12345678
+                            </li>
+                            <li class="list-group-item bg-primary text-white">
+                                <i class="fab fa-whatsapp me-2"></i>
+                                WhatsApp (24/7) : +977- 12345678
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <form method="post" action="{{ route('book-a-call') }}" class="bg-primary text-white p-3 mb-3">
-                    @csrf
-                    <div class="fw-bold mb-4">Send us your queries or requests</div>
-
-                    <div class="mb-3">
-                        <input type="text" class="form-control @error('firstName') is-invalid @enderror"
-                            id="firstName" name="firstName" value="{{ old('firstName') }}"
-                            placeholder="Enter First Name" required>
-                        @error('firstName')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control @error('lastName') is-invalid @enderror" id="lastName"
-                            name="lastName" value="{{ old('lastName') }}" placeholder="Enter Last Name" required>
-                        @error('lastName')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                            name="email" value="{{ old('email') }}" placeholder="Enter Email Address" required>
-                        @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <input type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone"
-                            name="phone" value="{{ old('phone') }}" placeholder="Enter Phone Number" required>
-                        @error('phone')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <textarea class="form-control @error('comments') is-invalid @enderror" id="message" name="comments" rows="4"
-                            placeholder="Enter Your Message" required>{{ old('comments') }}</textarea>
-                        @error('comments')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3 small fw-light">
-                        Your information will never be shared with anyone outside our company
-                    </div>
-
-                    <button type="submit" class="btn bg-white text-primary w-100">Enquire Now</button>
-                </form>
-
-                <div class="bg-primary text-white p-3 mb-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>We Accept</div>
-                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M3 20.5C2.45 20.5 1.97933 20.3043 1.588 19.913C1.19667 19.5217 1.00067 19.0507 1 18.5V7.5H3V18.5H20V20.5H3ZM7 16.5C6.45 16.5 5.97933 16.3043 5.588 15.913C5.19667 15.5217 5.00067 15.0507 5 14.5V6.5C5 5.95 5.196 5.47933 5.588 5.088C5.98 4.69667 6.45067 4.50067 7 4.5H21C21.55 4.5 22.021 4.696 22.413 5.088C22.805 5.48 23.0007 5.95067 23 6.5V14.5C23 15.05 22.8043 15.521 22.413 15.913C22.0217 16.305 21.5507 16.5007 21 16.5H7ZM9 14.5C9 13.95 8.80433 13.4793 8.413 13.088C8.02167 12.6967 7.55067 12.5007 7 12.5V14.5H9ZM19 14.5H21V12.5C20.45 12.5 19.9793 12.696 19.588 13.088C19.1967 13.48 19.0007 13.9507 19 14.5ZM14 13.5C14.8333 13.5 15.5417 13.2083 16.125 12.625C16.7083 12.0417 17 11.3333 17 10.5C17 9.66667 16.7083 8.95833 16.125 8.375C15.5417 7.79167 14.8333 7.5 14 7.5C13.1667 7.5 12.4583 7.79167 11.875 8.375C11.2917 8.95833 11 9.66667 11 10.5C11 11.3333 11.2917 12.0417 11.875 12.625C12.4583 13.2083 13.1667 13.5 14 13.5ZM7 8.5C7.55 8.5 8.021 8.30433 8.413 7.913C8.805 7.52167 9.00067 7.05067 9 6.5H7V8.5ZM21 8.5V6.5H19C19 7.05 19.196 7.521 19.588 7.913C19.98 8.305 20.4507 8.50067 21 8.5Z"
-                                fill="white" />
-                        </svg>
-                    </div>
-
-                    <hr>
-
-                    <div class="d-flex gap-2 justify-content-between align-items-center w-100 px-3">
-                        <img src="{{ asset('images/pay_visa.png') }}" alt="ammex" width="60">
-                        <img src="{{ asset('images/pay_mastercard.png') }}" alt="ammex" width="60">
-                        <img src="{{ asset('images/pay_unionpay.png') }}" alt="ammex" width="60">
-                        <img src="{{ asset('images/pay_ammex.png') }}" alt="ammex" width="60">
-                    </div>
-
-                </div>
-
-                <div class="bg-primary text-white p-3 mb-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>Contact Us</div>
-                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.285 8.844C3.70091 9.00127 3.18497 9.34674 2.81708 9.82689C2.44919 10.307 2.24987 10.8951 2.25 11.5V14.5C2.25 15.2293 2.53973 15.9288 3.05546 16.4445C3.57118 16.9603 4.27065 17.25 5 17.25H7.5C7.69891 17.25 7.88968 17.171 8.03033 17.0303C8.17098 16.8897 8.25 16.6989 8.25 16.5V9.5C8.25 9.30109 8.17098 9.11032 8.03033 8.96967C7.88968 8.82902 7.69891 8.75 7.5 8.75H5.815C6.244 6.28 8.759 4.25 12 4.25C15.241 4.25 17.756 6.28 18.185 8.75H16.5C16.3011 8.75 16.1103 8.82902 15.9697 8.96967C15.829 9.11032 15.75 9.30109 15.75 9.5V16.5C15.75 16.914 16.086 17.25 16.5 17.25H18.163C17.9942 17.9619 17.59 18.596 17.016 19.0497C16.442 19.5034 15.7317 19.7502 15 19.75H13.855C13.6809 19.3197 13.3627 18.9634 12.9547 18.7421C12.5467 18.5207 12.0745 18.4482 11.6189 18.5368C11.1633 18.6255 10.7528 18.8698 10.4576 19.228C10.1624 19.5862 10.001 20.0359 10.001 20.5C10.001 20.9641 10.1624 21.4138 10.4576 21.772C10.7528 22.1302 11.1633 22.3745 11.6189 22.4632C12.0745 22.5518 12.5467 22.4793 12.9547 22.2579C13.3627 22.0366 13.6809 21.6803 13.855 21.25H15C17.4 21.25 19.384 19.47 19.705 17.159C20.2914 17.0035 20.81 16.6583 21.1799 16.1774C21.5497 15.6965 21.7502 15.1067 21.75 14.5V11.5C21.7501 10.8951 21.5508 10.307 21.1829 9.82689C20.815 9.34674 20.2991 9.00127 19.715 8.844C19.333 5.34 15.926 2.75 12 2.75C8.074 2.75 4.667 5.34 4.285 8.844Z"
-                                fill="white" />
-                        </svg>
-
-                    </div>
-
-                    <hr>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-primary text-white">
-                            Speak to one of our travel consultants
-                        </li>
-                        <li class="list-group-item bg-primary text-white">
-                            <i class="fas fa-phone me-2"></i>
-                            Call Us (24/7) : +977- 12345678
-                        </li>
-                        <li class="list-group-item bg-primary text-white">
-                            <i class="fab fa-whatsapp me-2"></i>
-                            WhatsApp (24/7) : +977- 12345678
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </main>
