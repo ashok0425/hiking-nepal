@@ -31,8 +31,7 @@
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 700px;">
         <img src="{{ $tourPackage->galleryImages()[0] ?? asset('images/tour.jpg') }}" alt="{{ $tourPackage->title }}"
-            class="w-100 position-absolute start-0 top-0"
-            style="height: 700px; object-fit:cover; filter: brightness(50%) contrast(110%);">
+            class="w-100 position-absolute start-0 top-0 tour-hero-image">
         <div class="container">
             <h1 class="mb-3 z-1 position-relative text-uppercase text-white text-center">{{ $tourPackage->title }} <span
                     class="fs-4 fw-normal">{{ $tourPackage->tour_duration }}

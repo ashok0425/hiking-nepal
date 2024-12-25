@@ -12,7 +12,7 @@
             <div><i class="fa-solid fa-clock text-primary me-1"></i> {{ strtoupper($package->tour_duration) }}</div>
             <div class="d-inline-flex align-items-center gap-2">
                 @if ($package->price == 0)
-                    <span class="text-primary fs-5 fw-bold">Price on Request</span>
+                    <span class="text-success fs-5 fw-bold">Price on Request</span>
                 @elseif ($package->sale_price_per_person)
                     @if ($package->sale_price_per_person == $package->price)
                         <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>

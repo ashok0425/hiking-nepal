@@ -725,12 +725,6 @@ footer li {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    filter: brightness(80%) contrast(110%);
-    transition: transform 0.3s ease;
-}
-
-.d-card:hover img {
-    transform: scale(1.1);
 }
 
 .d-card-heading {
@@ -823,4 +817,30 @@ footer li {
 
 .review-card {
     height: 410px;
+}
+
+.tour-hero-image {
+    height: 700px;
+    object-fit: cover;
+    filter: brightness(50%) contrast(110%);
+    transform-origin: center;
+    animation: slowZoom 20s infinite alternate;
+}
+
+@keyframes slowZoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
+}
+
+.hover-scale {
+    filter: brightness(80%) contrast(110%);
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.1);
 }
