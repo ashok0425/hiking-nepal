@@ -57,8 +57,9 @@ h3 {
     color: #fff;
     background-color: var(--brand-secondary);
 }
-.btn-primary:hover {
-    background-color: #025b61;
+.btn-cta:hover {
+    color: #fff;
+    background-color: #0f3157;
 }
 
 .blink-button {
@@ -70,7 +71,7 @@ h3 {
         opacity: 1;
     }
     50% {
-        opacity: 0;
+        opacity: 0.1;
     }
     100% {
         opacity: 1;
