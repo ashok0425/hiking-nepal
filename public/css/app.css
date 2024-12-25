@@ -50,7 +50,15 @@ h3 {
 }
 
 .btn-primary:hover {
-    background-color: #0d2947;
+    background-color: #025b61;
+}
+
+.btn-cta {
+    color: #fff;
+    background-color: var(--brand-secondary);
+}
+.btn-primary:hover {
+    background-color: #025b61;
 }
 
 .blink-button {

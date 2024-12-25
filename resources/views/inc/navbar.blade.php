@@ -13,7 +13,7 @@
 
                         <div class="d-inline-flex gap-3 gap-md-5">
                             <a href="{{ route('deals') }}" class="btn btn-success blink-button">DEALS</a>
-                            <a href="{{ route('book-trip') }}" class="btn btn-primary">Pay Online</a>
+                            <a href="{{ route('book-trip') }}" class="btn btn-cta">Pay Online</a>
                         </div>
                     </div>
 
