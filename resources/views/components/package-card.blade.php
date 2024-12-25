@@ -1,6 +1,6 @@
 @props(['package'])
 
-<div class="card brand-shadow">
+<div class="card brand-shadow h-100">
     <img src="{{ !empty($package->galleryImages()) ? $package->galleryImages()[0] : asset('images/card-img.png') }}"
         class="card-img-top"
         style="height: 300px; background-color: #f8f9fa; object-fit: cover; object-position: center center;"

@@ -1,7 +1,7 @@
 @props(['review'])
 
 <div class="p-3">
-    <div class="brand-shadow p-4 p-lg-5">
+    <div class="brand-shadow p-4 p-lg-5 review-card">
         <div class="mb-4 d-flex gap-3 align-items-center">
             @if ($review->user_photo)
                 <img src="{{ $review->user_photo }}" alt="user avatar" width="95" height="95" class="rounded-circle">

@@ -375,7 +375,8 @@ footer .footer-container {
             rgba(255, 255, 255, 0) 100%
         ),
         url("/images/footer-cover.png");
-    background-size: 100% auto;
+    /* background-size: 100% auto; */
+    background-size: cover;
     background-position: top center;
     background-repeat: repeat-x;
 }
@@ -393,7 +394,17 @@ footer li {
     footer .footer-container {
         min-height: 600px;
         padding: 150px 0;
-        background-size: contain;
+        /* background-size: contain; */
+        background-size: cover;
+    }
+}
+
+@media (max-width: 426px) {
+    footer .footer-container {
+        min-height: 600px;
+        padding: 150px 0;
+        background-size: fill;
+        background-position: 0 0;
     }
 }
 
@@ -791,4 +802,10 @@ footer li {
 
 .tour-content h3 {
     margin-top: 15px;
+}
+
+/* review card */
+
+.review-card {
+    height: 410px;
 }
