@@ -94,7 +94,7 @@
                                 <div class="fw-bold mb-1">
                                     <span class="text-success">$ {{ number_format($departure->package->price) }}</span>
                                     <del class="text-muted small fw-light">$
-                                        {{ number_format($departure->package->price) }}</del>
+                                        {{ number_format($departure->package->price + 100) }}</del>
                                 </div>
                                 <div class="small text-muted">
                                     <a href="{{ route('tours', $departure->package->slug) }}" class="btn btn-primary">
