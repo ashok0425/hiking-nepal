@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
         perMove: 1,
         gap: "2rem",
         pagination: false,
-        arrows: false,
         breakpoints: {
             992: {
                 perPage: 2,
@@ -15,17 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         },
     });
-    document
-        .querySelector("#popularPackagesPrevSlide")
-        .addEventListener("click", () => {
-            popularPackages.go("<");
-        });
-
-    document
-        .querySelector("#popularPackagesNextSlide")
-        .addEventListener("click", () => {
-            popularPackages.go(">");
-        });
     popularPackages.mount();
 
     var discountedPackages = new Splide("#discountedPackages", {
@@ -43,17 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         },
     });
-    document
-        .querySelector("#discountedPackagesPrevSlide")
-        .addEventListener("click", () => {
-            discountedPackages.go("<");
-        });
-
-    document
-        .querySelector("#discountedPackagesNextSlide")
-        .addEventListener("click", () => {
-            discountedPackages.go(">");
-        });
 
     discountedPackages.mount();
 

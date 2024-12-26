@@ -881,3 +881,35 @@ footer li {
 .hover-scale:hover {
     transform: scale(1.1);
 }
+
+/* Splide */
+
+.splide__arrows button {
+    background-color: var(--brand-color);
+    color: #fff;
+    opacity: 1;
+    border-radius: 5px;
+}
+
+.splide__arrows button:hover {
+    background-color: #025b61;
+    opacity: 1 !important;
+}
+
+.splide__arrows button svg {
+    fill: #fff;
+}
+
+.splide__arrow {
+    width: 60px;
+    height: 60px;
+    top: 45%;
+}
+
+.splide__arrow--prev {
+    left: -15px;
+}
+
+.splide__arrow--next {
+    right: -15px;
+}

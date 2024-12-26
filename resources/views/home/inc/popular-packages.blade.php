@@ -1,4 +1,4 @@
-<section class="bg-light py-0 py-md-5">
+<section class="bg-light">
     <div class="container py-5 mt-5">
 
         <div class="mx-auto" style="max-width: 800px;">
@@ -19,15 +19,6 @@
                     @endforeach
                 </ul>
             </div>
-        </div>
-
-        <div class="d-flex gap-2 justify-content-end mb-4">
-            <button id="popularPackagesPrevSlide" class="btn text-primary">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <button id="popularPackagesNextSlide" class="btn text-primary">
-                <i class="fas fa-arrow-right"></i>
-            </button>
         </div>
     </div>
 </section>
