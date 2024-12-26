@@ -34,13 +34,6 @@ class HomeController extends Controller
                 ->get();
         });
 
-        $places = Place::where('status', 'active')
-            ->withCount(['packages' => function ($query) {
-                $query->where('status', 'published');
-            }])
-            ->having('packages_count', '>', 0)
-            ->get();
-
         $month = $request->get('month', Carbon::now()->month);
         $year = $request->get('year', Carbon::now()->year);
 
@@ -79,7 +72,6 @@ class HomeController extends Controller
         return view('home.index', compact(
             'featuredPackages',
             'regularPackages',
-            'places',
             'departures',
             'month',
             'year',

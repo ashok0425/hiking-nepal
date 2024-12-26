@@ -25,10 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
 
-        View::composer('layouts.website', function ($view) {
+        View::composer(['layouts.website', 'home.index'], function ($view) {
             // Get all published packages with their relationships
             $packages = Package::with([
-                'destination:id,name,slug',
+                'destination:id,name,slug,cover',
                 'categories:id,name,slug',
                 'activities:id,name,slug',
             ])
@@ -85,6 +85,8 @@ class AppServiceProvider extends ServiceProvider
                     return [
                         'name' => $destination->name,
                         'slug' => $destination->slug,
+                        'cover' => $destination->cover,
+                        'packages_count' => $destinationPackages->count(),
                         'categories' => $categories->toArray(),
                         'activities' => $activities->toArray(),
                     ];

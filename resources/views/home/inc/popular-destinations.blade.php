@@ -16,8 +16,8 @@
                 </div>
             </div>
 
-            @foreach ($places as $place)
-                <x-place-card :place="$place" />
+            @foreach ($destinations as $destination)
+                <x-place-card :destination="$destination" />
             @endforeach
         </div>
 

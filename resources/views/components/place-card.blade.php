@@ -1,13 +1,14 @@
-@props(['place'])
+@props(['destination'])
 
-<a href="{{ route('deals', ['destination' => $place->destination->slug, 'place' => $place->slug]) }}">
+<a href="{{ route('dynamic-page', ['slug' => $destination['slug']]) }}">
     <div class="d-card">
-        <img src="{{ $place->cover ?? asset('images/dest-1.jpg') }}" alt="{{ $place->name }} image"
+        <img src="{{ $destination['cover'] ?? asset('images/dest-1.jpg') }}" alt="{{ $destination['name'] }} image"
             class="img-fluid hover-scale">
 
         <div class="d-card-body">
-            <div class="d-card-heading">{{ $place->name }}</div>
-            <div class="d-card-meta">{{ $place->packages_count }} Trips</div>
+            <div class="d-card-heading">{{ $destination['name'] }}</div>
+            <div class="d-card-meta">{{ $destination['packages_count'] }}
+                {{ $destination['packages_count'] == 1 ? 'Trip' : 'Trips' }}</div>
         </div>
     </div>
 </a>

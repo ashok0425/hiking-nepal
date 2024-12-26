@@ -25,7 +25,7 @@
 
 @section('content')
     @include('home.inc.hero')
-    @include('home.inc.popular-destinations')
+    @include('home.inc.popular-destinations', ['destinations' => $destinations])
     @include('home.inc.popular-packages')
     @include('home.inc.departure')
     @include('home.inc.discounted-packages')
