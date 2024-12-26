@@ -874,7 +874,7 @@ footer li {
 
 .hover-scale {
     filter: brightness(80%) contrast(110%);
-    transition: transform 0.3s ease;
+    transition: transform 1s ease;
 }
 
 .hover-scale:hover {
