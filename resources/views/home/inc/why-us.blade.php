@@ -22,7 +22,8 @@
                         with the locals during the trek for cultural and linguistic experience, traditional and
                         understanding of the place.</p>
 
-                    <a href="#" class="btn btn-primary">Explore <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('deals') }}" class="btn btn-primary">Explore <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
