@@ -762,24 +762,30 @@ footer li {
     color: #fff;
     background-color: var(--brand-color);
     position: absolute;
-    padding: 4px 8px;
+    padding: 10px 20px;
     font-size: 14px;
+    font-weight: 700;
     top: 0;
     right: 0;
+    border-bottom-left-radius: 5px;
+}
+
+.popularDestinationContainer {
+    display: flex;
+    overflow-x: scroll;
+    gap: 2em;
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    padding: 10px 0;
+}
+
+.popularDestinationContainer::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari/Opera */
 }
 
 .popularDestinationHead {
-    height: 250px;
-    width: 250px;
-    position: absolute;
-    z-index: 1;
-    background-color: #fff;
-    top: 45px;
-    left: 45px;
-}
-
-.popularDestinationSliderContainer {
-    position: relative;
+    height: 317px;
+    width: 312px;
 }
 
 /*  */

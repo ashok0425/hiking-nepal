@@ -5,37 +5,21 @@
                 <h2>The best place you must visit</h2>
                 <p class="mb-0">A wonderful serenity to have in your bucket list</p>
             </div>
-
-            <div class="d-flex gap-2 justify-content-end mb-4">
-                <button id="popularDestinationPrevSlide" class="btn text-primary">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-                <button id="popularDestinationNextSlide" class="btn text-primary">
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
         </div>
 
-        <div class="popularDestinationSliderContainer">
+        <div class="popularDestinationContainer">
             <div
-                class="popularDestinationHead text-primary brand-shadow d-none d-md-flex justify-content-center align-items-center">
+                class="popularDestinationHead brand-shadow d-none d-md-flex justify-content-center align-items-center flex-shrink-0 ms-1">
                 <div class="text-center">
-                    <h3>Popular destination</h3>
-                    <p>A wonderful serenity has</p>
+                    <h4 class="text-primary">Popular <br> destination</h4>
+                    <p>Sorting out the destination</p>
                 </div>
             </div>
 
-            <div id="popularDestination" class="splide" aria-label="Popular destination">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        @foreach ($places as $place)
-                            <li class="splide__slide">
-                                <x-place-card :place="$place" />
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
+            @foreach ($places as $place)
+                <x-place-card :place="$place" />
+            @endforeach
         </div>
+
     </div>
 </section>
