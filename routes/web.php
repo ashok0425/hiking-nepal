@@ -1,6 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/dummy', function () {
+    Artisan::call('storage:link');
+
+    return response()->json(['msg' => 'ack']);
+});
 
 Route::get('/', App\Http\Controllers\HomeController::class)->name('home');
 Route::get('/deals', \App\Http\Controllers\DealController::class)->name('deals');
