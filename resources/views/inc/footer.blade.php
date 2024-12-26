@@ -70,30 +70,43 @@
                     </form>
 
                     <!-- Payment Icons -->
-                    <div class="payment-icons mt-3">
-                        Payment:
-                        <img src="{{ asset('images/visa.png') }}" alt="Visa" class="me-2" style="height: 20px;">
+                    <div class="payment-icons mt-4">
+                        <span class="me-2">Payment:</span>
+                        <img src="{{ asset('images/visa.png') }}" alt="Visa" class="me-2" style="height: 24px;">
                         <img src="{{ asset('images/paypal.png') }}" alt="PayPal" class="me-2"
                             style="height: 20px;">
-                        <img src="{{ asset('images/mastercard.png') }}" alt="Mastercard" class="me-2"
-                            style="height: 20px;">
+                        <img src="{{ asset('images/master-card.png') }}" alt="Mastercard" class="me-2"
+                            style="height: 24px;">
                         <img src="{{ asset('images/apple-pay.png') }}" alt="ApplePay" class="me-2"
-                            style="height: 20px;">
+                            style="height: 24px;">
                     </div>
                     <!-- Social Media Icons -->
-                    <div class="social-icons mt-3">
-                        <a href="https://www.facebook.com/hikingnepal" class="text-primary me-2" target="_blank"><i
-                                class="fab fa-facebook"></i></a>
-                        <a href="https://twitter.com/hikingnepal" class="text-primary me-2" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/hiking.nepal" class="text-primary me-2" target="_blank"><i
-                                class="fab fa-instagram"></i></a>
+                    <div class="social-icons mt-4">
+
+                        <a href="https://www.facebook.com/hikingnepal" class="text-primary me-2" target="_blank">
+                            <img src="{{ asset('images/Facebook.png') }}" alt="facebook" width="20" height="20">
+                        </a>
+                        <a href="https://twitter.com/hikingnepal" class="text-primary me-2" target="_blank">
+                            <img src="{{ asset('images/Twitter.png') }}" alt="twitter" width="20"
+                                height="20"></a>
+                        <a href="https://www.instagram.com/hiking.nepal" class="text-primary me-2" target="_blank">
+                            <img src="{{ asset('images/Instagram.png') }}" alt="instagram" width="20"
+                                height="20"></a>
                         <a href="https://www.linkedin.com/company/hiking-nepal" class="text-primary me-2"
-                            target="_blank"><i class="fab fa-linkedin"></i></a>
-                        {{-- <a href="https://www.youtube.com/hikingnepal" class="text-primary me-2" target="_blank"><i
-                                class="fab fa-youtube"></i></a> --}}
+                            target="_blank">
+                            <img src="{{ asset('images/Linkedin.png') }}" alt="linkedin" width="20"
+                                height="20"></a>
+                        <a href="#" class="text-primary me-2" target="_blank">
+                            <img src="{{ asset('images/Google.png') }}" alt="google" width="20"
+                                height="20"></a>
+                        <a href="#" class="text-primary me-2" target="_blank">
+                            <img src="{{ asset('images/Youtube.png') }}" alt="youtube" width="20"
+                                height="20"></a>
                         <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-primary me-2"
-                            target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            target="_blank">
+                            <img src="{{ asset('images/Whatsapp.png') }}" alt="whatsapp" width="20"
+                                height="20"></a>
+
                     </div>
                 </div>
             </div>
