@@ -20,14 +20,5 @@
                 </ul>
             </div>
         </div>
-
-        <div class="d-flex gap-2 justify-content-end mb-4">
-            <button id="discountedPackagesPrevSlide" class="btn text-primary">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <button id="discountedPackagesNextSlide" class="btn text-primary">
-                <i class="fas fa-arrow-right"></i>
-            </button>
-        </div>
     </div>
 </section>
