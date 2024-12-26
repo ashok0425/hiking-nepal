@@ -3,7 +3,7 @@
         <div class="d-md-flex justify-content-between">
             <div class="mb-2 mb-md-5">
                 <h2>The best place you must visit</h2>
-                <p class="mb-0">A wonderful serenity to have in ur bucket list</p>
+                <p class="mb-0">A wonderful serenity to have in your bucket list</p>
             </div>
 
             <div class="d-flex gap-2 justify-content-end mb-4">
