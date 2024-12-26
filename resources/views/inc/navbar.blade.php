@@ -4,7 +4,10 @@
             <div class="bg-white">
                 <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2">
                     <div class="ms-auto d-flex flex-wrap align-items-center gap-3 gap-md-5">
-                        <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-uppercase">Join Groups</a>
+                        <a href="https://api.whatsapp.com/send?phone=9779802342080"
+                            class="text-uppercase d-inline-flex align-items-center gap-2 text-decoration-underline"><img
+                                src="{{ asset('images/groups.png') }}" alt="groups" width="24" height="24">Join
+                            Groups</a>
                         <a href="https://api.whatsapp.com/send?phone=9779802342080"
                             class="d-inline-flex align-items-center gap-1 text-dark"><img
                                 src="{{ asset('images/ic_outline-whatsapp.png') }}" alt="whatsapp" width="24"
