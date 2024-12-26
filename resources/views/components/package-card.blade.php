@@ -27,6 +27,6 @@
             </div>
         </div>
         <p class="card-text">{!! Str::limit(strip_tags($package->overview), 100) !!}</p>
-        <a href="{{ route('tours', $package->slug) }}" class="btn btn-primary">More Details</a>
+        <a href="{{ route('tours', $package->slug) }}" class="btn btn-primary stretched-link">More Details</a>
     </div>
 </div>
