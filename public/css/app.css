@@ -853,6 +853,7 @@ footer li {
 
 .review-card {
     height: 410px;
+    overflow: hidden;
 }
 
 .tour-hero-image {
