@@ -11,12 +11,18 @@ html body {
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: 400;
-    margin-top: 133px;
+    margin-top: 78px;
 }
 
 @media screen and (max-width: 426px) {
     body {
         margin-top: 173px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        margin-top: 133px !important;
     }
 }
 
