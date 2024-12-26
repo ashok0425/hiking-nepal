@@ -21,7 +21,7 @@
 @endsection
 
 @section('content')
-    <div style="max-width: 900px;" class="mx-auto py-5 my-5">
+    <div style="max-width: 900px;" class="mx-auto py-md-5 my-5">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">

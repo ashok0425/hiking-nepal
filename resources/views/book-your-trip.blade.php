@@ -3,7 +3,7 @@
 @section('title', 'Hiking Nepal')
 
 @section('content')
-    <div class="py-5">
+    <div>
         <div class="container py-5 my-5" style="max-width: 960px;">
             @if (session('success'))
                 <div class="alert alert-success mb-4">
