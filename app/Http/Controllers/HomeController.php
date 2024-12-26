@@ -52,7 +52,8 @@ class HomeController extends Controller
                 $query->select('id', 'title', 'slug', 'tour_duration', 'price', 'status');
             }])
             ->whereHas('package', function ($query) {
-                $query->where('status', 'published');
+                $query->where('status', 'published')
+                    ->where('price', '>', 0);
             })
             ->select('id', 'package_id', 'start_date', 'end_date')
             ->inRandomOrder()

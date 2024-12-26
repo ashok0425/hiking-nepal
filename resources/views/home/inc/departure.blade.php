@@ -59,14 +59,14 @@
                         <tr>
                             <th scope="row">{{ $departure->package->title }}</th>
                             <td>
-                                <div class="fw-bold">{{ $departure->package->tour_duration ?? 'N/A' }}</div>
+                                <div class="fw-bold">{{ $departure->package->tour_duration ?? '-' }}</div>
                                 <div class="small text-muted">
                                     From {{ $departure->start_date->format('jS M') }} -
                                     {{ $departure->end_date->format('jS M') }}
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex gap-2">
+                                <div class="d-flex gap-2 mb-2">
                                     <div>
                                         <svg width="22" height="21" viewBox="0 0 22 21" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -77,12 +77,25 @@
                                     </div>
                                     <div>
                                         <div class="fw-bold">Guaranteed</div>
-                                        <div class="small text-muted">Limited seats left</div>
+                                        @php
+                                            $availableSeats = rand(5, 20);
+                                            $progressPercent = rand(40, 90);
+                                        @endphp
+                                        <div class="small text-muted">{{ $availableSeats }} seats left</div>
                                     </div>
+
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Success example"
+                                    aria-valuenow="{{ $progressPercent }}" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: {{ $progressPercent }}%"></div>
                                 </div>
                             </td>
                             <td>
-                                <div class="fw-bold mb-1">$ {{ number_format($departure->package->price) }}</div>
+                                <div class="fw-bold mb-1">
+                                    <span class="text-success">$ {{ number_format($departure->package->price) }}</span>
+                                    <del class="text-muted small fw-light">$
+                                        {{ number_format($departure->package->price) }}</del>
+                                </div>
                                 <div class="small text-muted">
                                     <a href="{{ route('tours', $departure->package->slug) }}" class="btn btn-primary">
                                         Join us <i class="fas fa-arrow-right"></i>

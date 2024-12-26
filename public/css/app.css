@@ -913,3 +913,9 @@ footer li {
 .splide__arrow--next {
     right: -15px;
 }
+
+/* progress */
+.progress {
+    border-radius: 0;
+    background-color: var(--brand-color);
+}
