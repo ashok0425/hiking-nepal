@@ -34,7 +34,12 @@
         </div>
     </section>
 
-    <section class="container py-5 my-5">
+    <div class="my-3 text-end container">
+        <button class="btn btn-primary" onclick="window.print()">Print</button>
+    </div>
+
+    <section class="container pb-5 my-5">
+
         <p>Welcome to book with Hiking Nepal Travel for your holiday trip. While booking with us, we kindly request you to
             read
             Booking procedure.
