@@ -21,6 +21,7 @@ class HomeController extends Controller
     {
         $featuredPackages = Cache::remember('featured_packages', now()->endOfDay(), function () {
             return Package::where('status', 'published')
+                ->where('price', '>', 0)
                 ->with('place', 'destination')
                 ->take(6)
                 ->get();
@@ -28,6 +29,7 @@ class HomeController extends Controller
 
         $regularPackages = Cache::remember('regular_packages', now()->endOfDay(), function () {
             return Package::where('status', 'published')
+                ->where('price', '>', 0)
                 ->with('place', 'destination')
                 ->inRandomOrder()
                 ->take(6)
