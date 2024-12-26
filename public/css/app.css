@@ -399,7 +399,7 @@ footer .footer-container {
             rgba(255, 255, 255, 0.4) 60%,
             rgba(255, 255, 255, 0) 100%
         ),
-        url("/images/footer-cover.png");
+        url("/images/footer-bg.png");
     /* background-size: 100% auto; */
     background-size: cover;
     background-position: top center;

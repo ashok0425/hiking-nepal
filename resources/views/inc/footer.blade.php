@@ -1,4 +1,4 @@
-<footer class="mt-5">
+<footer class="mt-5 bg-light">
     <div class="footer-container py-5 ">
         <div class="container" style="padding-top: 200px;">
             <div class="row g-3">
