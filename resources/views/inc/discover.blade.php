@@ -20,4 +20,12 @@
                 stars.</p>
         </div>
     </div>
+
+    <div class="text-center mt-5">
+        <a href="https://api.whatsapp.com/send?phone=9779802342080" target="_blank" rel="noopener"
+            class="btn btn-primary">
+            <img src="{{ asset('images/whatsapp.png') }}" alt="whatsapp" width="24" height="24" class="me-2">
+            Connect</a>
+    </div>
+
 </section>

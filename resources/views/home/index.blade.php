@@ -32,9 +32,15 @@
     @include('home.inc.achievement')
     @include('home.inc.why-us')
     @include('inc.testimonial')
-    @include('inc.faq')
+    <div class="bg-light">
+        @include('inc.faq')
+    </div>
     @include('home.inc.blog')
-    @include('inc.insta')
+
+    <div class="bg-light">
+        @include('inc.insta')
+    </div>
+
     @include('inc.discover')
 @endsection
 
