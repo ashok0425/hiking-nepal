@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="progress" role="progressbar" aria-label="Success example"
                                     aria-valuenow="{{ $progressPercent }}" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-success" style="width: {{ $progressPercent }}%"></div>
+                                    <div class="progress-bar bg-danger" style="width: {{ $progressPercent }}%"></div>
                                 </div>
                             </td>
                             <td>

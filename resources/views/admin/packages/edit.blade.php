@@ -293,12 +293,12 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs', 
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Regular Price</label>
+                                <label>Discounted Price</label>
                                 <input type="number" name="price" class="form-control"
                                     value="{{ old('price', $package->price) }}" step="0.01" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label>Sale Price (Per Person)</label>
+                                <label>Price (Per Person)</label>
                                 <input type="number" name="sale_price_per_person" class="form-control"
                                     value="{{ old('sale_price_per_person', $package->sale_price_per_person) }}"
                                     step="0.01" required>

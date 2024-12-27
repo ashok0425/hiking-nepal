@@ -24,7 +24,7 @@
     <div class="text-center mt-5">
         <a href="https://api.whatsapp.com/send?phone=9779802342080" target="_blank" rel="noopener"
             class="btn btn-primary">
-            <img src="{{ asset('images/whatsapp.webp') }}" alt="whatsapp" width="24" height="24" class="me-2">
+            <img src="{{ asset('images/Whatsapp.webp') }}" alt="whatsapp" width="24" height="24" class="me-2">
             Connect</a>
     </div>
 

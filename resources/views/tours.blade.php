@@ -192,7 +192,8 @@
                 <div class="d-flex justify-content-between align-items-center mb-4" id="departures">
                     <h2>DEPARTURE DATES</h2>
                     <form action="{{ route('tours', ['slug' => $tourPackage->slug]) }}#departures" method="get">
-                        <select class="form-select" id="monthSelect" name="month" onchange="this.form.submit()">
+                        <select class="form-select" id="monthSelect" name="month" onchange="this.form.submit()"
+                            style="min-width: 150px;">
                             @foreach (range(1, 12) as $m)
                                 <option value="{{ $m }}" {{ $month == $m ? 'selected' : '' }}>
                                     {{ Carbon\Carbon::create(null, $m)->format('F') }}
@@ -302,53 +303,53 @@
             </div>
 
             <div class="col-lg-4 py-5">
-                <div class="position-sticky" style="top: 220px;">
-                    <div class="bg-cta text-white p-3 mb-3">
-                        <div class="d-flex justify-content-center gap-2 align-items-center">
-                            <div>
-                                <div class="fw-bold">All Inclusive cost</div>
-                                <div class="fw-bold fs-5">
-                                    {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
-                                </div>
+                <div class="bg-cta text-white p-3 mb-3">
+                    <div class="d-flex justify-content-center gap-2 align-items-center">
+                        <div>
+                            <div class="fw-bold">All Inclusive cost</div>
+                            <div class="fw-bold fs-5">
+                                {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
                             </div>
-                            <img src="{{ asset('images/best-price.webp') }}" alt="sale" width="120"
-                                height="120">
                         </div>
-
-                        <table class="table table-bordered mb-3">
-                            <thead class="table-light">
-                                <tr>
-                                    <th class="text-center">1 person</th>
-                                    <th class="text-center">2-7 person</th>
-                                    <th class="text-center">8+ person</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">
-                                        <div class="fw-bold">
-                                            {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
-                                        </div>
-                                        <small class="text-muted">Partial Pay</small>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="fw-bold">
-                                            {{ $tourPackage->sale_price_two_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_two_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
-                                        </div>
-                                        <small class="text-muted">Partial Pay</small>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="fw-bold">
-                                            {{ $tourPackage->sale_price_eight_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_eight_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
-                                        </div>
-                                        <small class="text-muted">Partial Pay</small>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <a class="btn bg-white text-cta w-100" href="{{ route('book-trip') }}">BOOK NOW</a>
+                        <img src="{{ asset('images/best-price.webp') }}" alt="sale" width="120" height="120">
                     </div>
+
+                    <table class="table table-bordered mb-3">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="text-center">1 person</th>
+                                <th class="text-center">2-7 person</th>
+                                <th class="text-center">8+ person</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <div class="fw-bold">
+                                        {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                    </div>
+                                    <small class="text-muted">Partial Pay</small>
+                                </td>
+                                <td class="text-center">
+                                    <div class="fw-bold">
+                                        {{ $tourPackage->sale_price_two_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_two_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                    </div>
+                                    <small class="text-muted">Partial Pay</small>
+                                </td>
+                                <td class="text-center">
+                                    <div class="fw-bold">
+                                        {{ $tourPackage->sale_price_eight_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_eight_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                    </div>
+                                    <small class="text-muted">Partial Pay</small>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a class="btn bg-white text-cta w-100 blink-button" href="{{ route('book-trip') }}">BOOK NOW</a>
+                </div>
+
+                <div class="position-sticky" style="top: 220px;">
 
                     <form method="post" action="{{ route('book-a-call') }}" class="bg-cta text-white p-3 mb-3">
                         @csrf
@@ -446,12 +447,13 @@
                             </li>
                             <li class="list-group-item bg-cta text-white">
                                 <i class="fas fa-phone me-2"></i>
-                                Call Us (24/7) : +977- 12345678
+                                Call Us (24/7) : <a href="tel:+9779802342080" class="text-white">+977 9802342080</a>
                             </li>
                             <li class="list-group-item bg-cta text-white">
                                 <img src="{{ asset('images/whatsapp.webp') }}" alt="whataspp" height="22"
                                     width="auto" class="me-1">
-                                WhatsApp (24/7) : +977- 12345678
+                                WhatsApp (24/7) : <a href="https://api.whatsapp.com/send?phone=9779802342080"
+                                    class="text-white">+977-9802342080</a>
                             </li>
                         </ul>
                     </div>

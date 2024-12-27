@@ -31,8 +31,9 @@ class AppServiceProvider extends ServiceProvider
                 'destination:id,name,slug,cover',
                 'categories:id,name,slug',
                 'activities:id,name,slug',
+                'place:id,name,slug',
             ])
-                ->select('id', 'title', 'slug', 'destination_id', 'status')
+                ->select('id', 'title', 'slug', 'destination_id', 'place_id', 'status')
                 ->where('status', 'published')
                 ->where('show_in_nav', true)
                 ->get();
@@ -82,6 +83,26 @@ class AppServiceProvider extends ServiceProvider
                             ];
                         });
 
+                    // Add places grouping
+                    $places = $destinationPackages->groupBy('place_id')
+                        ->map(function ($placePackages) {
+                            $place = $placePackages->first()->place;
+                            if (!$place) return null;
+
+                            return [
+                                'name' => $place->name,
+                                'slug' => $place->slug,
+                                'packages' => $placePackages->map(function ($package) {
+                                    return [
+                                        'title' => $package->title,
+                                        'slug' => $package->slug,
+                                    ];
+                                })->toArray(),
+                            ];
+                        })
+                        ->filter() // Remove null values (packages without places)
+                        ->values(); // Reset array keys
+
                     return [
                         'name' => $destination->name,
                         'slug' => $destination->slug,
@@ -89,6 +110,7 @@ class AppServiceProvider extends ServiceProvider
                         'packages_count' => $destinationPackages->count(),
                         'categories' => $categories->toArray(),
                         'activities' => $activities->toArray(),
+                        'places' => $places->toArray(),
                     ];
                 })->toArray();
 

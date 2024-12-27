@@ -79,7 +79,7 @@
             <div class="col-12">
                 <label class="form-label">PLACE</label>
                 <select name="place" class="form-select border" id="place-select"
-                    {{ !request('destination') ? 'disabled' : '' }}>
+                    {{ !request('destination') ? 'disabled' : '' }} style="min-width: 100px">
                     <option value="">Any</option>
                     @if (request('destination'))
                         @foreach ($places as $place)

@@ -39,7 +39,7 @@
 
             <div class="collapse navbar-collapse w-100" id="navbarNav">
                 <div class="container">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('home') ? 'active' : '' }}"
                                 href="{{ route('home') }}">Home</a>
@@ -52,10 +52,24 @@
                                     {{ $destination['name'] }}
                                 </a>
                                 <ul class="dropdown-menu destination-menu">
-                                    {{-- <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('dynamic-page', strtolower($destination['slug'])) }}">OVERVIEW</a>
-                                    </li> --}}
+                                    @foreach ($destination['places'] as $place)
+                                        <li class="package-dropend">
+                                            <a class="dropdown-item package-dropdown-toggle">
+                                                {{ strtoupper($place['name'] . ' Region') }}
+                                                <i class="fas fa-chevron-right float-end mt-1"></i>
+                                            </a>
+                                            <ul class="dropdown-menu package-submenu">
+                                                @foreach ($place['packages'] as $package)
+                                                    <li>
+                                                        <a class="dropdown-item package-item"
+                                                            href="{{ route('tours', $package['slug']) }}">
+                                                            {{ $package['title'] }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
 
                                     @foreach ($destination['categories'] as $category)
                                         <li class="package-dropend">

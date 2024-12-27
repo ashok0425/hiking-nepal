@@ -71,8 +71,8 @@
                     <!-- Payment Icons -->
                     <div class="payment-icons mt-4">
                         <span class="me-2">Payment:</span>
-                        <img src="{{ asset('images/visa.webp') }}" alt="Visa" class="me-2" style="height: 24px;">
-                        <img src="{{ asset('images/paypal.webp') }}" alt="PayPal" class="me-2"
+                        <img src="{{ asset('images/Visa.webp') }}" alt="Visa" class="me-2" style="height: 24px;">
+                        <img src="{{ asset('images/Paypal.webp') }}" alt="PayPal" class="me-2"
                             style="height: 20px;">
                         <img src="{{ asset('images/master-card.webp') }}" alt="Mastercard" class="me-2"
                             style="height: 24px;">
