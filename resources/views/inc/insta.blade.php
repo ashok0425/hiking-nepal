@@ -1,4 +1,4 @@
-<section class="py-md-5 my-5">
+<section class="my-5">
     <div class="container py-5">
         <div class="mx-auto" style="max-width: 800px;">
             <div class="head-lines text-center mb-5">

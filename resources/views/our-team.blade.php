@@ -30,7 +30,7 @@
         </div>
     </section>
 
-    <section class="container py-5 my-5 text-center">
+    <section class="container my-5 text-center">
         <h2 class="mb-5">HIKING NEPAL TEAM</h2>
         <p>At Hiking Nepal, our team is made up of passionate, experienced, and dedicated professionals who are committed to
             providing unforgettable trekking experiences in the Himalayas. From seasoned guides with extensive knowledge of
@@ -66,7 +66,7 @@
         </div>
     </section>
 
-    <section class="py-0 py-md-5 my-5">
+    <section class="my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
             <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
@@ -119,7 +119,7 @@
         </div>
     </section>
 
-    <section class="py-0 py-md-5 my-5">
+    <section class="my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
             <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">

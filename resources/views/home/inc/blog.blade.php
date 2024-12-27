@@ -1,5 +1,5 @@
 <section>
-    <div class="container py-5 my-5">
+    <div class="container my-5">
 
         <div class="mx-auto" style="max-width: 800px;">
             <div class="head-lines text-center mb-5">

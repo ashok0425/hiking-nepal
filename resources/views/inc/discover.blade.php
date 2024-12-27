@@ -1,4 +1,4 @@
-<section class="container my-5 py-5">
+<section class="container my-5 ">
     <div class="row g-3">
         <div class="col-md-4 text-center">
             <img src="{{ asset('images/reach.webp') }}" alt="reach" width="125" height="115" class="mb-3">

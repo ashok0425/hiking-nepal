@@ -1,4 +1,4 @@
-<section class="py-0 py-md-5 my-5">
+<section class="my-5">
     <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
         <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">

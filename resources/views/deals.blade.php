@@ -32,7 +32,7 @@
         </div>
     </section>
 
-    <section class="container py-5 mt-5">
+    <section class="container mt-5">
         <div class="mb-5" style="max-width:600px;">
             <h2>Search Deals & Offers</h2>
             <p>Findout deals and offers that are ongoing. These deals and offers are limited for a certain period of
@@ -119,8 +119,8 @@
     @endif
 
     @foreach ($packageCategories as $packageCategory)
-        <section class="container py-5 mb-5 expandable-content">
-            <div class="mb-5" style="max-width: 600px;">
+        <section class="container my-5 expandable-content">
+            <div class="mb-4" style="max-width: 600px;">
                 <h2>{{ $packageCategory->name }}</h2>
                 <p>{{ $packageCategory->tagline }}</p>
             </div>

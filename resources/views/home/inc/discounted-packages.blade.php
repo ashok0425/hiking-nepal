@@ -1,4 +1,4 @@
-<section class="bg-light py-0 py-md-5">
+<section class="bg-light">
     <div class="container py-5 mb-5">
 
         <div class="mx-auto" style="max-width: 800px;">

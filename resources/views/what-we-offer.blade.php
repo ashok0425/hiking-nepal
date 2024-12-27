@@ -34,12 +34,14 @@
         </div>
     </section>
 
-    <section class="container py-5 my-5">
-        <h2 class="text-center mb-5">More Than Just a Trip : Creating Meaningful Adventures with Hiking Nepal
+    <section class="container my-5">
+        <h2 class="text-center mb-5 mx-auto" style="max-width: 960px;">More Than Just a Trip : Creating Meaningful
+            Adventures with Hiking Nepal
         </h2>
         <div class="row g-5">
             <div class="col-md-6">
-                <p>Traveling the world has become more accessible than ever before, and Nepal is no exception. With an
+                <p class="mb-0">Traveling the world has become more accessible than ever before, and Nepal is no
+                    exception. With an
                     overwhelming number of registered tour operators, each offering similar services for adventure holidays,
                     it can be a challenging task to choose the right company for your trip. While many companies may promise
                     exceptional experiences, we at Hiking Nepal Travel never claim to be the best; instead, we focus on
@@ -91,7 +93,7 @@
         </div>
     </section>
 
-    <section class="py-0 py-md-5 my-5">
+    <section class="my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
             <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
@@ -145,7 +147,7 @@
         </div>
     </section>
 
-    <section class="py-0 py-md-5 my-5">
+    <section class="my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
             <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
@@ -200,7 +202,7 @@
         </div>
     </section>
 
-    <section class="py-0 py-md-5 my-5">
+    <section class="my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
             <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">

@@ -1,4 +1,4 @@
-<section class="bg-light py-0 py-md-5">
+<section class="bg-light">
     <div class="container py-5 my-5 section-bg-container">
 
         <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">

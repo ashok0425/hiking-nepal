@@ -1,4 +1,4 @@
-<section class="py-5 my-5 overflow-hidden popularDestinationSlider">
+<section class="my-5 overflow-hidden popularDestinationSlider">
     <div class="container">
         <div class="d-md-flex justify-content-between">
             <div class="mb-2 mb-md-5">

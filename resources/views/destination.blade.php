@@ -76,7 +76,7 @@
     </section> --}}
 
     @foreach ($packagesByCategories as $packagesByCategory)
-        <section class="container py-5 mb-5 expandable-content" id="category-{{ $packagesByCategory['slug'] }}">
+        <section class="container mb-5 expandable-content" id="category-{{ $packagesByCategory['slug'] }}">
             <div class="mb-5" style="max-width: 600px;">
                 <h2>{{ $packagesByCategory['name'] }}</h2>
                 <p>{{ $packagesByCategory['tagline'] }}</p>
