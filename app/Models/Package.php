@@ -38,6 +38,10 @@ class Package extends Model
         'meta_title',
         'meta_description',
         'meta_keywords',
+        'map',
+        'video',
+        'alt_chart',
+        'perks'
     ];
 
     protected $casts = [
