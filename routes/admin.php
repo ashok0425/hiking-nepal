@@ -23,6 +23,7 @@ Route::middleware('auth:admin')->group(function () {
 
     // Packages
     Route::resource('/packages', \App\Http\Controllers\Admin\PackageController::class);
+    Route::patch('packages/{package}/toggle-status', [\App\Http\Controllers\Admin\PackageController::class, 'toggleStatus'])->name('packages.toggle-status');
     Route::resource('/package-categories', \App\Http\Controllers\Admin\PackageCategoryController::class);
 
     Route::resource('/departures', \App\Http\Controllers\Admin\DepartureController::class);

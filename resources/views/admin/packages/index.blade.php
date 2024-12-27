@@ -72,15 +72,31 @@
                         <td>${{ number_format($package->price, 2) }}</td>
                         <td>{{ $package->tour_duration }}</td>
                         <td>
-                            <a href="{{ route('admin.packages.edit', $package) }}" class="btn btn-sm btn-info me-1">
-                                Edit
-                            </a>
-                            <form action="{{ route('admin.packages.destroy', $package) }}" method="POST" class="d-inline"
-                                onsubmit="return confirm('Are you sure you want to delete this package?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
+                            <div class="d-flex flex-wrap" style="gap: 8px;">
+                                <a href="{{ route('admin.packages.edit', $package) }}" class="btn btn-sm btn-info me-1">
+                                    Edit
+                                </a>
+
+                                <form action="{{ route('admin.packages.toggle-status', $package) }}" method="POST"
+                                    class="d-inline me-1"
+                                    onsubmit="return confirm('Are you sure you want to {{ $package->status === 'published' ? 'unpublish' : 'publish' }} this package?');">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit"
+                                        class="btn btn-sm {{ $package->status === 'published' ? 'btn-warning' : 'btn-success' }}">
+                                        {{ $package->status === 'published' ? 'Deactivate' : 'Activate' }}
+                                    </button>
+                                </form>
+
+                                <form action="{{ route('admin.packages.destroy', $package) }}" method="POST"
+                                    class="d-inline"
+                                    onsubmit="return confirm('Are you sure you want to delete this package?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </div>
+
                         </td>
                     </tr>
                 @empty

@@ -198,4 +198,21 @@ class PackageController extends Controller
             ->route('admin.packages.index')
             ->with('success', 'Package deleted successfully');
     }
+
+    public function toggleStatus(Package $package)
+    {
+        // Toggle between statuses: published -> private -> draft -> published
+        $newStatus = match ($package->status) {
+            'published' => 'private',
+            'private' => 'draft',
+            'draft' => 'published',
+            default => 'published'
+        };
+
+        $package->update(['status' => $newStatus]);
+
+        return redirect()
+            ->route('admin.packages.index')
+            ->with('success', 'Package status updated to ' . ucfirst($newStatus));
+    }
 }
