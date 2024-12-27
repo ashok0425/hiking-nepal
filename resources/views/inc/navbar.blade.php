@@ -52,10 +52,10 @@
                                     {{ $destination['name'] }}
                                 </a>
                                 <ul class="dropdown-menu destination-menu">
-                                    <li>
+                                    {{-- <li>
                                         <a class="dropdown-item"
                                             href="{{ route('dynamic-page', strtolower($destination['slug'])) }}">OVERVIEW</a>
-                                    </li>
+                                    </li> --}}
 
                                     @foreach ($destination['categories'] as $category)
                                         <li class="package-dropend">
