@@ -57,7 +57,9 @@
                 <tbody>
                     @forelse($departures as $departure)
                         <tr>
-                            <th scope="row">{{ $departure->package->title }}</th>
+                            <th scope="row" style="max-width: 360px; text-wrap: wrap;">
+                                {{ $departure->package->title }}
+                            </th>
                             <td>
                                 <div class="fw-bold">{{ $departure->package->tour_duration ?? '-' }}</div>
                                 <div class="small text-muted">
