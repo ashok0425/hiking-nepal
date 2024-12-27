@@ -24,15 +24,7 @@
 @endsection
 
 @section('content')
-    <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
-        style="height: 530px;">
-        <img src="{{ asset('images/booking-terms-cover.webp') }}" alt="head cover"
-            class="w-100 position-absolute start-0 top-0"
-            style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
-        <div class="container">
-            <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">BOOKING TERMS AND CONDITIONS</h1>
-        </div>
-    </section>
+    <x-yt-header title="Booking Terms And Conditions" />
 
     <div class="my-3 text-end container">
         <button class="btn btn-primary" onclick="window.print()">Print</button>

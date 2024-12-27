@@ -24,14 +24,7 @@
 @endsection
 
 @section('content')
-    <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
-        style="height: 530px;">
-        <img src="{{ asset('images/head-cover.webp') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
-            style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
-        <div class="container">
-            <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">Information</h1>
-        </div>
-    </section>
+    <x-yt-header title="Information" />
 
     <section class="container py-md-5 my-5">
         <h2 class="text-center mb-4">Useful Information for the package</h2>

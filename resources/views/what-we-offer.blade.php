@@ -24,15 +24,7 @@
 @endsection
 
 @section('content')
-    <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
-        style="height: 530px;">
-        <img src="{{ asset('images/what-we-offer-cover.webp') }}" alt="head cover"
-            class="w-100 position-absolute start-0 top-0"
-            style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
-        <div class="container">
-            <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">WHAT WE OFFER</h1>
-        </div>
-    </section>
+    <x-yt-header title="What We Offer" />
 
     <section class="container my-5">
         <h2 class="text-center mb-5 mx-auto" style="max-width: 960px;">More Than Just a Trip : Creating Meaningful
