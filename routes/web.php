@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dummy', function () {
-    $imageProcessor = new \App\Services\ImageProcessingService();
-    $imageProcessor->setSourcePath('public/wp-content')
-        ->setQuality(80)
-        ->setRecursive(true)
-        ->processImages();
+    // $imageProcessor = new \App\Services\ImageProcessingService();
+    // $imageProcessor->setSourcePath('public/wp-content')
+    //     ->setQuality(80)
+    //     ->setRecursive(true)
+    //     ->processImages();
 
     // \Illuminate\Support\Facades\Artisan::call('storage:link');
 

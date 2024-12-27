@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Services\ImageProcessingService;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 
 class ProcessImages extends Command
 {
@@ -16,29 +15,16 @@ class ProcessImages extends Command
         $directory = $this->option('directory');
         $quality = $this->option('quality');
 
-        if (!Storage::exists($directory)) {
-            $this->error("Directory '{$directory}' does not exist!");
-            return 1;
-        }
-
         $this->info('Starting image processing...');
         $this->info('Target directory: ' . $directory);
         $this->info('Quality setting: ' . $quality);
         $this->info('Supported formats: JPG, JPEG, PNG');
 
-        $bar = $this->output->createProgressBar(
-            count(array_filter(
-                Storage::files($directory),
-                fn($file) => in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png'])
-            ))
-        );
-
         $imageService
-            ->setSourceDirectory($directory)
+            ->setSourcePath($directory)
             ->setQuality($quality)
+            ->setRecursive(true)
             ->processImages();
-
-        $bar->finish();
 
         $this->newLine();
         $this->info('Image processing completed successfully!');
