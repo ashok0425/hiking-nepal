@@ -178,15 +178,19 @@
                     {!! $tourPackage->overview !!}
                 </div>
 
-                <div class="mb-4">
-                    <h2 class="mb-4">Map</h2>
-                    <img src="{{ asset('/storage/' . $tourPackage->map) }}" alt="map image">
-                </div>
+                @if ($tourPackage->alt_chart)
+                    <div class="mb-4">
+                        <h2 class="mb-4">Map</h2>
+                        <img src="{{ asset('/storage/' . $tourPackage->map) }}" alt="map image">
+                    </div>
+                @endif
 
-                <div class="mb-4">
-                    <h2 class="mb-4">Altitude Chart</h2>
-                    <img src="{{ asset('/storage/' . $tourPackage->alt_chart) }}" alt="altitude chart image">
-                </div>
+                @if ($tourPackage->alt_chart)
+                    <div class="mb-4">
+                        <h2 class="mb-4">Altitude Chart</h2>
+                        <img src="{{ asset('/storage/' . $tourPackage->alt_chart) }}" alt="altitude chart image">
+                    </div>
+                @endif
 
                 @if ($tourPackage->video)
                     <div class="mb-4">

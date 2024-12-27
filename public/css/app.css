@@ -835,6 +835,10 @@ footer li {
     z-index: 1;
 }
 
+.tour-sub-nav .navbar-nav .nav-link {
+    padding: 8px 15px !important;
+}
+
 @media screen and (max-width: 768px) {
     .tour-sub-nav {
         top: 132px;
@@ -899,8 +903,8 @@ footer li {
 }
 
 .splide__arrow {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     top: 45%;
 }
 
@@ -910,6 +914,14 @@ footer li {
 
 .splide__arrow--next {
     right: -15px;
+}
+
+@media screen and (max-width: 425px) {
+    .splide__arrow {
+        width: 40px;
+        height: 40px;
+        top: 45%;
+    }
 }
 
 /* progress */
