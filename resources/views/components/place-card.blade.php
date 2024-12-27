@@ -2,8 +2,8 @@
 
 <a href="{{ route('dynamic-page', ['slug' => $destination['slug']]) }}">
     <div class="d-card">
-        <img src="{{ $destination['cover'] ?? asset('images/dest-1.webp') }}" alt="{{ $destination['name'] }} image"
-            class="img-fluid hover-scale">
+        <img loading="lazy" src="{{ $destination['cover'] ?? asset('images/dest-1.webp') }}"
+            alt="{{ $destination['name'] }} image" class="img-fluid hover-scale">
 
         <div class="d-card-body">
             <div class="d-card-heading">{{ $destination['name'] }}</div>

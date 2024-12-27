@@ -6,11 +6,11 @@
                     <div class="ms-auto d-flex flex-wrap align-items-center gap-3 gap-lg-4">
                         <a href="https://api.whatsapp.com/send?phone=9779802342080"
                             class="text-uppercase d-inline-flex align-items-center gap-2 text-decoration-underline"><img
-                                src="{{ asset('images/groups.png') }}" alt="groups" width="24" height="24">Join
+                                src="{{ asset('images/groups.webp') }}" alt="groups" width="24" height="24">Join
                             Groups</a>
                         <a href="https://api.whatsapp.com/send?phone=9779802342080"
                             class="d-inline-flex align-items-center gap-1 text-dark"><img
-                                src="{{ asset('images/ic_outline-whatsapp.png') }}" alt="whatsapp" width="24"
+                                src="{{ asset('images/ic_outline-whatsapp.webp') }}" alt="whatsapp" width="24"
                                 height="24">
                             +977-9802342080</a>
 

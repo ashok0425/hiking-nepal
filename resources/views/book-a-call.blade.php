@@ -198,7 +198,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center mb-5">
-                        <img src="{{ asset('images/check.png') }}" alt="check" width="150" height="auto">
+                        <img src="{{ asset('images/check.webp') }}" alt="check" width="150" height="auto">
                         <div class="fs-4 fw-bold text-success">Booking confirmed</div>
                         <div>An Invitation has been emailed to you</div>
                     </div>

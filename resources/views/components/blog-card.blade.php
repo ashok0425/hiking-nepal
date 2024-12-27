@@ -1,7 +1,7 @@
 <div class="card" style="background-color: transparent">
     @if ($post->thumbnail || $post->cover)
         <img src="{{ $post->thumbnail ?? $post->cover }}" class="card-img-top" alt="{{ $post->title }}"
-            style="height: 250px; object-fit: cover;">
+            style="height: 250px; object-fit: cover;" loading="lazy">
     @else
         <div class="card-img-top bg-secondary" style="height: 250px;"></div>
     @endif

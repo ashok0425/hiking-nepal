@@ -15,24 +15,25 @@
                     <div class="row g-3">
                         <div class="col-md-3 col-6 text-center">
                             <img src="{{ asset('images/templ.gif') }}" class="mb-2" alt="temple" width="80"
-                                height="80">
+                                height="80" loading="lazy">
                             <div class="fs-3 fw-bold text-success counter" data-count="354">0</div>
                             <div>Destination</div>
                         </div>
                         <div class="col-md-3 col-6 text-center">
                             <img src="{{ asset('images/plane.gif') }}" class="mb-2" alt="plane" width="80"
-                                height="80">
+                                height="80" loading="lazy">
                             <div class="fs-3 fw-bold text-success counter" data-count="1250">0</div>
                             <div>Tour</div>
                         </div>
                         <div class="col-md-3 col-6 text-center">
-                            <img src="{{ asset('images/earth.gif') }}" class="mb-2" alt="globe" width="60">
+                            <img src="{{ asset('images/earth.gif') }}" class="mb-2" alt="globe" width="60"
+                                loading="lazy">
                             <div class="fs-3 fw-bold text-success counter" data-count="25">0</div>
                             <div>Country</div>
                         </div>
                         <div class="col-md-3 col-6 text-center">
                             <img src="{{ asset('images/tourist.gif') }}" class="mb-2" alt="tourist" width="80"
-                                height="80">
+                                height="80" loading="lazy">
                             <div class="fs-3 fw-bold text-success counter" data-count="4600">0</div>
                             <div>Tourists</div>
                         </div>

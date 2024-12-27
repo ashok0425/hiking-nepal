@@ -311,7 +311,7 @@
                                     {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
                                 </div>
                             </div>
-                            <img src="{{ asset('images/best-price.png') }}" alt="sale" width="120"
+                            <img src="{{ asset('images/best-price.webp') }}" alt="sale" width="120"
                                 height="120">
                         </div>
 
@@ -418,10 +418,10 @@
                         <hr>
 
                         <div class="d-flex gap-2 justify-content-between align-items-center w-100 px-3">
-                            <img src="{{ asset('images/pay_visa.png') }}" alt="ammex" width="60">
-                            <img src="{{ asset('images/pay_unionpay.png') }}" alt="ammex" width="60">
-                            <img src="{{ asset('images/pay_ammex.png') }}" alt="ammex" width="60">
-                            <img src="{{ asset('images/master-card.png') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/pay_visa.webp') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/pay_unionpay.webp') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/pay_ammex.webp') }}" alt="ammex" width="60">
+                            <img src="{{ asset('images/master-card.webp') }}" alt="ammex" width="60">
                         </div>
 
                     </div>
@@ -449,7 +449,7 @@
                                 Call Us (24/7) : +977- 12345678
                             </li>
                             <li class="list-group-item bg-cta text-white">
-                                <img src="{{ asset('images/whatsapp.png') }}" alt="whataspp" height="22"
+                                <img src="{{ asset('images/whatsapp.webp') }}" alt="whataspp" height="22"
                                     width="auto" class="me-1">
                                 WhatsApp (24/7) : +977- 12345678
                             </li>

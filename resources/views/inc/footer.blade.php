@@ -4,7 +4,7 @@
             <div class="row g-3">
                 <!-- Column 1: Contact Info -->
                 <div class="col-md-6 col-lg-3">
-                    <img src="{{ asset('images/logo-2.png') }}" alt="Hiking Nepal Logo" width="51" height="51"
+                    <img src="{{ asset('images/logo-2.webp') }}" alt="Hiking Nepal Logo" width="51" height="51"
                         class="mb-3">
                     <h6 class="text-success mb-3">Let’s Explore Places</h6>
                     <ul class="list-unstyled">
@@ -71,39 +71,40 @@
                     <!-- Payment Icons -->
                     <div class="payment-icons mt-4">
                         <span class="me-2">Payment:</span>
-                        <img src="{{ asset('images/visa.png') }}" alt="Visa" class="me-2" style="height: 24px;">
-                        <img src="{{ asset('images/paypal.png') }}" alt="PayPal" class="me-2"
+                        <img src="{{ asset('images/visa.webp') }}" alt="Visa" class="me-2" style="height: 24px;">
+                        <img src="{{ asset('images/paypal.webp') }}" alt="PayPal" class="me-2"
                             style="height: 20px;">
-                        <img src="{{ asset('images/master-card.png') }}" alt="Mastercard" class="me-2"
+                        <img src="{{ asset('images/master-card.webp') }}" alt="Mastercard" class="me-2"
                             style="height: 24px;">
-                        <img src="{{ asset('images/apple-pay.png') }}" alt="ApplePay" class="me-2"
+                        <img src="{{ asset('images/apple-pay.webp') }}" alt="ApplePay" class="me-2"
                             style="height: 24px;">
                     </div>
                     <!-- Social Media Icons -->
                     <div class="social-icons mt-4">
 
                         <a href="https://www.facebook.com/hikingnepal" class="text-primary me-2" target="_blank">
-                            <img src="{{ asset('images/Facebook.png') }}" alt="facebook" width="20" height="20">
+                            <img src="{{ asset('images/Facebook.webp') }}" alt="facebook" width="20"
+                                height="20">
                         </a>
                         <a href="https://twitter.com/hikingnepal" class="text-primary me-2" target="_blank">
-                            <img src="{{ asset('images/Twitter.png') }}" alt="twitter" width="20"
+                            <img src="{{ asset('images/Twitter.webp') }}" alt="twitter" width="20"
                                 height="20"></a>
                         <a href="https://www.instagram.com/hiking.nepal" class="text-primary me-2" target="_blank">
-                            <img src="{{ asset('images/Instagram.png') }}" alt="instagram" width="20"
+                            <img src="{{ asset('images/Instagram.webp') }}" alt="instagram" width="20"
                                 height="20"></a>
                         <a href="https://www.linkedin.com/company/hiking-nepal" class="text-primary me-2"
                             target="_blank">
-                            <img src="{{ asset('images/Linkedin.png') }}" alt="linkedin" width="20"
+                            <img src="{{ asset('images/Linkedin.webp') }}" alt="linkedin" width="20"
                                 height="20"></a>
                         <a href="#" class="text-primary me-2" target="_blank">
-                            <img src="{{ asset('images/Google.png') }}" alt="google" width="20"
+                            <img src="{{ asset('images/Google.webp') }}" alt="google" width="20"
                                 height="20"></a>
                         <a href="#" class="text-primary me-2" target="_blank">
-                            <img src="{{ asset('images/Youtube.png') }}" alt="youtube" width="20"
+                            <img src="{{ asset('images/Youtube.webp') }}" alt="youtube" width="20"
                                 height="20"></a>
                         <a href="https://api.whatsapp.com/send?phone=9779802342080" class="text-primary me-2"
                             target="_blank">
-                            <img src="{{ asset('images/Whatsapp.png') }}" alt="whatsapp" width="20"
+                            <img src="{{ asset('images/Whatsapp.webp') }}" alt="whatsapp" width="20"
                                 height="20"></a>
 
                     </div>

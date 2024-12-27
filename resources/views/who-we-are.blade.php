@@ -13,20 +13,21 @@
     <meta property="og:title" content="Who We Are - Hiking Nepal">
     <meta property="og:description"
         content="Learn about Hiking Nepal - your trusted partner for tailored Himalayan adventures. We deliver world-class adventure holidays with competitive pricing and experienced guides.">
-    <meta property="og:image" content="{{ asset('images/who-we-are-cover.png') }}">
+    <meta property="og:image" content="{{ asset('images/who-we-are-cover.webp') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Who We Are - Hiking Nepal">
     <meta name="twitter:description"
         content="Learn about Hiking Nepal - your trusted partner for tailored Himalayan adventures. We deliver world-class adventure holidays with competitive pricing and experienced guides.">
-    <meta name="twitter:image" content="{{ asset('images/who-we-are-cover.png') }}">
+    <meta name="twitter:image" content="{{ asset('images/who-we-are-cover.webp') }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 530px;">
-        <img src="{{ asset('images/who-we-are-cover.png') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ asset('images/who-we-are-cover.webp') }}" alt="head cover"
+            class="w-100 position-absolute start-0 top-0"
             style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">WHO WE ARE</h1>
@@ -103,24 +104,25 @@
                         <div class="row g-3">
                             <div class="col-md-3 col-6 text-center">
                                 <img src="{{ asset('images/templ.gif') }}" class="mb-2" alt="temple" width="80"
-                                    height="80">
+                                    height="80" loading="lazy">
                                 <div class="fs-3 fw-bold text-success counter" data-count="354">0</div>
                                 <div>Destination</div>
                             </div>
                             <div class="col-md-3 col-6 text-center">
                                 <img src="{{ asset('images/plane.gif') }}" class="mb-2" alt="plane" width="80"
-                                    height="80">
+                                    height="80" loading="lazy">
                                 <div class="fs-3 fw-bold text-success counter" data-count="1250">0</div>
                                 <div>Tour</div>
                             </div>
                             <div class="col-md-3 col-6 text-center">
-                                <img src="{{ asset('images/earth.gif') }}" class="mb-2" alt="globe" width="60">
+                                <img src="{{ asset('images/earth.gif') }}" class="mb-2" alt="globe" width="60"
+                                    loading="lazy">
                                 <div class="fs-3 fw-bold text-success counter" data-count="25">0</div>
                                 <div>Country</div>
                             </div>
                             <div class="col-md-3 col-6 text-center">
                                 <img src="{{ asset('images/tourist.gif') }}" class="mb-2" alt="tourist" width="80"
-                                    height="80">
+                                    height="80" loading="lazy">
                                 <div class="fs-3 fw-bold text-success counter" data-count="4600">0</div>
                                 <div>Tourists</div>
                             </div>
