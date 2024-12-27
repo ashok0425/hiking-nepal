@@ -1,10 +1,20 @@
 <?php
 
+use App\Services\ImageProcessingService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/dummy', function () {
-    Artisan::call('storage:link');
+    $imageProcessor = new ImageProcessingService();
+    $imageProcessor->setSourcePath('public/images')
+        ->setQuality(80)
+        ->setRecursive(true)
+        ->processImages();
+
+    // dd($files);
+
+    // Artisan::call('storage:link');
 
     return response()->json(['msg' => 'ack']);
 });
