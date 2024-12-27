@@ -78,8 +78,9 @@
                                     <div>
                                         <div class="fw-bold">Guaranteed</div>
                                         @php
-                                            $availableSeats = rand(5, 20);
-                                            $progressPercent = rand(40, 90);
+                                            $totalSeats = 20;
+                                            $availableSeats = rand(5, 10);
+                                            $progressPercent = (($totalSeats - $availableSeats) / $totalSeats) * 100;
                                         @endphp
                                         <div class="small text-muted">{{ $availableSeats }} seats left</div>
                                     </div>
