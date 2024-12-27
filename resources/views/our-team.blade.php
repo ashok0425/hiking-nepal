@@ -23,7 +23,7 @@
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 530px;">
-        <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ asset('images/head-cover.webp') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
             style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">OUR TEAM</h1>
@@ -42,7 +42,7 @@
 
     <section class="bg-light py-0 py-md-5">
         <div class="container py-5 my-5 section-bg-container">
-            <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+            <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">
 
             <div class="row z-1">
                 <div class="col-md-8">
@@ -69,7 +69,7 @@
     <section class="py-0 py-md-5 my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
-            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img start-0">
+            <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
 
             <div class="row z-1 w-100">
                 <div class="col-md-8 offset-md-4">
@@ -95,7 +95,7 @@
 
     <section class="bg-light py-0 py-md-5">
         <div class="container py-5 my-5 section-bg-container">
-            <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+            <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">
 
             <div class="row z-1">
                 <div class="col-md-8">
@@ -122,7 +122,7 @@
     <section class="py-0 py-md-5 my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
-            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img start-0">
+            <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
 
             <div class="row z-1 w-100">
                 <div class="col-md-8 offset-md-4">

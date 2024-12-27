@@ -22,6 +22,7 @@ class ImageProcessingService
     protected $sourcePath;
     protected $allowedExtensions = ['jpg', 'jpeg', 'png'];
     protected $recursive = false;
+    protected $maxOriginalWidth = 1080;
 
     public function processImages()
     {
@@ -104,6 +105,27 @@ class ImageProcessingService
             // Load the image using Laravel facade
             $image = Image::read($imagePath);
 
+            // First, save the original size (max 1080w) in WebP format
+            $originalWebpFileName = sprintf(
+                '%s/%s.webp',
+                $directory,
+                $fileNameWithoutExt
+            );
+
+            // Create a copy for the original size
+            $originalImage = clone $image;
+
+            // If width is larger than maxOriginalWidth, scale it down
+            if ($originalImage->width() > $this->maxOriginalWidth) {
+                $originalImage->scale(width: $this->maxOriginalWidth);
+            }
+
+            // Save original (possibly scaled) as WebP with specified quality
+            $originalImage->encode(new WebpEncoder($this->quality))
+                ->save($originalWebpFileName);
+
+            Log::info('Created original size (max 1080w): ' . $originalWebpFileName);
+
             foreach ($this->sizes as $size => $width) {
                 // Generate new filename
                 $webpFileName = sprintf(
@@ -155,6 +177,12 @@ class ImageProcessingService
     public function setRecursive(bool $recursive): self
     {
         $this->recursive = $recursive;
+        return $this;
+    }
+
+    public function setMaxOriginalWidth(int $width): self
+    {
+        $this->maxOriginalWidth = $width;
         return $this;
     }
 }

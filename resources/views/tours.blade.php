@@ -15,7 +15,7 @@
     <meta property="og:description"
         content="{{ isset($tourPackage->meta_description) ? $tourPackage->meta_description : "Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains." }}">
     <meta property="og:image"
-        content="{{ isset($tourPackage->gallery[0]) ? Storage::disk('public')->url($tourPackage->gallery[0]) : asset('images/deals-cover.jpeg') }}">
+        content="{{ isset($tourPackage->gallery[0]) ? Storage::disk('public')->url($tourPackage->gallery[0]) : asset('images/deals-cover.webp') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
@@ -24,13 +24,13 @@
     <meta name="twitter:description"
         content="{{ isset($tourPackage->meta_description) ? $tourPackage->meta_description : "Read our travel blogs about trekking and hiking adventures in Nepal. Get insights, tips, and stories from experienced trekkers exploring Nepal's breathtaking trails and mountains." }}">
     <meta name="twitter:image"
-        content="{{ isset($tourPackage->gallery[0]) ? Storage::disk('public')->url($tourPackage->gallery[0]) : asset('images/deals-cover.jpeg') }}">
+        content="{{ isset($tourPackage->gallery[0]) ? Storage::disk('public')->url($tourPackage->gallery[0]) : asset('images/deals-cover.webp') }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 700px;">
-        <img src="{{ $tourPackage->galleryImages()[0] ?? asset('images/tour.jpg') }}" alt="{{ $tourPackage->title }}"
+        <img src="{{ $tourPackage->galleryImages()[0] ?? asset('images/tour.webp') }}" alt="{{ $tourPackage->title }}"
             class="w-100 position-absolute start-0 top-0 tour-hero-image">
         <div class="container">
             <h1 class="mb-3 z-1 position-relative text-uppercase text-white text-center">{{ $tourPackage->title }} <span

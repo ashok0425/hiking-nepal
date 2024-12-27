@@ -35,7 +35,7 @@
 
     <section class="bg-light py-0 py-md-5">
         <div class="container py-5 my-5 section-bg-container">
-            <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+            <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">
 
             <div class="row z-1">
                 <div class="col-md-8">
@@ -62,7 +62,7 @@
     <section class="py-0 py-md-5 my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
-            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img start-0">
+            <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
 
             <div class="row z-1 w-100">
                 <div class="col-md-8 offset-md-4">
@@ -89,7 +89,7 @@
     <section class="py-0 py-md-5 my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
-            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img end-0">
+            <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img end-0">
 
             <div class="row z-1 w-100">
                 <div class="col-md-8">

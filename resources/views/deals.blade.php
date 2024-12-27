@@ -12,20 +12,20 @@
     <meta property="og:title" content="Search Deals and Offers">
     <meta property="og:description"
         content="Find exclusive deals and offers on travel packages. Browse limited time discounts and special offers on tours, treks and adventures.">
-    <meta property="og:image" content="{{ asset('images/deals-cover.jpeg') }}">
+    <meta property="og:image" content="{{ asset('images/deals-cover.webp') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Search Deals and Offers">
     <meta name="twitter:description"
         content="Find exclusive deals and offers on travel packages. Browse limited time discounts and special offers on tours, treks and adventures.">
-    <meta name="twitter:image" content="{{ asset('images/deals-cover.jpeg') }}">
+    <meta name="twitter:image" content="{{ asset('images/deals-cover.webp') }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 530px;">
-        <img src="{{ asset('images/deals-cover.jpeg') }}" alt="deals cover" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ asset('images/deals-cover.webp') }}" alt="deals cover" class="w-100 position-absolute start-0 top-0"
             style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">DEALS</h1>

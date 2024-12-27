@@ -13,20 +13,20 @@
     <meta property="og:title" content="Booking Terms and Conditions - Hiking Nepal">
     <meta property="og:description"
         content="Read our booking terms and conditions for trekking and tours in Nepal. Important information about deposits, cancellations, insurance requirements, and payment policies at Hiking Nepal.">
-    <meta property="og:image" content="{{ asset('images/booking-terms-cover.jpeg') }}">
+    <meta property="og:image" content="{{ asset('images/booking-terms-cover.webp') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Booking Terms and Conditions - Hiking Nepal">
     <meta name="twitter:description"
         content="Read our booking terms and conditions for trekking and tours in Nepal. Important information about deposits, cancellations, insurance requirements, and payment policies at Hiking Nepal.">
-    <meta name="twitter:image" content="{{ asset('images/booking-terms-cover.jpeg') }}">
+    <meta name="twitter:image" content="{{ asset('images/booking-terms-cover.webp') }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 530px;">
-        <img src="{{ asset('images/booking-terms-cover.jpeg') }}" alt="head cover"
+        <img src="{{ asset('images/booking-terms-cover.webp') }}" alt="head cover"
             class="w-100 position-absolute start-0 top-0"
             style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">

@@ -13,20 +13,20 @@
     <meta property="og:title" content="Information - Hiking Nepal">
     <meta property="og:description"
         content="Essential information about trekking in Nepal including visa requirements, travel insurance, accommodation, meals, best time to visit, altitude information and more.">
-    <meta property="og:image" content="{{ asset('images/head-cover.jpeg') }}">
+    <meta property="og:image" content="{{ asset('images/head-cover.webp') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Information - Hiking Nepal">
     <meta name="twitter:description"
         content="Essential information about trekking in Nepal including visa requirements, travel insurance, accommodation, meals, best time to visit, altitude information and more.">
-    <meta name="twitter:image" content="{{ asset('images/head-cover.jpeg') }}">
+    <meta name="twitter:image" content="{{ asset('images/head-cover.webp') }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 530px;">
-        <img src="{{ asset('images/head-cover.jpeg') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
+        <img src="{{ asset('images/head-cover.webp') }}" alt="head cover" class="w-100 position-absolute start-0 top-0"
             style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
             <h1 class="mb-0 z-1 position-relative text-uppercase text-white text-center">Information</h1>

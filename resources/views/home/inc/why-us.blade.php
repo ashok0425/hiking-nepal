@@ -1,7 +1,7 @@
 <section class="bg-light py-0 py-md-5">
     <div class="container py-5 my-5 section-bg-container">
 
-        <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+        <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">
 
         <div class="row z-1">
             <div class="col-md-8">

@@ -13,20 +13,20 @@
     <meta property="og:title" content="What We Offer - Hiking Nepal">
     <meta property="og:description"
         content="Discover what Hiking Nepal offers - personalized adventures, small group sizes, safety-first approach, flexible itineraries, and stress-free travel experiences in Nepal.">
-    <meta property="og:image" content="{{ asset('images/what-we-offer-cover.jpeg') }}">
+    <meta property="og:image" content="{{ asset('images/what-we-offer-cover.webp') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="What We Offer - Hiking Nepal">
     <meta name="twitter:description"
         content="Discover what Hiking Nepal offers - personalized adventures, small group sizes, safety-first approach, flexible itineraries, and stress-free travel experiences in Nepal.">
-    <meta name="twitter:image" content="{{ asset('images/what-we-offer-cover.jpeg') }}">
+    <meta name="twitter:image" content="{{ asset('images/what-we-offer-cover.webp') }}">
 @endsection
 
 @section('content')
     <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center"
         style="height: 530px;">
-        <img src="{{ asset('images/what-we-offer-cover.jpeg') }}" alt="head cover"
+        <img src="{{ asset('images/what-we-offer-cover.webp') }}" alt="head cover"
             class="w-100 position-absolute start-0 top-0"
             style="height: 530px; object-fit:cover; filter: brightness(80%) contrast(110%);">
         <div class="container">
@@ -65,7 +65,7 @@
 
     <section class="bg-light py-0 py-md-5">
         <div class="container py-5 my-5 section-bg-container">
-            <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+            <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">
 
             <div class="row z-1">
                 <div class="col-md-8">
@@ -94,7 +94,7 @@
     <section class="py-0 py-md-5 my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
-            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img start-0">
+            <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
 
             <div class="row z-1 w-100">
                 <div class="col-md-8 offset-md-4">
@@ -120,7 +120,7 @@
 
     <section class="bg-light py-0 py-md-5">
         <div class="container py-5 my-5 section-bg-container">
-            <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+            <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">
 
             <div class="row z-1">
                 <div class="col-md-8">
@@ -148,7 +148,7 @@
     <section class="py-0 py-md-5 my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
-            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img start-0">
+            <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
 
             <div class="row z-1 w-100">
                 <div class="col-md-8 offset-md-4">
@@ -176,7 +176,7 @@
 
     <section class="bg-light py-0 py-md-5">
         <div class="container py-5 my-5 section-bg-container">
-            <img src="{{ asset('images/cover-img-1.jpg') }}" alt="cover image" class="section-bg-img end-0">
+            <img src="{{ asset('images/cover-img-1.webp') }}" alt="cover image" class="section-bg-img end-0">
 
             <div class="row z-1">
                 <div class="col-md-8">
@@ -203,7 +203,7 @@
     <section class="py-0 py-md-5 my-5">
         <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
 
-            <img src="{{ asset('images/cover-img-2.jpg') }}" alt="cover image" class="section-bg-img start-0">
+            <img src="{{ asset('images/cover-img-2.webp') }}" alt="cover image" class="section-bg-img start-0">
 
             <div class="row z-1 w-100">
                 <div class="col-md-8 offset-md-4">

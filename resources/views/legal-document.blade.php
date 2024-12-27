@@ -36,16 +36,16 @@
 
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <img src="{{ asset('images/docs-image-1.jpg') }}" class="img-fluid" alt="doc image" />
+                    <img src="{{ asset('images/docs-image-1.webp') }}" class="img-fluid" alt="doc image" />
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img src="{{ asset('images/docs-image-2.jpg') }}" class="img-fluid" alt="doc image" />
+                    <img src="{{ asset('images/docs-image-2.webp') }}" class="img-fluid" alt="doc image" />
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img src="{{ asset('images/docs-image-3.jpg') }}" class="img-fluid" alt="doc image" />
+                    <img src="{{ asset('images/docs-image-3.webp') }}" class="img-fluid" alt="doc image" />
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img src="{{ asset('images/docs-image-4.jpg') }}" class="img-fluid" alt="doc image" />
+                    <img src="{{ asset('images/docs-image-4.webp') }}" class="img-fluid" alt="doc image" />
                 </div>
             </div>
         </div>
