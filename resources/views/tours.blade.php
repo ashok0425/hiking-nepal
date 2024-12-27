@@ -41,14 +41,16 @@
                 {{ $tourPackage->sale_price_per_person > 0 ? 'USD ' . number_format($tourPackage->sale_price_per_person) . ' per person' : 'Price on request' }}
             </p>
 
-            <div class="position-relative mx-auto flex-wrap d-flex justify-content-center gap-4 w-100 mt-5 pt-5"
-                style="max-width: 800px">
-                <div class="service-header">Accommodation</div>
-                <div class="service-header">Meal</div>
-                <div class="service-header">Guides</div>
-                <div class="service-header">Transports</div>
-                <div class="service-header">Porter</div>
-            </div>
+            @if ($tourPackage->perks)
+                <div class="position-relative mx-auto flex-wrap d-flex justify-content-center gap-4 w-100 mt-5 pt-5"
+                    style="max-width: 800px">
+
+                    @foreach (explode(',', $tourPackage->perks) as $perk)
+                        <div class="service-header text-capitalize">{{ $perk }}</div>
+                    @endforeach
+                </div>
+            @endif
+
         </div>
     </section>
 
@@ -175,6 +177,26 @@
                 <div class="mb-4" id="tourOverview">
                     {!! $tourPackage->overview !!}
                 </div>
+
+                <div class="mb-4">
+                    <h2 class="mb-4">Map</h2>
+                    <img src="{{ asset('/storage/' . $tourPackage->map) }}" alt="map image">
+                </div>
+
+                <div class="mb-4">
+                    <h2 class="mb-4">Altitude Chart</h2>
+                    <img src="{{ asset('/storage/' . $tourPackage->alt_chart) }}" alt="altitude chart image">
+                </div>
+
+                @if ($tourPackage->video)
+                    <div class="mb-4">
+                        <h2 class="mb-4">Video</h2>
+                        <iframe width="100%" height="350" src="{{ $tourPackage->video }}" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                @endif
 
                 <div class="mb-4" id="tourItinerary">
                     <h2 class="mb-4">DETAILED ITINERARY</h2>

@@ -56,6 +56,16 @@ class PackageController extends Controller
             $validated['gallery'] = $gallery;
         }
 
+        // Handle map upload
+        if ($request->hasFile('map')) {
+            $validated['map'] = $request->file('map')->store('packages/maps', 'public');
+        }
+
+        // Handle alt chart upload
+        if ($request->hasFile('alt_chart')) {
+            $validated['alt_chart'] = $request->file('alt_chart')->store('packages/charts', 'public');
+        }
+
         $package = Package::create($validated);
 
         // Sync categories and activities
@@ -119,6 +129,32 @@ class PackageController extends Controller
 
         // Update gallery in validated data
         $validated['gallery'] = $gallery;
+
+        // Handle map update
+        if ($request->hasFile('map')) {
+            if ($package->map) {
+                Storage::disk('public')->delete($package->map);
+            }
+            $validated['map'] = $request->file('map')->store('packages/maps', 'public');
+        } elseif ($request->boolean('remove_map')) {
+            if ($package->map) {
+                Storage::disk('public')->delete($package->map);
+            }
+            $validated['map'] = null;
+        }
+
+        // Handle alt chart update
+        if ($request->hasFile('alt_chart')) {
+            if ($package->alt_chart) {
+                Storage::disk('public')->delete($package->alt_chart);
+            }
+            $validated['alt_chart'] = $request->file('alt_chart')->store('packages/charts', 'public');
+        } elseif ($request->boolean('remove_alt_chart')) {
+            if ($package->alt_chart) {
+                Storage::disk('public')->delete($package->alt_chart);
+            }
+            $validated['alt_chart'] = null;
+        }
 
         $package->update($validated);
 

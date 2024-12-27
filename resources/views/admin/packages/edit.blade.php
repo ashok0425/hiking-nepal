@@ -119,12 +119,11 @@
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <input type="date" name="departures[{{ $index }}][from_date]"
-                                                        class="form-control" value="{{ $departure['from_date'] }}"
-                                                        required>
+                                                        class="form-control" value="{{ $departure['from_date'] }}">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <input type="date" name="departures[{{ $index }}][to_date]"
-                                                        class="form-control" value="{{ $departure['to_date'] }}" required>
+                                                        class="form-control" value="{{ $departure['to_date'] }}">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button" class="btn btn-danger btn-sm w-100"
@@ -144,12 +143,12 @@
                                                     <input type="date"
                                                         name="departures[{{ $index }}][from_date]"
                                                         class="form-control"
-                                                        value="{{ $departure->start_date->format('Y-m-d') }}" required>
+                                                        value="{{ $departure->start_date->format('Y-m-d') }}">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <input type="date" name="departures[{{ $index }}][to_date]"
                                                         class="form-control"
-                                                        value="{{ $departure->end_date->format('Y-m-d') }}" required>
+                                                        value="{{ $departure->end_date->format('Y-m-d') }}">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button" class="btn btn-danger btn-sm w-100"
@@ -161,15 +160,15 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="departure-section mb-2">
+                                        {{-- <div class="departure-section mb-2">
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <input type="date" name="departures[0][from_date]"
-                                                        class="form-control" required>
+                                                        class="form-control">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <input type="date" name="departures[0][to_date]"
-                                                        class="form-control" required>
+                                                        class="form-control">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button" class="btn btn-danger btn-sm w-100"
@@ -177,7 +176,7 @@
                                                         style="display: none;">Remove</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     @endforelse
                                 @endif
                             </div>
@@ -192,6 +191,53 @@
                             <div class="form-group">
                                 <label>Overview</label>
                                 <textarea name="overview" id="overview-editor" class="form-control" rows="5">{{ old('overview', $package->overview) }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Perks</label>
+                                <textarea name="perks" class="form-control" rows="3" placeholder="Enter comma-separated perks">{{ old('perks', $package->perks) }}</textarea>
+                                <small class="text-muted">Enter perks separated by commas (e.g., Free WiFi, Breakfast,
+                                    Airport Pickup)</small>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Map Image</label>
+                                @if ($package->map)
+                                    <div class="mb-2">
+                                        <img src="{{ Storage::disk('public')->url($package->map) }}"
+                                            style="max-width: 200px" class="img-thumbnail">
+                                        <div class="form-check mt-1">
+                                            <input type="checkbox" name="remove_map" class="form-check-input"
+                                                value="1">
+                                            <label class="form-check-label">Remove existing map</label>
+                                        </div>
+                                    </div>
+                                @endif
+                                <input type="file" name="map" class="form-control" accept="image/*">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Altitude Chart</label>
+                                @if ($package->alt_chart)
+                                    <div class="mb-2">
+                                        <img src="{{ Storage::disk('public')->url($package->alt_chart) }}"
+                                            style="max-width: 200px" class="img-thumbnail">
+                                        <div class="form-check mt-1">
+                                            <input type="checkbox" name="remove_alt_chart" class="form-check-input"
+                                                value="1">
+                                            <label class="form-check-label">Remove existing chart</label>
+                                        </div>
+                                    </div>
+                                @endif
+                                <input type="file" name="alt_chart" class="form-control" accept="image/*">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Video URL</label>
+                                <input type="url" name="video" class="form-control"
+                                    placeholder="Enter YouTube video URL" value="{{ old('video', $package->video) }}">
+                                <div class="small text-muted">Only paste embed URL Eg.
+                                    https://www.youtube.com/embed/Tvms2DaG8UY</div>
                             </div>
 
                             <div class="form-group mt-3">

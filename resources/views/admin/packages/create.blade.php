@@ -111,23 +111,6 @@
                         </div>
                         <div class="card-body">
                             <div id="departures-container">
-                                <div class="departure-section mb-2">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <input type="date" name="departures[0][from_date]" class="form-control"
-                                                value="{{ old('departures.0.from_date') }}" required>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <input type="date" name="departures[0][to_date]" class="form-control"
-                                                value="{{ old('departures.0.to_date') }}" required>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-danger btn-sm w-100"
-                                                onclick="removeDepartureSection(this)"
-                                                style="display: none;">Remove</button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,6 +123,31 @@
                             <div class="form-group">
                                 <label>Overview</label>
                                 <textarea name="overview" id="overview-editor" class="form-control" rows="5">{{ old('overview') }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Perks</label>
+                                <textarea name="perks" class="form-control" rows="3" placeholder="Enter comma-separated perks">{{ old('perks') }}</textarea>
+                                <small class="text-muted">Enter perks separated by commas (e.g., Free WiFi, Breakfast,
+                                    Airport Pickup)</small>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Map Image</label>
+                                <input type="file" name="map" class="form-control" accept="image/*">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Altitude Chart</label>
+                                <input type="file" name="alt_chart" class="form-control" accept="image/*">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Video URL</label>
+                                <input type="url" name="video" class="form-control"
+                                    placeholder="Enter YouTube video URL" value="{{ old('video') }}">
+                                <div class="small text-muted">Only paste embed URL Eg.
+                                    https://www.youtube.com/embed/Tvms2DaG8UY</div>
                             </div>
 
                             <div class="form-group mt-3">
