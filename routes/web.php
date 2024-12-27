@@ -1,20 +1,15 @@
 <?php
 
-use App\Services\ImageProcessingService;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 Route::get('/dummy', function () {
-    $imageProcessor = new ImageProcessingService();
-    $imageProcessor->setSourcePath('public/images')
+    $imageProcessor = new \App\Services\ImageProcessingService();
+    $imageProcessor->setSourcePath('public/wp-content')
         ->setQuality(80)
         ->setRecursive(true)
         ->processImages();
 
-    // dd($files);
-
-    // Artisan::call('storage:link');
+    // \Illuminate\Support\Facades\Artisan::call('storage:link');
 
     return response()->json(['msg' => 'ack']);
 });
