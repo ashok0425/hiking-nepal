@@ -87,7 +87,16 @@ class Package extends Model
 
         return array_map(function ($image) {
             if (str_starts_with($image, 'http')) {
-                return str_replace('new.', '', $image);
+                $url = str_replace('new.', '', $image);
+
+                if (str_contains($url, 'wp-content')) {
+                    $parsedUrl = parse_url($url);
+                    $path = $parsedUrl['path'];
+                    $url = config('app.url') . $path;
+                    $url = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $url);
+                }
+
+                return $url;
             }
 
             return Storage::disk('public')->url($image);

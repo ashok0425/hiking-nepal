@@ -38,6 +38,12 @@ class Destination extends Model
         }
 
         if (str_starts_with($value, 'http')) {
+            if (str_contains($value, 'wp-content')) {
+                $parsedUrl = parse_url($value);
+                $path = $parsedUrl['path'];
+                $url = config('app.url') . $path;
+                return preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $url);
+            }
             return $value;
         }
 
