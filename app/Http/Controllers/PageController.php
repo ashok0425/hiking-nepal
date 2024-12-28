@@ -25,13 +25,14 @@ class PageController extends Controller
                 ->get();
 
             $packagesByCategories = collect();
+            $packagesByPlaces = collect();
+            $packagesByActivities = collect();
 
-            $packages->each(function ($package) use ($packagesByCategories) {
+            $packages->each(function ($package) use ($packagesByCategories, $packagesByPlaces, $packagesByActivities) {
                 $category = $package->categories->first();
 
-                if (! $category) {
-                    // Handle packages without categories
-                    if (! $packagesByCategories->has('general')) {
+                if (!$category) {
+                    if (!$packagesByCategories->has('general')) {
                         $packagesByCategories['general'] = [
                             'name' => 'General Tours',
                             'tagline' => 'Explore amazing tours and experiences',
@@ -40,25 +41,50 @@ class PageController extends Controller
                         ];
                     }
                     $packagesByCategories['general']['packages']->push($package);
-
-                    return;
+                } else {
+                    $categoryKey = $category->slug;
+                    if (!$packagesByCategories->has($categoryKey)) {
+                        $packagesByCategories[$categoryKey] = [
+                            'name' => $category->name,
+                            'tagline' => $category->tagline ?? '',
+                            'slug' => $category->slug,
+                            'packages' => collect(),
+                        ];
+                    }
+                    $packagesByCategories[$categoryKey]['packages']->push($package);
                 }
 
-                $categoryKey = $category->slug;
-
-                if (! $packagesByCategories->has($categoryKey)) {
-                    $packagesByCategories[$categoryKey] = [
-                        'name' => $category->name,
-                        'tagline' => $category->tagline ?? '',
-                        'slug' => $category->slug,
-                        'packages' => collect(),
-                    ];
+                // Handle places
+                if ($package->place) {
+                    $placeKey = $package->place->slug;
+                    if (!$packagesByPlaces->has($placeKey)) {
+                        $packagesByPlaces[$placeKey] = [
+                            'name' => $package->place->name,
+                            'description' => $package->place->description,
+                            'slug' => $package->place->slug,
+                            'cover' => $package->place->cover,
+                            'packages' => collect(),
+                        ];
+                    }
+                    $packagesByPlaces[$placeKey]['packages']->push($package);
                 }
 
-                $packagesByCategories[$categoryKey]['packages']->push($package);
+                // Handle activities
+                foreach ($package->activities as $activity) {
+                    $activityKey = $activity->slug;
+                    if (!$packagesByActivities->has($activityKey)) {
+                        $packagesByActivities[$activityKey] = [
+                            'name' => $activity->name,
+                            'description' => $activity->description,
+                            'slug' => $activity->slug,
+                            'packages' => collect(),
+                        ];
+                    }
+                    $packagesByActivities[$activityKey]['packages']->push($package);
+                }
             });
 
-            return view('destination', compact('destination', 'packagesByCategories'));
+            return view('destination', compact('destination', 'packagesByCategories', 'packagesByPlaces', 'packagesByActivities'));
         }
 
         $post = Post::where('status', 'published')

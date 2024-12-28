@@ -96,7 +96,7 @@
                             <td>
                                 <div class="fw-bold mb-1">
                                     <span class="text-success">$ {{ number_format($departure->package->price) }}</span>
-                                    <del class="text-muted small fw-light">$
+                                    <del class="text-danger small fw-light">$
                                         {{ number_format($departure->package->price + 100) }}</del>
                                 </div>
                                 <div class="small text-muted">

@@ -69,6 +69,9 @@
                         <a class="nav-link text-dark" href="#tourItinerary">Itinerary</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="#useful-information">Useful Information</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-dark" href="#departures">Departure Dates</a>
                     </li>
                     <li class="nav-item">
@@ -195,8 +198,8 @@
                 @if ($tourPackage->video)
                     <div class="mb-4">
                         <h2 class="mb-4">Video</h2>
-                        <iframe width="100%" height="350" src="{{ $tourPackage->video }}" title="YouTube video player"
-                            frameborder="0"
+                        <iframe width="100%" height="350" src="{{ $tourPackage->video }}"
+                            title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>

@@ -55,3 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+function handleDestinationClick(event, url) {
+    // Check if the screen width is greater than 991px (desktop)
+    if (window.innerWidth > 991) {
+        // Prevent the dropdown toggle
+        event.preventDefault();
+        // Navigate to the destination
+        window.location.href = url;
+    }
+    // On mobile (<=991px), let the default dropdown behavior happen
+}

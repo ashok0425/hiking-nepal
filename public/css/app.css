@@ -48,7 +48,7 @@ h3 {
 
 main a {
     text-decoration: underline;
-    color: #000;
+    color: var(--brand-secondary);
 }
 
 .btn {

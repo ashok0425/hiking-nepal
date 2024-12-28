@@ -8,7 +8,7 @@
                         class="mb-3">
                     <h6 class="text-success mb-3">Let’s Explore Places</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#">Keshar Mahal, Thamel, Kathmandu</a></li>
+                        <li><a href="#">Dabali Marga, Thamel, Kathmandu</a></li>
                         <li><a href="tel:+97714701537">+977 1 4701537</a></li>
                         <li><a href="tel:+9779802342080">+977 9802342080</a></li>
                         <li><a href="mailto:info@hikingnepal.com">info@hikingnepal.com</a></li>
@@ -82,14 +82,15 @@
                     <!-- Social Media Icons -->
                     <div class="social-icons mt-4">
 
-                        <a href="https://www.facebook.com/hikingnepal" class="text-primary me-2" target="_blank">
+                        <a href="https://www.facebook.com/profile.php?id=61560475635527" class="text-primary me-2"
+                            target="_blank">
                             <img src="{{ asset('images/Facebook.webp') }}" alt="facebook" width="20"
                                 height="20">
                         </a>
                         <a href="https://twitter.com/hikingnepal" class="text-primary me-2" target="_blank">
                             <img src="{{ asset('images/Twitter.webp') }}" alt="twitter" width="20"
                                 height="20"></a>
-                        <a href="https://www.instagram.com/hiking.nepal" class="text-primary me-2" target="_blank">
+                        <a href="https://www.instagram.com/hikingnepal_" class="text-primary me-2" target="_blank">
                             <img src="{{ asset('images/Instagram.webp') }}" alt="instagram" width="20"
                                 height="20"></a>
                         <a href="https://www.linkedin.com/company/hiking-nepal" class="text-primary me-2"

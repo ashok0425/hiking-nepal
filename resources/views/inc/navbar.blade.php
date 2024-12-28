@@ -47,14 +47,16 @@
 
                         @foreach ($destinations as $destination)
                             <li class="nav-item destination-dropdown dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                    href="{{ route('dynamic-page', $destination['slug']) }}" data-bs-toggle="dropdown"
+                                    onclick="handleDestinationClick(event, '{{ route('dynamic-page', $destination['slug']) }}')">
                                     {{ $destination['name'] }}
                                 </a>
                                 <ul class="dropdown-menu destination-menu">
                                     @foreach ($destination['places'] as $place)
                                         <li class="package-dropend">
-                                            <a class="dropdown-item package-dropdown-toggle">
+                                            <a class="dropdown-item package-dropdown-toggle"
+                                                href="{{ route('dynamic-page', $destination['slug']) }}#place-{{ $place['slug'] }}">
                                                 {{ strtoupper($place['name'] . ' Region') }}
                                                 <i class="fas fa-chevron-right float-end mt-1"></i>
                                             </a>
@@ -73,7 +75,8 @@
 
                                     @foreach ($destination['categories'] as $category)
                                         <li class="package-dropend">
-                                            <a class="dropdown-item package-dropdown-toggle">
+                                            <a class="dropdown-item package-dropdown-toggle"
+                                                href="{{ route('dynamic-page', $destination['slug']) }}#category-{{ $category['slug'] }}">
                                                 {{ strtoupper($category['name']) }}
                                                 <i class="fas fa-chevron-right float-end mt-1"></i>
                                             </a>
@@ -92,7 +95,8 @@
 
                                     @foreach ($destination['activities'] as $activity)
                                         <li class="package-dropend">
-                                            <a class="dropdown-item package-dropdown-toggle">
+                                            <a class="dropdown-item package-dropdown-toggle"
+                                                href="{{ route('dynamic-page', $destination['slug']) }}#activity-{{ $activity['slug'] }}">
                                                 {{ strtoupper($activity['name']) }}
                                                 <i class="fas fa-chevron-right float-end mt-1"></i>
                                             </a>
@@ -139,7 +143,8 @@
                                 href="{{ route('blog') }}">Blog</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">
                                 Contact
                             </a>
                             <ul class="dropdown-menu hover-menu">

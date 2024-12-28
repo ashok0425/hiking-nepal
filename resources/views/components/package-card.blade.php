@@ -17,7 +17,7 @@
                     @if ($package->sale_price_per_person == $package->price)
                         <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
                     @else
-                        <del class="text-muted">${{ number_format($package->price) }}</del>
+                        <del class="text-danger">${{ number_format($package->price) }}</del>
                         <span
                             class="text-success fs-5 fw-bold">${{ number_format($package->sale_price_per_person) }}</span>
                     @endif

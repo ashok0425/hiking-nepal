@@ -116,4 +116,13 @@ class Package extends Model
     {
         return $this->hasMany(Departure::class);
     }
+
+    public function getOverviewAttribute($value)
+    {
+        if ($value) {
+            return preg_replace('/<h([1-3])([^>]*?)>Useful Information<\/h[1-3]>/i', '<h$1$2 id="useful-information">Useful Information</h$1>', $value);
+        }
+
+        return $value;
+    }
 }
