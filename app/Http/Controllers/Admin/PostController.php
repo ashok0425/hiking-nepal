@@ -43,11 +43,11 @@ class PostController extends Controller
             'status' => 'required|in:draft,published',
             'thumbnail' => 'nullable|image|max:2048|required_if:status,published',
             'cover' => 'nullable|image|max:2048|required_if:status,published',
-            'meta_title' => 'nullable|max:255|required_if:status,published',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:post_categories,id',
-            'meta_description' => 'nullable|required_if:status,published',
-            'meta_keywords' => 'nullable|max:255|required_if:status,published',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_keyword' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
         ]);
 
         if ($request->hasFile('thumbnail')) {
@@ -86,9 +86,9 @@ class PostController extends Controller
             'cover' => ['nullable', 'image', 'max:2048', $post->cover ? '' : 'required_if:status,published'],
             'categories' => 'nullable|array',
             'categories.*' => 'exists:post_categories,id',
-            'meta_title' => 'nullable|max:255|required_if:status,published',
-            'meta_description' => 'nullable|required_if:status,published',
-            'meta_keywords' => 'nullable|max:255|required_if:status,published',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_keyword' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
         ]);
 
         if ($request->hasFile('thumbnail')) {

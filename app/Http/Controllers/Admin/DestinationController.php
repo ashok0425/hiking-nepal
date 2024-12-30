@@ -37,9 +37,9 @@ class DestinationController extends Controller
             'cover' => 'required_if:status,active|image|max:2048',
             'desc' => 'required',
             'order' => 'required|integer',
-            'meta_title' => 'required_if:status,active|max:255',
-            'meta_keyword' => 'required_if:status,active|max:255',
-            'meta_description' => 'required_if:status,active',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_keyword' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
         ]);
 
         if ($request->hasFile('cover')) {
@@ -67,9 +67,9 @@ class DestinationController extends Controller
             'status' => 'required|in:active,inactive',
             'desc' => 'required',
             'order' => 'required|integer',
-            'meta_title' => 'required_if:status,active|max:255',
-            'meta_keyword' => 'required_if:status,active|max:255',
-            'meta_description' => 'required_if:status,active',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_keyword' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
             'cover' => [
                 'nullable',
                 'image',
