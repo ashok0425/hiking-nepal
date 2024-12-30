@@ -24,6 +24,6 @@
     <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.6; z-index: 2;"></div>
 
     <div class="container position-relative" style="z-index: 3;">
-        <h1 class="mb-0 text-uppercase text-white text-center display-4 fw-bold">{{ $title }}</h1>
+        <h1 class="mb-0 text-white text-center display-3 pacifico-regular">{{ $title }}</h1>
     </div>
 </section>
