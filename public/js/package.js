@@ -99,6 +99,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function updateEndDate(startDateInput) {
+    const tourDuration =
+        parseInt(document.querySelector('input[name="tour_duration"]').value) ||
+        0;
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + tourDuration);
+
+    const endDateInput = startDateInput
+        .closest(".row")
+        .querySelector('input[name*="to_date"]');
+    endDateInput.value = endDate.toISOString().split("T")[0];
+}
+
 function addDepartureSection() {
     departureCount = document.querySelectorAll(".departure-section").length + 1;
     const container = document.getElementById("departures-container");
@@ -106,7 +120,7 @@ function addDepartureSection() {
     <div class="departure-section mb-2">
         <div class="row">
             <div class="col-md-5">
-                <input type="date" name="departures[${departureCount - 1}][from_date]" class="form-control" required>
+                <input type="date" name="departures[${departureCount - 1}][from_date]" class="form-control" required onchange="updateEndDate(this)">
             </div>
             <div class="col-md-5">
                 <input type="date" name="departures[${departureCount - 1}][to_date]" class="form-control" required>
