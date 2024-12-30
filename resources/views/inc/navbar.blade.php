@@ -57,7 +57,7 @@
                                         <li class="package-dropend">
                                             <a class="dropdown-item package-dropdown-toggle"
                                                 href="{{ route('dynamic-page', $destination['slug']) }}#place-{{ $place['slug'] }}">
-                                                {{ strtoupper($place['name'] . ' Region') }}
+                                                {{ strtoupper($place['name']) }}
                                                 <i class="fas fa-chevron-right float-end mt-1"></i>
                                             </a>
                                             <ul class="dropdown-menu package-submenu">
