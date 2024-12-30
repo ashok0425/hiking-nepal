@@ -1,19 +1,20 @@
 <section class="container my-5 ">
     <div class="row g-3">
         <div class="col-md-4 text-center">
-            <img src="{{ asset('images/reach.webp') }}" alt="reach" width="125" height="115" class="mb-3">
+            <img src="{{ asset('images/e.gif') }}" alt="reach" width="125" height="125" class="mb-3">
             <h3 class="mb-3">Discover destinations beyond your reach</h3>
             <p>Our journeys are guided by certified experts, offering you unique experiences in locations that remain
                 hidden to most.</p>
         </div>
         <div class="col-md-4 text-center">
-            <img src="{{ asset('images/earth.webp') }}" alt="earth" width="125" height="115" class="mb-3">
+            <img src="{{ asset('images/w.gif') }}" alt="earth" width="125" height="125" class="mb-3"
+                style="object-fit: scale-down">
             <h3 class="mb-3">Embark with the outdoor experts</h3>
             <p>Select from over 200 award-winning outdoor adventures in untamed destinations, tailored to match any mood
                 or passion.</p>
         </div>
         <div class="col-md-4 text-center">
-            <img src="{{ asset('images/fist.webp') }}" alt="fist" width="125" height="115" class="mb-3">
+            <img src="{{ asset('images/q.gif') }}" alt="fist" width="125" height="125" class="mb-3">
             <h3 class="mb-3">Connect with a community of
                 fellow explorers</h3>
             <p>75% of our travelers join solo, with the majority in their 30s-50s, and 95% rate the group experience 5
