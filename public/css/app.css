@@ -994,3 +994,37 @@ video-container {
         width: 177.78vh;
     }
 }
+
+/* Whatsapp popup */
+@keyframes popupBounce {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.wa-popup {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    animation: popupBounce 0.6s ease-in-out;
+    transform-origin: center;
+    z-index: 1;
+}
+
+@media screen and (max-width: 425px) {
+    .wa-popup {
+        right: 20px;
+        bottom: 20px;
+    }
+}
