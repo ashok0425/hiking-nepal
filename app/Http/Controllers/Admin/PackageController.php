@@ -79,6 +79,9 @@ class PackageController extends Controller
                     $package->departures()->create([
                         'start_date' => $departure['from_date'],
                         'end_date' => $departure['to_date'],
+                        'total_seats' => $departure['total_seats'],
+                        'booked_seats' => $departure['booked_seats'],
+                        'show_on_home_page' => isset($departure['show_on_home_page']) ? true : false
                     ]);
                 }
             }
@@ -173,6 +176,9 @@ class PackageController extends Controller
                     $package->departures()->create([
                         'start_date' => $departure['from_date'],
                         'end_date' => $departure['to_date'],
+                        'total_seats' => $departure['total_seats'],
+                        'booked_seats' => $departure['booked_seats'],
+                        'show_on_home_page' => isset($departure['show_on_home_page']) ? true : false
                     ]);
                 }
             }

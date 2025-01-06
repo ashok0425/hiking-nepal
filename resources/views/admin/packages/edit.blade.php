@@ -117,67 +117,89 @@
                                     @foreach (old('departures') as $index => $departure)
                                         <div class="departure-section mb-2">
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-3">
                                                     <input type="date" name="departures[{{ $index }}][from_date]"
-                                                        class="form-control" value="{{ $departure['from_date'] }}">
+                                                        class="form-control" value="{{ $departure['from_date'] }}" required
+                                                        onchange="updateEndDate(this)">
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-3">
                                                     <input type="date" name="departures[{{ $index }}][to_date]"
-                                                        class="form-control" value="{{ $departure['to_date'] }}">
+                                                        class="form-control" value="{{ $departure['to_date'] }}" required>
                                                 </div>
                                                 <div class="col-md-2">
+                                                    <input type="number"
+                                                        name="departures[{{ $index }}][total_seats]"
+                                                        class="form-control" value="{{ $departure['total_seats'] }}"
+                                                        placeholder="Total Seats" required min="1">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="number"
+                                                        name="departures[{{ $index }}][booked_seats]"
+                                                        class="form-control" value="{{ $departure['booked_seats'] }}"
+                                                        placeholder="Booked Seats" required min="0">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-check">
+                                                        <input type="checkbox"
+                                                            name="departures[{{ $index }}][show_on_home_page]"
+                                                            class="form-check-input" value="1"
+                                                            {{ isset($departure['show_on_home_page']) ? 'checked' : '' }}>
+                                                        <label class="form-check-label">Home</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
                                                     <button type="button" class="btn btn-danger btn-sm w-100"
-                                                        onclick="removeDepartureSection(this)"
-                                                        style="display: {{ count(old('departures')) > 1 ? 'block' : 'none' }};">
-                                                        Remove
-                                                    </button>
+                                                        onclick="removeDepartureSection(this)"><i
+                                                            class="fas fa-trash"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
                                 @else
-                                    @forelse($package->departures as $index => $departure)
+                                    @foreach ($package->departures as $index => $departure)
                                         <div class="departure-section mb-2">
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-3">
                                                     <input type="date"
                                                         name="departures[{{ $index }}][from_date]"
                                                         class="form-control"
-                                                        value="{{ $departure->start_date->format('Y-m-d') }}">
+                                                        value="{{ $departure->start_date->format('Y-m-d') }}" required
+                                                        onchange="updateEndDate(this)">
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-3">
                                                     <input type="date" name="departures[{{ $index }}][to_date]"
                                                         class="form-control"
-                                                        value="{{ $departure->end_date->format('Y-m-d') }}">
+                                                        value="{{ $departure->end_date->format('Y-m-d') }}" required>
                                                 </div>
                                                 <div class="col-md-2">
+                                                    <input type="number"
+                                                        name="departures[{{ $index }}][total_seats]"
+                                                        class="form-control" value="{{ $departure->total_seats }}"
+                                                        placeholder="Total Seats" required min="1">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="number"
+                                                        name="departures[{{ $index }}][booked_seats]"
+                                                        class="form-control" value="{{ $departure->booked_seats }}"
+                                                        placeholder="Booked Seats" required min="0">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-check">
+                                                        <input type="checkbox"
+                                                            name="departures[{{ $index }}][show_on_home_page]"
+                                                            class="form-check-input" value="1"
+                                                            {{ $departure->show_on_home_page ? 'checked' : '' }}>
+                                                        <label class="form-check-label">Home</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
                                                     <button type="button" class="btn btn-danger btn-sm w-100"
-                                                        onclick="removeDepartureSection(this)"
-                                                        style="display: {{ $package->departures->count() > 1 ? 'block' : 'none' }};">
-                                                        Remove
-                                                    </button>
+                                                        onclick="removeDepartureSection(this)"><i
+                                                            class="fas fa-trash"></i></button>
                                                 </div>
                                             </div>
                                         </div>
-                                    @empty
-                                        {{-- <div class="departure-section mb-2">
-                                            <div class="row">
-                                                <div class="col-md-5">
-                                                    <input type="date" name="departures[0][from_date]"
-                                                        class="form-control">
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <input type="date" name="departures[0][to_date]"
-                                                        class="form-control">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" class="btn btn-danger btn-sm w-100"
-                                                        onclick="removeDepartureSection(this)"
-                                                        style="display: none;">Remove</button>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                    @endforelse
+                                    @endforeach
                                 @endif
                             </div>
                         </div>

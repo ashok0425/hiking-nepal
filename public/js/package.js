@@ -119,22 +119,32 @@ function addDepartureSection() {
     const template = `
     <div class="departure-section mb-2">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-3">
                 <input type="date" name="departures[${departureCount - 1}][from_date]" class="form-control" required onchange="updateEndDate(this)">
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3">
                 <input type="date" name="departures[${departureCount - 1}][to_date]" class="form-control" required>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger btn-sm w-100" onclick="removeDepartureSection(this)">Remove</button>
+                <input type="number" name="departures[${departureCount - 1}][total_seats]" class="form-control" placeholder="Total Seats" value="20" required min="1">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="departures[${departureCount - 1}][booked_seats]" class="form-control" placeholder="Booked Seats" value="0" required min="0">
+            </div>
+            <div class="col-md-1">
+                <div class="form-check">
+                    <input type="checkbox" name="departures[${departureCount - 1}][show_on_home_page]" class="form-check-input" value="1">
+                    <label class="form-check-label">Home</label>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-danger btn-sm w-100" onclick="removeDepartureSection(this)"><i
+                                                            class="fas fa-trash"></i></button>
             </div>
         </div>
-    </div>
-`;
+    </div>`;
     container.insertAdjacentHTML("beforeend", template);
-
-    // Show remove buttons if there's more than one departure
-    updateRemoveButtons();
+    // updateRemoveButtons();
 }
 
 function removeDepartureSection(button) {
@@ -148,20 +158,20 @@ function removeDepartureSection(button) {
         });
 
     // Update remove buttons visibility
-    updateRemoveButtons();
+    // updateRemoveButtons();
 }
 
-function updateRemoveButtons() {
-    const removeButtons = document.querySelectorAll(
-        ".departure-section .btn-danger",
-    );
-    removeButtons.forEach((button) => {
-        button.style.display =
-            document.querySelectorAll(".departure-section").length > 1
-                ? "block"
-                : "none";
-    });
-}
+// function updateRemoveButtons() {
+//     const removeButtons = document.querySelectorAll(
+//         ".departure-section .btn-danger",
+//     );
+//     removeButtons.forEach((button) => {
+//         button.style.display =
+//             document.querySelectorAll(".departure-section").length > 1
+//                 ? "block"
+//                 : "none";
+//     });
+// }
 
 function updateInputNames(section, index) {
     section.querySelectorAll('input[name*="departures"]').forEach((input) => {

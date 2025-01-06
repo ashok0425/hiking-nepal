@@ -67,6 +67,7 @@ class DepartureController extends Controller
             'show_on_home_page' => 'nullable|boolean'
         ]);
 
+        $validated['show_on_home_page'] = $request->has('show_on_home_page');
         $departure->update($validated);
 
         return redirect()->route('admin.departures.index')
