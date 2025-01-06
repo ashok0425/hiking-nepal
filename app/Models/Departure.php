@@ -13,6 +13,9 @@ class Departure extends Model
         'package_id',
         'start_date',
         'end_date',
+        'show_on_home_page',
+        'total_seats',
+        'booked_seats',
     ];
 
     protected $casts = [
