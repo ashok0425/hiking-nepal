@@ -30,15 +30,21 @@
                     <th>Package</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>Total Seats</th>
+                    <th>Booked Seats</th>
+                    <th>Available Seats</th>
                     <th width="200">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($departures as $departure)
                     <tr>
-                        <td>{{ $departure->package->title }}</td>
-                        <td>{{ $departure->start_date->format('M d, Y') }}</td>
-                        <td>{{ $departure->end_date->format('M d, Y') }}</td>
+                        <td style="word-wrap: break-word;">{{ $departure->package->title }}</td>
+                        <td style="min-width:130px;">{{ $departure->start_date->format('M d, Y') }}</td>
+                        <td style="min-width:130px;">{{ $departure->end_date->format('M d, Y') }}</td>
+                        <td>{{ $departure->total_seats }}</td>
+                        <td>{{ $departure->booked_seats }}</td>
+                        <td>{{ $departure->total_seats - $departure->booked_seats }}</td>
                         <td>
                             <a href="{{ route('admin.departures.edit', $departure) }}" class="btn btn-sm btn-info me-1">
                                 Edit

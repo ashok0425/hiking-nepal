@@ -38,7 +38,12 @@ class DepartureController extends Controller
             'package_id' => 'required|exists:packages,id',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
+            'total_seats' => 'required|integer|min:1',
+            'booked_seats' => 'required|integer|min:0|lte:total_seats',
+            'show_on_home_page' => 'nullable'
         ]);
+
+        $validated['show_on_home_page'] = $request->has('show_on_home_page');
 
         Departure::create($validated);
 
@@ -59,7 +64,12 @@ class DepartureController extends Controller
             'package_id' => 'required|exists:packages,id',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
+            'total_seats' => 'required|integer|min:1',
+            'booked_seats' => 'required|integer|min:0|lte:total_seats',
+            'show_on_home_page' => 'nullable'
         ]);
+
+        $validated['show_on_home_page'] = $request->has('show_on_home_page');
 
         $departure->update($validated);
 
