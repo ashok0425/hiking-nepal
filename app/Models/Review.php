@@ -21,7 +21,7 @@ class Review extends Model
         'user_photo',
         'rating',
         'comment',
-        'package_id',
+
     ];
 
     /**
@@ -29,7 +29,7 @@ class Review extends Model
      */
     public function package()
     {
-        return $this->belongsTo(Package::class);
+        return $this->belongsToMany(Package::class);
     }
 
     public function getUserPhotoAttribute($value)
