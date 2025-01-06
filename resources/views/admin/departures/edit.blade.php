@@ -66,10 +66,11 @@
 
                         <div class="col-md-3">
                             <div class="form-check mt-3">
-                                <input class="form-check-input" type="checkbox" name="show_on_home_page" id="showOnHomePage"
-                                    {{ $departure->show_on_home_page ? 'checked' : '' }}>
-                                <label class="form-check-label" for="showOnHomePage">
-                                    Show on home page
+                                <input type="checkbox" class="form-check-input" name="show_on_home_page"
+                                    id="show_on_home_page" value="1"
+                                    {{ old('show_on_home_page', $departure->show_on_home_page) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="show_on_home_page">
+                                    Show on Home
                                 </label>
                             </div>
                         </div>
