@@ -28,7 +28,6 @@
             <thead>
                 <tr>
                     <th>User Name</th>
-                    <th>Package</th>
                     <th>Rating</th>
                     <th>Status</th>
                     <th width="200">Actions</th>
@@ -38,7 +37,6 @@
                 @forelse ($reviews as $review)
                     <tr>
                         <td>{{ $review->user_name }}</td>
-                        <td>{{ $review->package->title ?? 'N/A' }}</td>
                         <td>{{ $review->rating }}/5</td>
                         <td>{{ $review->status }}</td>
                         <td>

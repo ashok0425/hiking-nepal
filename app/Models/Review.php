@@ -21,13 +21,21 @@ class Review extends Model
         'user_photo',
         'rating',
         'comment',
-
+        'date',
+        'show_on_home'
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'date' => 'date',
+        ];
+    }
 
     /**
      * Get the package that the review belongs to.
      */
-    public function package()
+    public function packages()
     {
         return $this->belongsToMany(Package::class);
     }

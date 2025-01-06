@@ -19,7 +19,7 @@ class ReviewController extends Controller
                 ->orWhere('comment', 'LIKE', "%{$searchTerm}%");
         }
 
-        $reviews = $query->with('package')->latest()->get();
+        $reviews = $query->with('packages')->latest()->get();
 
         return view('admin.reviews.index', compact('reviews'));
     }
@@ -33,13 +33,17 @@ class ReviewController extends Controller
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'user_name' => 'required|max:255',
             'user_photo' => 'nullable|image|max:2048',
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'required|string',
-            'package_id' => 'required|exists:packages,id',
+            'packages' => 'required|array',
+            'packages.*' => 'required|exists:packages,id',
             'status' => 'in:pending,approved,rejected',
+            'date' => 'required|date',
+            'show_on_home' => 'required|boolean'
         ]);
 
         // Handle file upload for user photo if needed
@@ -48,7 +52,8 @@ class ReviewController extends Controller
             $validated['user_photo'] = $photoPath;
         }
 
-        Review::create($validated);
+        $review = Review::create($validated);
+        $review->packages()->sync($validated['packages']);
 
         return redirect()->route('admin.reviews.index')
             ->with('success', 'Review created successfully');
@@ -68,8 +73,11 @@ class ReviewController extends Controller
             'user_photo' => 'nullable|image|max:2048',
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'required|string',
-            'package_id' => 'required|exists:packages,id',
+            'packages' => 'required|array',
+            'packages.*' => 'required|exists:packages,id',
             'status' => 'in:pending,approved,rejected',
+            'date' => 'required|date',
+            'show_on_home' => 'required|boolean'
         ]);
 
         // Handle file upload for user photo if needed
@@ -79,6 +87,7 @@ class ReviewController extends Controller
         }
 
         $review->update($validated);
+        $review->packages()->sync($validated['packages']);
 
         return redirect()->route('admin.reviews.index')
             ->with('success', 'Review updated successfully');

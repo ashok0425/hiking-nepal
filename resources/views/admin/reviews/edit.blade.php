@@ -27,28 +27,38 @@
                             </div>
 
                             <div class="form-group mt-3">
-                                <label>Package</label>
-                                <select name="package_id" class="form-control" required>
-                                    <option value="">Select Package</option>
+                                <label>Packages</label>
+                                <select id="package-select" name="packages[]" multiple="multiple">
                                     @foreach ($packages as $package)
                                         <option value="{{ $package->id }}"
-                                            {{ old('package_id', $review->package_id) == $package->id ? 'selected' : '' }}>
+                                            {{ is_array(old('packages', $review->packages->pluck('id')->toArray())) && in_array($package->id, old('packages', $review->packages->pluck('id')->toArray())) ? 'selected' : '' }}>
                                             {{ $package->title }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            <div class="form-group mt-3">
-                                <label>Rating</label>
-                                <select name="rating" class="form-control" required>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <option value="{{ $i }}"
-                                            {{ old('rating', $review->rating) == $i ? 'selected' : '' }}>
-                                            {{ $i }} Star{{ $i > 1 ? 's' : '' }}
-                                        </option>
-                                    @endfor
-                                </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Rating</label>
+                                        <select name="rating" class="form-control" required>
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <option value="{{ $i }}"
+                                                    {{ old('rating', $review->rating) == $i ? 'selected' : '' }}>
+                                                    {{ $i }} Star{{ $i > 1 ? 's' : '' }}
+                                                </option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Review Date</label>
+                                        <input type="date" name="date" class="form-control"
+                                            value="{{ old('date', $review->date) }}" required>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group mt-3">
@@ -75,6 +85,16 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
+                            <div class="form-group mb-3">
+                                <label>Show on Home Page</label>
+                                <select name="show_on_home" class="form-control" required>
+                                    <option value="1"
+                                        {{ old('show_on_home', $review->show_on_home) ? 'selected' : '' }}>Yes</option>
+                                    <option value="0"
+                                        {{ old('show_on_home', $review->show_on_home) ? '' : 'selected' }}>No</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label>Status</label>
                                 <select name="status" class="form-control" required>
@@ -103,3 +123,17 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let packageSelect = document.getElementById('package-select');
+            let options = {
+                placeholderValue: "Search and Select Packages",
+                removeItemButton: true
+            };
+
+            new Choices(packageSelect, options);
+        });
+    </script>
+@endpush
