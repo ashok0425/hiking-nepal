@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         $featuredPackages = Cache::remember('featured_packages', now()->endOfDay(), function () {
             return Package::where('status', 'published')
-                ->where('price', '>', 0)
+                ->where('sale_price_per_person', '>', 0)
                 ->with('place', 'destination')
                 ->take(6)
                 ->get();
@@ -29,7 +29,7 @@ class HomeController extends Controller
 
         $regularPackages = Cache::remember('regular_packages', now()->endOfDay(), function () {
             return Package::where('status', 'published')
-                ->where('price', '>', 0)
+                ->where('sale_price_per_person', '>', 0)
                 ->with('place', 'destination')
                 ->inRandomOrder()
                 ->take(6)
@@ -51,11 +51,11 @@ class HomeController extends Controller
                 });
         })
             ->with(['package' => function ($query) {
-                $query->select('id', 'title', 'slug', 'tour_duration', 'price', 'status');
+                $query->select('id', 'title', 'slug', 'tour_duration', 'sale_price_per_person', 'status');
             }])
             ->whereHas('package', function ($query) {
                 $query->where('status', 'published')
-                    ->where('price', '>', 0);
+                    ->where('sale_price_per_person', '>', 0);
             })
             ->select('id', 'package_id', 'start_date', 'end_date')
             ->inRandomOrder()
