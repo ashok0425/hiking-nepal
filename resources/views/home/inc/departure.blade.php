@@ -44,6 +44,10 @@
             </div>
         </div>
 
+        <div class="mb-2 fw-bold px-3 d-lg-none">Swipe to see more details <i
+                class="fa-solid fa-arrow-right ani-right"></i>
+        </div>
+
         <div class="table-responsive trips-table">
             <table class="table">
                 <thead>
@@ -57,8 +61,8 @@
                 <tbody>
                     @forelse($departures as $departure)
                         <tr>
-                            <th scope="row" style="max-width: 360px; text-wrap: wrap;">
-                                {{ $departure->package->title }}
+                            <th scope="row">
+                                <div class="dep-title">{{ $departure->package->title }}</div>
                             </th>
                             <td>
                                 <div class="fw-bold">{{ $departure->package->tour_duration ?? '-' }}</div>

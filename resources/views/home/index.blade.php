@@ -37,7 +37,7 @@
     </div>
     @include('home.inc.blog')
 
-    <div class="bg-light">
+    <div class="bg-light overflow-hidden">
         @include('inc.insta')
     </div>
 

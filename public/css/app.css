@@ -1083,3 +1083,30 @@ video-container {
         bottom: 20px;
     }
 }
+
+.dep-title {
+    width: 300px;
+    text-wrap: wrap;
+}
+
+@media screen and (max-width: 425px) {
+    .dep-title {
+        width: 200px;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        margin-left: 5px;
+    }
+    50% {
+        margin-left: 15px;
+    }
+    100% {
+        margin-left: 5px;
+    }
+}
+
+.ani-right {
+    animation: slideRight 2s infinite;
+}
