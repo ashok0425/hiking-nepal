@@ -47,6 +47,7 @@ class BookingController extends Controller
             'email' => 'required|email|max:255',
             'nationality' => 'required|max:255',
             'message' => 'required',
+            'date' => 'nullable|date',
             'status' => ['required', Rule::in(Booking::getStatuses())],
         ]);
 
@@ -70,6 +71,7 @@ class BookingController extends Controller
             'email' => 'required|email|max:255',
             'nationality' => 'required|max:255',
             'message' => 'required',
+            'date' => 'nullable|date',
             'status' => ['required', Rule::in(Booking::getStatuses())],
         ]);
 

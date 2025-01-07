@@ -49,6 +49,12 @@
                             </div>
 
                             <div class="form-group mt-3">
+                                <label>Booking Date</label>
+                                <input type="date" name="date" class="form-control"
+                                    value="{{ old('date', $booking->date) }}">
+                            </div>
+
+                            <div class="form-group mt-3">
                                 <label>Nationality</label>
                                 <input type="text" name="nationality" class="form-control"
                                     value="{{ old('nationality', $booking->nationality) }}" required>
