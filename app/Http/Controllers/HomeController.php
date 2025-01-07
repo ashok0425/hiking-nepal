@@ -35,31 +35,21 @@ class HomeController extends Controller
         $month = $request->get('month', Carbon::now()->month);
         $year = $request->get('year', Carbon::now()->year);
 
-        $start = Carbon::createFromDate($year, $month, 1)->startOfMonth();
-        $end = Carbon::createFromDate($year, $month, 1)->endOfMonth();
-
-        $departures = Departure::where(function ($query) use ($start, $end) {
-            $query->whereBetween('start_date', [$start, $end])
-                ->orWhereBetween('end_date', [$start, $end])
-                ->orWhere(function ($q) use ($start, $end) {
-                    $q->where('start_date', '<=', $start)
-                        ->where('end_date', '>=', $end);
-                });
-        })
+        $departures = Departure::where('show_on_home_page', '=', true)
+            ->whereMonth('start_date', $month)
+            ->whereYear('start_date', $year)
             ->with(['package' => function ($query) {
-                $query->select('id', 'title', 'slug', 'tour_duration', 'sale_price_per_person', 'status');
+                $query->select('id', 'title', 'slug', 'tour_duration', 'discounted_price', 'sale_price_per_person', 'status');
             }])
             ->whereHas('package', function ($query) {
-                $query->where('status', 'published')
-                    ->where('sale_price_per_person', '>', 0);
+                $query->where('status', 'published');
             })
             ->select('id', 'package_id', 'start_date', 'end_date', 'total_seats', 'booked_seats')
-            ->inRandomOrder()
+            ->orderBy('start_date')
             ->limit(10)
             ->get();
 
-        $reviews = Review::where('status', 'approved')
-            ->latest()
+        $reviews = Review::where('status', 'approved')->latest()
             ->take(10)
             ->get();
 
