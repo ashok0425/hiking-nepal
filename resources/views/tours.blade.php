@@ -175,7 +175,7 @@
                                     Price
                                 </td>
                                 <td>
-                                    {{ $tourPackage->sale_price_per_person > 0 ? 'USD ' . number_format($tourPackage->sale_price_per_person, 2) . ' per person' : ($tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price, 2) . ' per person' : 'Price on request') }}
+                                    USD {{ number_format($tourPackage->getPrice()) }} per person
                                 </td>
                             </tr>
                         </tbody>
@@ -259,7 +259,7 @@
                                     </td>
                                     <td>
                                         <div class="fw-bold mb-1">
-                                            {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) : 'Price on request') }}
+                                            $ {{ number_format($tourPackage->getPrice()) }}
                                         </div>
                                         <div class="small text-muted">
                                             <a href="{{ route('book-a-call', ['departure' => $departure->id]) }}"
@@ -342,7 +342,7 @@
                         <div>
                             <div class="fw-bold">All Inclusive cost</div>
                             <div class="fw-bold fs-5">
-                                {{ $tourPackage->price > 0 ? 'USD ' . number_format($tourPackage->price) . ' per person' : 'Price on request' }}
+                                USD {{ number_format($tourPackage->getPrice()) }}
                             </div>
                         </div>
                         <img src="{{ asset('images/best-price.webp') }}" alt="sale" width="120" height="120">
@@ -360,19 +360,23 @@
                             <tr>
                                 <td class="text-center">
                                     <div class="fw-bold">
-                                        {{ $tourPackage->sale_price_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                        $ {{ number_format($tourPackage->getPrice()) }}
                                     </div>
                                     <small class="text-muted">Partial Pay</small>
                                 </td>
                                 <td class="text-center">
                                     <div class="fw-bold">
-                                        {{ $tourPackage->sale_price_two_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_two_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                        $
+                                        {{ number_format($tourPackage->sale_price_two_plus_per_person > 0 ? $tourPackage->sale_price_two_plus_per_person : $tourPackage->getPrice()) }}
+                                        / per
                                     </div>
                                     <small class="text-muted">Partial Pay</small>
                                 </td>
                                 <td class="text-center">
                                     <div class="fw-bold">
-                                        {{ $tourPackage->sale_price_eight_plus_per_person > 0 ? '$ ' . number_format($tourPackage->sale_price_eight_plus_per_person) . '/per' : ($tourPackage->price > 0 ? '$ ' . number_format($tourPackage->price) . '/per' : 'Price on request') }}
+                                        $
+                                        {{ number_format($tourPackage->sale_price_eight_plus_per_person > 0 ? $tourPackage->sale_price_eight_plus_per_person : $tourPackage->getPrice()) }}
+                                        / per
                                     </div>
                                     <small class="text-muted">Partial Pay</small>
                                 </td>

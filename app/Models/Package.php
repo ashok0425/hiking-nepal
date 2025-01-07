@@ -133,4 +133,9 @@ class Package extends Model
             $this->discounted_price > 0 &&
             $this->discounted_price < $this->sale_price_per_person;
     }
+
+    public function getPrice()
+    {
+        return $this->hasDiscount() ? $this->discounted_price : $this->sale_price_per_person;
+    }
 }

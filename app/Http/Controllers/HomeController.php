@@ -19,22 +19,18 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $featuredPackages = Cache::remember('featured_packages', now()->endOfDay(), function () {
-            return Package::where('status', 'published')
-                ->where('sale_price_per_person', '>', 0)
-                ->with('place', 'destination')
-                ->take(6)
-                ->get();
-        });
+        $featuredPackages = Package::where('status', 'published')
+            ->where('sale_price_per_person', '>', 0)
+            ->with('place', 'destination')
+            ->take(6)
+            ->get();
 
-        $regularPackages = Cache::remember('regular_packages', now()->endOfDay(), function () {
-            return Package::where('status', 'published')
-                ->where('sale_price_per_person', '>', 0)
-                ->with('place', 'destination')
-                ->inRandomOrder()
-                ->take(6)
-                ->get();
-        });
+        $regularPackages = Package::where('status', 'published')
+            ->where('sale_price_per_person', '>', 0)
+            ->with('place', 'destination')
+            ->inRandomOrder()
+            ->take(6)
+            ->get();
 
         $month = $request->get('month', Carbon::now()->month);
         $year = $request->get('year', Carbon::now()->year);
