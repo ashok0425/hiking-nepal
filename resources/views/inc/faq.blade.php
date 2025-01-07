@@ -11,8 +11,8 @@
         @forelse($pageFaqs as $index => $faq)
             <div class="accordion-item brand-shadow mb-4 p-3">
                 <h3 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold text-primary" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#faq{{ $index }}" aria-expanded="false"
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq{{ $index }}" aria-expanded="false"
                         aria-controls="faq{{ $index }}">
                         {{ $faq['question'] }}
                     </button>
