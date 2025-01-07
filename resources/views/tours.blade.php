@@ -389,9 +389,14 @@
 
                 <div class="position-sticky" style="top: 220px;">
 
-                    <form method="post" action="{{ route('book-a-call') }}" class="bg-cta text-white p-3 mb-3">
+                    <form method="post" action="{{ route('book-a-call') }}" id="queryForm"
+                        class="bg-cta text-white p-3 mb-3">
                         @csrf
                         <div class="fw-bold mb-4">Send us your queries or requests</div>
+
+                        @error('g-recaptcha-response')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <input type="text" class="form-control @error('firstName') is-invalid @enderror"
@@ -440,7 +445,9 @@
                             Your information will never be shared with anyone outside our company
                         </div>
 
-                        <button type="submit" class="btn bg-white text-cta w-100">Enquire Now</button>
+                        <button type="submit" class="btn bg-white text-cta w-100 g-recaptcha"
+                            data-sitekey="6LdphbAqAAAAAFaAnoPYmK6A8a9GU3e8gMJc_N_A" data-callback='onSubmit'
+                            data-action='submit'>Enquire Now</button>
                     </form>
 
                     <div class="bg-cta text-white p-3 mb-3">
@@ -505,7 +512,17 @@
 @endsection
 
 @push('scripts')
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
+        function onSubmit(token) {
+            const form = document.getElementById("queryForm");
+            if (form.checkValidity()) {
+                form.submit();
+            } else {
+                form.reportValidity();
+            }
+        }
+
         var testimonials = new Splide('#testimonials', {
             type: 'loop',
             perPage: 2,

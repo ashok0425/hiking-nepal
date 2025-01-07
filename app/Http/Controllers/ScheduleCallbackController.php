@@ -25,7 +25,19 @@ class ScheduleCallbackController extends Controller
             'duration' => 'nullable|integer',
             'user_timezone' => 'nullable|string',
             'callback_message' => 'nullable|string',
+            'g-recaptcha-response' => 'nullable|string',
         ]);
+
+        if ($validated['g-recaptcha-response']) {
+            $recaptcha_response = $validated['g-recaptcha-response'];
+            $recaptcha_response = json_decode(file_get_contents(
+                "https://www.google.com/recaptcha/api/siteverify?secret=6LdphbAqAAAAAHkL6AX2jZWG8WE84W5e32Wzw5iN&response=" . $recaptcha_response
+            ));
+
+            if (!$recaptcha_response->success) {
+                return redirect()->back()->withErrors(['g-recaptcha-response' => 'Invalid reCAPTCHA response']);
+            }
+        }
 
         $callback_message = sprintf(
             "Duration: %d mins, Timezone: %s\n%s",
