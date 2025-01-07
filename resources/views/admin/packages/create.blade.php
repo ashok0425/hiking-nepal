@@ -204,7 +204,7 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
 
                             <div class="form-group mt-3">
                                 <label>Place</label>
-                                <select name="place_id" class="form-control" id="place-select" required>
+                                <select name="place_id" class="form-control" id="place-select">
                                     <option value="">Select Place</option>
                                     @if (old('destination_id'))
                                         @foreach ($places->where('destination_id', old('destination_id')) as $place)
