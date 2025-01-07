@@ -27,7 +27,7 @@ class StorePackageRequest extends FormRequest
             'meal' => ['nullable', 'string'],
             'tour_duration' => ['nullable', 'string'],
             'stay' => ['nullable', 'string'],
-            'price' => ['required', 'numeric', 'min:0'],
+            'discounted_price' => ['nullable', 'numeric', 'min:0'],
             'sale_price_per_person' => ['required', 'numeric', 'min:0'],
             'sale_price_two_plus_per_person' => ['required_if:status,published', 'nullable', 'numeric', 'min:0'],
             'sale_price_eight_plus_per_person' => ['required_if:status,published', 'nullable', 'numeric', 'min:0'],
