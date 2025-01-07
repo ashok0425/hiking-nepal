@@ -17,6 +17,7 @@ class Booking extends Model
         'email',
         'nationality',
         'message',
+        'date',
     ];
 
     const STATUS_PENDING = 'pending';
@@ -24,6 +25,13 @@ class Booking extends Model
     const STATUS_CONFIRMED = 'confirmed';
 
     const STATUS_CANCELLED = 'cancelled';
+
+    protected function casts()
+    {
+        return [
+            'date' => 'datetime',
+        ];
+    }
 
     public static function getStatuses(): array
     {
