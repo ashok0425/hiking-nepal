@@ -49,7 +49,9 @@ class HomeController extends Controller
             ->limit(10)
             ->get();
 
-        $reviews = Review::where('status', 'approved')->latest()
+        $reviews = Review::where('status', 'approved')
+            ->where('show_on_home', '=', true)
+            ->latest('date')
             ->take(10)
             ->get();
 
