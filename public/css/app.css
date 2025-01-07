@@ -20,13 +20,13 @@ html body {
 
 @media screen and (max-width: 426px) {
     body {
-        margin-top: 173px !important;
+        margin-top: 225px !important;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
     body {
-        margin-top: 133px !important;
+        margin-top: 185px !important;
     }
 }
 
@@ -394,6 +394,42 @@ a {
 #mainNavbar .package-submenu {
     max-height: calc(100vh - 500px);
     overflow-y: scroll;
+}
+
+.nav-search {
+    border: 1px solid #d1cdcd;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-search {
+        width: 150px;
+        /* margin-left: 15px; */
+    }
+}
+
+.nav-search-btn {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: var(--brand-color);
+    height: 24px;
+}
+
+.nav-search-input {
+    padding: 0;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #000;
+    height: 24px;
+    width: 100%;
+}
+
+.nav-search-input::placeholder {
+    color: #d1cdcd;
 }
 
 /* Footer */

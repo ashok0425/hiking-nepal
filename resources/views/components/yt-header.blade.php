@@ -24,7 +24,7 @@
     <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.6; z-index: 2;"></div>
 
     <div class="container position-relative" style="z-index: 3;">
-        <p class="text-white text-center mb-4 text-uppercase fw-bold">Get a glimpse of Nepal</p>
-        <h1 class="text-white text-center display-3 pacifico-regular mb-0">{{ $title }}</h1>
+        <h1 class="text-white text-center display-3 pacifico-regular mb-4">{{ $title }}</h1>
+        <p class="text-white text-center mb-0 text-uppercase fw-bold">Get a glimpse of Nepal</p>
     </div>
 </section>

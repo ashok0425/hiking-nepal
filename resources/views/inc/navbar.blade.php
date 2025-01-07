@@ -3,7 +3,7 @@
         <div class="d-block w-100">
             <div class="bg-white">
                 <div class="container d-block d-lg-flex flex-row-reverse align-items-center py-2">
-                    <div class="ms-auto d-flex flex-wrap align-items-center gap-3 gap-lg-4">
+                    <div class="ms-auto d-flex flex-wrap align-items-center gap-3">
                         <a href="https://api.whatsapp.com/send?phone=9779802342080"
                             class="text-uppercase d-inline-flex align-items-center gap-2 text-decoration-underline"><img
                                 src="{{ asset('images/groups.webp') }}" alt="groups" width="24" height="24">Join
@@ -14,10 +14,16 @@
                                 height="24">
                             +977-9802342080</a>
 
-                        <div class="d-inline-flex gap-3 gap-lg-4">
+                        <div class="d-inline-flex gap-3">
                             <a href="{{ route('deals') }}" class="btn btn-success blink-button">DEALS</a>
                             <a href="{{ route('book-trip') }}" class="btn btn-cta">Pay Online</a>
                         </div>
+
+                        <form action="{{ route('deals') }}" class="d-flex align-items-center nav-search" role="search">
+                            <input class="nav-search-input" type="text" name="search" placeholder="Search"
+                                aria-label="Search" value="{{ request('search') }}">
+                            <button class="nav-search-btn" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
                     </div>
 
                     <div class="border-bottom w-100 mt-2 my-lg-0 d-lg-none"></div>
@@ -33,6 +39,7 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
+
                 </div>
                 <div class="border-bottom w-100 my-lg-0 d-lg-none"></div>
             </div>
