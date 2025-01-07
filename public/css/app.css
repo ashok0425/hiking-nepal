@@ -325,7 +325,7 @@ a {
         left: 100%;
         display: none;
         min-width: 220px;
-        /* max-height: 200px; */
+        max-height: calc(100vh - 200px);
         overflow-y: auto;
     }
 
@@ -389,10 +389,15 @@ a {
         position: static;
         margin-left: 1rem;
     }
+
+    #mainNavbar .navbar-collapse {
+        max-height: calc(100vh - 250px);
+        overflow-y: scroll;
+    }
 }
 
 #mainNavbar .package-submenu {
-    max-height: calc(100vh - 500px);
+    /* max-height: calc(100vh - 500px); */
     overflow-y: scroll;
 }
 
