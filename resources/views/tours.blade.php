@@ -33,12 +33,21 @@
         <img src="{{ $tourPackage->galleryImages()[0] ?? asset('images/tour.webp') }}" alt="{{ $tourPackage->title }}"
             class="w-100 position-absolute start-0 top-0 tour-hero-image">
         <div class="container">
-            <h1 class="mb-3 z-1 position-relative text-uppercase text-white text-center">{{ $tourPackage->title }} <span
-                    class="fs-4 fw-normal">{{ $tourPackage->tour_duration }}</span>
+            <h1 class="mb-3 z-1 position-relative text-uppercase text-white text-center mx-auto" style="max-width: 768px;">
+                {{ $tourPackage->title }} <span class="fs-4 fw-normal">{{ $tourPackage->tour_duration }}</span>
             </h1>
 
             <p class="position-relative text-center text-white fs-3">
-                {{ $tourPackage->sale_price_per_person > 0 ? 'USD ' . number_format($tourPackage->sale_price_per_person) . ' per person' : 'Price on request' }}
+                @if (
+                    $tourPackage->discounted_price &&
+                        $tourPackage->discounted_price != $tourPackage->sale_price_per_person &&
+                        $tourPackage->discounted_price > 0 &&
+                        $tourPackage->discounted_price < $tourPackage->sale_price_per_person)
+                    <del class="text-danger">USD {{ number_format($tourPackage->sale_price_per_person) }}</del>
+                    <span>USD {{ number_format($tourPackage->discounted_price) }} per person</span>
+                @else
+                    <span>USD {{ number_format($tourPackage->sale_price_per_person) }} per person</span>
+                @endif
             </p>
 
             @if ($tourPackage->perks)

@@ -98,13 +98,10 @@
                                     @if (
                                         $departure->package->discounted_price &&
                                             $departure->package->discounted_price != $departure->package->sale_price_per_person &&
-                                            $departure->package->discounted_price > 0)
-                                        @if (
-                                            $departure->package->sale_price_per_person > 0 &&
-                                                $departure->package->sale_price_per_person > $departure->package->discounted_price)
-                                            <del
-                                                class="text-danger small fw-light">${{ number_format($departure->package->sale_price_per_person) }}</del>
-                                        @endif
+                                            $departure->package->discounted_price > 0 &&
+                                            $departure->package->discounted_price < $departure->package->sale_price_per_person)
+                                        <del
+                                            class="text-danger small fw-light">${{ number_format($departure->package->sale_price_per_person) }}</del>
                                         <span
                                             class="text-success">${{ number_format($departure->package->discounted_price) }}</span>
                                     @else

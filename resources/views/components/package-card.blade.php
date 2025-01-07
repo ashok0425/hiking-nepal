@@ -14,10 +14,9 @@
                 @if (
                     $package->discounted_price &&
                         $package->discounted_price != $package->sale_price_per_person &&
-                        $package->discounted_price > 0)
-                    @if ($package->sale_price_per_person > 0 && $package->sale_price_per_person > $package->discounted_price)
-                        <del class="text-danger">${{ number_format($package->sale_price_per_person) }}</del>
-                    @endif
+                        $package->discounted_price > 0 &&
+                        $package->discounted_price < $package->sale_price_per_person)
+                    <del class="text-danger">${{ number_format($package->sale_price_per_person) }}</del>
                     <span class="text-success fs-5 fw-bold">${{ number_format($package->discounted_price) }}</span>
                 @else
                     <span class="text-success fs-5 fw-bold">${{ number_format($package->sale_price_per_person) }}</span>
