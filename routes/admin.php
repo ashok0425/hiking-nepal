@@ -14,7 +14,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/profile/change-password', [\App\Http\Controllers\Admin\AuthController::class, 'changePassword'])->name('password');
     Route::post('/profile/change-password', [\App\Http\Controllers\Admin\AuthController::class, 'storePassword']);
 
-    Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+    Route::get('/dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard');
 
     // Destinations
     Route::resource('/destinations', \App\Http\Controllers\Admin\DestinationController::class);

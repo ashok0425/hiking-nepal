@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dummy', function () {
-    // $imageProcessor = new \App\Services\ImageProcessingService();
-    // $imageProcessor->setSourcePath('public/wp-content')
-    //     ->setQuality(80)
-    //     ->setRecursive(true)
-    //     ->processImages();
+// Route::get('/dummy', function () {
+//     // $imageProcessor = new \App\Services\ImageProcessingService();
+//     // $imageProcessor->setSourcePath('public/wp-content')
+//     //     ->setQuality(80)
+//     //     ->setRecursive(true)
+//     //     ->processImages();
 
-    // \Illuminate\Support\Facades\Artisan::call('storage:link');
+//     // \Illuminate\Support\Facades\Artisan::call('storage:link');
 
-    return response()->json(['msg' => 'ack']);
-});
+//     return response()->json(['msg' => 'ack']);
+// });
 
 Route::get('/', App\Http\Controllers\HomeController::class)->name('home');
 Route::get('/deals', \App\Http\Controllers\DealController::class)->name('deals');
