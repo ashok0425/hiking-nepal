@@ -890,6 +890,15 @@ footer li {
     transform: scale(1.1);
 }
 
+.card-img-hover-scale img {
+    filter: brightness(80%) contrast(110%);
+    transition: transform 1s ease;
+}
+
+.card-img-hover-scale:hover img {
+    transform: scale(1.1);
+}
+
 /* Splide */
 
 .splide__arrows button {

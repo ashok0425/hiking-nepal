@@ -1,10 +1,13 @@
 @props(['package'])
 
-<div class="card brand-shadow h-100">
-    <img src="{{ !empty($package->galleryImages()) ? $package->galleryImages()[0] : asset('images/card-img.webp') }}"
-        class="card-img-top"
-        style="height: 300px; background-color: #f8f9fa; object-fit: cover; object-position: center center;"
-        alt="{{ $package->title }}" loading="lazy">
+<div class="card brand-shadow h-100 card-img-hover-scale">
+    <div class="overflow-hidden">
+        <img src="{{ !empty($package->galleryImages()) ? $package->galleryImages()[0] : asset('images/card-img.webp') }}"
+            class="card-img-top "
+            style="height: 300px; background-color: #f8f9fa; object-fit: cover; object-position: center center;"
+            alt="{{ $package->title }}" loading="lazy">
+    </div>
+
     <div class="card-body">
         <h5 class="card-title text-primary mb-1">{{ $package->title }}</h5>
         <div class="mb-2">{{ $package->place->name }}, {{ $package->destination->name }}</div>
