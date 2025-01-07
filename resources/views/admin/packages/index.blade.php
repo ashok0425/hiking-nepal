@@ -69,7 +69,7 @@
                                 {{ ucfirst($package->status) }}
                             </span>
                         </td>
-                        <td>${{ number_format($package->price, 2) }}</td>
+                        <td>${{ number_format($package->getPrice()) }}</td>
                         <td>{{ $package->tour_duration }}</td>
                         <td>
                             <div class="d-flex flex-wrap" style="gap: 8px;">
