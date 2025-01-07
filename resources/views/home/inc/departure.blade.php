@@ -95,10 +95,24 @@
                             </td>
                             <td>
                                 <div class="fw-bold mb-1">
-                                    <span class="text-success">$ {{ number_format($departure->package->price) }}</span>
-                                    <del class="text-danger small fw-light">$
-                                        {{ number_format($departure->package->price + 100) }}</del>
+                                    @if (
+                                        $departure->package->discounted_price &&
+                                            $departure->package->discounted_price != $departure->package->sale_price_per_person &&
+                                            $departure->package->discounted_price > 0)
+                                        @if (
+                                            $departure->package->sale_price_per_person > 0 &&
+                                                $departure->package->sale_price_per_person > $departure->package->discounted_price)
+                                            <del
+                                                class="text-danger small fw-light">${{ number_format($departure->package->sale_price_per_person) }}</del>
+                                        @endif
+                                        <span
+                                            class="text-success">${{ number_format($departure->package->discounted_price) }}</span>
+                                    @else
+                                        <span
+                                            class="text-success">${{ number_format($departure->package->sale_price_per_person) }}</span>
+                                    @endif
                                 </div>
+
                                 <div class="small text-muted">
                                     <a href="{{ route('tours', $departure->package->slug) }}" class="btn btn-primary">
                                         Join us <i class="fas fa-arrow-right"></i>
