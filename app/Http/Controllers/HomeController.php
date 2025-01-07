@@ -53,7 +53,7 @@ class HomeController extends Controller
                 $query->where('status', 'published')
                     ->where('sale_price_per_person', '>', 0);
             })
-            ->select('id', 'package_id', 'start_date', 'end_date')
+            ->select('id', 'package_id', 'start_date', 'end_date', 'total_seats', 'booked_seats')
             ->inRandomOrder()
             ->limit(10)
             ->get();
