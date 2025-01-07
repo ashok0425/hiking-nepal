@@ -32,7 +32,7 @@ class StorePackageRequest extends FormRequest
             'sale_price_two_plus_per_person' => ['required_if:status,published', 'nullable', 'numeric', 'min:0'],
             'sale_price_eight_plus_per_person' => ['required_if:status,published', 'nullable', 'numeric', 'min:0'],
             'destination_id' => ['required', 'exists:destinations,id'],
-            'place_id' => ['required', 'exists:places,id'],
+            'place_id' => ['nullable', 'exists:places,id'],
             'overview' => ['required', 'string'],
             'itinerary' => ['nullable', 'string'],
             'faqs' => ['nullable', 'string'],
