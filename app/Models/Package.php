@@ -24,7 +24,7 @@ class Package extends Model
         'meal',
         'tour_duration',
         'stay',
-        'price',
+        'discounted_price',
         'sale_price_per_person',
         'sale_price_two_plus_per_person',
         'sale_price_eight_plus_per_person',
@@ -46,7 +46,7 @@ class Package extends Model
 
     protected $casts = [
         'gallery' => 'array',
-        'price' => 'decimal:2',
+        'discounted_price' => 'decimal:2',
         'sale_price_per_person' => 'decimal:2',
         'sale_price_two_plus_per_person' => 'decimal:2',
         'sale_price_eight_plus_per_person' => 'decimal:2',
