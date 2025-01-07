@@ -38,11 +38,7 @@
             </h1>
 
             <p class="position-relative text-center text-white fs-3">
-                @if (
-                    $tourPackage->discounted_price &&
-                        $tourPackage->discounted_price != $tourPackage->sale_price_per_person &&
-                        $tourPackage->discounted_price > 0 &&
-                        $tourPackage->discounted_price < $tourPackage->sale_price_per_person)
+                @if ($tourPackage->hasDiscount())
                     <del class="text-danger">USD {{ number_format($tourPackage->sale_price_per_person) }}</del>
                     <span>USD {{ number_format($tourPackage->discounted_price) }} per person</span>
                 @else

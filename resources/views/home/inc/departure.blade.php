@@ -95,11 +95,7 @@
                             </td>
                             <td>
                                 <div class="fw-bold mb-1">
-                                    @if (
-                                        $departure->package->discounted_price &&
-                                            $departure->package->discounted_price != $departure->package->sale_price_per_person &&
-                                            $departure->package->discounted_price > 0 &&
-                                            $departure->package->discounted_price < $departure->package->sale_price_per_person)
+                                    @if ($departure->package->hasDiscount())
                                         <del
                                             class="text-danger small fw-light">${{ number_format($departure->package->sale_price_per_person) }}</del>
                                         <span

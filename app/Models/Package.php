@@ -125,4 +125,12 @@ class Package extends Model
 
         return $value;
     }
+
+    public function hasDiscount(): bool
+    {
+        return $this->discounted_price &&
+            $this->discounted_price != $this->sale_price_per_person &&
+            $this->discounted_price > 0 &&
+            $this->discounted_price < $this->sale_price_per_person;
+    }
 }
