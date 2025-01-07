@@ -13,7 +13,7 @@
             @endif
             <div class="w-100">
                 <div class="fw-bold">{{ $review->user_name }}</div>
-                <div class="text-muted small">{{ $review->created_at->format('M d, Y') }}</div>
+                <div class="text-muted small">{{ $review->date->format('M d, Y') }}</div>
                 <hr class="my-2">
                 <div class="small">
                     @for ($i = 1; $i <= 5; $i++)

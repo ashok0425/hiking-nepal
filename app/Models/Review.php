@@ -25,12 +25,10 @@ class Review extends Model
         'show_on_home'
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'date' => 'date',
-        ];
-    }
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
 
     /**
      * Get the package that the review belongs to.
