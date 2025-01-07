@@ -248,7 +248,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($tourPackage->departures as $departure)
+                            @forelse($departures as $departure)
                                 <tr>
                                     <th scope="row">{{ $departure->start_date->format('jS M') }}</th>
                                     <td class="fw-bold">
