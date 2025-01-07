@@ -11,18 +11,16 @@
         <div class="d-flex justify-content-between mb-2">
             <div><i class="fa-solid fa-clock text-primary me-1"></i> {{ strtoupper($package->tour_duration) }}</div>
             <div class="d-inline-flex align-items-center gap-2">
-                @if ($package->price == 0)
-                    <span class="text-success fs-5 fw-bold">Price on Request</span>
-                @elseif ($package->sale_price_per_person)
-                    @if ($package->sale_price_per_person == $package->price)
-                        <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
-                    @else
-                        <del class="text-danger">${{ number_format($package->price) }}</del>
-                        <span
-                            class="text-success fs-5 fw-bold">${{ number_format($package->sale_price_per_person) }}</span>
+                @if (
+                    $package->discounted_price &&
+                        $package->discounted_price != $package->sale_price_per_person &&
+                        $package->discounted_price > 0)
+                    @if ($package->sale_price_per_person > 0 && $package->sale_price_per_person > $package->discounted_price)
+                        <del class="text-danger">${{ number_format($package->sale_price_per_person) }}</del>
                     @endif
+                    <span class="text-success fs-5 fw-bold">${{ number_format($package->discounted_price) }}</span>
                 @else
-                    <span class="text-success fs-5 fw-bold">${{ number_format($package->price) }}</span>
+                    <span class="text-success fs-5 fw-bold">${{ number_format($package->sale_price_per_person) }}</span>
                 @endif
             </div>
         </div>
