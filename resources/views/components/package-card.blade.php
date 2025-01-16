@@ -10,7 +10,7 @@
 
     <div class="card-body">
         <h5 class="card-title text-primary mb-1">{{ $package->title }}</h5>
-        <div class="mb-2">{{ $package->place->name }}, {{ $package->destination->name }}</div>
+        <div class="mb-2">{{ $package?->place?->name }}, {{ $package->destination?->name }}</div>
         <div class="d-flex justify-content-between mb-2">
             <div><i class="fa-solid fa-clock text-primary me-1"></i> {{ strtoupper($package->tour_duration) }}</div>
             <div class="d-inline-flex align-items-center gap-2">
