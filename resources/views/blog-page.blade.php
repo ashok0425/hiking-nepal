@@ -28,6 +28,10 @@
         font-size: 18px!important;
     }
 
+    .blog-content h4{
+        font-size: 16px!important;
+    }
+
     .blog-content h3 strong{
         font-size: 18px!important;
     }
@@ -36,6 +40,9 @@
     }
     .blog-content h1 strong{
         font-size: 32px!important;
+    }
+    .blog-content h4 strong{
+        font-size: 16px!important;
     }
     </style>
 @endsection
