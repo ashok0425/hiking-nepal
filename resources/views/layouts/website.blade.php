@@ -29,7 +29,17 @@
         integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @stack('styles')
+    @stack('styles')<!-- Google tag (gtag.js) -->
+    <meta name="google-site-verification" content="google9e05fb470abdc1f7" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QWWL15NJJQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QWWL15NJJQ');
+    </script>
 </head>
 
 <body>
