@@ -30,7 +30,20 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @stack('styles')<!-- Google tag (gtag.js) -->
-    <meta name="google-site-verification" content="google9e05fb470abdc1f7" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const navbar = document.querySelector("#mainNavbar");
+            const scrollThreshold = window.innerHeight * 0.7; // 70vh in pixels
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > scrollThreshold) {
+                    navbar.style.backgroundColor = "rgba(2, 93, 100, 0.6)"; // Increased opacity
+                } else {
+                    navbar.style.backgroundColor = "rgba(2, 93, 100, 0.3)"; // Default opacity
+                }
+            });
+        });
+        </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QWWL15NJJQ"></script>
     <script>
