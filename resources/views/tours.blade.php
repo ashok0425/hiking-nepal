@@ -387,7 +387,7 @@
                     <a class="btn bg-success text-white w-100 blink-button" href="{{ route('book-trip') }}">BOOK NOW</a>
                 </div>
 
-                <div class="position-sticky" style="top: 220px;">
+                <div class="position-sticky" style="top: 198px;">
 
                     <form method="post" action="{{ route('book-a-call') }}" id="queryForm"
                         class="bg-cta text-white p-3 mb-3">
@@ -399,7 +399,7 @@
                         @enderror
 
                         <div class="mb-3">
-                            <input type="text" class="form-control @error('firstName') is-invalid @enderror"
+                            <input type="text" class="form-control py-2 @error('firstName')  is-invalid @enderror"
                                 id="firstName" name="firstName" value="{{ old('firstName') }}"
                                 placeholder="Enter First Name" required>
                             @error('firstName')
@@ -407,7 +407,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control @error('lastName') is-invalid @enderror"
+                            <input type="text" class="form-control py-2 @error('lastName') is-invalid @enderror"
                                 id="lastName" name="lastName" value="{{ old('lastName') }}"
                                 placeholder="Enter Last Name" required>
                             @error('lastName')
@@ -416,7 +416,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                            <input type="email" class="form-control py-2 @error('email') is-invalid @enderror"
                                 id="email" name="email" value="{{ old('email') }}"
                                 placeholder="Enter Email Address" required>
                             @error('email')
@@ -425,7 +425,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="tel" class="form-control @error('phone') is-invalid @enderror"
+                            <input type="tel" class="form-control py-2 @error('phone') is-invalid @enderror"
                                 id="phone" name="phone" value="{{ old('phone') }}"
                                 placeholder="Enter Phone Number" required>
                             @error('phone')
@@ -434,20 +434,21 @@
                         </div>
 
                         <div class="mb-3">
-                            <textarea class="form-control @error('comments') is-invalid @enderror" id="message" name="comments" rows="4"
+                            <textarea class="form-control py-2 @error('comments') is-invalid @enderror" id="message" name="comments" rows="1"
                                 placeholder="Enter Your Message" required>{{ old('comments') }}</textarea>
                             @error('comments')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="mb-3 small fw-light fst-italic">
-                            Your information will never be shared with anyone outside our company
-                        </div>
+
 
                         <button type="submit" class="btn bg-white text-cta w-100 g-recaptcha"
                             data-sitekey="6LdphbAqAAAAAFaAnoPYmK6A8a9GU3e8gMJc_N_A" data-callback='onSubmit'
                             data-action='submit'>Enquire Now</button>
+                            <div class="mt-2 small fw-light fst-italic">
+                                Your information will never be shared with anyone outside our company
+                            </div>
                     </form>
 
                     <div class="bg-cta text-white p-3 mb-3">

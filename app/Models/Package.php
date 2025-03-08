@@ -41,7 +41,8 @@ class Package extends Model
         'map',
         'video',
         'alt_chart',
-        'perks'
+        'perks',
+        'package_order'
     ];
 
     protected $casts = [

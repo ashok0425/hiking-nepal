@@ -45,7 +45,6 @@ class PackageController extends Controller
     public function store(StorePackageRequest $request)
     {
         $validated = $request->validated();
-
         // Handle gallery uploads
         if ($request->hasFile('gallery')) {
             $gallery = [];

@@ -309,6 +309,12 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs', 
                             </div>
 
                             <div class="form-group mt-3">
+                                <label>Package Order <small>(Package with higher value will shown first)</small></label>
+                                <input type="number" class="form-control" name="package_order" value="{{old('package_order',$package->package_order)}}">
+
+                            </div>
+
+                            <div class="form-group mt-3">
                                 <label>Destination</label>
                                 <select name="destination_id" class="form-control" id="destination-select" required>
                                     <option value="">Select Destination</option>

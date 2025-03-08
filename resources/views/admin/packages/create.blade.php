@@ -188,6 +188,11 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                                     </option>
                                 </select>
                             </div>
+                            <div class="form-group mt-3">
+                                <label>Package Order <small>(Package with higher value will shown first)</small></label>
+                                <input type="number" class="form-control" name="package_order"  value="{{old('package_order')}}">
+
+                            </div>
 
                             <div class="form-group mt-3">
                                 <label>Destination</label>

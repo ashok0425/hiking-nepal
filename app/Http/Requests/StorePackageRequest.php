@@ -56,6 +56,7 @@ class StorePackageRequest extends FormRequest
             'map' => ['nullable', 'image', 'max:2048'],
             'alt_chart' => ['nullable', 'image', 'max:2048'],
             'video' => ['nullable', 'string', 'url'],
+            'package_order'=>['nullable']
         ];
     }
 }

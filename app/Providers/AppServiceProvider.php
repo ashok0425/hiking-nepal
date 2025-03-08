@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
                 'categories:id,name,slug',
                 'activities:id,name,slug',
                 'place:id,name,slug',
-            ])
+            ])->orderBy('package_order','desc')
                 ->select('id', 'title', 'slug', 'destination_id', 'place_id', 'status')
                 ->where('status', 'published')
                 ->where('show_in_nav', true)
@@ -92,7 +92,7 @@ class AppServiceProvider extends ServiceProvider
                             return [
                                 'name' => $place->name,
                                 'slug' => $place->slug,
-                                'packages' => $placePackages->map(function ($package) {
+                                'packages' => $placePackages->sortByDesc('package_order')->map(function ($package) {
                                     return [
                                         'title' => $package->title,
                                         'slug' => $package->slug,

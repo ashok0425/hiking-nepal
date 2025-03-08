@@ -63,6 +63,7 @@ class UpdatePackageRequest extends FormRequest
             'video' => ['nullable', 'string', 'url'],
             'remove_map' => ['nullable', 'boolean'],
             'remove_alt_chart' => ['nullable', 'boolean'],
+            'package_order'=>'nullable'
         ];
     }
 
