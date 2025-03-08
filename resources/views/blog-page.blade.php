@@ -16,6 +16,28 @@
     <meta property="twitter:title" content="{{ $post->meta_title ?? $post->title }}">
     <meta property="twitter:description" content="{{ $post->meta_description }}">
     <meta property="twitter:image" content="{{ $post->thumbnail ?? $post->cover }}">
+    <style>
+        .blog-content h1{
+            font-size: 32px!important;
+        }
+
+        .blog-content h2{
+        font-size: 24px!important;
+        }
+        .blog-content h3{
+        font-size: 18px!important;
+    }
+
+    .blog-content h3 strong{
+        font-size: 18px!important;
+    }
+    .blog-content h2 strong{
+        font-size: 24px!important;
+    }
+    .blog-content h1 strong{
+        font-size: 32px!important;
+    }
+    </style>
 @endsection
 
 @section('content')
