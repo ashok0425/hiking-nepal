@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 //     return response()->json(['msg' => 'ack']);
 // });
+Route::get('public/{any}', function ($any) {
+    return redirect('/' . $any, 301);
+})->where('any', '.*');
 
 Route::get('/', App\Http\Controllers\HomeController::class)->name('home');
 Route::get('/deals', \App\Http\Controllers\DealController::class)->name('deals');
