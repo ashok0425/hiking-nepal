@@ -41,7 +41,7 @@ Route::post('/book-a-call', \App\Http\Controllers\ScheduleCallbackController::cl
 
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 Route::post('/book-your-trip', \App\Http\Controllers\BookingController::class);
-Route::post('/wh/pg-webhook', [\App\Http\Controllers\BookingController::class, 'handlePGWebhook']);
+Route::get('/wh/pg-webhook/', [\App\Http\Controllers\BookingController::class, 'handlePGWebhook']);
 
 // Newsletter
 Route::post('/newsletter-subscribe', \App\Http\Controllers\NewsletterSubscriptionController::class)->name('newsletter.subscribe');

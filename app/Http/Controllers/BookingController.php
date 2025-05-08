@@ -64,6 +64,7 @@ class BookingController extends Controller
         // } else {
         //     $booking->update(['status' => Booking::STATUS_FAILED]);
         // }
+        return view('success');
 
         return [];
     }
