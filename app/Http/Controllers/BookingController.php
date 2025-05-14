@@ -21,6 +21,8 @@ class BookingController extends Controller
             'email' => 'required|email|max:255',
             'nationality' => 'required|string|max:255',
             'message' => 'required|string',
+            'amount'=>'nullable|integer',
+            'type'=>'nullable|integer',
         ]);
 
         $booking = Booking::create([
@@ -31,17 +33,24 @@ class BookingController extends Controller
             'nationality' => $validated['nationality'],
             'message' => $validated['message'],
             'status' => Booking::STATUS_PENDING,
+            'amount'=>$validated['amount'],
+            'type'=>$validated['type']??1,
         ]);
 
-        Notification::route('mail', config('mail.admin_address'))
-            ->notify(new BookingNotification($booking, true));
+        // Notification::route('mail', config('mail.admin_address'))
+        //     ->notify(new BookingNotification($booking, true));
 
-        Notification::route('mail', $booking->email)
-            ->notify(new BookingNotification($booking, false));
+        // Notification::route('mail', $booking->email)
+        //     ->notify(new BookingNotification($booking, false));
+
+            if($request->type==2)
+            return redirect("https://pay.hikingnepal.com?productName=package booking&currency=USD&amount=$booking->amount");
 
         return redirect()
             ->back()
             ->with('success', 'Your booking request has been submitted successfully. We will contact you soon.');
+
+
     }
 
     public function handlePGWebhook(Request $request)

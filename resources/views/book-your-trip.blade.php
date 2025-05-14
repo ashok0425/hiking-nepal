@@ -71,6 +71,19 @@
                                 placeholder="Enter your nationality" required>
                         </div>
 
+                        @if (request()->query('type')=='payment')
+
+                         <div class="mb-5">
+                            <label for="amount" class="form-label fw-bold">Amount <span
+                                    class="text-danger">*</span></label>
+                            <input type="number" class="form-control @error('amount') is-invalid @enderror"
+                                id="amount" name="amount" value="{{ old('amount') }}"
+                                placeholder="Amount want to pay (USD)" required>
+                        </div>
+                        <input type="hidden" name="type" value="2">
+                        @endif
+
+
                         <div class="mb-5">
                             <label for="message" class="form-label fw-bold">Message <span
                                     class="text-danger">*</span></label>
@@ -97,8 +110,14 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between">
+
                             <button type="submit" class="btn btn-primary">
-                                Proceed To Payment<i class="fas fa-arrow-right ms-2"></i>
+ @if (request()->query('type')=='payment')
+                                Proceed To Payment
+                                @else
+                                Submit
+                                @endif
+                                <i class="fas fa-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </form>

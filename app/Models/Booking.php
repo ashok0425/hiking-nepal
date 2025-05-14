@@ -18,6 +18,8 @@ class Booking extends Model
         'nationality',
         'message',
         'date',
+        'type',
+        'amount'
     ];
 
     const STATUS_PENDING = 'pending';

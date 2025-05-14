@@ -16,7 +16,7 @@
 
                         <div class="d-inline-flex gap-3">
                             <a href="{{ route('deals') }}" class="btn btn-success blink-button">DEALS</a>
-                            <a href="{{ route('book-trip') }}" class="btn btn-cta">Pay Online</a>
+                            <a href="{{ route('book-trip',['type'=>'payment']) }}" class="btn btn-cta">Pay Online</a>
                         </div>
 
                         <form action="{{ route('deals') }}" class="d-flex align-items-center nav-search" role="search">
