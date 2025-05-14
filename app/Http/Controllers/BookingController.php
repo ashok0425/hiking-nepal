@@ -37,11 +37,11 @@ class BookingController extends Controller
             'type'=>$validated['type']??1,
         ]);
 
-        // Notification::route('mail', config('mail.admin_address'))
-        //     ->notify(new BookingNotification($booking, true));
+        Notification::route('mail', config('mail.admin_address'))
+            ->notify(new BookingNotification($booking, true));
 
-        // Notification::route('mail', $booking->email)
-        //     ->notify(new BookingNotification($booking, false));
+        Notification::route('mail', $booking->email)
+            ->notify(new BookingNotification($booking, false));
 
             if($request->type==2)
             return redirect("https://pay.hikingnepal.com?productName=package booking&currency=USD&amount=$booking->amount");
