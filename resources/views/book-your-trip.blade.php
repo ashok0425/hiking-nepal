@@ -64,11 +64,14 @@
                         </div>
 
                         <div class="mb-5">
-                            <label for="nationality" class="form-label fw-bold">Nationality <span
+                            <label for="nationality" class="form-label fw-bold">Package <span
                                     class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('nationality') is-invalid @enderror"
-                                id="nationality" name="nationality" value="{{ old('nationality') }}"
-                                placeholder="Enter your nationality" required>
+                           <select name="package" id="" class="form-select form-control" required>
+                             <option value="">select package</option>
+                            @foreach (App\Models\Package::where('status','published')->whereNotNull('sale_price_per_person')->get() as $package)
+                                <option value="{{$package->id}}" {{$package->id==request()->query('package')?'selected':''}}>{{$package->title}}</option>
+                            @endforeach
+                           </select>
                         </div>
 
                         @if (request()->query('type')=='payment')

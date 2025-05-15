@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Package;
 use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
@@ -19,10 +20,12 @@ class BookingController extends Controller
             'lastName' => 'required|string|max:255',
             'contactNumber' => 'required|string|max:20',
             'email' => 'required|email|max:255',
-            'nationality' => 'required|string|max:255',
+            // 'nationality' => 'required|string|max:255',
             'message' => 'required|string',
             'amount'=>'nullable|integer',
             'type'=>'nullable|integer',
+            'package'=>'nullable|integer',
+
         ]);
 
         $booking = Booking::create([
@@ -30,11 +33,13 @@ class BookingController extends Controller
             'last_name' => $validated['lastName'],
             'contact_number' => $validated['contactNumber'],
             'email' => $validated['email'],
-            'nationality' => $validated['nationality'],
+            // 'nationality' => $validated['nationality'],
             'message' => $validated['message'],
             'status' => Booking::STATUS_PENDING,
-            'amount'=>$validated['amount'],
+            'amount'=>$validated['amount']??0,
             'type'=>$validated['type']??1,
+            'package_id'=>$validated['package'],
+
         ]);
 
         Notification::route('mail', config('mail.admin_address'))
@@ -42,9 +47,9 @@ class BookingController extends Controller
 
         Notification::route('mail', $booking->email)
             ->notify(new BookingNotification($booking, false));
-
+        $package=Package::find($validated['package'])?->title??'package booking';
             if($request->type==2)
-            return redirect("https://pay.hikingnepal.com?productName=package booking&currency=USD&amount=$booking->amount");
+            return redirect("https://pay.hikingnepal.com?productName=$package&currency=USD&amount=$booking->amount");
 
         return redirect()
             ->back()
@@ -76,5 +81,9 @@ class BookingController extends Controller
         return view('success');
 
         return [];
+    }
+     public function failed(Request $request)
+    {
+        return view('failed');
     }
 }

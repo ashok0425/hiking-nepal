@@ -384,7 +384,7 @@
                         </tbody>
                     </table>
 
-                    <a class="btn bg-success text-white w-100 blink-button" href="{{ route('book-trip') }}">BOOK NOW</a>
+                    <a class="btn bg-success text-white w-100 blink-button" href="{{ route('book-trip',['package'=>$package->id]) }}">BOOK NOW</a>
                 </div>
 
                 <div class="position-sticky" style="top: 198px;">

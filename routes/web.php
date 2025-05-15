@@ -41,7 +41,9 @@ Route::post('/book-a-call', \App\Http\Controllers\ScheduleCallbackController::cl
 
 Route::view('/book-your-trip', 'book-your-trip')->name('book-trip');
 Route::post('/book-your-trip', \App\Http\Controllers\BookingController::class);
-Route::get('/wh/pg-webhook/', [\App\Http\Controllers\BookingController::class, 'handlePGWebhook']);
+Route::get('/payment-success', [\App\Http\Controllers\BookingController::class, 'handlePGWebhook']);
+Route::get('/payment-failed', [\App\Http\Controllers\BookingController::class, 'failed']);
+
 
 // Newsletter
 Route::post('/newsletter-subscribe', \App\Http\Controllers\NewsletterSubscriptionController::class)->name('newsletter.subscribe');
