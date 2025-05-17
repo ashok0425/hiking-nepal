@@ -33,7 +33,7 @@ return [
     |
     */
 
-    'admin_address' => env('ADMIN_EMAIL_ADDRESS', 'admin@example.com'),
+    'admin_address' => env('ADMIN_EMAIL_ADDRESS', 'info@hikingnepal.com'),
 
     'mailers' => [
         'smtp' => [
