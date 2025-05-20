@@ -42,7 +42,7 @@ class BookingController extends Controller
 
         ]);
 
-        Notification::route('mail', config('mail.admin_address'))
+        Notification::route('mail', 'info@hikingnepal.com')
             ->notify(new BookingNotification($booking, true));
 
         Notification::route('mail', $booking->email)

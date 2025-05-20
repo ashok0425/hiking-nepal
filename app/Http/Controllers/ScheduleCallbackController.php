@@ -63,7 +63,7 @@ class ScheduleCallbackController extends Controller
             ->notify(new ScheduledCallbackNotification($callback));
 
         // Send notification to admin
-        Notification::route('mail', config('mail.admin_address'))
+        Notification::route('mail', 'info@hikingnepal.com')
             ->notify(new ScheduledCallbackNotification($callback, true));
 
         return redirect()->route('book-a-call', ['status' => 'submitted']);

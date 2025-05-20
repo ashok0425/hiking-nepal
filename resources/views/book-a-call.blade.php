@@ -120,8 +120,8 @@
 
                             <div class="mb-5">
                                 <div class="fw-bold mb-2 fs-5">Your information</div>
-                                <div class="fw-bold text-primary">Saturday, December 11, 2024 8:15 pm <a href="#"
-                                        class="text-danger">Edit</a></div>
+                                <div class="fw-bold text-primary"> <span  id="insert_date"></span> <a href="#"
+                                        class="text-danger" onclick="goToStep(1)">Edit</a> </div>
                             </div>
 
                             <div class="row mb-5">
@@ -264,6 +264,8 @@
                 const dateInput = bookingForm.querySelector('#datepicker');
                 const timeSlot = bookingForm.querySelector('#timeSlot');
                 const notes = bookingForm.querySelector('#notes');
+                const insert_date = bookingForm.querySelector('#insert_date');
+
 
                 if (!dateInput.value) {
                     alert('Please select a date');
@@ -276,8 +278,19 @@
                 }
 
                 bookingForm.querySelector('#hiddenDate').value = dateInput.value;
-                bookingForm.querySelector('#hiddenTimeSlot').value = timeSlot.value;
+                bookingForm.querySelector('#hiddenTimeSlot').value = dateInput.value;
                 bookingForm.querySelector('#hiddenCallbackMessage').value = notes.value;
+                const selectedDate = new Date(dateInput.value);
+
+// Format the date (e.g., "May 20, 2025")
+const formattedDate = selectedDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Combine with time
+insert_date.innerHTML = `${formattedDate} ${timeSlot.value}`;
 
                 goToStep(2);
             }
