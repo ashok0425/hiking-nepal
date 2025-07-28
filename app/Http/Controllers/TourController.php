@@ -25,6 +25,7 @@ class TourController extends Controller
         $departures = Departure::where('package_id', $tourPackage->id)
             ->whereYear('start_date', $year)
             ->whereMonth('start_date', $month)
+            ->whereDate('start_date', '>', now())
             ->orderBy('start_date')
             ->get();
 

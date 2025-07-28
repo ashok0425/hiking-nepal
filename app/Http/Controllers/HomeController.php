@@ -38,6 +38,7 @@ class HomeController extends Controller
         $departures = Departure::where('show_on_home_page', '=', true)
             ->whereMonth('start_date', $month)
             ->whereYear('start_date', $year)
+             ->whereDate('start_date', '>', now())
             ->with(['package' => function ($query) {
                 $query->select('id', 'title', 'slug', 'tour_duration', 'discounted_price', 'sale_price_per_person', 'status');
             }])
