@@ -180,7 +180,7 @@
                                 <button type="button" class="btn btn-secondary" onclick="goToStep(1)">
                                     <i class="fas fa-arrow-left me-2"></i>Back
                                 </button>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="6LdphbAqAAAAAFaAnoPYmK6A8a9GU3e8gMJc_N_A" data-callback='onSubmit' data-action='submit'>
                                     Submit<i class="fas fa-arrow-right ms-2"></i>
                                 </button>
                             </div>
@@ -209,6 +209,7 @@
 @endsection
 
 @push('scripts')
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -293,6 +294,15 @@ const formattedDate = selectedDate.toLocaleDateString('en-US', {
 insert_date.innerHTML = `${formattedDate} ${timeSlot.value}`;
 
                 goToStep(2);
+            }
+        }
+
+        function onSubmit(token) {
+            const form = document.getElementById("bookingForm");
+            if (form.checkValidity()) {
+                form.submit();
+            } else {
+                form.reportValidity();
             }
         }
 

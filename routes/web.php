@@ -2,17 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/dummy', function () {
-//     // $imageProcessor = new \App\Services\ImageProcessingService();
-//     // $imageProcessor->setSourcePath('public/wp-content')
-//     //     ->setQuality(80)
-//     //     ->setRecursive(true)
-//     //     ->processImages();
+Route::get('/dummy', function () {
 
-//     // \Illuminate\Support\Facades\Artisan::call('storage:link');
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
 
-//     return response()->json(['msg' => 'ack']);
-// });
+    return response()->json(['msg' => 'oK']);
+});
 Route::get('public/{any?}', function () {
     return redirect('/' , 301);
 })->where('any', '.*');

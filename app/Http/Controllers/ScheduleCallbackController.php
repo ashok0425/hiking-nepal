@@ -14,6 +14,7 @@ class ScheduleCallbackController extends Controller
      */
     public function __invoke(Request $request)
     {
+        
         $validated = $request->validate([
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
@@ -25,7 +26,7 @@ class ScheduleCallbackController extends Controller
             'duration' => 'nullable|integer',
             'user_timezone' => 'nullable|string',
             'callback_message' => 'nullable|string',
-            'g-recaptcha-response' => 'nullable|string',
+            'g-recaptcha-response' => 'required|string',
         ]);
 
         if (isset($validated['g-recaptcha-response'])) {

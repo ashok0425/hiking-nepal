@@ -25,9 +25,19 @@ class BookingController extends Controller
             'amount'=>'nullable|integer',
             'type'=>'nullable|integer',
             'package'=>'nullable|integer',
+            'g-recaptcha-response' => 'required|string',
 
         ]);
+ if (isset($validated['g-recaptcha-response'])) {
+            $recaptcha_response = $validated['g-recaptcha-response'];
+            $recaptcha_response = json_decode(file_get_contents(
+                "https://www.google.com/recaptcha/api/siteverify?secret=6LdphbAqAAAAAHkL6AX2jZWG8WE84W5e32Wzw5iN&response=" . $recaptcha_response
+            ));
 
+            if (!$recaptcha_response->success) {
+                return redirect()->back()->withErrors(['g-recaptcha-response' => 'Invalid reCAPTCHA response']);
+            }
+        }
         $booking = Booking::create([
             'first_name' => $validated['firstName'],
             'last_name' => $validated['lastName'],

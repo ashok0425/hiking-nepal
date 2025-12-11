@@ -11,6 +11,10 @@
                 </div>
             @endif
 
+               @error('g-recaptcha-response')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+
             @if ($errors->any())
                 <div class="alert alert-danger mb-4">
                     <ul class="mb-0">
@@ -23,7 +27,7 @@
 
             <div class="card border">
                 <div class="card-body p-4">
-                    <form method="POST">
+                    <form method="POST" id="queryForm">
                         @csrf
 
                         <div class="mb-5">
@@ -114,7 +118,8 @@
                         </div>
                         <div class="d-flex justify-content-between">
 
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary g-recaptcha"
+                            data-sitekey="6LdphbAqAAAAAFaAnoPYmK6A8a9GU3e8gMJc_N_A"  data-action='submit' data-callback='onSubmit'>
  @if (request()->query('type')=='payment')
                                 Proceed To Payment
                                 @else
@@ -131,3 +136,18 @@
     </div>
 
 @endsection
+@push('scripts')
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+          function onSubmit(token) {
+            const form = document.getElementById("queryForm");
+            if (form.checkValidity()) {
+                form.submit();
+            } else {
+                form.reportValidity();
+            }
+        }
+
+    </script>
+    @endpush
