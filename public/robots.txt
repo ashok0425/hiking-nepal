@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /public/
+Disallow: /*?_g=
+Disallow: /*&_g=
+Disallow: /admin/
+Disallow: /storage/
+
+Sitemap: https://www.hikingnepal.com/sitemap.xml

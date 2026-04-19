@@ -12,6 +12,14 @@ class UpdatePackageRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'is_popular' => $this->boolean('is_popular'),
+            'show_in_nav' => $this->boolean('show_in_nav'),
+        ]);
+    }
+
     public function rules(): array
     {
         $galleryRules = $this->status === 'active' && ! $this->hasAnyExistingGalleryImages()
@@ -54,6 +62,7 @@ class UpdatePackageRequest extends FormRequest
             'activities' => ['nullable', 'array'],
             'activities.*' => ['exists:activities,id'],
             'show_in_nav' => ['nullable', 'boolean'],
+            'is_popular' => ['nullable', 'boolean'],
             'meta_title' => 'nullable|string|max:255',
             'meta_keyword' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',

@@ -81,11 +81,28 @@
                         @if (request()->query('type')=='payment')
 
                          <div class="mb-5">
-                            <label for="amount" class="form-label fw-bold">Amount <span
+                            <label for="amount" class="form-label fw-bold">Amount (USD) <span
                                     class="text-danger">*</span></label>
-                            <input type="number" class="form-control @error('amount') is-invalid @enderror"
+                            <input type="number" min="1" step="0.01" class="form-control @error('amount') is-invalid @enderror"
                                 id="amount" name="amount" value="{{ old('amount') }}"
                                 placeholder="Amount want to pay (USD)" required>
+
+                            <div id="payment-breakdown" class="mt-3 p-3 border rounded bg-light" style="display: none;">
+                                <div class="d-flex justify-content-between small">
+                                    <span>Subtotal:</span>
+                                    <span>$<span id="pb-subtotal">0.00</span></span>
+                                </div>
+                                <div class="d-flex justify-content-between small">
+                                    <span>Processing charge (4%):</span>
+                                    <span>$<span id="pb-fee">0.00</span></span>
+                                </div>
+                                <hr class="my-2">
+                                <div class="d-flex justify-content-between fw-bold">
+                                    <span>Total to pay:</span>
+                                    <span>$<span id="pb-total">0.00</span></span>
+                                </div>
+                                <small class="text-muted d-block mt-2">A 4% processing charge is added to cover payment gateway fees.</small>
+                            </div>
                         </div>
                         <input type="hidden" name="type" value="2">
                         @endif
@@ -148,6 +165,37 @@
                 form.reportValidity();
             }
         }
+
+        (function () {
+            const amountInput = document.getElementById('amount');
+            if (!amountInput) return;
+            const breakdown = document.getElementById('payment-breakdown');
+            const subEl = document.getElementById('pb-subtotal');
+            const feeEl = document.getElementById('pb-fee');
+            const totalEl = document.getElementById('pb-total');
+            const FEE_RATE = 0.04;
+
+            function format(n) {
+                return (Math.round(n * 100) / 100).toFixed(2);
+            }
+
+            function update() {
+                const sub = parseFloat(amountInput.value);
+                if (!sub || sub <= 0) {
+                    breakdown.style.display = 'none';
+                    return;
+                }
+                const fee = sub * FEE_RATE;
+                const total = sub + fee;
+                subEl.textContent = format(sub);
+                feeEl.textContent = format(fee);
+                totalEl.textContent = format(total);
+                breakdown.style.display = 'block';
+            }
+
+            amountInput.addEventListener('input', update);
+            update();
+        })();
 
     </script>
     @endpush

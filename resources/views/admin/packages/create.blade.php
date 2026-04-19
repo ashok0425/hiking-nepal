@@ -235,6 +235,19 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                                 </div>
                             </div>
 
+                            <div class="form-group mt-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="is_popular" id="is_popular"
+                                        value="1" {{ old('is_popular') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="is_popular">
+                                        Most Popular Package
+                                    </label>
+                                    <small class="form-text text-muted">
+                                        Mark this package to feature it in the "Most Popular Packages" section
+                                    </small>
+                                </div>
+                            </div>
+
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-primary">Create Package</button>
                             </div>

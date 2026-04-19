@@ -35,6 +35,7 @@ class Package extends Model
         'faqs',
         'gallery',
         'show_in_nav',
+        'is_popular',
         'meta_title',
         'meta_description',
         'meta_keywords',
@@ -52,6 +53,7 @@ class Package extends Model
         'sale_price_two_plus_per_person' => 'decimal:2',
         'sale_price_eight_plus_per_person' => 'decimal:2',
         'average_rating' => 'decimal:2',
+        'is_popular' => 'boolean',
     ];
 
     /**

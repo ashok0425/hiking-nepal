@@ -5,8 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        @hasSection('title')
-            @yield('title') - Hiking Nepal
+        @hasSection('fullTitle')
+            @yield('fullTitle')
+        @elseif (Route::currentRouteName() === 'home')
+            Best Trekking and Hiking Company in Nepal | Hiking Nepal
+        @elseif (trim($__env->yieldContent('title')))
+            @yield('title') | Hiking Nepal
         @else
             Hiking Nepal
         @endif

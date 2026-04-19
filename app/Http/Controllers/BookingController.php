@@ -38,6 +38,12 @@ class BookingController extends Controller
                 return redirect()->back()->withErrors(['g-recaptcha-response' => 'Invalid reCAPTCHA response']);
             }
         }
+        $baseAmount = (int) ($validated['amount'] ?? 0);
+        $isPayment = (int) ($validated['type'] ?? 1) === 2;
+        $payableAmount = $isPayment && $baseAmount > 0
+            ? (int) round($baseAmount * 1.04)
+            : $baseAmount;
+
         $booking = Booking::create([
             'first_name' => $validated['firstName'],
             'last_name' => $validated['lastName'],
@@ -46,7 +52,7 @@ class BookingController extends Controller
             // 'nationality' => $validated['nationality'],
             'message' => $validated['message'],
             'status' => Booking::STATUS_PENDING,
-            'amount'=>$validated['amount']??0,
+            'amount'=>$payableAmount,
             'type'=>$validated['type']??1,
             'package_id'=>$validated['package'],
 
