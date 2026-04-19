@@ -12,7 +12,7 @@
                         <li><a href="tel:+97714701537">+977 1 4701537</a></li>
                         <li><a href="tel:+9779802342080">+977 9802342080</a></li>
                         <li><a href="mailto:info@hikingnepal.com">info@hikingnepal.com</a></li>
-                        <li><a href="https://hikingnepal.com">hikingnepal.com</a></li>
+                        <li><a href="https://www.hikingnepal.com">www.hikingnepal.com</a></li>
                     </ul>
                 </div>
 

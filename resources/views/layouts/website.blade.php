@@ -8,13 +8,15 @@
         @hasSection('fullTitle')
             @yield('fullTitle')
         @elseif (Route::currentRouteName() === 'home')
-            Best Trekking and Hiking Company in Nepal | Hiking Nepal
+            Nepal Trekking with Local Experts | Hiking Nepal
         @elseif (trim($__env->yieldContent('title')))
             @yield('title') | Hiking Nepal
         @else
             Hiking Nepal
         @endif
     </title>
+
+    <link rel="canonical" href="https://www.hikingnepal.com{{ strtok(request()->getRequestUri(), '?') }}">
 
     @yield('meta')
 

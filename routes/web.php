@@ -8,6 +8,18 @@ Route::get('/dummy', function () {
 
     return response()->json(['msg' => 'oK']);
 });
+
+// Temporary: run migrations & clear caches over web. DELETE after use.
+Route::get('/run-migrate-once-xyz123', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    $migrateOutput = \Illuminate\Support\Facades\Artisan::output();
+
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('route:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+
+    return response('<pre>' . e($migrateOutput) . "\ncaches cleared.</pre>");
+});
 Route::get('public/{any?}', function () {
     return redirect('/' , 301);
 })->where('any', '.*');

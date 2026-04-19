@@ -10,17 +10,17 @@
 
     {{-- Open Graph / Facebook --}}
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Best Trekking and Hiking Company in Nepal | Hiking Nepal">
+    <meta property="og:title" content="Nepal Trekking with Local Experts | Hiking Nepal">
     <meta property="og:description"
         content="Discover the beauty of Nepal with our amazing hiking and trekking packages. Experience breathtaking mountain views, cultural heritage sites and unforgettable adventures.">
-    <meta property="og:image" content="https://hikingnepal.com/wp-content/uploads/2022/11/himalayas-3989411.webp">
+    <meta property="og:image" content="https://www.hikingnepal.com/wp-content/uploads/2022/11/himalayas-3989411.webp">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Best Trekking and Hiking Company in Nepal | Hiking Nepal">
+    <meta name="twitter:title" content="Nepal Trekking with Local Experts | Hiking Nepal">
     <meta name="twitter:description"
         content="Discover the beauty of Nepal with our amazing hiking and trekking packages. Experience breathtaking mountain views, cultural heritage sites and unforgettable adventures.">
-    <meta name="twitter:image" content="https://hikingnepal.com/wp-content/uploads/2022/11/himalayas-3989411.webp">
+    <meta name="twitter:image" content="https://www.hikingnepal.com/wp-content/uploads/2022/11/himalayas-3989411.webp">
 @endsection
 
 @section('content')

@@ -5,6 +5,18 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+// Hide the /public segment from Laravel when the hosting doc root
+// is the Laravel project root (so generated URLs don't include /public/).
+if (isset($_SERVER['SCRIPT_NAME'])) {
+    $_SERVER['SCRIPT_NAME'] = str_replace('/public/index.php', '/index.php', $_SERVER['SCRIPT_NAME']);
+}
+if (isset($_SERVER['PHP_SELF'])) {
+    $_SERVER['PHP_SELF'] = str_replace('/public/index.php', '/index.php', $_SERVER['PHP_SELF']);
+}
+if (isset($_SERVER['SCRIPT_FILENAME'])) {
+    // leave SCRIPT_FILENAME alone - Laravel needs the real file path
+}
+
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance
