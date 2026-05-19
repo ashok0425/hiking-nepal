@@ -1,6 +1,6 @@
 <footer class="position-relative footer-section">
-    <img src="{{ asset('mountain-bottom.png') }}" alt="" style="position:absolute; bottom:5%; left:0; width:100%; z-index:0; pointer-events:none;">
-    <img src="{{ asset('mountain-overlay.png') }}" alt="" style="position:absolute; bottom:0; left:0; width:100%; z-index:1; pointer-events:none;">
+    <img src="{{ asset('mountain-bottom.png') }}" alt="" class="footer-mountain-img" style="position:absolute; bottom:5%; left:50%; transform:translateX(-50%) translateY(100%); width:100%; z-index:0; pointer-events:none; object-fit:cover; object-position:center; opacity:0; transition: transform 1.2s ease-out 0.4s, opacity 1.2s ease-out 0.4s;">
+    <img src="{{ asset('mountain-overlay.png') }}" alt="" class="footer-tree-img" style="position:absolute; bottom:0; left:0; width:100%; z-index:1; pointer-events:none; transform:translateY(100%); opacity:0; transition: transform 1s ease-out, opacity 1s ease-out;">
     <div class="footer-container py-5 ">
         <div class="container position-relative" style="padding-top: 200px; z-index:2;">
             <div class="row g-3">
@@ -125,3 +125,27 @@
         </div>
     </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var footer = document.querySelector('.footer-section');
+    var trees = footer.querySelector('.footer-tree-img');
+    var mountain = footer.querySelector('.footer-mountain-img');
+    var animated = false;
+
+    function animateFooter() {
+        if (animated) return;
+        var rect = footer.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            animated = true;
+            trees.style.transform = 'translateY(0)';
+            trees.style.opacity = '1';
+            mountain.style.transform = 'translateX(-50%) translateY(0)';
+            mountain.style.opacity = '1';
+        }
+    }
+
+    window.addEventListener('scroll', animateFooter);
+    animateFooter();
+});
+</script>
