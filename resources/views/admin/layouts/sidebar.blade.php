@@ -85,6 +85,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('admin.team-members.index') }}"
+                        class="nav-link {{ Route::is('admin.team-members.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Team Members</p>
+                    </a>
+                </li>
+
                 <li class="dropdown-divider"></li>
 
                 <li class="nav-item">

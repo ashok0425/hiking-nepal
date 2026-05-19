@@ -37,7 +37,7 @@ Route::get('/who-we-are', [\App\Http\Controllers\AboutController::class, 'whoWeA
 Route::view('/what-we-offer', 'what-we-offer')->name('what-we-offer');
 Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('booking-terms');
 Route::view('/legal-document', 'legal-document')->name('legal-document');
-Route::view('/our-team', 'our-team')->name('our-team');
+Route::get('/our-team', \App\Http\Controllers\TeamController::class)->name('our-team');
 
 // Packages
 Route::get('/tours/{slug}', \App\Http\Controllers\TourController::class)->name('tours');
