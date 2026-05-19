@@ -1,6 +1,8 @@
-<footer class="bg-light">
+<footer class="position-relative footer-section">
+    <img src="{{ asset('mountain-bottom.png') }}" alt="" style="position:absolute; bottom:5%; left:0; width:100%; z-index:0; pointer-events:none;">
+    <img src="{{ asset('mountain-overlay.png') }}" alt="" style="position:absolute; bottom:0; left:0; width:100%; z-index:1; pointer-events:none;">
     <div class="footer-container py-5 ">
-        <div class="container" style="padding-top: 200px;">
+        <div class="container position-relative" style="padding-top: 200px; z-index:2;">
             <div class="row g-3">
                 <!-- Column 1: Contact Info -->
                 <div class="col-md-6 col-lg-3">

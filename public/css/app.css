@@ -439,31 +439,49 @@ a {
 
 /* Footer */
 footer .footer-container {
-    color: #000;
+    color: #fff;
     min-height: 600px;
     padding: 150px 0;
     background-image: linear-gradient(
             to top,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 1) 10%,
-            rgba(255, 255, 255, 0.95) 20%,
-            rgba(255, 255, 255, 0.8) 40%,
-            rgba(255, 255, 255, 0.4) 60%,
-            rgba(255, 255, 255, 0) 100%
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 10%,
+            rgba(0, 0, 0, 0.95) 20%,
+            rgba(0, 0, 0, 0.7) 40%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0) 100%
         ),
         url("/images/footer-bg.webp");
-    /* background-size: 100% auto; */
     background-size: cover;
     background-position: top center;
-    background-repeat: repeat-x;
+    background-repeat: no-repeat;
 }
 
-footer a {
-    color: #000 !important;
+footer,
+footer a,
+footer .text-primary {
+    color: #fff !important;
+}
+
+footer a:hover {
+    color: #ccc !important;
+}
+
+footer h6,
+footer .text-success {
+    color: #fff !important;
 }
 
 footer li {
     padding: 8px 0 !important;
+}
+
+footer p, footer span {
+    color: #ccc;
+}
+
+footer .text-secondary {
+    color: #fff !important;
 }
 
 /* Responsive adjustments */
