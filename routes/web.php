@@ -20,6 +20,43 @@ Route::get('/run-migrate-once-xyz123', function () {
 
     return response('<pre>' . e($migrateOutput) . "\ncaches cleared.</pre>");
 });
+
+// Temporary: seed team members & partner logos. DELETE after use.
+Route::get('/run-seed-once-xyz456', function () {
+    $output = '';
+
+    // Storage link
+    try {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        $output .= "Storage link created.\n";
+    } catch (\Exception $e) {
+        $output .= "Storage link: " . $e->getMessage() . "\n";
+    }
+
+    // Seed team members
+    if (\App\Models\TeamMember::count() === 0) {
+        \Illuminate\Support\Facades\Artisan::call('db:seed', [
+            '--class' => 'TeamMemberSeeder',
+            '--force' => true,
+        ]);
+        $output .= "TeamMemberSeeder: " . \App\Models\TeamMember::count() . " members seeded.\n";
+    } else {
+        $output .= "TeamMembers already exist (" . \App\Models\TeamMember::count() . "), skipped.\n";
+    }
+
+    // Seed partner logos
+    if (\App\Models\PartnerLogo::count() === 0) {
+        \Illuminate\Support\Facades\Artisan::call('db:seed', [
+            '--class' => 'PartnerLogoSeeder',
+            '--force' => true,
+        ]);
+        $output .= "PartnerLogoSeeder: " . \App\Models\PartnerLogo::count() . " logos seeded.\n";
+    } else {
+        $output .= "PartnerLogos already exist (" . \App\Models\PartnerLogo::count() . "), skipped.\n";
+    }
+
+    return response('<pre>' . e($output) . '</pre>');
+});
 Route::get('public/{any?}', function () {
     return redirect('/' , 301);
 })->where('any', '.*');
