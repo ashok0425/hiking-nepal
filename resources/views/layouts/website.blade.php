@@ -72,6 +72,8 @@
             class="d-inline-flex align-items-center gap-1 text-dark"><img src="{{ asset('images/whatsapp-hd.png') }}"
                 alt="whatsapp" width="50" height="50"></a></div>
 
+    @include('inc.book-a-call-cta')
+    @include('inc.partners')
     @include('inc.footer')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -93,6 +93,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('admin.partner-logos.index') }}"
+                        class="nav-link {{ Route::is('admin.partner-logos.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>Partner Logos</p>
+                    </a>
+                </li>
+
                 <li class="dropdown-divider"></li>
 
                 <li class="nav-item">

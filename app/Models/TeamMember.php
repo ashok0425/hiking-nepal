@@ -28,6 +28,6 @@ class TeamMember extends Model
             return $this->photo;
         }
 
-        return Storage::disk('public')->url($this->photo);
+        return asset('storage/' . $this->photo);
     }
 }

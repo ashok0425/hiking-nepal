@@ -30,20 +30,20 @@
 @foreach ($teams as $team)
 
     @if ($loop->odd)
-         <section class=”bg-light py-0 py-md-5”>
-        <div class=”container py-5 my-5 section-bg-container”>
+         <section class="bg-light py-0 py-md-5">
+        <div class="container py-5 my-5 section-bg-container">
             @if($team->photo_url)
-            <img src=”{{ $team->photo_url }}” alt=”{{ $team->name }}” class=”section-bg-img end-0 d-none d-md-block” style=”max-width: 500px”>
+            <img src="{{ $team->photo_url }}" alt="{{ $team->name }}" class="section-bg-img end-0 d-none d-md-block" style="max-width: 500px">
             @endif
 
-            <div class=”row z-1”>
-                <div class=”col-md-8”>
-                    <div class=”brand-shadow px-3 py-5 px-md-5 bg-white”>
+            <div class="row z-1">
+                <div class="col-md-8">
+                    <div class="brand-shadow px-3 py-5 px-md-5 bg-white">
                         @if($team->photo_url)
-                        <img src=”{{ $team->photo_url }}” alt=”{{ $team->name }}” class=”d-block d-md-none img-fluid”>
+                        <img src="{{ $team->photo_url }}" alt="{{ $team->name }}" class="d-block d-md-none img-fluid">
                         @endif
-                        <div class=”text-muted mt-4 mt-md-0”>{{ $team->position }}</div>
-                        <h2 class=”mb-5”>{{ $team->name }}</h2>
+                        <div class="text-muted mt-4 mt-md-0">{{ $team->position }}</div>
+                        <h2 class="mb-5">{{ $team->name }}</h2>
 
                         <p>
                             {{ $team->comment }}
@@ -54,19 +54,19 @@
         </div>
     </section>
     @else
-    <section class=”my-5”>
-        <div class=”container py-5 section-bg-container justify-content-center overflow-hidden”>
+    <section class="my-5">
+        <div class="container py-5 section-bg-container justify-content-center overflow-hidden">
             @if($team->photo_url)
-            <img src=”{{ $team->photo_url }}” alt=”{{ $team->name }}” class=”section-bg-img start-0 d-none d-md-block” style=”max-width: 500px”>
+            <img src="{{ $team->photo_url }}" alt="{{ $team->name }}" class="section-bg-img start-0 d-none d-md-block" style="max-width: 500px">
             @endif
-            <div class=”row z-1 w-100”>
-                <div class=”col-md-8 offset-md-4”>
-                    <div class=”brand-shadow px-3 py-5 px-md-5 bg-white w-100”>
+            <div class="row z-1 w-100">
+                <div class="col-md-8 offset-md-4">
+                    <div class="brand-shadow px-3 py-5 px-md-5 bg-white w-100">
                         @if($team->photo_url)
-                        <img src=”{{ $team->photo_url }}” alt=”{{ $team->name }}” class=”d-block d-md-none img-fluid”>
+                        <img src="{{ $team->photo_url }}" alt="{{ $team->name }}" class="d-block d-md-none img-fluid">
                         @endif
-                        <div class=”text-muted mt-4 mt-md-0”>{{ $team->position }}</div>
-                        <h2 class=”mb-5”>{{ $team->name }}</h2>
+                        <div class="text-muted mt-4 mt-md-0">{{ $team->position }}</div>
+                        <h2 class="mb-5">{{ $team->name }}</h2>
 
                         <p>
                             {{ $team->comment }}

@@ -41,6 +41,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('/newsletter-posts', \App\Http\Controllers\Admin\NewsletterPostController::class);
 
     Route::resource('/team-members', \App\Http\Controllers\Admin\TeamMemberController::class);
+    Route::resource('/partner-logos', \App\Http\Controllers\Admin\PartnerLogoController::class);
     Route::resource('/social-embeds', \App\Http\Controllers\Admin\SocialEmbedController::class);
     Route::resource('/home-faqs', \App\Http\Controllers\Admin\HomeFAQController::class)->only(['index', 'edit', 'update']);
 
