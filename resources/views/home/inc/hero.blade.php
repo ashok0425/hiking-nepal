@@ -13,11 +13,10 @@
         </div>
     </form>
 
-    <div class="mount-1 animate__animated animate__slideInUp"></div>
-    <div class="mount-2 animate__animated animate__slideInUp"></div>
-    <div class="mount-3 animate__animated animate__slideInUp"></div>
+    <img src="{{ asset('top-mountain.png') }}" alt="" class="hero-mountain">
 
-    <div class="hero-cloud-l2 animate__animated animate__slideInLeft"></div>
-    <div class="hero-cloud-center animate__animated animate__slideInRight"></div>
+    <div class="hero-cloud-lb animate__animated animate__slideInLeft"></div>
+    <div class="hero-cloud-rb animate__animated animate__slideInRight"></div>
 
+    <img src="{{ asset('person.png') }}" alt="Hiker" class="hero-person animate__animated animate__slideInUp">
 </section>

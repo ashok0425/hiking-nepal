@@ -557,7 +557,7 @@ footer .text-secondary {
             rgba(11, 29, 38, 0) 31.06%,
             #0b1d26 108.93%
         ),
-        url("/images/hero-bg.webp");
+        url("/hero-bg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -588,66 +588,43 @@ footer .text-secondary {
     text-transform: uppercase;
 }
 
-.mount-1 {
-    background: url("/images/img-1-2.webp");
-    background-size: contain;
-    width: 100%;
-    height: 60%;
+.hero-mountain {
     position: absolute;
-    background-repeat: no-repeat;
-    bottom: 10%;
-    left: 25%;
-}
-
-.mount-2 {
-    background: url("/images/img-1.webp");
-    background-size: cover;
-    width: 60%;
-    height: 55%;
-    position: absolute;
-    background-repeat: no-repeat;
     bottom: 0;
     left: 0;
-    /* filter: brightness(150%) contrast(80%); */
+    width: 100%;
+    max-height: 75%;
+    object-fit: cover;
+    /* object-position: bottom; */
+    z-index: 1;
+    pointer-events: none;
 }
 
-.mount-3 {
+.hero-person {
     position: absolute;
     bottom: 0;
-    right: 0;
-    background: url("/images/img-2.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 55%;
+    /* left: 50%; */
+    /* transform: translateX(-40%); */
     height: 50%;
+    z-index: 3;
+    pointer-events: none;
 }
 
 .hero-cloud-l1 {
-    background-image: url("/images/cloud-img-l1.webp");
+    background-image: url("/left-cloud.png");
     top: 10%;
-    left: 0;
+    left: -3%;
     position: absolute;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     height: 200px;
     width: 200px;
-}
-
-.hero-cloud-l2 {
-    background-image: url("/images/cloud-img-l2.webp");
-    left: -2%;
-    top: 35%;
-    position: absolute;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 250px;
-    width: 250px;
+    z-index: 2;
 }
 
 .hero-cloud-r1 {
-    background-image: url("/images/cloud-img-r1.webp");
+    background-image: url("/right-cloud.png");
     top: 0;
     right: 0;
     position: absolute;
@@ -656,18 +633,33 @@ footer .text-secondary {
     background-repeat: no-repeat;
     height: 350px;
     width: 350px;
+    z-index: 2;
 }
 
-.hero-cloud-center {
-    background-image: url("/images/cloud-img-center.webp");
-    top: 20%;
-    left: 35%;
+.hero-cloud-lb {
+    background-image: url("/cloud-left-bottom.png");
+    bottom: 0;
+    left: -5%;
     position: absolute;
     background-size: contain;
-    background-position: center;
+    background-position: bottom left;
     background-repeat: no-repeat;
-    height: 450px;
-    width: 450px;
+    height: 250px;
+    width: 300px;
+    z-index: 4;
+}
+
+.hero-cloud-rb {
+    background-image: url("/cloud-right-bottom.png");
+    bottom: 0;
+    right: -5%;
+    position: absolute;
+    background-size: contain;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 300px;
+    z-index: 4;
 }
 
 /* Responsive styles for hero section */
@@ -698,21 +690,24 @@ footer .text-secondary {
         padding: 0 20px;
     }
 
-    .hero-cloud-center {
-        height: 300px;
-        width: 300px;
-        left: 25%;
-    }
-
     .hero-cloud-r1 {
         height: 250px;
         width: 250px;
     }
 
-    .hero-cloud-l1,
-    .hero-cloud-l2 {
+    .hero-cloud-l1 {
         height: 150px;
         width: 150px;
+    }
+
+    .hero-person {
+        height: 45%;
+    }
+
+    .hero-cloud-lb,
+    .hero-cloud-rb {
+        height: 200px;
+        width: 250px;
     }
 }
 
@@ -726,25 +721,14 @@ footer .text-secondary {
         top: 10%;
     }
 
-    .mount-1 {
-        left: 15%;
-        height: 50%;
-    }
-
-    .mount-2 {
-        width: 70%;
-        height: 45%;
-    }
-
-    .mount-3 {
-        width: 65%;
+    .hero-person {
         height: 40%;
     }
 
-    .hero-cloud-center {
-        height: 200px;
+    .hero-cloud-lb,
+    .hero-cloud-rb {
+        height: 150px;
         width: 200px;
-        top: 25%;
     }
 }
 
@@ -767,37 +751,24 @@ footer .text-secondary {
         padding: 10px;
     }
 
-    .mount-1 {
-        left: 5%;
-        height: 40%;
-        bottom: 5%;
-    }
-
-    .mount-2 {
-        width: 80%;
-        height: 35%;
-    }
-
-    .mount-3 {
-        width: 75%;
-        height: 30%;
-    }
-
     .hero-cloud-r1 {
         height: 150px;
         width: 150px;
     }
 
-    .hero-cloud-l1,
-    .hero-cloud-l2 {
+    .hero-cloud-l1 {
         height: 100px;
         width: 100px;
     }
 
-    .hero-cloud-center {
-        height: 150px;
+    .hero-person {
+        height: 35%;
+    }
+
+    .hero-cloud-lb,
+    .hero-cloud-rb {
+        height: 100px;
         width: 150px;
-        left: 20%;
     }
 }
 
