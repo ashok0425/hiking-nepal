@@ -1,8 +1,8 @@
-<footer class="position-relative footer-section">
-    <img src="{{ asset('mountain-bottom.png') }}" alt="" class="footer-mountain-img" style="position:absolute; bottom:5%; left:50%; transform:translateX(-50%); width:100%; z-index:0; pointer-events:none; object-fit:cover; object-position:center;">
-    <img src="{{ asset('mountain-overlay.png') }}" alt="" class="footer-tree-img" style="position:absolute; bottom:0; left:0; width:100%; z-index:1; pointer-events:none;">
-    <div class="footer-container py-5 ">
-        <div class="container position-relative" style="padding-top: 200px; z-index:2;">
+<footer>
+  
+    <div class="footer-container py-5  position-relative">
+        <div class="footer-content">
+  <div class="container ">
             <div class="row g-3">
                 <!-- Column 1: Contact Info -->
                 <div class="col-md-6 col-lg-3">
@@ -123,6 +123,9 @@
                 </div>
             </div>
         </div>
+
+        </div>
+      
     </div>
 </footer>
 

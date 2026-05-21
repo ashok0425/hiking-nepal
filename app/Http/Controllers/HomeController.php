@@ -21,6 +21,7 @@ class HomeController extends Controller
     {
         $featuredPackages = Package::where('status', 'published')
             ->where('sale_price_per_person', '>', 0)
+            ->where('is_popular', 1)
             ->with('place', 'destination')
             ->take(6)
             ->get();
