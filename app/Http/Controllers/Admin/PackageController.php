@@ -39,6 +39,7 @@ class PackageController extends Controller
             'places' => Place::where('status', 'active')->get(),
             'categories' => PackageCategory::where('status', 'active')->get(),
             'activities' => Activity::all(),
+            'allPackages' => Package::where('status', 'published')->get(['id', 'title']),
         ]);
     }
 
@@ -67,9 +68,10 @@ class PackageController extends Controller
 
         $package = Package::create($validated);
 
-        // Sync categories and activities
+        // Sync categories, activities, and related packages
         $package->categories()->sync($request->categories);
         $package->activities()->sync($request->activities);
+        $package->relatedPackages()->sync($request->related_packages);
 
         // Create departures
         if ($request->has('departures') && is_array($request->departures)) {
@@ -93,7 +95,7 @@ class PackageController extends Controller
 
     public function edit(Package $package)
     {
-        $package->load(['destination', 'place', 'categories', 'activities', 'departures']);
+        $package->load(['destination', 'place', 'categories', 'activities', 'departures', 'relatedPackages']);
 
         return view('admin.packages.edit', [
             'package' => $package,
@@ -101,6 +103,7 @@ class PackageController extends Controller
             'places' => Place::where('status', 'active')->get(),
             'categories' => PackageCategory::where('status', 'active')->get(),
             'activities' => Activity::all(),
+            'allPackages' => Package::where('id', '!=', $package->id)->where('status', 'published')->get(['id', 'title']),
         ]);
     }
 
@@ -160,9 +163,10 @@ class PackageController extends Controller
 
         $package->update($validated);
 
-        // Sync categories and activities
+        // Sync categories, activities, and related packages
         $package->categories()->sync($request->categories);
         $package->activities()->sync($request->activities);
+        $package->relatedPackages()->sync($request->related_packages);
 
         // Update departures
         if ($request->has('departures')) {

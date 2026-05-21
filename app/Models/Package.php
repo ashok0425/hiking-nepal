@@ -120,6 +120,11 @@ class Package extends Model
         return $this->hasMany(Departure::class);
     }
 
+    public function relatedPackages()
+    {
+        return $this->belongsToMany(Package::class, 'related_packages', 'package_id', 'related_package_id');
+    }
+
     public function getOverviewAttribute($value)
     {
         if ($value) {

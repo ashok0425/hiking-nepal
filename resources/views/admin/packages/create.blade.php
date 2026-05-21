@@ -351,6 +351,25 @@ Comfortable walking shoes, warm clothes, and basic medications.">{{ old('faqs') 
                             </div>
                         </div>
                     </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Related Packages</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <select name="related_packages[]" class="form-control" multiple size="6">
+                                    @foreach ($allPackages as $pkg)
+                                        <option value="{{ $pkg->id }}"
+                                            {{ old('related_packages') && in_array($pkg->id, old('related_packages')) ? 'selected' : '' }}>
+                                            {{ $pkg->title }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <small class="text-muted">Hold Ctrl/Cmd to select multiple packages</small>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0">SEO Details</h5>

@@ -29,10 +29,19 @@ class TourController extends Controller
             ->orderBy('start_date')
             ->get();
 
-        $packages = Package::where('status', 'published')
+        $packages = $tourPackage->relatedPackages()
+            ->where('status', 'published')
             ->with('place', 'destination')
-            ->take(2)
             ->get();
+
+        if ($packages->isEmpty()) {
+            $packages = Package::where('status', 'published')
+                ->where('id', '!=', $tourPackage->id)
+                ->with('place', 'destination')
+                ->inRandomOrder()
+                ->take(2)
+                ->get();
+        }
 
         $faqs = $this->getTourFaqs($tourPackage);
 
