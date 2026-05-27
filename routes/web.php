@@ -69,7 +69,9 @@ Route::get('/', App\Http\Controllers\HomeController::class)->name('home');
 Route::get('/deals', \App\Http\Controllers\DealController::class)->name('deals');
 
 // About
-Route::view('/information', 'information')->name('information');
+Route::get('/information', function (\Illuminate\Http\Request $request) {
+    return (new App\Http\Controllers\PageController)($request, 'information');
+})->name('information');
 Route::get('/who-we-are', [\App\Http\Controllers\AboutController::class, 'whoWeAre'])->name('who-we-are');
 Route::view('/what-we-offer', 'what-we-offer')->name('what-we-offer');
 Route::view('/booking-terms-conditions', 'booking-terms-conditions')->name('booking-terms');

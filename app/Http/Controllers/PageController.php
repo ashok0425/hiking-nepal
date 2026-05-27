@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destination;
 use App\Models\Package;
+use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -93,6 +94,14 @@ class PageController extends Controller
 
         if ($post) {
             return view('blog-page', compact('post'));
+        }
+
+        $page = Page::where('status', 'published')
+            ->where('slug', $slug)
+            ->first();
+
+        if ($page) {
+            return view('page', compact('page'));
         }
 
         abort(404);

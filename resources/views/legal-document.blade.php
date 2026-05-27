@@ -51,5 +51,5 @@
         </div>
     </div>
 
-    @include('inc.book-a-call-cta')
+    
 @endsection

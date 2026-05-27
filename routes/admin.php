@@ -40,6 +40,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('/newsletter-subscribers', \App\Http\Controllers\Admin\NewsletterSubscriberController::class);
     Route::resource('/newsletter-posts', \App\Http\Controllers\Admin\NewsletterPostController::class);
 
+    Route::resource('/pages', \App\Http\Controllers\Admin\PageController::class);
     Route::resource('/team-members', \App\Http\Controllers\Admin\TeamMemberController::class);
     Route::resource('/partner-logos', \App\Http\Controllers\Admin\PartnerLogoController::class);
     Route::resource('/social-embeds', \App\Http\Controllers\Admin\SocialEmbedController::class);

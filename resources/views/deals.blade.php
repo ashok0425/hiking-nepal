@@ -147,7 +147,7 @@
         </section>
     @endforeach
 
-    @include('inc.book-a-call-cta')
+    
 @endsection
 
 @push('scripts')

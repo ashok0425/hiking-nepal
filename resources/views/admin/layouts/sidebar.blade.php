@@ -194,6 +194,14 @@
                         <p>Home FAQ</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.pages.index') }}"
+                        class="nav-link {{ Route::is('admin.pages.*') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-file-alt"></i>
+                        <p>Pages</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

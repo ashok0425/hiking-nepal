@@ -90,8 +90,8 @@
                                 height="20">
                         </a>
                         <a href="https://twitter.com/hikingnepal" class="text-primary me-2" target="_blank">
-                            <img src="{{ asset('x.jpeg') }}" alt="twitter" width="20"
-                                height="20"></a>
+                            <img src="{{ asset('x-white-logo.png') }}" alt="twitter" width="30"
+                                height="30"></a>
                         <a href="https://www.instagram.com/hikingnepal_" class="text-primary me-2" target="_blank">
                             <img src="{{ asset('images/Instagram.webp') }}" alt="instagram" width="20"
                                 height="20"></a>

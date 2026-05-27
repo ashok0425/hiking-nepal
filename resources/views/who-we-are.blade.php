@@ -128,7 +128,7 @@
     @include('inc.testimonial')
     @include('inc.discover')
 
-    @include('inc.book-a-call-cta')
+    
     @include('inc.insta')
 @endsection
 

@@ -65,5 +65,5 @@
         @endif
     </section>
 
-    @include('inc.book-a-call-cta')
+    
 @endsection

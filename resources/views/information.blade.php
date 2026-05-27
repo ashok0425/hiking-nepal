@@ -167,5 +167,5 @@
             leaders are trained to administer them and to know the symptoms</p>
     </section>
 
-    @include('inc.book-a-call-cta')
+    
 @endsection
